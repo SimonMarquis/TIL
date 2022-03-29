@@ -1841,7 +1841,7 @@ graph LR
 	    {
 	        "caption": "List branches with commit…",
 	        "command": "git",
-	        "args": {"argv": ["branch", "--no-rebase", "--sort=-committerdate", "--format=%(committerdate:short) %(refname:short)", "--contains", "$select_commit"]}
+	        "args": {"argv": ["branch", "--sort=-committerdate", "--format=%(committerdate:short) %(refname:short)", "--contains", "$select_commit"]}
 	    },
 	    {
 	        "caption": "List tags with commit…",
