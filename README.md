@@ -49,6 +49,7 @@
     - [Cleanup caches and build directories](#cleanup-caches-and-build-directories)
     - [Default commit message](#default-commit-message)
     - [List project properties](#list-project-properties)
+    - [Reproducible builds](#reproducible-builds)
 - [📦 IntelliJ IDEA](#📦-intellij-idea)
     - [EditorConfig](#editorconfig)
     - [Project icon](#project-icon)
@@ -960,6 +961,19 @@ gradlew -q properties --console=plain | grep "^<my-property>:" | awk '{printf $2
 # Or on newer versions
 gradlew -q properties --property=<my-property>
 ```
+
+<a id="reproducible-builds"></a>
+### Reproducible builds
+
+```kotlin
+/* build.gradle.kts */
+tasks.withType<AbstractArchiveTask>().configureEach {
+    isPreserveFileTimestamps = false
+    isReproducibleFileOrder = true
+}
+```
+
+[🔗](https://docs.gradle.org/current/userguide/working_with_files.html#sec:reproducible_archives)
 
 <a id="📦-intellij-idea"></a>
 ## 📦 IntelliJ IDEA
