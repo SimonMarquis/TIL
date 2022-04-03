@@ -85,7 +85,10 @@
     - [Synchronize a Map with a new Map of values](#synchronize-a-map-with-a-new-map-of-values)
     - [Timeout for async operations](#timeout-for-async-operations)
 - [🍎 Mac](#🍎-mac)
+    - [AltTab](#alttab)
+    - [Karabiner](#karabiner)
     - [NCurses Disk Usage](#ncurses-disk-usage)
+    - [UnnaturalScrollWheels](#unnaturalscrollwheels)
 - [📄 Markdown](#📄-markdown)
     - [Details summary](#details-summary)
     - [Diff](#diff)
@@ -1707,6 +1710,20 @@ suspend fun <T> Deferred<T>.await(
 <a id="🍎-mac"></a>
 ## 🍎 Mac
 
+<a id="alttab"></a>
+### AltTab
+
+> AltTab brings the power of Windows alt-tab to macOS.
+
+[🔗](https://github.com/lwouis/alt-tab-macos)
+
+<a id="karabiner"></a>
+### Karabiner
+
+> Karabiner-Elements is a powerful utility for keyboard customization on macOS
+
+[🔗](https://github.com/pqrs-org/Karabiner-Elements)
+
 <a id="ncurses-disk-usage"></a>
 ### NCurses Disk Usage
 
@@ -1715,6 +1732,13 @@ suspend fun <T> Deferred<T>.await(
 ```bash
 brew install ncdu
 ```
+
+<a id="unnaturalscrollwheels"></a>
+### UnnaturalScrollWheels
+
+> Invert scroll direction for physical scroll wheels while maintaining "Natural" scrolling for trackpads on MacOS.
+
+[🔗](https://github.com/ther0n/UnnaturalScrollWheels)
 
 <a id="📄-markdown"></a>
 ## 📄 Markdown
