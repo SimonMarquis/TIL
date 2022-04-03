@@ -36,6 +36,7 @@
     - [Binding extension functions](#binding-extension-functions)
     - [Coroutines provider](#coroutines-provider)
     - [Extensions for Lazy & Provider](#extensions-for-lazy--provider)
+    - [Private dependencies](#private-dependencies)
 - [🏢 Gerrit](#🏢-gerrit)
     - [Customized dashboard](#customized-dashboard)
     - [Gmail filters](#gmail-filters)
@@ -875,6 +876,26 @@ class Repository @Inject constructor(
     private val api by api
 }
 ```
+
+<a id="private-dependencies"></a>
+### Private dependencies
+
+```kotlin
+@Qualifier private annotation class InternalApi
+
+@Module
+object NetworkModule {
+
+    @Provides @InternalApi 
+    fun provideClient(): OkHttpClient = ...
+
+    @Provides
+    fun provideRetrofit(@InternalApi client: Lazy<OkHttpClient>): Retrofit = ...
+
+}
+```
+
+[🔗](https://www.zacsweers.dev/dagger-party-tricks-private-dependencies/)
 
 <a id="🏢-gerrit"></a>
 ## 🏢 Gerrit
