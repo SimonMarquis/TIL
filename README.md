@@ -81,6 +81,7 @@
     - [SemVer](#semver)
     - [Singleton](#singleton)
     - [Synchronize a Map with a new Map of values](#synchronize-a-map-with-a-new-map-of-values)
+    - [Timeout for async operations](#timeout-for-async-operations)
 - [🍎 Mac](#🍎-mac)
     - [NCurses Disk Usage](#ncurses-disk-usage)
 - [📄 Markdown](#📄-markdown)
@@ -1666,6 +1667,16 @@ fun <Key, Value, T> MutableMap<Key, Value>.sync(
     // Add
     itemsToAdd.forEach { put(it.key, onAdded(it)) }
 }
+```
+
+<a id="timeout-for-async-operations"></a>
+### Timeout for async operations
+
+```kotlin
+suspend fun <T> Deferred<T>.await(
+    duration: Duration,
+    defaultValue: T,
+): T = withTimeout(duration) { await() } ?: defaultValue
 ```
 
 <a id="🍎-mac"></a>
