@@ -28,6 +28,7 @@
     - [Tools sample resources as JSON files](#tools-sample-resources-as-json-files)
     - [ViewBinding extension](#viewbinding-extension)
     - [ViewBinding one-liner](#viewbinding-one-liner)
+    - [ViewModel in custom View](#viewmodel-in-custom-view)
     - [WorkManager diagnostic](#workmanager-diagnostic)
 - [🌍 Chrome](#🌍-chrome)
     - [Overlay Scrollbar](#overlay-scrollbar)
@@ -739,6 +740,22 @@ private lateinit var binding: MainViewBinding
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(MainViewBinding.inflate(layoutInflater).also { binding = it }.root)
+}
+```
+
+<a id="viewmodel-in-custom-view"></a>
+### ViewModel in custom View
+
+```kotlin
+class CustomView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : View(context, attrs, defStyleAttr) {
+
+  private val viewModel by lazy { ViewModelProvider(findViewTreeViewModelStoreOwner()!!).get<CustomViewModel>() }
+
+  override fun onAttachedToWindow() {
+    super.onAttachedToWindow()
+    viewModel.state.observe(findViewTreeLifecycleOwner()!!) { TODO() }
+  }
+
 }
 ```
 
