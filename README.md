@@ -11,6 +11,7 @@
     - [Disable Samsung VR](#disable-samsung-vr)
     - [Download all APK files](#download-all-apk-files)
     - [Edit SharePreferences](#edit-sharepreferences)
+    - [Ellipsized TextView](#ellipsized-textview)
     - [Firebase Analytics debug](#firebase-analytics-debug)
     - [Lifecycle CheatSheets](#lifecycle-cheatsheets)
     - [List resources at runtime](#list-resources-at-runtime)
@@ -427,6 +428,13 @@ cat > shared_prefs/<fileName>.xml
     <!-- Prefs here -->
 </map>
 Ctrl+C
+```
+
+<a id="ellipsized-textview"></a>
+### Ellipsized TextView
+
+```kotlin
+fun TextView.isEllipsized(): Boolean = layout?.let { !TextUtils.equals(text, it.text) } ?: false
 ```
 
 <a id="firebase-analytics-debug"></a>
