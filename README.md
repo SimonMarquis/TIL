@@ -53,6 +53,7 @@
     - [List project properties](#list-project-properties)
     - [Reproducible builds](#reproducible-builds)
 - [📦 IntelliJ IDEA](#📦-intellij-idea)
+    - [Code formatting as a weak warning](#code-formatting-as-a-weak-warning)
     - [EditorConfig](#editorconfig)
     - [Project icon](#project-icon)
     - [Shortcuts](#shortcuts)
@@ -1003,6 +1004,13 @@ tasks.withType<AbstractArchiveTask>().configureEach {
 
 <a id="📦-intellij-idea"></a>
 ## 📦 IntelliJ IDEA
+
+<a id="code-formatting-as-a-weak-warning"></a>
+### Code formatting as a weak warning
+ 
+`File` → `Settings` → `Editor` → `Inspections` → `File is not formatted according to project settings`
+
+[🔗](https://twitter.com/kotlin/status/1067825173196414976)
 
 <a id="editorconfig"></a>
 ### EditorConfig
