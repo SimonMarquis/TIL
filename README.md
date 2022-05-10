@@ -45,10 +45,10 @@
     - [Authors with commit count](#authors-with-commit-count)
     - [Diffing with patience](#diffing-with-patience)
     - [Ignoring commits in the blame view](#ignoring-commits-in-the-blame-view)
-    - [Rebase dependent branch](#rebase-dependent-branch)
-    - [Recursive gc](#recursive-gc)
     - [List objects by size](#list-objects-by-size)
     - [Print changes between two refs](#print-changes-between-two-refs)
+    - [Rebase dependent branch](#rebase-dependent-branch)
+    - [Recursive gc](#recursive-gc)
 - [🐘 Gradle](#🐘-gradle)
     - [Cleanup caches and build directories](#cleanup-caches-and-build-directories)
     - [Default commit message](#default-commit-message)
@@ -972,21 +972,6 @@ object NetworkModule {
 
 [🔗](https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file#ignore-commits-in-the-blame-view)
 
-<a id="rebase-dependent-branch"></a>
-### Rebase dependent branch
-
-```bash
-# git rebase --onto <what-branch> <from-exclusive>@{1} <up-to-inclusive>
-git rebase --onto featureA featureA@{1} featureB
-```
-
-<a id="recursive-gc"></a>
-### Recursive gc
-
-```bash
-find . -name '*.git' -execdir sh -c 'cd {} && git gc' \;
-```
-
 <a id="list-objects-by-size"></a>
 ### List objects by size
 
@@ -1006,6 +991,21 @@ git rev-list --objects --all |
 
 ```bash
 git log --topo-order --pretty=format:"%h ~ %s" $1..$2 --no-merges
+```
+
+<a id="rebase-dependent-branch"></a>
+### Rebase dependent branch
+
+```bash
+# git rebase --onto <what-branch> <from-exclusive>@{1} <up-to-inclusive>
+git rebase --onto featureA featureA@{1} featureB
+```
+
+<a id="recursive-gc"></a>
+### Recursive gc
+
+```bash
+find . -name '*.git' -execdir sh -c 'cd {} && git gc' \;
 ```
 
 <a id="🐘-gradle"></a>
