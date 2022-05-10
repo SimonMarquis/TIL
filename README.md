@@ -3,6 +3,7 @@
 <!-- MarkdownTOC autolink="true" autoanchor="true" uri_encoding="false" -->
 
 - [🤖 Android](#🤖-android)
+    - [AAPT and GZ files](#aapt-and-gz-files)
     - [Resources abstraction](#resources-abstraction)
     - [AutoCleanedValue](#autocleanedvalue)
     - [BottomSheetBehavior extensions](#bottomsheetbehavior-extensions)
@@ -116,6 +117,16 @@
 
 <a id="🤖-android"></a>
 ## 🤖 Android
+
+<a id="aapt-and-gz-files"></a>
+### AAPT and GZ files
+
+AAPT will silently decompress any `.gz` file from the `assets` directory.
+If you store a (compressed) `/assets/data.json.gz` file, AAPT will only package a (decompressed) `/assets/data.json` file in the resulting apk and aab.
+
+A workaround is to move the file in Java's resources folder `/resources/assets/data.json.gz`.
+
+[🔗](https://cs.android.com/android/platform/superproject/+/master:frameworks/base/tools/aapt/Package.cpp;l=276-279;drc=18f16d6241c6398a034237c2a5343f94d1938f6a)
 
 <a id="resources-abstraction"></a>
 ### Resources abstraction
