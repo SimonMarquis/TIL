@@ -44,6 +44,7 @@
     - [Alias to function](#alias-to-function)
     - [Authors with commit count](#authors-with-commit-count)
     - [Diffing with patience](#diffing-with-patience)
+    - [Ignoring commits in the blame view](#ignoring-commits-in-the-blame-view)
     - [Rebase dependent branch](#rebase-dependent-branch)
     - [Recursive gc](#recursive-gc)
     - [List objects by size](#list-objects-by-size)
@@ -942,6 +943,34 @@ object NetworkModule {
 	# git config --global diff.algorithm patience
     algorithm = patience
 ```
+
+<a id="ignoring-commits-in-the-blame-view"></a>
+### Ignoring commits in the blame view
+
+```bash
+# .git-blame-ignore-revs
+
+# Reformat code
+44e8ca9a329dbb7a673b55cd25fbe982f10572fa
+# Add newline at end of files
+2f5f618ff431f87687e7446f0980849a88d01d9a
+```
+
+- Manually
+    ```bash
+    git blame --ignore-revs-file .git-blame-ignore-revs <file>
+    ```
+- Automatically
+    ```bash
+    # Ignore revisions listed in the file, one unabbreviated object name per line.
+    git config --global blame.ignoreRevsFile .git-blame-ignore-revs
+    # Mark any lines that have had a commit skipped using --ignore-rev with a `?`
+    git config --global blame.markIgnoredLines true
+    # Mark any lines that were added in a skipped commit and can not be attributed with a `*`
+    git config --global blame.markUnblamableLines true
+    ```
+
+[🔗](https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file#ignore-commits-in-the-blame-view)
 
 <a id="rebase-dependent-branch"></a>
 ### Rebase dependent branch
