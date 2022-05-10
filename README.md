@@ -4,7 +4,6 @@
 
 - [🤖 Android](#🤖-android)
     - [AAPT and GZ files](#aapt-and-gz-files)
-    - [Resources abstraction](#resources-abstraction)
     - [AutoCleanedValue](#autocleanedvalue)
     - [BottomSheetBehavior extensions](#bottomsheetbehavior-extensions)
     - [ConcatAdapter find global position](#concatadapter-find-global-position)
@@ -23,6 +22,7 @@
     - [Print APK certificates](#print-apk-certificates)
     - [Project view by default](#project-view-by-default)
     - [Resource identifier for MATCH_PARENT and WRAP_CONTENT](#resource-identifier-for-match_parent-and-wrap_content)
+    - [Resources abstraction](#resources-abstraction)
     - [Run command as a specific application user-id](#run-command-as-a-specific-application-user-id)
     - [screencap](#screencap)
     - [scrcpy](#scrcpy)
@@ -127,153 +127,6 @@ If you store a (compressed) `/assets/data.json.gz` file, AAPT will only package 
 A workaround is to move the file in Java's resources folder `/resources/assets/data.json.gz`.
 
 [🔗](https://cs.android.com/android/platform/superproject/+/master:frameworks/base/tools/aapt/Package.cpp;l=276-279;drc=18f16d6241c6398a034237c2a5343f94d1938f6a)
-
-<a id="resources-abstraction"></a>
-### Resources abstraction
-
--	<details>
-	    <summary><code>BooleanResource</code></summary>
-
-	```kotlin
-	import android.content.res.Resources
-	import androidx.annotation.BoolRes
-
-	sealed class BooleanResource {
-	    companion object {
-	        fun from(boolean: Boolean): BooleanResource = BooleanValueResource(boolean)
-	        fun fromColorId(@BoolRes id: Int): BooleanResource = BooleanIdResource(id)
-	    }
-	}
-
-	private data class BooleanValueResource(val value: Boolean) : BooleanResource()
-	private data class BooleanIdResource(@BoolRes val id: Int) : BooleanResource()
-
-	fun BooleanResource.toBoolean(resources: Resources): Boolean = when (this) {
-	    is BooleanValueResource -> value
-	    is BooleanIdResource -> resources.getBoolean(id)
-	}
-	```
-	</details>
-
--	<details>
-	    <summary><code>ColorResource</code></summary>
-
-	```kotlin
-	import android.content.res.ColorStateList
-	import android.content.res.Resources
-	import android.graphics.Color
-	import androidx.annotation.ColorInt
-	import androidx.annotation.ColorRes
-	import androidx.core.content.res.ResourcesCompat
-
-	sealed class ColorResource {
-	    companion object {
-	        fun from(color: String): ColorResource = ColorStringResource(color)
-	        fun fromColorId(@ColorRes id: Int): ColorResource = ColorIdResource(id)
-	    }
-	}
-
-	private data class ColorStringResource(val value: String) : ColorResource()
-	private data class ColorIdResource(@ColorRes val id: Int) : ColorResource()
-
-	@ColorInt
-	fun ColorResource.toColorInt(resources: Resources, theme: Resources.Theme? = null): Int = when (this) {
-	    is ColorStringResource -> Color.parseColor(value)
-	    is ColorIdResource -> ResourcesCompat.getColor(resources, id, theme)
-	}
-
-	fun ColorResource.toColorStateList(resources: Resources, theme: Resources.Theme? = null): ColorStateList? = when (this) {
-	    is ColorStringResource -> ColorStateList.valueOf(toColorInt(resources))
-	    is ColorIdResource -> ResourcesCompat.getColorStateList(resources, id, theme)
-	}
-	```
-	</details>
-
--	<details>
-	    <summary><code>DrawableResource</code></summary>
-
-	```kotlin
-	import android.content.res.Resources
-	import android.graphics.Bitmap
-	import android.graphics.drawable.Drawable
-	import androidx.annotation.DrawableRes
-	import androidx.core.content.res.ResourcesCompat
-	import androidx.core.graphics.drawable.toDrawable
-
-	sealed class DrawableResource {
-	    companion object {
-	        fun from(drawable: Drawable): DrawableResource = DrawableValueResource(drawable)
-	        fun fromBitmap(bitmap: Bitmap): DrawableResource = DrawableBitmapResource(bitmap)
-	        fun fromDrawableId(@DrawableRes id: Int): DrawableResource = DrawableIdResource(id)
-	    }
-	}
-
-	private data class DrawableValueResource(val drawable: Drawable) : DrawableResource()
-	private data class DrawableBitmapResource(val bitmap: Bitmap) : DrawableResource()
-	private data class DrawableIdResource(@DrawableRes val id: Int) : DrawableResource()
-
-	fun DrawableResource.toDrawable(resources: Resources, theme: Resources.Theme? = null): Drawable? = when (this) {
-	    is DrawableValueResource -> drawable
-	    is DrawableBitmapResource -> bitmap.toDrawable(resources)
-	    is DrawableIdResource -> ResourcesCompat.getDrawable(resources, id, theme)
-	}
-	```
-	</details>
-
--	<details>
-	    <summary><code>TextResource</code></summary>
-
-	```kotlin
-	import android.content.res.Resources
-	import androidx.annotation.PluralsRes
-	import androidx.annotation.StringRes
-	import java.text.MessageFormat
-
-	sealed class TextResource {
-	    companion object {
-	        fun none(): TextResource = NullTextResource
-	        fun fromString(text: CharSequence): TextResource = StringTextResource(text)
-	        fun fromStringId(@StringRes id: Int, vararg args: Any = emptyArray()): TextResource = StringIdTextResource(id, args.toList())
-	        fun fromPluralId(@PluralsRes id: Int, quantity: Int, vararg args: Any = emptyArray()): TextResource = PluralIdTextResource(id, quantity, args.toList())
-	        fun fromMessage(@StringRes id: Int, vararg args: Any = emptyArray()): TextResource = MessageIdTextResource(id, args.toList())
-	    }
-
-	    @Deprecated(
-	            message = "Suspicious toString() usage, please use toString(resources) if you need to resolve the TextResource.",
-	            replaceWith = ReplaceWith("toString(resources)"),
-	            level = DeprecationLevel.WARNING
-	    )
-	    override fun toString(): String = super.toString()
-
-	}
-
-	private object NullTextResource : TextResource()
-	private data class StringTextResource(val text: CharSequence) : TextResource()
-	private data class StringIdTextResource(@StringRes val id: Int, val args: List<Any>) : TextResource()
-	private data class PluralIdTextResource(@PluralsRes val id: Int, val quantity: Int, val args: List<Any>) : TextResource()
-	private data class MessageIdTextResource(@StringRes val id: Int, val args: List<Any>) : TextResource()
-
-	fun TextResource?.orNone(): TextResource = this ?: TextResource.none()
-
-	fun TextResource.toText(resources: Resources): CharSequence? = when (this) {
-	    NullTextResource -> null
-	    is StringTextResource -> text
-	    is StringIdTextResource -> if (args.isEmpty()) resources.getText(id) else toString(resources)
-	    is PluralIdTextResource -> if (args.isEmpty()) resources.getQuantityText(id, quantity) else toString(resources)
-	    is MessageIdTextResource -> if (args.isEmpty()) MessageFormat.format(resources.getString(id)) else toString(resources)
-	}
-
-	fun TextResource.toString(resources: Resources): String? = when (this) {
-	    NullTextResource -> null
-	    is StringTextResource -> text.toString()
-	    is StringIdTextResource -> if (args.isEmpty()) resources.getString(id) else resources.getString(id, *args.mapTextResourceToString(resources))
-	    is PluralIdTextResource -> if (args.isEmpty()) resources.getQuantityString(id, quantity) else resources.getQuantityString(id, quantity, *args.mapTextResourceToString(resources))
-	    is MessageIdTextResource -> if (args.isEmpty()) MessageFormat.format(resources.getString(id)) else MessageFormat.format(resources.getString(id), *args.mapTextResourceToString(resources))
-	}
-
-	private fun <E> List<E>.mapTextResourceToString(resources: Resources) = map { if (it is TextResource) it.toString(resources) else it }.toTypedArray()
-	```
-	</details>
 
 <a id="autocleanedvalue"></a>
 ### AutoCleanedValue
@@ -650,6 +503,153 @@ find . -name '*.apk' -type f -exec echo "APK: {}" \; -exec keytool -printcert -j
     <item name="wrap_content" type="dimen" format="integer" tools:ignore="ResourceName">-2</item>
 </resources>
 ```
+
+<a id="resources-abstraction"></a>
+### Resources abstraction
+
+-   <details>
+        <summary><code>BooleanResource</code></summary>
+
+    ```kotlin
+    import android.content.res.Resources
+    import androidx.annotation.BoolRes
+
+    sealed class BooleanResource {
+        companion object {
+            fun from(boolean: Boolean): BooleanResource = BooleanValueResource(boolean)
+            fun fromColorId(@BoolRes id: Int): BooleanResource = BooleanIdResource(id)
+        }
+    }
+
+    private data class BooleanValueResource(val value: Boolean) : BooleanResource()
+    private data class BooleanIdResource(@BoolRes val id: Int) : BooleanResource()
+
+    fun BooleanResource.toBoolean(resources: Resources): Boolean = when (this) {
+        is BooleanValueResource -> value
+        is BooleanIdResource -> resources.getBoolean(id)
+    }
+    ```
+    </details>
+
+-   <details>
+        <summary><code>ColorResource</code></summary>
+
+    ```kotlin
+    import android.content.res.ColorStateList
+    import android.content.res.Resources
+    import android.graphics.Color
+    import androidx.annotation.ColorInt
+    import androidx.annotation.ColorRes
+    import androidx.core.content.res.ResourcesCompat
+
+    sealed class ColorResource {
+        companion object {
+            fun from(color: String): ColorResource = ColorStringResource(color)
+            fun fromColorId(@ColorRes id: Int): ColorResource = ColorIdResource(id)
+        }
+    }
+
+    private data class ColorStringResource(val value: String) : ColorResource()
+    private data class ColorIdResource(@ColorRes val id: Int) : ColorResource()
+
+    @ColorInt
+    fun ColorResource.toColorInt(resources: Resources, theme: Resources.Theme? = null): Int = when (this) {
+        is ColorStringResource -> Color.parseColor(value)
+        is ColorIdResource -> ResourcesCompat.getColor(resources, id, theme)
+    }
+
+    fun ColorResource.toColorStateList(resources: Resources, theme: Resources.Theme? = null): ColorStateList? = when (this) {
+        is ColorStringResource -> ColorStateList.valueOf(toColorInt(resources))
+        is ColorIdResource -> ResourcesCompat.getColorStateList(resources, id, theme)
+    }
+    ```
+    </details>
+
+-   <details>
+        <summary><code>DrawableResource</code></summary>
+
+    ```kotlin
+    import android.content.res.Resources
+    import android.graphics.Bitmap
+    import android.graphics.drawable.Drawable
+    import androidx.annotation.DrawableRes
+    import androidx.core.content.res.ResourcesCompat
+    import androidx.core.graphics.drawable.toDrawable
+
+    sealed class DrawableResource {
+        companion object {
+            fun from(drawable: Drawable): DrawableResource = DrawableValueResource(drawable)
+            fun fromBitmap(bitmap: Bitmap): DrawableResource = DrawableBitmapResource(bitmap)
+            fun fromDrawableId(@DrawableRes id: Int): DrawableResource = DrawableIdResource(id)
+        }
+    }
+
+    private data class DrawableValueResource(val drawable: Drawable) : DrawableResource()
+    private data class DrawableBitmapResource(val bitmap: Bitmap) : DrawableResource()
+    private data class DrawableIdResource(@DrawableRes val id: Int) : DrawableResource()
+
+    fun DrawableResource.toDrawable(resources: Resources, theme: Resources.Theme? = null): Drawable? = when (this) {
+        is DrawableValueResource -> drawable
+        is DrawableBitmapResource -> bitmap.toDrawable(resources)
+        is DrawableIdResource -> ResourcesCompat.getDrawable(resources, id, theme)
+    }
+    ```
+    </details>
+
+-   <details>
+        <summary><code>TextResource</code></summary>
+
+    ```kotlin
+    import android.content.res.Resources
+    import androidx.annotation.PluralsRes
+    import androidx.annotation.StringRes
+    import java.text.MessageFormat
+
+    sealed class TextResource {
+        companion object {
+            fun none(): TextResource = NullTextResource
+            fun fromString(text: CharSequence): TextResource = StringTextResource(text)
+            fun fromStringId(@StringRes id: Int, vararg args: Any = emptyArray()): TextResource = StringIdTextResource(id, args.toList())
+            fun fromPluralId(@PluralsRes id: Int, quantity: Int, vararg args: Any = emptyArray()): TextResource = PluralIdTextResource(id, quantity, args.toList())
+            fun fromMessage(@StringRes id: Int, vararg args: Any = emptyArray()): TextResource = MessageIdTextResource(id, args.toList())
+        }
+
+        @Deprecated(
+                message = "Suspicious toString() usage, please use toString(resources) if you need to resolve the TextResource.",
+                replaceWith = ReplaceWith("toString(resources)"),
+                level = DeprecationLevel.WARNING
+        )
+        override fun toString(): String = super.toString()
+
+    }
+
+    private object NullTextResource : TextResource()
+    private data class StringTextResource(val text: CharSequence) : TextResource()
+    private data class StringIdTextResource(@StringRes val id: Int, val args: List<Any>) : TextResource()
+    private data class PluralIdTextResource(@PluralsRes val id: Int, val quantity: Int, val args: List<Any>) : TextResource()
+    private data class MessageIdTextResource(@StringRes val id: Int, val args: List<Any>) : TextResource()
+
+    fun TextResource?.orNone(): TextResource = this ?: TextResource.none()
+
+    fun TextResource.toText(resources: Resources): CharSequence? = when (this) {
+        NullTextResource -> null
+        is StringTextResource -> text
+        is StringIdTextResource -> if (args.isEmpty()) resources.getText(id) else toString(resources)
+        is PluralIdTextResource -> if (args.isEmpty()) resources.getQuantityText(id, quantity) else toString(resources)
+        is MessageIdTextResource -> if (args.isEmpty()) MessageFormat.format(resources.getString(id)) else toString(resources)
+    }
+
+    fun TextResource.toString(resources: Resources): String? = when (this) {
+        NullTextResource -> null
+        is StringTextResource -> text.toString()
+        is StringIdTextResource -> if (args.isEmpty()) resources.getString(id) else resources.getString(id, *args.mapTextResourceToString(resources))
+        is PluralIdTextResource -> if (args.isEmpty()) resources.getQuantityString(id, quantity) else resources.getQuantityString(id, quantity, *args.mapTextResourceToString(resources))
+        is MessageIdTextResource -> if (args.isEmpty()) MessageFormat.format(resources.getString(id)) else MessageFormat.format(resources.getString(id), *args.mapTextResourceToString(resources))
+    }
+
+    private fun <E> List<E>.mapTextResourceToString(resources: Resources) = map { if (it is TextResource) it.toString(resources) else it }.toTypedArray()
+    ```
+    </details>
 
 <a id="run-command-as-a-specific-application-user-id"></a>
 ### Run command as a specific application user-id
