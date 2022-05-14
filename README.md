@@ -32,6 +32,7 @@
     - [ViewModel in custom View](#viewmodel-in-custom-view)
     - [WorkManager diagnostic](#workmanager-diagnostic)
 - [🖥️ Bash](#🖥️-bash)
+    - [Inline comment on multiline commands](#inline-comment-on-multiline-commands)
     - [Prefered Bash sheband](#prefered-bash-sheband)
 - [🌍 Chrome](#🌍-chrome)
     - [Overlay Scrollbar](#overlay-scrollbar)
@@ -792,6 +793,14 @@ adb shell am broadcast -a "androidx.work.diagnostics.REQUEST_DIAGNOSTICS" -p my.
 
 <a id="🖥️-bash"></a>
 ## 🖥️ Bash
+
+<a id="inline-comment-on-multiline-commands"></a>
+### Inline comment on multiline commands
+
+```bash
+cmd1 `# This is a comment` \
+  cmd2 # This is another comment
+```
 
 <a id="prefered-bash-sheband"></a>
 ### Prefered Bash sheband
