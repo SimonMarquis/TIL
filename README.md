@@ -680,21 +680,21 @@ adb shell screencap -p "/sdcard/screencap.png" && adb pull "/sdcard/screencap.pn
 [GitHub](https://github.com/Genymobile/scrcpy)
 
 - record
-	```bash
-	scrcpy -m 1080 --show-touches --no-display --record "$USER/Desktop/%time::=-%%random%.mp4"
-	```
+    ```bash
+    scrcpy -m 1080 --show-touches --no-display --record "$USER/Desktop/%time::=-%%random%.mp4"
+    ```
 
-	```pwsh
-	%comspec% /c scrcpy -m 1080 --show-touches --no-display --record "%UserProfile%\Desktop\%time::=-%%random%.mp4"
-	```
+    ```pwsh
+    %comspec% /c scrcpy -m 1080 --show-touches --no-display --record "%UserProfile%\Desktop\%time::=-%%random%.mp4"
+    ```
 - mirror
-	```bash
-	scrcpy -m 1080 --show-touches
-	```
+    ```bash
+    scrcpy -m 1080 --show-touches
+    ```
 
-	```pwsh
-	%comspec% /c scrcpy -m 1080 --show-touches
-	```
+    ```pwsh
+    %comspec% /c scrcpy -m 1080 --show-touches
+    ```
 
 <a id="tools-sample-resources-as-json-files"></a>
 ### Tools sample resources as JSON files
@@ -976,7 +976,7 @@ object NetworkModule {
 ```bash
 # ~/.gitconfig
 [alias]
-	hello = "!f() { echo \"Hello, ${1:-World}!\" ; }; f"
+    hello = "!f() { echo \"Hello, ${1:-World}!\" ; }; f"
 ```
 
 <a id="authors-with-commit-count"></a>
@@ -985,7 +985,7 @@ object NetworkModule {
 ```bash
 # ~/.gitconfig
 [alias]
-	authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
+    authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 ```
 
 <a id="diffing-with-patience"></a>
@@ -994,7 +994,7 @@ object NetworkModule {
 ```bash 
 # ~/.gitconfig
 [diff]
-	# git config --global diff.algorithm patience
+    # git config --global diff.algorithm patience
     algorithm = patience
 ```
 
