@@ -33,6 +33,7 @@
     - [WorkManager diagnostic](#workmanager-diagnostic)
 - [🖥️ Bash](#🖥️-bash)
     - [Inline comment on multiline commands](#inline-comment-on-multiline-commands)
+    - [Merge files together](#merge-files-together)
     - [Prefered Bash sheband](#prefered-bash-sheband)
 - [🌍 Chrome](#🌍-chrome)
     - [Overlay Scrollbar](#overlay-scrollbar)
@@ -800,6 +801,17 @@ adb shell am broadcast -a "androidx.work.diagnostics.REQUEST_DIAGNOSTICS" -p my.
 ```bash
 cmd1 `# This is a comment` \
   cmd2 # This is another comment
+```
+
+<a id="merge-files-together"></a>
+### Merge files together
+
+```bash
+time {
+    echo "↓↓↓"
+    find . -type f -name "*.txt" -print0 | xargs -0 cat
+    echo "↑↑↑"
+} > merged.log
 ```
 
 <a id="prefered-bash-sheband"></a>
