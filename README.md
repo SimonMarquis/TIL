@@ -31,6 +31,8 @@
     - [ViewBinding one-liner](#viewbinding-one-liner)
     - [ViewModel in custom View](#viewmodel-in-custom-view)
     - [WorkManager diagnostic](#workmanager-diagnostic)
+- [🖥️ Bash](#🖥️-bash)
+    - [Prefered Bash sheband](#prefered-bash-sheband)
 - [🌍 Chrome](#🌍-chrome)
     - [Overlay Scrollbar](#overlay-scrollbar)
 - [🗡️ Dagger](#🗡️-dagger)
@@ -109,7 +111,6 @@
     - [Create empty file with specific size](#create-empty-file-with-specific-size)
     - [Diff between two PNGs](#diff-between-two-pngs)
     - [mp4 to gif](#mp4-to-gif)
-    - [Prefered Bash sheband](#prefered-bash-sheband)
     - [Web crawler](#web-crawler)
 - [🪟 Windows](#🪟-windows)
     - [Reboot GPU driver](#reboot-gpu-driver)
@@ -788,6 +789,18 @@ class CustomView @JvmOverloads constructor(context: Context, attrs: AttributeSet
 ```bash
 adb shell am broadcast -a "androidx.work.diagnostics.REQUEST_DIAGNOSTICS" -p my.package.name
 ```
+
+<a id="🖥️-bash"></a>
+## 🖥️ Bash
+
+<a id="prefered-bash-sheband"></a>
+### Prefered Bash sheband
+
+```bash
+#!/usr/bin/env bash
+```
+
+[🔗](https://stackoverflow.com/a/10383546/3615879)
 
 <a id="🌍-chrome"></a>
 ## 🌍 Chrome
@@ -2174,12 +2187,6 @@ ffmpeg -y -i input.mp4 -vf fps=15,scale=320:-1:flags=lanczos,palettegen palette.
 ffmpeg -i input.mp4 -i palette.png -filter_complex "fps=15,scale=320:-1:flags=lanczos[x];[x][1:v]paletteuse" output.gif
 ```
 
-<a id="prefered-bash-sheband"></a>
-### Prefered Bash sheband
-
-```bash
-#!/usr/bin/env bash
-```
 
 [🔗](https://stackoverflow.com/a/10383546/3615879)
 
