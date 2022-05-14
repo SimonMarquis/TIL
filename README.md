@@ -35,6 +35,7 @@
     - [Inline comment on multiline commands](#inline-comment-on-multiline-commands)
     - [Merge files together](#merge-files-together)
     - [Prefered Bash sheband](#prefered-bash-sheband)
+    - [Prune find results](#prune-find-results)
 - [🌍 Chrome](#🌍-chrome)
     - [Overlay Scrollbar](#overlay-scrollbar)
 - [🗡️ Dagger](#🗡️-dagger)
@@ -822,6 +823,13 @@ time {
 ```
 
 [🔗](https://stackoverflow.com/a/10383546/3615879)
+
+<a id="prune-find-results"></a>
+### Prune find results
+
+```bash
+find . -path "*/build" -prune -o -name "*.kt" -print
+```
 
 <a id="🌍-chrome"></a>
 ## 🌍 Chrome
