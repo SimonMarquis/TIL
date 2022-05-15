@@ -95,7 +95,6 @@
 - [🍎 Mac](#🍎-mac)
     - [AltTab](#alttab)
     - [Karabiner](#karabiner)
-    - [NCurses Disk Usage](#ncurses-disk-usage)
     - [UnnaturalScrollWheels](#unnaturalscrollwheels)
 - [📄 Markdown](#📄-markdown)
     - [Details summary](#details-summary)
@@ -114,6 +113,7 @@
     - [Create empty file with specific size](#create-empty-file-with-specific-size)
     - [Diff between two PNGs](#diff-between-two-pngs)
     - [mp4 to gif](#mp4-to-gif)
+    - [NCurses Disk Usage](#ncurses-disk-usage)
     - [Web crawler](#web-crawler)
 - [🪟 Windows](#🪟-windows)
     - [Reboot GPU driver](#reboot-gpu-driver)
@@ -1828,15 +1828,6 @@ suspend fun <T> Deferred<T>.await(
 
 [🔗](https://github.com/pqrs-org/Karabiner-Elements)
 
-<a id="ncurses-disk-usage"></a>
-### NCurses Disk Usage
-
-> [🔗](https://dev.yorhel.nl/ncdu) Ncdu is a disk usage analyzer with an ncurses interface
-
-```bash
-brew install ncdu
-```
-
 <a id="unnaturalscrollwheels"></a>
 ### UnnaturalScrollWheels
 
@@ -2251,6 +2242,15 @@ ffmpeg -i input.mp4 -i palette.png -filter_complex "fps=15,scale=320:-1:flags=la
 
 
 [🔗](https://stackoverflow.com/a/10383546/3615879)
+
+<a id="ncurses-disk-usage"></a>
+### NCurses Disk Usage
+
+> [🔗](https://dev.yorhel.nl/ncdu) Ncdu is a disk usage analyzer with an ncurses interface
+
+```bash
+brew install ncdu
+```
 
 <a id="web-crawler"></a>
 ### Web crawler
