@@ -60,6 +60,7 @@
     - [Default commit message](#default-commit-message)
     - [List project properties](#list-project-properties)
     - [Reproducible builds](#reproducible-builds)
+    - [Upgrading the Gradle Wrapper](#upgrading-the-gradle-wrapper)
 - [📦 IntelliJ IDEA](#📦-intellij-idea)
     - [Code formatting as a weak warning](#code-formatting-as-a-weak-warning)
     - [EditorConfig](#editorconfig)
@@ -1108,6 +1109,20 @@ tasks.withType<AbstractArchiveTask>().configureEach {
 ```
 
 [🔗](https://docs.gradle.org/current/userguide/working_with_files.html#sec:reproducible_archives)
+
+<a id="upgrading-the-gradle-wrapper"></a>
+### Upgrading the Gradle Wrapper
+
+```bash
+# Update the version in gradle/wrapper/gradle-wrapper.properties
+./gradlew wrapper --gradle-version x.y.z --distribution-type bin
+# Update the in gradle-wrapper.jar
+./gradlew wrapper
+# Validate the version
+./gradlew --version
+```
+
+[🔗](https://docs.gradle.org/current/userguide/gradle_wrapper.html#sec:upgrading_wrapper)
 
 <a id="📦-intellij-idea"></a>
 ## 📦 IntelliJ IDEA
