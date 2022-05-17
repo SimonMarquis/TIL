@@ -2091,7 +2091,11 @@ graph LR
         // Gerrit UI
         // git config gerrit.web-ui-url "https://..."
         // git config --global alias.gerrit-query "!f() { IFS='' ; URL=\"$(git config gerrit.web-ui-url)/q/$*\" ; explorer \"$URL\" ; }; f"
-        // 
+        {
+            "caption": "Gerrit: Search…\t/q/<query>",
+            "command": "git",
+            "args": { "argv": ["gerrit-query", "$text"] }
+        },
         {
             "caption": "Gerrit: Open commit…\t/q/commit:<commit>",
             "command": "git",
