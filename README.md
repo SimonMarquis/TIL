@@ -64,6 +64,7 @@
 - [📦 IntelliJ IDEA](#📦-intellij-idea)
     - [Code formatting as a weak warning](#code-formatting-as-a-weak-warning)
     - [EditorConfig](#editorconfig)
+    - [Plugins](#plugins)
     - [Project icon](#project-icon)
     - [Shortcuts](#shortcuts)
 - [🧪 JUnit](#🧪-junit)
@@ -1155,6 +1156,13 @@ ij_kotlin_allow_trailing_comma_on_call_site = true
 ```
 
 [🔗](https://www.jetbrains.com/help/idea/editorconfig.html) [🔗](https://www.jetbrains.com/help/idea/editorconfig.html)
+
+<a id="plugins"></a>
+### Plugins
+
+- [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
+- [Atom Material Icons](https://plugins.jetbrains.com/plugin/10044-atom-material-icons)
+- [XWin Keymap](https://plugins.jetbrains.com/plugin/13094-xwin-keymap)
 
 <a id="project-icon"></a>
 ### Project icon
