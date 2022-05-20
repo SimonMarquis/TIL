@@ -66,6 +66,7 @@
     - [EditorConfig](#editorconfig)
     - [Plugins](#plugins)
     - [Project icon](#project-icon)
+    - [Required plugins](#required-plugins)
     - [Shortcuts](#shortcuts)
 - [🧪 JUnit](#🧪-junit)
     - [Flaky TestRule](#flaky-testrule)
@@ -1171,6 +1172,23 @@ ij_kotlin_allow_trailing_comma_on_call_site = true
 !.idea/icon.png
 !.idea/icon_dark.png
 ```
+
+<a id="required-plugins"></a>
+### Required plugins
+
+<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> \| Build, Execution, Deployment \| Required Plugins.
+
+```xml
+<!-- .idea/externalDependencies.xml -->
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalDependencies">
+    <plugin id="org.editorconfig.editorconfigjetbrains" />
+  </component>
+</project>
+```
+
+[🔗](https://www.jetbrains.com/help/idea/managing-plugins.html#required-plugins) [🔗](https://www.jetbrains.com/help/idea/settings-required-plugins.html)
 
 <a id="shortcuts"></a>
 ### Shortcuts
