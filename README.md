@@ -105,6 +105,7 @@
     - [Diff](#diff)
     - [GeoJSON](#geojson)
     - [Keyboard](#keyboard)
+    - [Maths](#maths)
     - [Mermaid](#mermaid)
     - [Table alignment](#table-alignment)
 - [🕸️ Online tools](#🕸️-online-tools)
@@ -1986,6 +1987,15 @@ Toggle with the `open` attribute in the `<details>` tag.
 ### Keyboard
 
 <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Suppr</kbd>
+
+<a id="maths"></a>
+### Maths
+
+This sentence uses `$` delimiters to show math inline:  $\sqrt{3x-1}+(1+x)^2$
+
+**The Cauchy-Schwarz Inequality**
+
+$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
 
 <a id="mermaid"></a>
 ### Mermaid
