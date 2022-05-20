@@ -13,6 +13,7 @@
     - [Edit SharePreferences](#edit-sharepreferences)
     - [Ellipsized TextView](#ellipsized-textview)
     - [Firebase Analytics debug](#firebase-analytics-debug)
+    - [Kotlin Coroutines debug probes](#kotlin-coroutines-debug-probes)
     - [Lifecycle CheatSheets](#lifecycle-cheatsheets)
     - [List resources at runtime](#list-resources-at-runtime)
     - [LiveData Events](#livedata-events)
@@ -336,6 +337,21 @@ adb shell setprop log.tag.FA VERBOSE
 adb shell setprop log.tag.FA-SVC VERBOSE
 adb logcat -v time -s FA FA-SVC
 ```
+
+<a id="kotlin-coroutines-debug-probes"></a>
+### Kotlin Coroutines debug probes
+
+> The `kotlinx-coroutines-core` artifact contains a resource file that is not required for the coroutines to operate normally and is only used by the debugger.
+
+```kotlin
+android {
+    packagingOptions {
+        resources.excludes += "DebugProbesKt.bin"
+    }
+}
+```
+
+[🔗](https://github.com/Kotlin/kotlinx.coroutines#avoiding-including-the-debug-infrastructure-in-the-resulting-apk)
 
 <a id="lifecycle-cheatsheets"></a>
 ### Lifecycle CheatSheets
