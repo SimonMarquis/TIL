@@ -14,6 +14,7 @@
     - [Ellipsized TextView](#ellipsized-textview)
     - [Firebase Analytics debug](#firebase-analytics-debug)
     - [Kotlin Coroutines debug probes](#kotlin-coroutines-debug-probes)
+    - [Libraries and plugins](#libraries-and-plugins)
     - [Lifecycle CheatSheets](#lifecycle-cheatsheets)
     - [List resources at runtime](#list-resources-at-runtime)
     - [LiveData Events](#livedata-events)
@@ -353,6 +354,13 @@ android {
 ```
 
 [🔗](https://github.com/Kotlin/kotlinx.coroutines#avoiding-including-the-debug-infrastructure-in-the-resulting-apk)
+
+<a id="libraries-and-plugins"></a>
+### Libraries and plugins
+
+- [dependency-analysis-android-gradle-plugin](https://github.com/autonomousapps/dependency-analysis-android-gradle-plugin) Detect unused and misused dependencies
+- [Gradle Doctor](https://runningcode.github.io/gradle-doctor/) The right prescription for your Gradle build.
+- [refreshVersions](https://jmfayard.github.io/refreshVersions/) Life is too short to google for dependencies and versions.
 
 <a id="lifecycle-cheatsheets"></a>
 ### Lifecycle CheatSheets
