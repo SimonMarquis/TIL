@@ -106,6 +106,7 @@
     - [Diff](#diff)
     - [Footnotes](#footnotes)
     - [GeoJSON](#geojson)
+    - [GitHub Custom Emojis](#github-custom-emojis)
     - [Keyboard](#keyboard)
     - [Maths](#maths)
     - [Mermaid](#mermaid)
@@ -2019,6 +2020,31 @@ Here is a simple footnote[^1].
     ]
 }
 ```
+
+<a id="github-custom-emojis"></a>
+### GitHub Custom Emojis
+
+- :atom: `:atom:`
+- :basecamp: `:basecamp:`
+- :basecampy: `:basecampy:`
+- :bowtie: `:bowtie:`
+- :electron: `:electron:`
+- :feelsgood: `:feelsgood:`
+- :finnadie: `:finnadie:`
+- :goberserk: `:goberserk:`
+- :godmode: `:godmode:`
+- :hurtrealbad: `:hurtrealbad:`
+- :neckbeard: `:neckbeard:`
+- :octocat: `:octocat:`
+- :rage1: `:rage1:`
+- :rage2: `:rage2:`
+- :rage3: `:rage3:`
+- :rage4: `:rage4:`
+- :shipit: `:shipit:`
+- :suspect: `:suspect:`
+- :trollface: `:trollface:`
+
+[🔗](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md#github-custom-emoji)
 
 <a id="keyboard"></a>
 ### Keyboard
