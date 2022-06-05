@@ -104,6 +104,7 @@
 - [📄 Markdown](#📄-markdown)
     - [Details summary](#details-summary)
     - [Diff](#diff)
+    - [Footnotes](#footnotes)
     - [GeoJSON](#geojson)
     - [Keyboard](#keyboard)
     - [Maths](#maths)
@@ -1946,6 +1947,15 @@ Toggle with the `open` attribute in the `<details>` tag.
 - Hello, World!
 + Hello, Simon!
 ```
+
+<a id="footnotes"></a>
+### Footnotes
+
+Here is a simple footnote[^1].
+
+[^1]: My reference.
+
+[🔗](https://github.blog/changelog/2021-09-30-footnotes-now-supported-in-markdown-fields/)
 
 <a id="geojson"></a>
 ### GeoJSON
