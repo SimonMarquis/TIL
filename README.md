@@ -74,6 +74,7 @@
     - [Flaky TestRule](#flaky-testrule)
     - [Locale TestRule](#locale-testrule)
     - [Repeat TestRule](#repeat-testrule)
+    - [TimeZone TestRule](#timezone-testrule)
 - [🧑‍💻 Kotlin](#🧑‍💻-kotlin)
     - [BitFlags](#bitflags)
     - [Check if a class is in the classpath](#check-if-a-class-is-in-the-classpath)
@@ -1360,6 +1361,28 @@ class RepeatTestRule : TestRule {
     }
 
     private class RepeatTestRuleException(iterations: Int, description: Description, cause: Throwable?) : IllegalStateException("[${description.displayName}] failed after $iterations iterations.", cause)
+
+}
+```
+
+<a id="timezone-testrule"></a>
+### TimeZone TestRule
+
+```kotlin
+import org.junit.rules.ExternalResource
+import java.util.TimeZone
+import java.util.TimeZone.*
+
+class TimeZoneTestRule(private val tz: TimeZone) : ExternalResource() {
+
+    private lateinit var default: TimeZone
+
+    override fun before() {
+        default = getDefault()
+        setDefault(tz)
+    }
+
+    override fun after() = setDefault(default)
 
 }
 ```
