@@ -109,6 +109,7 @@
     - [Maths](#maths)
     - [Mermaid](#mermaid)
     - [Prefers color scheme](#prefers-color-scheme)
+    - [Reference labels](#reference-labels)
     - [Table alignment](#table-alignment)
     - [Theme context for images](#theme-context-for-images)
 - [🕸️ Online tools](#🕸️-online-tools)
@@ -2050,6 +2051,13 @@ graph LR
 ```
 
 [🔗](https://github.blog/changelog/2022-05-19-specify-theme-context-for-images-in-markdown-beta/)
+
+<a id="reference-labels"></a>
+### Reference labels
+
+https://github.com/SimonMarquis/TIL/labels/bug • https://github.com/SimonMarquis/TIL/labels/enhancement • https://github.com/SimonMarquis/TIL/labels/good%20first%20issue • https://github.com/SimonMarquis/TIL/labels/help%20wanted • https://github.com/SimonMarquis/TIL/labels/invalid • https://github.com/SimonMarquis/TIL/labels/question • https://github.com/SimonMarquis/TIL/labels/wontfix
+
+[🔗](https://github.blog/changelog/2022-02-03-reference-labels-in-markdown/)
 
 <a id="table-alignment"></a>
 ### Table alignment
