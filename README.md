@@ -110,6 +110,7 @@
     - [Mermaid](#mermaid)
     - [Prefers color scheme](#prefers-color-scheme)
     - [Table alignment](#table-alignment)
+    - [Theme context for images](#theme-context-for-images)
 - [🕸️ Online tools](#🕸️-online-tools)
 - [🔓 Open Source projects](#🔓-open-source-projects)
 - [🔀 Sublime Merge](#🔀-sublime-merge)
@@ -2062,6 +2063,17 @@ graph LR
 |:-----|:------:|------:|
 | ⬤ | ⬤ | ⬤ |
 ```
+
+<a id="theme-context-for-images"></a>
+### Theme context for images
+
+![GitHub-Mark-Light](https://user-images.githubusercontent.com/3369400/139447912-e0f43f33-6d9f-45f8-be46-2df5bbc91289.png#gh-dark-mode-only)![GitHub-Mark-Dark](https://user-images.githubusercontent.com/3369400/139448065-39a229ba-4b06-434b-bc67-616e2ed80c8f.png#gh-light-mode-only)
+
+```markdown
+![GitHub-Mark-Light](https://user-images.githubusercontent.com/3369400/139447912-e0f43f33-6d9f-45f8-be46-2df5bbc91289.png#gh-dark-mode-only)![GitHub-Mark-Dark](https://user-images.githubusercontent.com/3369400/139448065-39a229ba-4b06-434b-bc67-616e2ed80c8f.png#gh-light-mode-only)
+```
+
+[🔗](https://github.blog/changelog/2021-11-24-specify-theme-context-for-images-in-markdown/)
 
 <a id="🕸️-online-tools"></a>
 ## 🕸️ Online tools
