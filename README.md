@@ -33,6 +33,7 @@
     - [ViewModel in custom View](#viewmodel-in-custom-view)
     - [WorkManager diagnostic](#workmanager-diagnostic)
 - [🖥️ Bash](#🖥️-bash)
+    - [Command options and positional arguments](#command-options-and-positional-arguments)
     - [Inline comment on multiline commands](#inline-comment-on-multiline-commands)
     - [Merge files together](#merge-files-together)
     - [Prefered Bash sheband](#prefered-bash-sheband)
@@ -822,6 +823,18 @@ adb shell am broadcast -a "androidx.work.diagnostics.REQUEST_DIAGNOSTICS" -p my.
 
 <a id="🖥️-bash"></a>
 ## 🖥️ Bash
+
+<a id="command-options-and-positional-arguments"></a>
+### Command options and positional arguments
+
+> A double dash `--` is used in most Bash built-in commands and many other commands to signify the end of command options, after which only positional arguments are accepted.
+> Example use: Let's say you want to grep a file for the string -v - normally -v will be considered the option to reverse the matching meaning (only show lines that do not match), but with -- you can grep for the string -v like this:
+
+```bash
+grep -- -v file
+```
+
+[🔗](https://unix.stackexchange.com/a/11382)
 
 <a id="inline-comment-on-multiline-commands"></a>
 ### Inline comment on multiline commands
