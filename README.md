@@ -2231,6 +2231,8 @@ https://github.com/SimonMarquis/TIL/labels/bug • https://github.com/SimonMarqu
   > A wrapper around org.w3c.dom with nicer Kotlin APIs
 - [rock3r/deep-clean](https://github.com/rock3r/deep-clean)
   > When Gradle or the IDE let you down, just --nuke all them caches
+- [SimonMarquis/Maven-Dependency-Tree](https://github.com/SimonMarquis/Maven-Dependency-Tree)
+  > 🌲 Kotlin script to list transitive dependencies of a Maven artifact.
 - [square/moshi](https://github.com/square/moshi)
   > A modern JSON library for Kotlin and Java
 - [square/leakcanary](https://github.com/square/leakcanary)
