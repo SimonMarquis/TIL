@@ -4,6 +4,7 @@
 
 - [🤖 Android](#🤖-android)
     - [AAPT and GZ files](#aapt-and-gz-files)
+    - [App Links](#app-links)
     - [AutoCleanedValue](#autocleanedvalue)
     - [BottomSheetBehavior extensions](#bottomsheetbehavior-extensions)
     - [ConcatAdapter find global position](#concatadapter-find-global-position)
@@ -146,6 +147,74 @@ If you store a (compressed) `/assets/data.json.gz` file, AAPT will only package 
 A workaround is to move the file in Java's resources folder `/resources/assets/data.json.gz`.
 
 [🔗](https://cs.android.com/android/platform/superproject/+/master:frameworks/base/tools/aapt/Package.cpp;l=276-279;drc=18f16d6241c6398a034237c2a5343f94d1938f6a)
+
+<a id="app-links"></a>
+### App Links
+
+> To test an existing statement file, you can use the official [Statement List Generator and Tester](https://developers.google.com/digital-asset-links/tools/generator) tool.  
+> During app install/update, an Android service will verify if the App Links configuration complies with the server side `assetlinks.json` file.  
+> The results will be sent to logcat, with these tags: `IntentFilterIntentSvc` and `SingleHostAsyncVerifier`.  
+
+The following command will filter the appropriate logcat messages:  
+`adb logcat -s IntentFilterIntentSvc:* SingleHostAsyncVerifier:*`
+
+- <details>
+    <summary><code>Success</code></summary>
+
+    ```
+    I/IntentFilterIntentSvc: Verifying IntentFilter. verificationId:0 scheme:"https" hosts:"smarquis.fr" package:"fr.smarquis.applinks".
+    I/SingleHostAsyncVerifier: Verification result: checking for a statement with source a <
+                                 a: "https://smarquis.fr"
+                               >
+                               , relation delegate_permission/common.handle_all_urls, and target b <
+                                 a: "fr.smarquis.applinks"
+                                 b <
+                                   a: "D2:18:2B:0E:34:38:3B:FD:A7:80:AC:21:88:F1:F7:1F:13:33:AD:CB:E3:94:2A:75:96:FB:A1:7A:0B:6B:CE:68"
+                                 >
+                               >
+                                --> true.
+    I/IntentFilterIntentSvc: Verification 0 complete. Success:true. Failed hosts:.
+    ```
+
+  </details>
+- <details>
+    <summary><code>Failure</code></summary>
+
+    ```
+    I/IntentFilterIntentSvc: Verifying IntentFilter. verificationId:1 scheme:"https" hosts:"smarquis.fr" package:"fr.smarquis.applinks".
+    I/SingleHostAsyncVerifier: Verification result: checking for a statement with source a <
+                                 a: "https://smarquis.fr"
+                               >
+                               , relation delegate_permission/common.handle_all_urls, and target b <
+                                 a: "fr.smarquis.applinks"
+                                 b <
+                                   a: "D2:18:2B:0E:34:38:3B:FD:A7:80:AC:21:88:F1:F7:1F:13:33:AD:CB:E3:94:2A:75:96:FB:A1:7A:0B:6B:CE:68"
+                                 >
+                               >
+                                --> false.
+    I/IntentFilterIntentSvc: Verification 1 complete. Success:false. Failed hosts:smarquis.fr.
+    ```
+
+  </details>
+
+[🔗](https://simonmarquis.github.io/Android-App-Linking/#app-links) 
+
+ADB also offers some commands to troubleshoot App Links:
+
+- Reset the state of App Links
+  ```bash
+  adb shell pm set-app-links --package <package.name> 0 all
+  ```
+- Restart the verification process
+  ```bash
+  adb shell pm verify-app-links --re-verify <package.name>
+  ```
+- Dump the current status
+  ```bash
+  adb shell pm get-app-links <package.name>
+  ```
+
+[🔗](https://developer.android.com/training/app-links/verify-site-associations)
 
 <a id="autocleanedvalue"></a>
 ### AutoCleanedValue
