@@ -61,6 +61,8 @@
     - [Recursive gc](#recursive-gc)
 - [🐘 Gradle](#🐘-gradle)
     - [Cleanup caches and build directories](#cleanup-caches-and-build-directories)
+    - [Declaring a repository filter](#declaring-a-repository-filter)
+    - [Declaring content exclusively found in one repository](#declaring-content-exclusively-found-in-one-repository)
     - [Default commit message](#default-commit-message)
     - [List project properties](#list-project-properties)
     - [Reproducible builds](#reproducible-builds)
@@ -1202,6 +1204,63 @@ rm -rf ~/.gradle/caches
 # Gradle build dirs
 find . -type d -name "build" -prune -exec echo '{}' \; -exec rm -r '{}' \;
 ```
+
+<a id="declaring-a-repository-filter"></a>
+### Declaring a repository filter
+
+> Gradle exposes an API to declare what a repository may or may not contain.
+
+> By default, repositories include everything and exclude nothing:
+> - If you declare an include, then it excludes everything but what is included.
+> - If you declare an exclude, then it includes everything but what is excluded.
+> - If you declare both includes and excludes, then it includes only what is explicitly included and not excluded.
+
+See [RepositoryContentDescriptor](https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/repositories/RepositoryContentDescriptor.html) for all available methods.
+
+```kotlin
+repositories {
+    maven {
+        url = uri("https://repo.mycompany.com/maven2")
+        content {
+            // this repository *only* contains artifacts with group "my.company"
+            includeGroup("my.company")
+        }
+    }
+    mavenCentral {
+        content {
+            // this repository contains everything BUT artifacts with group starting with "my.company"
+            excludeGroupByRegex("my\\.company.*")
+        }
+    }
+}
+```
+
+> ⚠️ Filters declared using the repository-level content filter are not exclusive. This means that declaring that a repository includes an artifact doesn’t mean that the other repositories can’t have it either: you must declare what every repository contains in extension.
+
+[🔗](https://docs.gradle.org/current/userguide/declaring_repositories.html#sec:declaring-repository-filter)
+
+<a id="declaring-content-exclusively-found-in-one-repository"></a>
+### Declaring content exclusively found in one repository
+
+```kotlin
+repositories {
+    // This repository will _not_ be searched for artifacts in my.company despite being declared first
+    mavenCentral()
+    exclusiveContent {
+        forRepository {
+            maven {
+                url = uri("https://repo.mycompany.com/maven2")
+            }
+        }
+        filter {
+            // this repository *only* contains artifacts with group "my.company"
+            includeGroup("my.company")
+        }
+    }
+}
+```
+
+[🔗](https://docs.gradle.org/current/userguide/declaring_repositories.html#declaring_content_exclusively_found_in_one_repository)
 
 <a id="default-commit-message"></a>
 ### Default commit message
