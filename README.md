@@ -8,6 +8,7 @@
     - [BottomSheetBehavior extensions](#bottomsheetbehavior-extensions)
     - [ConcatAdapter find global position](#concatadapter-find-global-position)
     - [Debuggable APK](#debuggable-apk)
+    - [Deeplinks](#deeplinks)
     - [Disable Samsung VR](#disable-samsung-vr)
     - [Download all APK files](#download-all-apk-files)
     - [Edit SharePreferences](#edit-sharepreferences)
@@ -279,6 +280,23 @@ fun ConcatAdapter.findPositionOf(
 ```bash
 aapt dump badging <path-to-apk> | grep -c application-debuggable
 ```
+
+<a id="deeplinks"></a>
+### Deeplinks
+
+```bash
+adb shell am start -a android.intent.action.VIEW \
+    -c android.intent.category.BROWSABLE \
+    -d "https://example.com"
+```
+
+Or shorter:
+
+```bash
+adb shell "am start 'https://example.com'"
+```
+
+Note: Nested double/simple quotes might be necessary if the url contains special characters.
 
 <a id="disable-samsung-vr"></a>
 ### Disable Samsung VR
