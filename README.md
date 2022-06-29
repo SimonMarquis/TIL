@@ -22,6 +22,7 @@
     - [LiveData unit testing](#livedata-unit-testing)
     - [Locate APK files](#locate-apk-files)
     - [Manually sign APK](#manually-sign-apk)
+    - [Parcelable testing](#parcelable-testing)
     - [Print APK certificates](#print-apk-certificates)
     - [Project view by default](#project-view-by-default)
     - [Resource identifier for MATCH_PARENT and WRAP_CONTENT](#resource-identifier-for-match_parent-and-wrap_content)
@@ -600,6 +601,27 @@ adb shell pm path <package-name>
 
 ```bash
 apksigner sign --ks debug.keystore --key-pass pass:android --ks-key-alias androiddebugkey --ks-pass pass:android app-release.apk
+```
+
+<a id="parcelable-testing"></a>
+### Parcelable testing
+
+```kotlin
+inline fun <reified R : Parcelable> R.marshall(): ByteArray = Parcel.obtain().use {
+    it.writeBundle(bundleOf(R::class.java.name to this))
+    it.marshall()
+}
+
+inline fun <reified R : Parcelable> ByteArray.unmarshall(): R? = Parcel.obtain().use {
+    it.unmarshall(this, 0, size)
+    it.setDataPosition(0)
+    it
+}.readBundle()?.run {
+    classLoader = R::class.java.classLoader
+    getParcelable(R::class.java.name)
+}
+
+fun <T> Parcel.use(block: (Parcel) -> T): T = try { block(this) } finally { recycle() }
 ```
 
 <a id="print-apk-certificates"></a>
