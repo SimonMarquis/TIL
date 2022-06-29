@@ -30,6 +30,7 @@
     - [Run command as a specific application user-id](#run-command-as-a-specific-application-user-id)
     - [screencap](#screencap)
     - [scrcpy](#scrcpy)
+    - [Strict Modes](#strict-modes)
     - [Tools sample resources as JSON files](#tools-sample-resources-as-json-files)
     - [ViewBinding extension](#viewbinding-extension)
     - [ViewBinding one-liner](#viewbinding-one-liner)
@@ -834,6 +835,33 @@ adb shell screencap -p "/sdcard/screencap.png" && adb pull "/sdcard/screencap.pn
     ```pwsh
     %comspec% /c scrcpy -m 1080 --show-touches
     ```
+
+<a id="strict-modes"></a>
+### Strict Modes
+
+```kotlin
+StrictMode.ThreadPolicy.Builder()
+    .detectAll()
+    .penaltyFlashScreen()
+    .penaltyLog()
+    .build()
+    .let(StrictMode::setThreadPolicy)
+
+StrictMode.VmPolicy.Builder()
+    .detectAll()
+    .penaltyLog()
+    .build()
+    .let(StrictMode::setVmPolicy)
+
+FragmentStrictMode.defaultPolicy = FragmentStrictMode.Policy.Builder()
+    .detectFragmentReuse()
+    .detectFragmentTagUsage()
+    .detectRetainInstanceUsage()
+    .detectTargetFragmentUsage()
+    .detectWrongFragmentContainer()
+    .detectSetUserVisibleHint()
+    .penaltyLog().build()
+```
 
 <a id="tools-sample-resources-as-json-files"></a>
 ### Tools sample resources as JSON files
