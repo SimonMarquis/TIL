@@ -15,6 +15,7 @@
     - [Edit SharePreferences](#edit-sharepreferences)
     - [Ellipsized TextView](#ellipsized-textview)
     - [Firebase Analytics debug](#firebase-analytics-debug)
+    - [Gradle Managed Virtual Devices](#gradle-managed-virtual-devices)
     - [Kotlin Coroutines debug probes](#kotlin-coroutines-debug-probes)
     - [Lifecycle CheatSheets](#lifecycle-cheatsheets)
     - [List resources at runtime](#list-resources-at-runtime)
@@ -438,6 +439,39 @@ adb shell setprop log.tag.FA VERBOSE
 adb shell setprop log.tag.FA-SVC VERBOSE
 adb logcat -v time -s FA FA-SVC
 ```
+
+<a id="gradle-managed-virtual-devices"></a>
+### Gradle Managed Virtual Devices
+
+```kotlin
+testOptions {
+    animationsDisabled = true
+    managedDevices {
+        devices {
+            create<ManagedVirtualDevice>("pixel2") {
+                device = "Pixel 2"
+                apiLevel = 30
+                require64Bit = true
+                systemImageSource = "google" /* "google-atd", "aosp", or "aosp-atd" */
+            }
+        }
+    }
+    groups {
+        create("pixels") {
+            targetDevices += devices.getByName("pixel2")
+        }
+    }
+}
+```
+
+```bash
+# Run tests on a single device
+gradlew pixel2DebugAndroidTest
+# or on a group of devices
+gradlew pixelsGroupDebugAndroidTest
+```
+
+[🔗](https://android-developers.googleblog.com/2021/10/whats-new-in-scalable-automated-testing.html) [🔗](https://developer.android.com/studio/preview/features?hl=fr#gmd)
 
 <a id="kotlin-coroutines-debug-probes"></a>
 ### Kotlin Coroutines debug probes
