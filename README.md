@@ -62,6 +62,7 @@
     - [Print changes between two refs](#print-changes-between-two-refs)
     - [Rebase dependent branch](#rebase-dependent-branch)
     - [Recursive gc](#recursive-gc)
+    - [Signing commits with GPG](#signing-commits-with-gpg)
 - [🐘 Gradle](#🐘-gradle)
     - [Cleanup caches and build directories](#cleanup-caches-and-build-directories)
     - [Declaring a repository filter](#declaring-a-repository-filter)
@@ -1275,6 +1276,11 @@ git rebase --onto featureA featureA@{1} featureB
 ```bash
 find . -name '*.git' -execdir sh -c 'cd {} && git gc' \;
 ```
+
+<a id="signing-commits-with-gpg"></a>
+### Signing commits with GPG
+
+[🔗](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits) [🔗](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html)
 
 <a id="🐘-gradle"></a>
 ## 🐘 Gradle
