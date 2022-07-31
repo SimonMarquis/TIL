@@ -2479,6 +2479,8 @@ https://github.com/SimonMarquis/TIL/labels/bug • https://github.com/SimonMarqu
   > Create and share beautiful images of your source code.
 - [crontab guru](https://crontab.guru/)
   > The quick and simple editor for cron schedule expressions
+- [CyberChef](https://gchq.github.io/CyberChef/)
+  > The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis
 - [Data URL maker](https://dataurl-app.web.app/)
   > Convert file to `data:` urls
 - [FCM toolbox](https://simonmarquis.github.io/FCM-toolbox)
