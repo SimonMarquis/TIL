@@ -71,6 +71,7 @@
     - [List project properties](#list-project-properties)
     - [Reproducible builds](#reproducible-builds)
     - [Upgrading the Gradle Wrapper](#upgrading-the-gradle-wrapper)
+    - [Version declaration semantics](#version-declaration-semantics)
 - [📦 IntelliJ IDEA](#📦-intellij-idea)
     - [Code formatting as a weak warning](#code-formatting-as-a-weak-warning)
     - [EditorConfig](#editorconfig)
@@ -1399,6 +1400,31 @@ tasks.withType<AbstractArchiveTask>().configureEach {
 ```
 
 [🔗](https://docs.gradle.org/current/userguide/gradle_wrapper.html#sec:upgrading_wrapper)
+
+<a id="version-declaration-semantics"></a>
+### Version declaration semantics
+
+- An exact version: e.g. `1.3`, `1.3.0-beta3`, `1.0-20150201.131010-1`
+- A Maven-style version range: e.g. `[1.0,)`, `[1.1, 2.0)`, `(1.2, 1.5]`
+- A prefix version range: e.g. `1.+`, `1.3.+`
+- A latest-status version: e.g. `latest.integration`, `latest.release`
+- A Maven `SNAPSHOT` version identifier: e.g. `1.0-SNAPSHOT`, `1.4.9-beta1-SNAPSHOT`
+
+Shorthand notation for strict dependencies
+
+```kotlin
+dependencies {
+    // short-hand notation with !!
+    implementation("org.slf4j:slf4j-api:1.7.15!!")
+    // is equivalent to
+    implementation("org.slf4j:slf4j-api") {
+        version {
+           strictly("1.7.15")
+        }
+    }
+```
+
+[🔗](https://docs.gradle.org/current/userguide/single_versions.html)
 
 <a id="📦-intellij-idea"></a>
 ## 📦 IntelliJ IDEA
