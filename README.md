@@ -125,6 +125,8 @@
     - [Reference labels](#reference-labels)
     - [Table alignment](#table-alignment)
     - [Theme context for images](#theme-context-for-images)
+- [💎 Miscellaneous](#💎-miscellaneous)
+    - [Gmail templates](#gmail-templates)
 - [🕸️ Online tools](#🕸️-online-tools)
 - [🔓 Open Source projects](#🔓-open-source-projects)
 - [🔀 Sublime Merge](#🔀-sublime-merge)
@@ -2495,6 +2497,17 @@ https://github.com/SimonMarquis/TIL/labels/bug • https://github.com/SimonMarqu
 ```
 
 [🔗](https://github.blog/changelog/2021-11-24-specify-theme-context-for-images-in-markdown/)
+
+<a id="💎-miscellaneous"></a>
+## 💎 Miscellaneous
+
+<a id="gmail-templates"></a>
+### Gmail templates
+
+- Create a new Google Docs https://docs.new
+- Insert →  Building blocks → Email draft
+
+Or simply type `@email draft`.
 
 <a id="🕸️-online-tools"></a>
 ## 🕸️ Online tools
