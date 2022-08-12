@@ -113,6 +113,7 @@
     - [Karabiner](#karabiner)
     - [UnnaturalScrollWheels](#unnaturalscrollwheels)
 - [📄 Markdown](#📄-markdown)
+    - [Blockquote highlight](#blockquote-highlight)
     - [Details summary](#details-summary)
     - [Diff](#diff)
     - [Footnotes](#footnotes)
@@ -2297,6 +2298,27 @@ PC-Style configuration:
 
 <a id="📄-markdown"></a>
 ## 📄 Markdown
+
+<a id="blockquote-highlight"></a>
+### Blockquote highlight
+
+- Single line
+
+  > **Note** This is a single line note
+
+  > **Warning** This is a single line warning
+
+- Multiline
+
+  > **Note**  
+  > This is a
+  > multiline note
+
+  > **Warning**  
+  > This is a
+  > multiline warning
+
+[🔗](https://github.com/community/community/discussions/16925)
 
 <a id="details-summary"></a>
 ### Details summary
