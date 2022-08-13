@@ -70,6 +70,8 @@
     - [Rebase dependent branch](#rebase-dependent-branch)
     - [Recursive gc](#recursive-gc)
     - [Signing commits with GPG](#signing-commits-with-gpg)
+- [🐙 GitHub](#🐙-github)
+    - [Secret file in GitHub Actions](#secret-file-in-github-actions)
 - [🐘 Gradle](#🐘-gradle)
     - [Cleanup caches and build directories](#cleanup-caches-and-build-directories)
     - [Declaring a repository filter](#declaring-a-repository-filter)
@@ -1379,6 +1381,37 @@ find . -name '*.git' -execdir sh -c 'cd {} && git gc' \;
 ### Signing commits with GPG
 
 [🔗](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits) [🔗](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html)
+
+<a id="🐙-github"></a>
+## 🐙 GitHub
+
+<a id="secret-file-in-github-actions"></a>
+### Secret file in GitHub Actions
+
+Create a new secret with https://github.com/[user]/[project]/settings/secrets/actions/new
+  - **Name:** `MY_SECRET`
+  - **Value:** base64 representation of the file content `base64 --wrap=0 secret.json`
+
+```yaml
+# .github/workflows/my_workflow.yml
+jobs:
+  my_job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Create secret.json
+        run: echo "$MY_SECRET" | base64 --decode > secret.json
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+
+      - name: Check file
+        run: stat secret.json
+
+      - name: Delete secret.json
+        run: rm secret.json
+        if: always()
+```
 
 <a id="🐘-gradle"></a>
 ## 🐘 Gradle
