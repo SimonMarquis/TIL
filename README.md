@@ -83,6 +83,7 @@
     - [Required plugins](#required-plugins)
     - [Shortcuts](#shortcuts)
 - [☕ Java](#☕-java)
+- [🪢 JavaScript](#🪢-javascript)
 - [🧪 JUnit](#🧪-junit)
     - [Flaky TestRule](#flaky-testrule)
     - [Locale TestRule](#locale-testrule)
@@ -1547,6 +1548,9 @@ ij_kotlin_allow_trailing_comma_on_call_site = true
 
 <a id="☕-java"></a>
 ## ☕ Java
+
+<a id="🪢-javascript"></a>
+## 🪢 JavaScript
 
 <a id="🧪-junit"></a>
 ## 🧪 JUnit
