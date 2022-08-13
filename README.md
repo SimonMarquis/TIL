@@ -84,6 +84,7 @@
     - [Shortcuts](#shortcuts)
 - [☕ Java](#☕-java)
 - [🪢 JavaScript](#🪢-javascript)
+    - [Comments in JSON](#comments-in-json)
     - [Named capturing group regex](#named-capturing-group-regex)
     - [Optional chaining operator](#optional-chaining-operator)
 - [🧪 JUnit](#🧪-junit)
@@ -1553,6 +1554,20 @@ ij_kotlin_allow_trailing_comma_on_call_site = true
 
 <a id="🪢-javascript"></a>
 ## 🪢 JavaScript
+
+<a id="comments-in-json"></a>
+### Comments in JSON
+
+> TL;DR: JSON is data-only. If you include a comment, then it must be data too.
+
+```json
+{
+    "//": "This is a comment",
+    "key": "value"
+}
+```
+
+[🔗](https://www.json.org/json-en.html)
 
 <a id="named-capturing-group-regex"></a>
 ### Named capturing group regex
