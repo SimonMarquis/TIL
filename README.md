@@ -53,6 +53,8 @@
     - [Coroutines provider](#coroutines-provider)
     - [Extensions for Lazy & Provider](#extensions-for-lazy--provider)
     - [Private dependencies](#private-dependencies)
+- [🔥 Firebase](#🔥-firebase)
+    - [Firebase local hosting](#firebase-local-hosting)
 - [🏢 Gerrit](#🏢-gerrit)
     - [Customized dashboard](#customized-dashboard)
     - [Gmail filters](#gmail-filters)
@@ -1222,6 +1224,30 @@ object NetworkModule {
 ```
 
 [🔗](https://www.zacsweers.dev/dagger-party-tricks-private-dependencies/)
+
+<a id="🔥-firebase"></a>
+## 🔥 Firebase
+
+<a id="firebase-local-hosting"></a>
+### Firebase local hosting
+
+> Firebase Hosting reserves URLs in your site beginning with `/__`. This reserved namespace makes it easier to use other Firebase products together with Firebase Hosting.
+> These reserved URLs are available both when you deploy to Firebase (`firebase deploy`) or when you run your app on a local server (`firebase serve`).
+
+```js
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="/__/firebase/x.y.z/firebase-app.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="/__/firebase/x.y.z/firebase-auth.js"></script>
+<script src="/__/firebase/x.y.z/firebase-firestore.js"></script>
+
+<!-- Load the Firebase SDKs before loading this file -->
+<script src="/__/firebase/init.js"></script>
+```
+
+[🔗](https://firebase.google.com/docs/hosting/reserved-urls) [🔗](https://firebase.blog/posts/2017/04/easier-configuration-for-firebase-on-web)
 
 <a id="🏢-gerrit"></a>
 ## 🏢 Gerrit
