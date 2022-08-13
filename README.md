@@ -48,6 +48,8 @@
 - [🌍 Chrome](#🌍-chrome)
     - [Chrome URLs](#chrome-urls)
     - [Overlay Scrollbar](#overlay-scrollbar)
+- [🎨 CSS](#🎨-css)
+    - [Lobotomized Owl selector](#lobotomized-owl-selector)
 - [🗡️ Dagger](#🗡️-dagger)
     - [Binding extension functions](#binding-extension-functions)
     - [Coroutines provider](#coroutines-provider)
@@ -1113,6 +1115,20 @@ find . -path "*/build" -prune -o -name "*.kt" -print
 ```bash
 "...\chrome.exe" --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter
 ```
+
+<a id="🎨-css"></a>
+## 🎨 CSS
+
+<a id="lobotomized-owl-selector"></a>
+### Lobotomized Owl selector
+
+```css
+* + * { 
+  margin-top: 1.5rem;
+}
+```
+
+[🔗](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/)
 
 <a id="🗡️-dagger"></a>
 ## 🗡️ Dagger
