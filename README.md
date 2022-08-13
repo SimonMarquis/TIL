@@ -84,6 +84,7 @@
     - [Shortcuts](#shortcuts)
 - [☕ Java](#☕-java)
 - [🪢 JavaScript](#🪢-javascript)
+    - [Optional chaining operator](#optional-chaining-operator)
 - [🧪 JUnit](#🧪-junit)
     - [Flaky TestRule](#flaky-testrule)
     - [Locale TestRule](#locale-testrule)
@@ -1551,6 +1552,18 @@ ij_kotlin_allow_trailing_comma_on_call_site = true
 
 <a id="🪢-javascript"></a>
 ## 🪢 JavaScript
+
+<a id="optional-chaining-operator"></a>
+### Optional chaining operator
+
+```js
+// The old way
+val result = (obj || {}).data;
+// The new way
+val result = obj?.data;
+```
+
+[🔗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) [🔗](https://caniuse.com/mdn-javascript_operators_optional_chaining)
 
 <a id="🧪-junit"></a>
 ## 🧪 JUnit
