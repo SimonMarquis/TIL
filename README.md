@@ -82,6 +82,7 @@
     - [Project icon](#project-icon)
     - [Required plugins](#required-plugins)
     - [Shortcuts](#shortcuts)
+- [☕ Java](#☕-java)
 - [🧪 JUnit](#🧪-junit)
     - [Flaky TestRule](#flaky-testrule)
     - [Locale TestRule](#locale-testrule)
@@ -1543,6 +1544,9 @@ ij_kotlin_allow_trailing_comma_on_call_site = true
 
 - <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>: type of expression
 - <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>: Quick definition
+
+<a id="☕-java"></a>
+## ☕ Java
 
 <a id="🧪-junit"></a>
 ## 🧪 JUnit
