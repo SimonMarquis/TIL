@@ -2632,6 +2632,8 @@ Or simply type `@email draft`.
   > Gradle plugin to keep your modules graph healthy and lean.
 - [martinbonnin/Xoxo](https://github.com/martinbonnin/Xoxo)
   > A wrapper around org.w3c.dom with nicer Kotlin APIs
+- [ajalt/mordant](https://github.com/ajalt/mordant)
+  > Colorful styling for command-line applications.
 - [rock3r/deep-clean](https://github.com/rock3r/deep-clean)
   > When Gradle or the IDE let you down, just --nuke all them caches
 - [SimonMarquis/Maven-Dependency-Tree](https://github.com/SimonMarquis/Maven-Dependency-Tree)
