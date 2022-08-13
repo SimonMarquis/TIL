@@ -135,6 +135,7 @@
     - [Table alignment](#table-alignment)
     - [Theme context for images](#theme-context-for-images)
 - [💎 Miscellaneous](#💎-miscellaneous)
+    - [Binary prefix](#binary-prefix)
     - [Box drawing characters](#box-drawing-characters)
     - [Gmail templates](#gmail-templates)
 - [🕸️ Online tools](#🕸️-online-tools)
@@ -2620,6 +2621,141 @@ https://github.com/SimonMarquis/TIL/labels/bug • https://github.com/SimonMarqu
 
 <a id="💎-miscellaneous"></a>
 ## 💎 Miscellaneous
+
+<a id="binary-prefix"></a>
+### Binary prefix
+
+<table>
+   <tbody>
+      <tr>
+         <td>
+            <table>
+               <tbody>
+                  <tr>
+                     <th colspan="3">Decimal</th>
+                  </tr>
+                  <tr>
+                     <th colspan="1">Value</th>
+                     <th colspan="2">SI</th>
+                  </tr>
+                  <tr>
+                     <td>1000</td>
+                     <td>k</td>
+                     <td>kilo</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>2</sup></td>
+                     <td>M</td>
+                     <td>mega</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>3</sup></td>
+                     <td>G</td>
+                     <td>giga</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>4</sup></td>
+                     <td>T</td>
+                     <td>tera</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>5</sup></td>
+                     <td>P</td>
+                     <td>peta</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>6</sup></td>
+                     <td>E</td>
+                     <td>exa</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>7</sup></td>
+                     <td>Z</td>
+                     <td>zetta</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>8</sup></td>
+                     <td>Y</td>
+                     <td>yotta</td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+         <td>
+            <table>
+               <tbody>
+                  <tr>
+                     <th colspan="5">Binary</th>
+                  </tr>
+                  <tr>
+                     <th colspan="1">Value</th>
+                     <th colspan="2">IEC</th>
+                     <th colspan="2">Legacy</th>
+                  </tr>
+                  <tr>
+                     <td>1024</td>
+                     <td>Ki</td>
+                     <td>kibi</td>
+                     <td>K</td>
+                     <td>kilo</td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>2</sup></td>
+                     <td>Mi</td>
+                     <td>mebi</td>
+                     <td>M</td>
+                     <td>mega</td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>3</sup></td>
+                     <td>Gi</td>
+                     <td>gibi</td>
+                     <td>G</td>
+                     <td>giga</td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>4</sup></td>
+                     <td>Ti</td>
+                     <td>tebi</td>
+                     <td>T</td>
+                     <td>tera</td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>5</sup></td>
+                     <td>Pi</td>
+                     <td>pebi</td>
+                     <td>–</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>6</sup></td>
+                     <td>Ei</td>
+                     <td>exbi</td>
+                     <td>–</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>7</sup></td>
+                     <td>Zi</td>
+                     <td>zebi</td>
+                     <td>–</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>8</sup></td>
+                     <td>Yi</td>
+                     <td>yobi</td>
+                     <td>–</td>
+                     <td></td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+[🔗](https://en.wikipedia.org/wiki/Binary_prefix)
 
 <a id="box-drawing-characters"></a>
 ### Box drawing characters
