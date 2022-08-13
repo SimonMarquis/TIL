@@ -2652,6 +2652,8 @@ Or simply type `@email draft`.
   > Text-ray goggles for your Android UI.
 - [square/retrofit](https://github.com/square/retrofit)
   > A type-safe HTTP client for Android and the JVM
+- [google/TestParameterInjector](https://github.com/google/TestParameterInjector)
+  > A simple yet powerful parameterized test runner for Java.
 - [vanniktech/gradle-dependency-graph-generator-plugin](https://github.com/vanniktech/gradle-dependency-graph-generator-plugin)
   > Gradle plugin that generates dependency graphs from your project.
 - [YarikSOffice/venom](https://github.com/YarikSOffice/venom)
