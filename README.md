@@ -33,6 +33,7 @@
     - [scrcpy](#scrcpy)
     - [Strict Modes](#strict-modes)
     - [Tools sample resources as JSON files](#tools-sample-resources-as-json-files)
+    - [USSD and secret codes](#ussd-and-secret-codes)
     - [ViewBinding extension](#viewbinding-extension)
     - [ViewBinding one-liner](#viewbinding-one-liner)
     - [ViewModel in custom View](#viewmodel-in-custom-view)
@@ -939,6 +940,19 @@ FragmentStrictMode.defaultPolicy = FragmentStrictMode.Policy.Builder()
 ```
 
 [🔗 `@tools:sample/*`](https://developer.android.com/studio/write/tool-attributes#toolssample_resources)
+
+<a id="ussd-and-secret-codes"></a>
+### USSD and secret codes
+
+These codes must be typed in the dialer app.
+
+- `*#06#`: IMEI
+- `*#*#4636#*#*`: Device info
+- `*#*#7780#*#*`: Factory reset ♻️
+
+I've created [Secret Codes](https://github.com/SimonMarquis/Android-SecretCodes) to help you find theses codes directly on your device.
+
+[🔗](https://cs.android.com/search?q=android_secret_code)
 
 <a id="viewbinding-extension"></a>
 ### ViewBinding extension
