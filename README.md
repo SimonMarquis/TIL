@@ -4,6 +4,7 @@
 
 - [🤖 Android](#🤖-android)
     - [AAPT and GZ files](#aapt-and-gz-files)
+    - [APK MIME type](#apk-mime-type)
     - [App Links](#app-links)
     - [AutoCleanedValue](#autocleanedvalue)
     - [BottomSheetBehavior extensions](#bottomsheetbehavior-extensions)
@@ -160,6 +161,13 @@ If you store a (compressed) `/assets/data.json.gz` file, AAPT will only package 
 A workaround is to move the file in Java's resources folder `/resources/assets/data.json.gz`.
 
 [🔗](https://cs.android.com/android/platform/superproject/+/master:frameworks/base/tools/aapt/Package.cpp;l=276-279;drc=18f16d6241c6398a034237c2a5343f94d1938f6a)
+
+<a id="apk-mime-type"></a>
+### APK MIME type
+
+`application/vnd.android.package-archive`
+
+[🔗](https://en.wikipedia.org/wiki/Apk_(file_format))
 
 <a id="app-links"></a>
 ### App Links
