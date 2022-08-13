@@ -84,6 +84,7 @@
     - [Shortcuts](#shortcuts)
 - [☕ Java](#☕-java)
 - [🪢 JavaScript](#🪢-javascript)
+    - [Named capturing group regex](#named-capturing-group-regex)
     - [Optional chaining operator](#optional-chaining-operator)
 - [🧪 JUnit](#🧪-junit)
     - [Flaky TestRule](#flaky-testrule)
@@ -1552,6 +1553,21 @@ ij_kotlin_allow_trailing_comma_on_call_site = true
 
 <a id="🪢-javascript"></a>
 ## 🪢 JavaScript
+
+<a id="named-capturing-group-regex"></a>
+### Named capturing group regex
+
+```js
+const semver = /^(?<major>\d+)(?:\.(?<minor>\d+)(?:\.(?<patch>\d+))?)?(?:-(?<label>.+))?$/;
+
+const result = "1.2.3-alpha".match(semver);
+result.groups.major; // '1'
+result.groups.minor; // '2'
+result.groups.patch; // '3'
+result.groups.label; // 'alpha'
+```
+
+[🔗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Backreferences) [🔗](https://caniuse.com/mdn-javascript_builtins_regexp_named_capture_groups) [🔗](https://www.regular-expressions.info/named.html)
 
 <a id="optional-chaining-operator"></a>
 ### Optional chaining operator
