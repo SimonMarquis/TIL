@@ -135,6 +135,7 @@
     - [Table alignment](#table-alignment)
     - [Theme context for images](#theme-context-for-images)
 - [💎 Miscellaneous](#💎-miscellaneous)
+    - [Box drawing characters](#box-drawing-characters)
     - [Gmail templates](#gmail-templates)
 - [🕸️ Online tools](#🕸️-online-tools)
 - [🔓 Open Source projects](#🔓-open-source-projects)
@@ -2619,6 +2620,35 @@ https://github.com/SimonMarquis/TIL/labels/bug • https://github.com/SimonMarqu
 
 <a id="💎-miscellaneous"></a>
 ## 💎 Miscellaneous
+
+<a id="box-drawing-characters"></a>
+### Box drawing characters
+
+```
+┌ ─ ┬ ┐ ┏ ┳ ━ ┓ ╔ ╦ ═ ╗
+│ │ │ │ ┣ ╋ ━ ┫ ╠ ╬ ═ ╣
+├ ─ ┼ ┤ ┃ ┃ ┃ ┃ ║ ║ ║ ║
+└ ─ ┴ ┘ ┗ ┻ ━ ┛ ╚ ╩ ═ ╝
+
+╒ ╤ ╕ ╓ ╥ ╖ ┍ ┯ ┑
+╞ ╪ ╡ ╟ ╫ ╢ ┝ ┿ ┥
+╘ ╧ ╛ ╙ ╨ ╜ ┕ ┷ ┙
+
+╌ ╎ ╍ ╏
+┄ ┆ ┊ ┈
+┅ ┇ ┉ ┋
+
+╭ ╮
+╰ ╯
+
+▁ ▂ ▃ ▄ ▅ ▆ ▇ █
+
+▉ ▊ ▋ ▌ ▍ ▎ ▏
+
+░ ▒ ▓
+```
+
+[🔗](https://en.wikipedia.org/wiki/Box-drawing_character)
 
 <a id="gmail-templates"></a>
 ### Gmail templates
