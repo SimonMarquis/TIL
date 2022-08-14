@@ -19,6 +19,7 @@
     - [Gradle Managed Virtual Devices](#gradle-managed-virtual-devices)
     - [Kotlin Coroutines debug probes](#kotlin-coroutines-debug-probes)
     - [Lifecycle CheatSheets](#lifecycle-cheatsheets)
+    - [Lint easter egg](#lint-easter-egg)
     - [List resources at runtime](#list-resources-at-runtime)
     - [LiveData Events](#livedata-events)
     - [LiveData unit testing](#livedata-unit-testing)
@@ -520,6 +521,27 @@ android {
 ### Lifecycle CheatSheets
 
 [🔗 JoseAlcerreca/android-lifecycles](https://github.com/JoseAlcerreca/android-lifecycles)
+
+<a id="lint-easter-egg"></a>
+### Lint easter egg
+
+```java
+public class Hidden {
+    // This looks like a comment, but it's actually code that will be executed when the class is loaded!
+    /* \u002a\u002f static { System.out.println("Oh no!"); } \u002f\u002a */
+}
+```
+
+Fortunately, Kotlin does not seem to be affected by this
+
+```kotlin
+class Hidden {
+    // This is correctly parsed as a comment
+    /* \u002A\u002F companion object { init { println("Oh no!") } } \u002F\u002A */
+}
+```
+
+[🔗](https://googlesamples.github.io/android-custom-lint-rules/checks/EasterEgg.md.html)
 
 <a id="list-resources-at-runtime"></a>
 ### List resources at runtime
