@@ -4,6 +4,7 @@
 
 - [🤖 Android](#🤖-android)
     - [AAPT and GZ files](#aapt-and-gz-files)
+    - [AAPT ignore assets from third party libraries](#aapt-ignore-assets-from-third-party-libraries)
     - [APK MIME type](#apk-mime-type)
     - [App Links](#app-links)
     - [AutoCleanedValue](#autocleanedvalue)
@@ -178,6 +179,19 @@ If you store a (compressed) `/assets/data.json.gz` file, AAPT will only package 
 A workaround is to move the file in Java's resources folder `/resources/assets/data.json.gz`.
 
 [🔗](https://cs.android.com/android/platform/superproject/+/master:frameworks/base/tools/aapt/Package.cpp;l=276-279;drc=18f16d6241c6398a034237c2a5343f94d1938f6a)
+
+<a id="aapt-ignore-assets-from-third-party-libraries"></a>
+### AAPT ignore assets from third party libraries
+
+```kotlin
+android {
+    androidResources {
+        ignoreAssetsPatterns += "SomeFont.ttf"
+    }
+}
+```
+
+[🔗](https://developer.android.com/reference/tools/gradle-api/7.4/com/android/build/api/dsl/AndroidResources#ignoreAssetsPatterns())
 
 <a id="apk-mime-type"></a>
 ### APK MIME type
