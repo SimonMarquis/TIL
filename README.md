@@ -65,6 +65,7 @@
 - [💽 Git](#💽-git)
     - [Alias to function](#alias-to-function)
     - [Authors with commit count](#authors-with-commit-count)
+    - [Diffing Gzip-ed JSON files](#diffing-gzip-ed-json-files)
     - [Diffing with patience](#diffing-with-patience)
     - [Ignoring commits in the blame view](#ignoring-commits-in-the-blame-view)
     - [List objects by size](#list-objects-by-size)
@@ -1341,6 +1342,47 @@ object NetworkModule {
 [alias]
     authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
 ```
+
+<a id="diffing-gzip-ed-json-files"></a>
+### Diffing Gzip-ed JSON files
+
+```bash
+# ~/.gitattributes
+*.json.gz diff=json.gz
+```
+
+```bash
+# ~/.gitconfig
+[core]
+    attributesFile = ~/.gitattributes
+[diff "json.gz"]
+    binary = true
+    textconv = "f() { uncompress -c \"$1\" | jq ; }; f"
+    # OR # textconv = sh -c 'uncompress -c "$0" | jq'
+    # OR with: zcat, gzcat, etc.
+```
+
+- Before
+  ```diff
+  diff --git a/example.json.gz b/example.json.gz
+  index 4ecec5e..ae04c42 100644
+  Binary files a/example.json.gz and b/example.json.gz differ
+  ```
+
+- After
+  ```diff
+  diff --git a/example.json.gz b/example.json.gz
+  index 4ecec5e..ae04c42 100644
+  --- a/example.json.gz
+  +++ b/example.json.gz
+  @@ -1,3 +1,3 @@
+   {
+  -  "key": true
+  +  "key": false
+   }
+  ```
+
+[🔗](https://git-scm.com/docs/gitattributes#_performing_text_diffs_of_binary_files)
 
 <a id="diffing-with-patience"></a>
 ### Diffing with patience
