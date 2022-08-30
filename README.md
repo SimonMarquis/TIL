@@ -144,6 +144,7 @@
 - [💎 Miscellaneous](#💎-miscellaneous)
     - [Bell code](#bell-code)
     - [Binary prefix](#binary-prefix)
+    - [Bookmarklets](#bookmarklets)
     - [Box drawing characters](#box-drawing-characters)
     - [Gmail templates](#gmail-templates)
 - [🕸️ Online tools](#🕸️-online-tools)
@@ -2857,6 +2858,44 @@ https://github.com/SimonMarquis/TIL/labels/bug • https://github.com/SimonMarqu
 </table>
 
 [🔗](https://en.wikipedia.org/wiki/Binary_prefix)
+
+<a id="bookmarklets"></a>
+### Bookmarklets
+
+- CSS boxes
+  ```javascript
+  javascript:{let d=(typeof _debug_layout_==='undefined');[].forEach.call(document.querySelectorAll("*"),function(a){a.style.outline=d?"1px solid #"+(~~(Math.random()*(1<<24))).toString(16):""});var _debug_layout_=d?true:undefined;}
+  ```
+- QrCode
+  ```javascript
+  javascript:var _size=400;var _left=(screen.width/2)-(_size/2);var _top=(screen.height/2)-(_size/2);var _input = prompt("QRcode input",window.getSelection().toString());if(_input!=null)window.open("https://chart.googleapis.com/chart?cht=qr&chs="+_size+"x"+_size+"&chld=L|0&choe=UTF-8&chl="+encodeURIComponent(_input), "_blank", "titlebar=no,menubar=no,scrollbars=no,status=no,width="+_size+",height="+_size+",top="+_top+",left="+_left);
+  ```
+- URL encoder
+  ```javascript
+  javascript: var decoded = prompt("URL encoder input:",window.getSelection().toString()); if(decoded!=null) prompt('URL encoder output:', encodeURIComponent(decoded));
+  ```
+- URL decoder
+  ```javascript
+  javascript: var encoded = prompt("URL decoder input:",window.getSelection().toString()); if(encoded!=null) prompt('URL decoder output:', decodeURIComponent(encoded));
+  ```
+- Base64 encoder
+  ```javascript
+  javascript: var decoded = prompt("Base64 encoder input:",window.getSelection().toString()); if(decoded != null) try {prompt('Base64 encoder output:', btoa(decoded)); } catch(error) { alert(error); }
+  ```
+- Base64 decoder
+  ```javascript
+  javascript: var encoded = prompt("Base64 decoder input:",window.getSelection().toString()); if(encoded != null) try {prompt('Base64 decoder output:', atob(encoded)); } catch(error) { alert(error); }
+  ```
+- Raw HTML
+  ```javascript
+  data:text/html;charset=utf-8,
+  ```
+- Edit website
+  ```javascript
+  javascript:document.body.contentEditable = 'true'; document.designMode='on'; void 0
+  ```
+
+[🔗](https://en.wikipedia.org/wiki/Bookmarklet)
 
 <a id="box-drawing-characters"></a>
 ### Box drawing characters
