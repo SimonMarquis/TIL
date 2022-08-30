@@ -142,6 +142,7 @@
     - [Table alignment](#table-alignment)
     - [Theme context for images](#theme-context-for-images)
 - [💎 Miscellaneous](#💎-miscellaneous)
+    - [Bell code](#bell-code)
     - [Binary prefix](#binary-prefix)
     - [Box drawing characters](#box-drawing-characters)
     - [Gmail templates](#gmail-templates)
@@ -2712,6 +2713,15 @@ https://github.com/SimonMarquis/TIL/labels/bug • https://github.com/SimonMarqu
 
 <a id="💎-miscellaneous"></a>
 ## 💎 Miscellaneous
+
+<a id="bell-code"></a>
+### Bell code
+
+`echo ^G` 🔔
+
+(`^G` is <kbd>Ctrl</kbd> + <kbd>G</kbd>)
+
+[🔗](https://en.wikipedia.org/wiki/Bell_character)
 
 <a id="binary-prefix"></a>
 ### Binary prefix
