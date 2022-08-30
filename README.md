@@ -103,6 +103,7 @@
     - [BitFlags](#bitflags)
     - [Check if a class is in the classpath](#check-if-a-class-is-in-the-classpath)
     - [Coroutine's CancellationException with runCatching](#coroutines-cancellationexception-with-runcatching)
+    - [Expect test failures](#expect-test-failures)
     - [Filter non-null values in a Map](#filter-non-null-values-in-a-map)
     - [Implicit lamda result with run and let](#implicit-lamda-result-with-run-and-let)
     - [Invoke operator on Companion objects](#invoke-operator-on-companion-objects)
@@ -1930,6 +1931,32 @@ suspend inline fun <T, R> T.runSuspendCatching(block: T.() -> R): Result<R> = ru
 ```
 
 [🧑‍💻](https://play.kotlinlang.org/#eyJ2ZXJzaW9uIjoiMS42LjEwIiwicGxhdGZvcm0iOiJqYXZhIiwiYXJncyI6IiIsIm5vbmVNYXJrZXJzIjp0cnVlLCJ0aGVtZSI6ImlkZWEiLCJjb2RlIjoiaW1wb3J0IGtvdGxpbnguY29yb3V0aW5lcy4qXG5cbmZ1biA8VD4gUmVzdWx0PFQ+LnRocm93SWYoXG4gICAgcHJlZGljYXRlOiAoVGhyb3dhYmxlKSAtPiBCb29sZWFuXG4pOiBSZXN1bHQ8VD4gPSBvbkZhaWx1cmUge1xuICAgIGlmIChwcmVkaWNhdGUoaXQpKSB0aHJvdyBpdFxufVxuXG5zdXNwZW5kIGZ1biA8VD4gcnVuU3VzcGVuZENhdGNoaW5nKFxuICAgIGJsb2NrOiAoKSAtPiBUXG4pOiBSZXN1bHQ8VD4gPSBydW5DYXRjaGluZyhibG9jaykudGhyb3dJZiB7XG4gICAgaXQgaXMgQ2FuY2VsbGF0aW9uRXhjZXB0aW9uXG59XG4ifQ==)
+
+<a id="expect-test-failures"></a>
+### Expect test failures
+
+The following way of checking a test throws is strongly discouraged because of this single reason: it will succeed wherever the exception comes from, including from the setup code.
+
+```kotlin
+@Test(expected = ArithmeticException::class)
+fun test() { /* ... */ }
+```
+
+Instead, the better solution is to use:
+
+```kotlin
+@Test
+fun kotlinTest() {
+    kotlin.test.assertFailsWith<ArithmeticException> { 1/0 }
+}
+
+@Test()
+fun junit() {
+    org.junit.jupiter.api.assertThrows<ArithmeticException> { 1/0 }
+}
+```
+
+Also, the `expected` parameter has been removed from JUnit5.
 
 <a id="filter-non-null-values-in-a-map"></a>
 ### Filter non-null values in a Map
