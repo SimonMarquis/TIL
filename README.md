@@ -74,6 +74,7 @@
     - [Recursive gc](#recursive-gc)
     - [Signing commits with GPG](#signing-commits-with-gpg)
 - [🐙 GitHub](#🐙-github)
+    - [Clone GitHub wikis](#clone-github-wikis)
     - [Secret file in GitHub Actions](#secret-file-in-github-actions)
 - [🐘 Gradle](#🐘-gradle)
     - [Cleanup caches and build directories](#cleanup-caches-and-build-directories)
@@ -1465,6 +1466,15 @@ find . -name '*.git' -execdir sh -c 'cd {} && git gc' \;
 
 <a id="🐙-github"></a>
 ## 🐙 GitHub
+
+<a id="clone-github-wikis"></a>
+### Clone GitHub wikis
+
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.wiki.git
+```
+
+[🔗](https://docs.github.com/en/communities/documenting-your-project-with-wikis/adding-or-editing-wiki-pages#adding-or-editing-wiki-pages-locally)
 
 <a id="secret-file-in-github-actions"></a>
 ### Secret file in GitHub Actions
