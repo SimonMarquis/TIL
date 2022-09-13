@@ -74,6 +74,7 @@
     - [Recursive gc](#recursive-gc)
     - [Signing commits with GPG](#signing-commits-with-gpg)
 - [🐙 GitHub](#🐙-github)
+    - [Clone GitHub gists](#clone-github-gists)
     - [Clone GitHub wikis](#clone-github-wikis)
     - [Secret file in GitHub Actions](#secret-file-in-github-actions)
 - [🐘 Gradle](#🐘-gradle)
@@ -1466,6 +1467,15 @@ find . -name '*.git' -execdir sh -c 'cd {} && git gc' \;
 
 <a id="🐙-github"></a>
 ## 🐙 GitHub
+
+<a id="clone-github-gists"></a>
+### Clone GitHub gists
+
+```bash
+git clone https://gist.github.com/YOUR_REPOSITORY.git
+```
+
+[🔗](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/forking-and-cloning-gists#cloning-gists)
 
 <a id="clone-github-wikis"></a>
 ### Clone GitHub wikis
