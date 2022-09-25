@@ -16,6 +16,7 @@
     - [Download all APK files](#download-all-apk-files)
     - [Edit SharePreferences](#edit-sharepreferences)
     - [Ellipsized TextView](#ellipsized-textview)
+    - [Espresso AppNotIdleException](#espresso-appnotidleexception)
     - [Firebase Analytics debug](#firebase-analytics-debug)
     - [Gradle Managed Virtual Devices](#gradle-managed-virtual-devices)
     - [Kotlin Coroutines debug probes](#kotlin-coroutines-debug-probes)
@@ -475,6 +476,31 @@ Ctrl+C
 ```kotlin
 fun TextView.isEllipsized(): Boolean = layout?.let { !TextUtils.equals(text, it.text) } ?: false
 ```
+
+<a id="espresso-appnotidleexception"></a>
+### Espresso AppNotIdleException
+
+On API <= 21, indeterminate `ProgressBar`s would animate forever and trigger the following exception when running Espresso tests: 
+
+```
+android.support.test.espresso.AppNotIdleException: Looped for [...] iterations over 60 SECONDS. The following Idle Conditions failed .
+```
+
+A simple solution is to disable such `ProgressBar`s by replacing their `indeterminateDrawable` with a static (non-animated) `Drawable`:
+
+```kotlin
+fun Activity.disableProgressBarAnimations() = window.decorView.rootView.disableProgressBarAnimations()
+
+fun Fragment.disableProgressBarAnimations() = requireView().disableProgressBarAnimations()
+
+fun View.disableProgressBarAnimations(
+    replacement: Drawable = ColorDrawable(Color.BLUE),
+) = recursiveChildren().filterIsInstance<ProgressBar>().forEach {
+    it.indeterminateDrawable = replacement
+}
+```
+
+This can also happen for `AnimatedVectorDrawable`s.
 
 <a id="firebase-analytics-debug"></a>
 ### Firebase Analytics debug
