@@ -86,6 +86,7 @@
     - [Default commit message](#default-commit-message)
     - [List project properties](#list-project-properties)
     - [Reproducible builds](#reproducible-builds)
+    - [System properties](#system-properties)
     - [Upgrading the Gradle Wrapper](#upgrading-the-gradle-wrapper)
     - [Version Catalog extensions and delegates](#version-catalog-extensions-and-delegates)
     - [Version declaration semantics](#version-declaration-semantics)
@@ -1649,6 +1650,20 @@ tasks.withType<AbstractArchiveTask>().configureEach {
 ```
 
 [🔗](https://docs.gradle.org/current/userguide/working_with_files.html#sec:reproducible_archives)
+
+<a id="system-properties"></a>
+### System properties
+
+Using the `-D` command-line option, you can pass a system property to the JVM which runs Gradle.  
+You can also set system properties in `gradle.properties` files with the prefix `systemProp.`.
+
+```properties
+# gradle.properties
+systemProp.gradle.user.home=/gradle
+```
+> **Note** command-line options take precedence over system properties.
+
+[🔗](https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_system_properties)
 
 <a id="upgrading-the-gradle-wrapper"></a>
 ### Upgrading the Gradle Wrapper
