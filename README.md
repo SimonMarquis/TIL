@@ -131,6 +131,7 @@
     - [Recursive flatMap](#recursive-flatmap)
     - [Regex destructuring](#regex-destructuring)
     - [Require an instance type](#require-an-instance-type)
+    - [Retry coroutine operations](#retry-coroutine-operations)
     - [Sealed object instances](#sealed-object-instances)
     - [SemVer](#semver)
     - [Singleton](#singleton)
@@ -2490,6 +2491,28 @@ inline fun <reified T> requireInstanceOf(value: Any?, lazyMessage: () -> Any): T
     contract { returns() implies (value is T) }
     require(value is T, lazyMessage)
     return value
+}
+```
+
+<a id="retry-coroutine-operations"></a>
+### Retry coroutine operations
+
+```kotlin
+import kotlinx.coroutines.*
+import kotlin.time.*
+
+suspend fun <T> retry(
+    times: Int,
+    delay: Duration,
+    block: suspend  () -> T,
+): T {
+    require(times > 1) { "Expected times > 1, but had $times" }
+    repeat(times - 1) {
+        kotlin.runCatching { block() }
+            .onSuccess { return it }
+            .onFailure { delay(delay) }
+    }
+    return block()
 }
 ```
 
