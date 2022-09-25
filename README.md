@@ -67,6 +67,7 @@
 - [💽 Git](#💽-git)
     - [Alias to function](#alias-to-function)
     - [Authors with commit count](#authors-with-commit-count)
+    - [Check if something has changed](#check-if-something-has-changed)
     - [Diffing Gzip-ed JSON files](#diffing-gzip-ed-json-files)
     - [Diffing with patience](#diffing-with-patience)
     - [Ignoring commits in the blame view](#ignoring-commits-in-the-blame-view)
@@ -1376,6 +1377,19 @@ object NetworkModule {
 # ~/.gitconfig
 [alias]
     authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
+```
+
+<a id="check-if-something-has-changed"></a>
+### Check if something has changed
+
+```bash
+git diff [--cached] [--stat] [--quiet] --exit-code -- [<pathspec>…] # 1:yes, 0:no
+```
+
+or
+
+```bash
+git diff-index [--cached] [--stat] [--quiet] --exit-code HEAD # 1:yes, 0:no
 ```
 
 <a id="diffing-gzip-ed-json-files"></a>
