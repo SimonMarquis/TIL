@@ -87,6 +87,7 @@
     - [List project properties](#list-project-properties)
     - [Reproducible builds](#reproducible-builds)
     - [Upgrading the Gradle Wrapper](#upgrading-the-gradle-wrapper)
+    - [Version Catalog extensions and delegates](#version-catalog-extensions-and-delegates)
     - [Version declaration semantics](#version-declaration-semantics)
 - [📦 IntelliJ IDEA](#📦-intellij-idea)
     - [Code formatting as a weak warning](#code-formatting-as-a-weak-warning)
@@ -1661,6 +1662,81 @@ tasks.withType<AbstractArchiveTask>().configureEach {
 ```
 
 [🔗](https://docs.gradle.org/current/userguide/gradle_wrapper.html#sec:upgrading_wrapper)
+
+<a id="version-catalog-extensions-and-delegates"></a>
+### Version Catalog extensions and delegates
+
+Extension to access `VersionCatalog`:
+
+```kotlin
+fun Project.versionCatalog(name: String = "libs"): VersionCatalog =
+    project.extensions.getByType<VersionCatalogsExtension>().named(name)
+```
+
+Extensions to fetch versions, libraries, plugins and bundles from a `VersionCatalog` as delegates:
+
+```kotlin
+fun VersionCatalog.versions(): ReadOnlyProperty<Any?, VersionConstraint> = ReadOnlyProperty { _, property ->
+    findVersion(property.name).orElseThrow {
+        IllegalStateException("Version alias named ${property.name} doesn't exist in catalog named $name")
+    }
+}
+
+fun VersionCatalog.libraries(): ReadOnlyProperty<Any?, Provider<MinimalExternalModuleDependency>> = ReadOnlyProperty { _, property ->
+    findLibrary(property.name).orElseThrow {
+        IllegalStateException("Library alias named ${property.name} doesn't exist in catalog named $name")
+    }
+}
+
+fun VersionCatalog.plugins(): ReadOnlyProperty<Any?, Provider<PluginDependency>> = ReadOnlyProperty { _, property ->
+    findPlugin(property.name).orElseThrow {
+        IllegalStateException("Plugin alias named ${property.name} doesn't exist in catalog named $name")
+    }
+}
+
+fun VersionCatalog.bundles(): ReadOnlyProperty<Any?, Provider<ExternalModuleDependencyBundle>> = ReadOnlyProperty { _, property ->
+    findBundle(property.name).orElseThrow {
+        IllegalStateException("Bundle alias named ${property.name} doesn't exist in catalog named $name")
+    }
+}
+```
+
+This can then be used like this in a custom `Plugin`:
+
+```toml
+# gradle/libs.versions.toml
+[versions]
+kotlin = "1.7.10"
+
+[plugins]
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+[bundles]
+example = ["lib1", "lib2"]
+
+[libraries]
+example1 = "com.example:lib1:#"
+example2 = "com.example:lib2:#"
+kotlinxCoroutinesCore = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = "1.6.4" }
+```
+
+```kotlin
+class MyCatalog(catalog: VersionCatalog): VersionCatalog by catalog {
+    val kotlin by versions() // "1.7.10"
+    val `org-jetbrains-kotlin-android` by plugins() // "org.jetbrains.kotlin.android:1.7.10"
+    val example by bundles() // ["com.example:lib1:#", "com.example:lib2:#"]
+    val kotlinxCoroutinesCore by library() // "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+}
+
+class MyPlugin : Plugin<Project> {
+    override fun apply(target: Project) {
+        val catalog = MyCatalog(target.versionCatalog())
+        dependencies {
+            add("implementation", catalog.kotlinxCoroutinesCore)
+        }
+    }
+}
+```
 
 <a id="version-declaration-semantics"></a>
 ### Version declaration semantics
