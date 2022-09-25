@@ -67,6 +67,7 @@
 - [💽 Git](#💽-git)
     - [Alias to function](#alias-to-function)
     - [Authors with commit count](#authors-with-commit-count)
+    - [Check if something can be pushed](#check-if-something-can-be-pushed)
     - [Check if something has changed](#check-if-something-has-changed)
     - [Diffing Gzip-ed JSON files](#diffing-gzip-ed-json-files)
     - [Diffing with patience](#diffing-with-patience)
@@ -1377,6 +1378,13 @@ object NetworkModule {
 # ~/.gitconfig
 [alias]
     authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
+```
+
+<a id="check-if-something-can-be-pushed"></a>
+### Check if something can be pushed
+
+```bash
+git log <sha1>..HEAD [--oneline] --exit-code # 1:yes, 0:no
 ```
 
 <a id="check-if-something-has-changed"></a>
