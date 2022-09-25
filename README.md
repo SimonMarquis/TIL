@@ -30,6 +30,7 @@
     - [Parcelable testing](#parcelable-testing)
     - [Print APK certificates](#print-apk-certificates)
     - [Project view by default](#project-view-by-default)
+    - [Recursive View children sequence](#recursive-view-children-sequence)
     - [Resource identifier for MATCH_PARENT and WRAP_CONTENT](#resource-identifier-for-match_parent-and-wrap_content)
     - [Resources abstraction](#resources-abstraction)
     - [Run command as a specific application user-id](#run-command-as-a-specific-application-user-id)
@@ -774,6 +775,17 @@ find . -name '*.apk' -type f -exec echo "APK: {}" \; -exec keytool -printcert -j
 ### Project view by default
 
 `Help` → `Edit Custom Properties` → `studio.projectview=true`
+
+<a id="recursive-view-children-sequence"></a>
+### Recursive View children sequence
+
+```kotlin
+fun View.recursiveChildren(): Sequence<View> = sequence {
+    yield(this@recursiveChildren)
+    if (this@recursiveChildren !is ViewGroup) return@sequence
+    children.forEach { yieldAll(it.recursiveChildren()) }
+}
+```
 
 <a id="resource-identifier-for-match_parent-and-wrap_content"></a>
 ### Resource identifier for MATCH_PARENT and WRAP_CONTENT 
