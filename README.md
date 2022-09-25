@@ -89,6 +89,7 @@
     - [Upgrading the Gradle Wrapper](#upgrading-the-gradle-wrapper)
     - [Version Catalog extensions and delegates](#version-catalog-extensions-and-delegates)
     - [Version declaration semantics](#version-declaration-semantics)
+    - [Welcome message](#welcome-message)
 - [📦 IntelliJ IDEA](#📦-intellij-idea)
     - [Code formatting as a weak warning](#code-formatting-as-a-weak-warning)
     - [EditorConfig](#editorconfig)
@@ -1762,6 +1763,16 @@ dependencies {
 ```
 
 [🔗](https://docs.gradle.org/current/userguide/single_versions.html)
+
+<a id="welcome-message"></a>
+### Welcome message
+
+> Controls whether Gradle should print a welcome message. If set to `never` then the welcome message will be suppressed. If set to `once` then the message is printed once for each new version of Gradle. Default is `once`.
+
+```properties
+# gradle.properties
+org.gradle.welcome=never
+```
 
 <a id="📦-intellij-idea"></a>
 ## 📦 IntelliJ IDEA
