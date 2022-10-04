@@ -177,6 +177,7 @@
     - [Web crawler](#web-crawler)
 - [🪟 Windows](#🪟-windows)
     - [Reboot GPU driver](#reboot-gpu-driver)
+    - [UEFI BIOS](#uefi-bios)
 
 <!-- /MarkdownTOC -->
 
@@ -3676,3 +3677,10 @@ wget \
 ### Reboot GPU driver
 
 <kbd>Win</kbd> + <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd>
+
+<a id="uefi-bios"></a>
+### UEFI BIOS
+
+```bat
+shutdown /r /fw /f /t 0
+```
