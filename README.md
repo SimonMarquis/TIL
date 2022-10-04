@@ -88,6 +88,7 @@
     - [Cleanup caches and build directories](#cleanup-caches-and-build-directories)
     - [Declaring a repository filter](#declaring-a-repository-filter)
     - [Declaring content exclusively found in one repository](#declaring-content-exclusively-found-in-one-repository)
+    - [Gradle tasks](#gradle-tasks)
     - [List project properties](#list-project-properties)
     - [Reproducible builds](#reproducible-builds)
     - [System properties](#system-properties)
@@ -1686,6 +1687,22 @@ repositories {
 ```
 
 [🔗](https://docs.gradle.org/current/userguide/declaring_repositories.html#declaring_content_exclusively_found_in_one_repository)
+
+<a id="gradle-tasks"></a>
+### Gradle tasks
+
+```
+Build Setup tasks
+-----------------
+init - Initializes a new Gradle build.
+wrapper - Generates Gradle wrapper files.
+
+Help tasks
+----------
+javaToolchains - Displays the detected java toolchains.
+projects - Displays the sub-projects of root project.
+properties - Displays the properties of root project.
+```
 
 <a id="list-project-properties"></a>
 ### List project properties
