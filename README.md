@@ -71,6 +71,7 @@
     - [Authors with commit count](#authors-with-commit-count)
     - [Check if something can be pushed](#check-if-something-can-be-pushed)
     - [Check if something has changed](#check-if-something-has-changed)
+    - [Default commit message](#default-commit-message)
     - [Diffing Gzip-ed JSON files](#diffing-gzip-ed-json-files)
     - [Diffing with patience](#diffing-with-patience)
     - [Ignoring commits in the blame view](#ignoring-commits-in-the-blame-view)
@@ -87,7 +88,6 @@
     - [Cleanup caches and build directories](#cleanup-caches-and-build-directories)
     - [Declaring a repository filter](#declaring-a-repository-filter)
     - [Declaring content exclusively found in one repository](#declaring-content-exclusively-found-in-one-repository)
-    - [Default commit message](#default-commit-message)
     - [List project properties](#list-project-properties)
     - [Reproducible builds](#reproducible-builds)
     - [System properties](#system-properties)
@@ -1440,6 +1440,13 @@ or
 git diff-index [--cached] [--stat] [--quiet] --exit-code HEAD # 1:yes, 0:no
 ```
 
+<a id="default-commit-message"></a>
+### Default commit message
+
+```bash
+git config --global commit.template ~/.gitmessage
+```
+
 <a id="diffing-gzip-ed-json-files"></a>
 ### Diffing Gzip-ed JSON files
 
@@ -1679,13 +1686,6 @@ repositories {
 ```
 
 [🔗](https://docs.gradle.org/current/userguide/declaring_repositories.html#declaring_content_exclusively_found_in_one_repository)
-
-<a id="default-commit-message"></a>
-### Default commit message
-
-```bash
-git config --global commit.template ~/.gitmessage
-```
 
 <a id="list-project-properties"></a>
 ### List project properties
