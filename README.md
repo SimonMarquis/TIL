@@ -1617,6 +1617,8 @@ jobs:
         if: always()
 ```
 
+[🔗](https://docs.github.com/en/actions/security-guides/encrypted-secrets#storing-base64-binary-blobs-as-secrets)
+
 <a id="🐘-gradle"></a>
 ## 🐘 Gradle
 
