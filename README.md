@@ -24,6 +24,7 @@
     - [Lint easter egg](#lint-easter-egg)
     - [List resources at runtime](#list-resources-at-runtime)
     - [LiveData Events](#livedata-events)
+    - [LiveData observe non-null data](#livedata-observe-non-null-data)
     - [LiveData unit testing](#livedata-unit-testing)
     - [Locate APK files](#locate-apk-files)
     - [Manually sign APK](#manually-sign-apk)
@@ -681,6 +682,16 @@ fun <T : Any> LiveData<Event<T>>.observeEvent(
 ```
 
 [🔗](https://gist.github.com/JoseAlcerreca/e0bba240d9b3cffa258777f12e5c0ae9)
+
+<a id="livedata-observe-non-null-data"></a>
+### LiveData observe non-null data
+
+```kotlin
+fun <T> LiveData<T>.observeNotNull(
+    owner: LifecycleOwner,
+    observer: (data: T & Any) -> Unit,
+) = observe(owner) { it?.let(observer) }
+```
 
 <a id="livedata-unit-testing"></a>
 ### LiveData unit testing
