@@ -91,6 +91,7 @@
     - [Declaring content exclusively found in one repository](#declaring-content-exclusively-found-in-one-repository)
     - [Gradle tasks](#gradle-tasks)
     - [List project properties](#list-project-properties)
+    - [Project properties](#project-properties)
     - [Reproducible builds](#reproducible-builds)
     - [System properties](#system-properties)
     - [Upgrading the Gradle Wrapper](#upgrading-the-gradle-wrapper)
@@ -1729,6 +1730,24 @@ gradlew -q properties --console=plain | grep "^<my-property>:" | awk '{printf $2
 # Or on newer versions
 gradlew -q properties --property=<my-property>
 ```
+
+<a id="project-properties"></a>
+### Project properties
+
+You can add properties directly to your Project object via the `-P` command line option.
+Gradle can also set project properties when it sees specially-named system properties or environment variables.
+
+- Setting a project property via a system property:
+  ```properties
+  org.gradle.project.foo=bar
+  ```
+
+- Setting a project property via an environment variable:
+  ```properties
+  ORG_GRADLE_PROJECT_foo=bar
+  ```
+
+[🔗](https://docs.gradle.org/current/userguide/build_environment.html#sec:project_properties)
 
 <a id="reproducible-builds"></a>
 ### Reproducible builds
