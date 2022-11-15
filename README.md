@@ -128,6 +128,7 @@
     - [Language injection](#language-injection)
     - [LazyMutable](#lazymutable)
     - [MainCoroutineRule](#maincoroutinerule)
+    - [Map parallelized](#map-parallelized)
     - [MockK extension to wait indefinitely](#mockk-extension-to-wait-indefinitely)
     - [Property delegate to cancel previous Job](#property-delegate-to-cancel-previous-job)
     - [Read resource file](#read-resource-file)
@@ -2426,6 +2427,30 @@ class MainCoroutineRule(val dispatcher = StandardTestDispatcher()) : TestWatcher
 
 }
 ```
+
+<a id="map-parallelized"></a>
+### Map parallelized
+
+```
+suspend fun <T, R> Iterable<T>.mapParallelized(
+    permits: Int = Int.MAX_VALUE,
+    transform: suspend (T) -> R,
+): List<R> = coroutineScope {
+    val semaphore = Semaphore(permits)
+    map { async { semaphore.withPermit { transform(it) } } }.awaitAll()
+}
+
+suspend fun <T, R> Iterable<T>.mapParallelized(
+    dispatcher: CoroutineDispatcher = Dispatchers.Default,
+    parallelism: Int = Int.MAX_VALUE,
+    transform: suspend (T) -> R,
+): List<R> = coroutineScope {
+    val limited = dispatcher.limitedParallelism(parallelism)
+    map { async(limited) { transform(it) } }.awaitAll()
+}
+```
+
+[🔗](https://pl.kotl.in/IycUh1l2g)
 
 <a id="mockk-extension-to-wait-indefinitely"></a>
 ### MockK extension to wait indefinitely
