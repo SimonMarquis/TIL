@@ -3356,6 +3356,8 @@ Or simply type `@email draft`.
   > 👽 Open source API development ecosystem
 - [httpbin.org](https://httpbin.org/)
   > A simple HTTP Request & Response Service.
+- [insomnia](https://github.com/Kong/insomnia)
+  > The open-source, cross-platform API client for GraphQL, REST, WebSockets and gRPC.
 - [Kotlin Playground](https://play.kotlinlang.org/)
   > Edit, Run, Share Kotlin Code Online
 - [Mermaid Live Editor](https://mermaid-js.github.io/mermaid-live-editor/)
