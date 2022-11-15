@@ -144,6 +144,7 @@
     - [NoWhenBranchMatchedException](#nowhenbranchmatchedexception)
 - [🍎 Mac](#🍎-mac)
     - [AltTab](#alttab)
+    - [Defaults](#defaults)
     - [Karabiner](#karabiner)
     - [UnnaturalScrollWheels](#unnaturalscrollwheels)
 - [📄 Markdown](#📄-markdown)
@@ -2807,6 +2808,52 @@ This is also the case when creating mock objects (with MockK or Mockito).
 > AltTab brings the power of Windows alt-tab to macOS.
 
 [🔗](https://github.com/lwouis/alt-tab-macos)
+
+<a id="defaults"></a>
+### Defaults
+
+```bash
+# Set the icon size of Dock items in pixels.
+defaults write com.apple.dock "tilesize" -int 36 && killall Dock
+# Show recently used apps in a separate section of the Dock.
+defaults write com.apple.dock "show-recents" -bool false && killall Dock
+# Change the Dock minimize animation.
+defaults write com.apple.dock "mineffect" -string "scale" && killall Dock
+# Faster keyboard execution.
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write NSGlobalDomain KeyRepeat -int 2
+# Show all file extensions in the Finder.
+defaults write NSGlobalDomain "AppleShowAllExtensions" -bool true && killall Finder
+# Show hidden files in the Finder.
+defaults write com.apple.finder "AppleShowAllFiles" -bool true && killall Finder
+# Show path bar in the bottom of the Finder windows
+defaults write com.apple.finder "ShowPathbar" -bool true && killall Finder
+# Choose whether to display a warning when changing a file extension.
+defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool false && killall Finder
+# Flash clock time separators
+defaults write com.apple.menuextra.clock "FlashDateSeparators" -bool true && killall SystemUIServer
+# Set menubar digital clock format
+defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\"" && killall SystemUIServer
+# How frequently Activity Monitor should update its data, in seconds.
+defaults write com.apple.ActivityMonitor "UpdatePeriod" -int 1 && killall Activity\ Monitor
+# Disable full stop with double-space.
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+# Disable automatic capitalization
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+# Disable smart dashes
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+# Disable smart quotes
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+# Disable the annoying line marks
+defaults write com.apple.Terminal ShowLineMarks -bool false
+
+# Restart the service in order to propagate changes.
+killall SystemUIServer
+```
+
+[🔗](https://macos-defaults.com/)
 
 <a id="karabiner"></a>
 ### Karabiner
