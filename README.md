@@ -144,6 +144,7 @@
     - [NoWhenBranchMatchedException](#nowhenbranchmatchedexception)
 - [🍎 Mac](#🍎-mac)
     - [AltTab](#alttab)
+    - [Brewfile](#brewfile)
     - [Defaults](#defaults)
     - [Karabiner](#karabiner)
     - [UnnaturalScrollWheels](#unnaturalscrollwheels)
@@ -2808,6 +2809,19 @@ This is also the case when creating mock objects (with MockK or Mockito).
 > AltTab brings the power of Windows alt-tab to macOS.
 
 [🔗](https://github.com/lwouis/alt-tab-macos)
+
+<a id="brewfile"></a>
+### Brewfile
+
+```bash
+# Generate Brewfile
+brew bundle dump
+
+# Install content of Brewfile
+brew bundle install --file <path>
+```
+
+[🔗](https://docs.brew.sh/Manpage#bundle-subcommand)
 
 <a id="defaults"></a>
 ### Defaults
