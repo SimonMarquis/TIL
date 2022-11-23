@@ -20,6 +20,7 @@
     - [Firebase Analytics debug](#firebase-analytics-debug)
     - [Gradle Managed Virtual Devices](#gradle-managed-virtual-devices)
     - [Kotlin Coroutines debug probes](#kotlin-coroutines-debug-probes)
+    - [Ignore generated baseline profile](#ignore-generated-baseline-profile)
     - [Lifecycle CheatSheets](#lifecycle-cheatsheets)
     - [Lint easter egg](#lint-easter-egg)
     - [List resources at runtime](#list-resources-at-runtime)
@@ -578,6 +579,25 @@ android {
 ```
 
 [🔗](https://github.com/Kotlin/kotlinx.coroutines#avoiding-including-the-debug-infrastructure-in-the-resulting-apk)
+
+<a id="ignore-generated-baseline-profile"></a>
+### Ignore generated baseline profile
+
+This generated file is generally very large (1 to 10 MiB), wastes precious indexing time and fills up search results.
+
+```kotlin
+plugins {
+    id("idea")
+}
+
+idea {
+    module {
+        excludeDirs = excludeDirs + file("src/main/baseline-prof.txt")
+    }
+}
+```
+
+[🔗](https://docs.gradle.org/current/dsl/org.gradle.plugins.ide.idea.model.IdeaModule.html#org.gradle.plugins.ide.idea.model.IdeaModule:excludeDirs)
 
 <a id="lifecycle-cheatsheets"></a>
 ### Lifecycle CheatSheets
