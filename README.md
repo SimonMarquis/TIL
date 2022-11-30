@@ -135,6 +135,7 @@
     - [Read resource file](#read-resource-file)
     - [Recursive flatMap](#recursive-flatmap)
     - [Regex destructuring](#regex-destructuring)
+    - [Regex destructuring capturing groups](#regex-destructuring-capturing-groups)
     - [Require an instance type](#require-an-instance-type)
     - [Retry coroutine operations](#retry-coroutine-operations)
     - [Sealed object instances](#sealed-object-instances)
@@ -2561,6 +2562,25 @@ fun String.toDate(input: String): Date? = regex.find(this)
     ?.let { (y, m, d) ->
         Date(year = y.toInt(), month = m.toInt(), day = d.toInt())
     }
+```
+
+<a id="regex-destructuring-capturing-groups"></a>
+# Regex destructuring capturing groups
+
+```kotlin
+operator fun MatchResult.getValue(
+    thisRef: Any?,
+    property: KProperty<*>
+): String = groups[property.name]!!.value
+
+val regex = """(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})""".toRegex()
+val result = regex.find("2022-10-12") ?: return
+
+val year: String by result
+val month: String by result
+val day: String by result
+
+println("$year-$month-$day")
 ```
 
 <a id="require-an-instance-type"></a>
