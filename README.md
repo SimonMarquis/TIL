@@ -72,6 +72,7 @@
 - [💽 Git](#💽-git)
     - [Alias to function](#alias-to-function)
     - [Authors with commit count](#authors-with-commit-count)
+    - [Change author without changing dates](#change-author-without-changing-dates)
     - [Check if something can be pushed](#check-if-something-can-be-pushed)
     - [Check if something has changed](#check-if-something-has-changed)
     - [Default commit message](#default-commit-message)
@@ -1549,6 +1550,13 @@ object NetworkModule {
 # ~/.gitconfig
 [alias]
     authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
+```
+
+<a id="change-author-without-changing-dates"></a>
+### Change author without changing dates
+
+```bash
+git -c rebase.instructionFormat='%s%nexec GIT_COMMITTER_DATE="%cD" git commit --amend --author=<author> --no-edit' rebase -i <refspec>
 ```
 
 <a id="check-if-something-can-be-pushed"></a>
