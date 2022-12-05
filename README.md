@@ -103,6 +103,7 @@
 - [📦 IntelliJ IDEA](#📦-intellij-idea)
     - [Code formatting as a weak warning](#code-formatting-as-a-weak-warning)
     - [EditorConfig](#editorconfig)
+    - [Find and replace with regex capturing groups](#find-and-replace-with-regex-capturing-groups)
     - [Plugins](#plugins)
     - [Project icon](#project-icon)
     - [Required plugins](#required-plugins)
@@ -2048,6 +2049,14 @@ ij_kotlin_allow_trailing_comma_on_call_site = true
 ```
 
 [🔗](https://www.jetbrains.com/help/idea/editorconfig.html) [🔗](https://www.jetbrains.com/help/idea/editorconfig.html)
+
+<a id="find-and-replace-with-regex-capturing-groups"></a>
+### Find and replace with regex capturing groups
+
+- Search: `<h2>(?<title>.*?)</h2>`
+- Replace: `<h1>${title}</h1>`
+
+[🔗](https://www.jetbrains.com/help/idea/tutorial-finding-and-replacing-text-using-regular-expressions.html#capture_groups_and_backreference)
 
 <a id="plugins"></a>
 ### Plugins
