@@ -18,6 +18,7 @@
     - [Ellipsized TextView](#ellipsized-textview)
     - [Espresso AppNotIdleException](#espresso-appnotidleexception)
     - [Firebase Analytics debug](#firebase-analytics-debug)
+    - [Google Maps Outlined Marker Label](#google-maps-outlined-marker-label)
     - [Gradle Managed Virtual Devices](#gradle-managed-virtual-devices)
     - [Kotlin Coroutines debug probes](#kotlin-coroutines-debug-probes)
     - [Ignore generated baseline profile](#ignore-generated-baseline-profile)
@@ -531,6 +532,98 @@ adb shell setprop debug.firebase.analytics.app .none.
 adb shell setprop log.tag.FA VERBOSE
 adb shell setprop log.tag.FA-SVC VERBOSE
 adb logcat -v time -s FA FA-SVC
+```
+
+<a id="google-maps-outlined-marker-label"></a>
+### Google Maps Outlined Marker Label
+
+```kotlin
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Paint.Cap
+import android.graphics.Paint.Join
+import android.graphics.Paint.Style
+import android.graphics.Typeface
+import android.text.Layout.Alignment.ALIGN_CENTER
+import android.text.StaticLayout
+import android.text.TextPaint
+import android.text.style.TextAppearanceSpan
+import android.view.View
+import androidx.annotation.ColorInt
+import androidx.annotation.Px
+import androidx.annotation.StyleRes
+import androidx.core.graphics.withTranslation
+import com.google.android.gms.maps.model.Marker
+
+/**
+ * Simulates Google Maps outlined labels on [Marker]s.
+ * The current solution uses a [StaticLayout] and draws it twice for each [onDraw] call, modifying its [TextPaint] [TextPaint.setColor] and [TextPaint.setStyle].
+ * </br>
+ * Alternate solutions are:
+ * - Single [android.widget.TextView] drawing twice on each [onDraw] call (must prevent infinite loop when modifying text color)
+ * - Single [android.widget.TextView] with [android.widget.TextView.setShadowLayer] and draw multiple times to get a more opaque shadow:
+ *      <pre>override fun onDraw(canvas: Canvas?) = repeat(x) { super.onDraw(canvas) }</pre>
+ * - Custom Span using [android.text.style.MetricAffectingSpan]
+ * - Two stacked [android.widget.TextView]s, one with {@code paint.style = STROKE} the other with {@code paint.style = FILL}
+ */
+class OutlinedMarkerLabel constructor(
+    context: Context,
+    @ColorInt val textColor: Int,
+    @ColorInt val strokeColor: Int,
+    @Px val strokeWidth: Float,
+    @Px val maxWidth: Int = Int.MAX_VALUE,
+    @StyleRes val textAppearance: Int,
+) : View(context) {
+
+    private val textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
+        val span = TextAppearanceSpan(context, textAppearance)
+        typeface = Typeface.create(span.family, span.textStyle)
+        textSize = span.textSize.toFloat()
+        strokeWidth = this@OutlinedMarkerLabel.strokeWidth
+        strokeCap = Cap.ROUND
+        strokeJoin = Join.ROUND
+    }
+
+    private var staticLayout: StaticLayout? = null
+
+    private fun newStaticLayout(text: String): StaticLayout? {
+        if (text.isBlank()) return null
+        // Here we could improve the requiredWidth computation a bit by going through all lines and clamp to the largest
+        val width = minOf(textPaint.measureText(text).toInt(), maxWidth)
+        return StaticLayout.Builder.obtain(text, 0, text.length, textPaint, width)
+            .setIncludePad(false)
+            .setAlignment(ALIGN_CENTER)
+            .build()
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val layout = staticLayout ?: return super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val offset = layout.paint.strokeWidth.toInt()
+        setMeasuredDimension(layout.width + offset, layout.height + offset)
+    }
+
+    override fun onDraw(canvas: Canvas?) {
+        with(staticLayout ?: return) {
+            with(paint) {
+                canvas?.withTranslation(strokeWidth / 2F, strokeWidth / 2F) {
+                    color = strokeColor
+                    style = Style.FILL_AND_STROKE
+                    draw(canvas)
+                    color = textColor
+                    style = Style.FILL
+                    draw(canvas)
+                }
+            }
+        }
+    }
+
+    fun bind(marker: Marker) {
+        staticLayout = newStaticLayout(marker.title.orEmpty())
+        requestLayout()
+    }
+
+}
 ```
 
 <a id="gradle-managed-virtual-devices"></a>
