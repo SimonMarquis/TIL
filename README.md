@@ -155,6 +155,7 @@
     - [Brewfile](#brewfile)
     - [Defaults](#defaults)
     - [Karabiner](#karabiner)
+    - [Stats](#stats)
     - [UnnaturalScrollWheels](#unnaturalscrollwheels)
 - [📄 Markdown](#📄-markdown)
     - [Blockquote highlight](#blockquote-highlight)
@@ -3121,6 +3122,13 @@ PC-Style configuration:
 ```
 
 [🔗](https://github.com/pqrs-org/Karabiner-Elements) [🔗](https://stackoverflow.com/questions/35874608/intellij-default-windows-keymap-on-mac-os-x) [🔗](https://ke-complex-modifications.pqrs.org/#pc_shortcuts)
+
+<a id="stats"></a>
+### Stats
+
+> macOS system monitor in your menu bar
+
+[🔗](https://github.com/exelban/stats)
 
 <a id="unnaturalscrollwheels"></a>
 ### UnnaturalScrollWheels
