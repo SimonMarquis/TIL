@@ -127,6 +127,7 @@
     - [Expect test failures](#expect-test-failures)
     - [Filter non-null values in a Map](#filter-non-null-values-in-a-map)
     - [Implicit lamda result with run and let](#implicit-lamda-result-with-run-and-let)
+    - [Infinitely repeating Sequence](#infinitely-repeating-sequence)
     - [Invoke operator on Companion objects](#invoke-operator-on-companion-objects)
     - [Invoke operator on Coroutines Dispatchers](#invoke-operator-on-coroutines-dispatchers)
     - [Kotlin script](#kotlin-script)
@@ -2452,6 +2453,14 @@ somethingNullable?.run { doSomething() } ?: fallback()
 somethingNullable?.let { it.doSomething() } ?: fallback()
 // PREFER
 somethingNullable?.also { it.doSomething() } ?: fallback()
+```
+
+<a id="infinitely-repeating-sequence"></a>
+### Infinitely repeating Sequence
+
+```kotlin
+fun <T> Sequence<T>.repeat() = sequence { while (true) yieldAll(this@repeat) }
+fun <T> Sequence<T>.repeat(n: Int) = sequence { repeat(n) inner@{ yieldAll(this@repeat) } }
 ```
 
 <a id="invoke-operator-on-companion-objects"></a>
