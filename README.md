@@ -2698,7 +2698,7 @@ fun String.toDate(input: String): Date? = regex.find(this)
 ```
 
 <a id="regex-destructuring-capturing-groups"></a>
-# Regex destructuring capturing groups
+### Regex destructuring capturing groups
 
 ```kotlin
 operator fun MatchResult.getValue(
