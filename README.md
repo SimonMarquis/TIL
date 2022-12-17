@@ -146,6 +146,7 @@
     - [SemVer](#semver)
     - [Singleton](#singleton)
     - [Synchronize a Map with a new Map of values](#synchronize-a-map-with-a-new-map-of-values)
+    - [takeWhileInclusive](#takewhileinclusive)
     - [Timeout for async operations](#timeout-for-async-operations)
     - [NoWhenBranchMatchedException](#nowhenbranchmatchedexception)
 - [🍎 Mac](#🍎-mac)
@@ -2916,6 +2917,20 @@ fun <Key, Value, T> MutableMap<Key, Value>.sync(
     itemsToAdd.forEach { put(it.key, onAdded(it)) }
 }
 ```
+
+<a id="takewhileinclusive"></a>
+### takeWhileInclusive
+
+Similar to `fun <T> Sequence<T>.takeWhile(predicate: (T) -> Boolean): Sequence<T>` but also includes the next non-matching element as well.
+
+```kotlin
+fun <T> Sequence<T>.takeWhileInclusive(predicate: (T) -> Boolean): Sequence<T> {
+    var shouldContinue = true
+    return takeWhile { shouldContinue.also { _ -> shouldContinue = predicate(it) } }
+}
+```
+
+[🔗](https://jivimberg.io/blog/2018/06/02/implementing-takewhileinclusive-in-kotlin/) [🔗](https://gist.github.com/matklad/54776705250e3b375618f59a8247a237)
 
 <a id="timeout-for-async-operations"></a>
 ### Timeout for async operations
