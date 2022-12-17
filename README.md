@@ -45,6 +45,7 @@
     - [ViewBinding extension](#viewbinding-extension)
     - [ViewBinding one-liner](#viewbinding-one-liner)
     - [ViewModel in custom View](#viewmodel-in-custom-view)
+    - [WebView Safe Browsing](#webview-safe-browsing)
     - [WorkManager diagnostic](#workmanager-diagnostic)
 - [🖥️ Bash](#🖥️-bash)
     - [Command options and positional arguments](#command-options-and-positional-arguments)
@@ -1244,6 +1245,18 @@ class CustomView @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
 }
 ```
+
+<a id="webview-safe-browsing"></a>
+### WebView Safe Browsing
+
+```xml
+<manifest>
+    <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing" android:value="true" />
+    <!-- ... -->
+</manifest>
+```
+
+[🔗](https://android-developers.googleblog.com/2017/06/whats-new-in-webview-security.html)
 
 <a id="workmanager-diagnostic"></a>
 ### WorkManager diagnostic 
