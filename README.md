@@ -95,6 +95,7 @@
     - [Declaring content exclusively found in one repository](#declaring-content-exclusively-found-in-one-repository)
     - [Gradle tasks](#gradle-tasks)
     - [List project properties](#list-project-properties)
+    - [Override build type attribute](#override-build-type-attribute)
     - [Project properties](#project-properties)
     - [Reproducible builds](#reproducible-builds)
     - [System properties](#system-properties)
@@ -1878,6 +1879,17 @@ gradlew -q properties --console=plain | grep "^<my-property>:" | awk '{printf $2
 
 # Or on newer versions
 gradlew -q properties --property=<my-property>
+```
+
+<a id="override-build-type-attribute"></a>
+### Override build type attribute
+
+```kotlin
+implementation(project(":lib")) {
+    attributes {
+        attribute(BuildTypeAttr.ATTRIBUTE, objects.named<BuildTypeAttr>(DEBUG))
+    }
+}
 ```
 
 <a id="project-properties"></a>
