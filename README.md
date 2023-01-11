@@ -1432,30 +1432,29 @@ interface RepositoryModule {
 ### Coroutines provider
 
 ```kotlin
-@Qualifier annotation class MainDispatcher
-@Qualifier annotation class MainImmediateDispatcher
-@Qualifier annotation class DefaultDispatcher
-@Qualifier annotation class IoDispatcher
-@Qualifier annotation class UnconfinedDispatcher
+@Qualifier
+annotation class Dispatcher(val type: Type) {
+    enum class Type { Default, IO, Main, MainImmediate, Unconfined }
+}
 
 
 @Module @InstallIn(SingletonComponent::class)
 object CoroutinesModule {
 
-    @Provides @MainDispatcher
-    fun main(): CoroutineDispatcher = Main
+    @Provides @Dispatcher(Main)
+    fun main(): CoroutineDispatcher = Dispatchers.Main
 
-    @Provides @MainImmediateDispatcher
-    fun mainImmediate(): CoroutineDispatcher = Main.immediate
+    @Provides @Dispatcher(MainImmediate)
+    fun mainImmediate(): CoroutineDispatcher = Dispatchers.Main.immediate
 
-    @Provides @DefaultDispatcher
-    fun default(): CoroutineDispatcher = Default
+    @Provides @Dispatcher(Default)
+    fun default(): CoroutineDispatcher = Dispatchers.Default
 
-    @Provides @IoDispatcher
-    fun io(): CoroutineDispatcher = IO
+    @Provides @Dispatcher(IO)
+    fun io(): CoroutineDispatcher = Dispatchers.IO
 
-    @Provides @UnconfinedDispatcher
-    fun unconfined(): CoroutineDispatcher = Unconfined
+    @Provides @Dispatcher(Unconfined)
+    fun unconfined(): CoroutineDispatcher = Dispatchers.Unconfined
 
     @Provides
     fun provider(): CoroutineDispatcherProvider = object : CoroutineDispatcherProvider {}
@@ -1468,6 +1467,14 @@ interface CoroutineDispatcherProvider {
     fun default(): CoroutineDispatcher = Default
     fun io(): CoroutineDispatcher = IO
     fun unconfined(): CoroutineDispatcher = Unconfined
+}
+
+fun CoroutineDispatcher.asDispatcherProvider() = object : DispatcherProvider {
+    override fun main(): CoroutineDispatcher = this@asDispatcherProvider
+    override fun mainImmediate(): CoroutineDispatcher = this@asDispatcherProvider
+    override fun default(): CoroutineDispatcher = this@asDispatcherProvider
+    override fun io(): CoroutineDispatcher = this@asDispatcherProvider
+    override fun unconfined(): CoroutineDispatcher = this@asDispatcherProvider
 }
 ```
 
