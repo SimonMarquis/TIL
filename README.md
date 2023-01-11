@@ -107,6 +107,7 @@
     - [Code formatting as a weak warning](#code-formatting-as-a-weak-warning)
     - [EditorConfig](#editorconfig)
     - [Find and replace with regex capturing groups](#find-and-replace-with-regex-capturing-groups)
+    - [KSP generated code](#ksp-generated-code)
     - [Plugins](#plugins)
     - [Project icon](#project-icon)
     - [Required plugins](#required-plugins)
@@ -2100,6 +2101,31 @@ ij_kotlin_allow_trailing_comma_on_call_site = true
 - Replace: `<h1>${title}</h1>`
 
 [🔗](https://www.jetbrains.com/help/idea/tutorial-finding-and-replacing-text-using-regular-expressions.html#capture_groups_and_backreference)
+
+<a id="ksp-generated-code"></a>
+### KSP generated code
+
+- JVM
+  ```kotlin
+  kotlin {
+      sourceSets.main {
+          kotlin.srcDir("build/generated/ksp/main/kotlin")
+      }
+      sourceSets.test {
+          kotlin.srcDir("build/generated/ksp/test/kotlin")
+      }
+  }
+  ```
+- Android
+  ```kotlin
+  androidComponents.beforeVariants {
+      kotlin.sourceSets.register(it.name) {
+          kotlin.srcDir(file("$buildDir/generated/ksp/${it.name}/kotlin"))
+      }
+  }
+  ```
+
+[🔗](https://kotlinlang.org/docs/ksp-quickstart.html#make-ide-aware-of-generated-code)
 
 <a id="plugins"></a>
 ### Plugins
