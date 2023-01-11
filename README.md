@@ -3619,6 +3619,8 @@ Or simply type `@email draft`.
   > 👽 Open source API development ecosystem
 - [httpbin.org](https://httpbin.org/)
   > A simple HTTP Request & Response Service.
+- [IconKitchen](https://icon.kitchen/)
+  > App Icon Generator
 - [insomnia](https://github.com/Kong/insomnia)
   > The open-source, cross-platform API client for GraphQL, REST, WebSockets and gRPC.
 - [Kotlin Playground](https://play.kotlinlang.org/)
@@ -3647,6 +3649,8 @@ Or simply type `@email draft`.
   > Make images smaller using best-in-class codecs, right in the browser.
 - [SVGOMG](https://jakearchibald.github.io/svgomg/)
   > Web GUI for SVGO
+- [UTF-8 Size](https://nightlynexus.github.io/utf8size/)
+  > A webpage for measuring UTF-8 text
 - [Whimsical](https://whimsical.com/)
   > Visual workspace for thinking and collaboration, combining flowcharts, wireframes, sticky notes, mind maps and docs.
 
