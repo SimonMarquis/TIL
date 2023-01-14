@@ -344,6 +344,10 @@ adb logcat -v time -s FA FA-SVC
 
 ### Google Maps Outlined Marker Label
 
+| 📹 | 🖼️ |
+|:---:|:---:|
+| <video controls muted autoplay loop width="250" height="145"><source src="./../assets/google-maps-label.mp4" type="video/mp4"></video> | ![google-maps-label-on-blue](assets/google-maps-label-on-blue.png)<br/>![google-maps-label-on-earth](assets/google-maps-label-on-earth.png) |
+
 ```kotlin
 import android.content.Context
 import android.graphics.Canvas
