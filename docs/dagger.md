@@ -81,11 +81,12 @@ fun CoroutineDispatcher.asDispatcherProvider() = object : DispatcherProvider {
 ### Extensions for Lazy & Provider
 
 ```kotlin
+package dagger
+
 import kotlin.reflect.KProperty
 
 operator fun <T> Provider<T>.getValue(thisRef: Any?, property: KProperty<*>): T = get()
-operator fun <T> dagger.Lazy<T>.getValue(thisRef: Any?, property: KProperty<*>): T = get()
-
+operator fun <T> Lazy<T>.getValue(thisRef: Any?, property: KProperty<*>): T = get()
 
 class Repository @Inject constructor(
     api: dagger.Lazy<Api>,
