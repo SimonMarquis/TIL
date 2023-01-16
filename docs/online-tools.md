@@ -22,6 +22,8 @@ title: 🕸️ Online tools
   > Convert file to `data:` urls
 - [FCM toolbox](https://simonmarquis.github.io/FCM-toolbox)
   > 📲 Firebase Cloud Messaging toolbox
+- [Free Favicon Maker](https://formito.com/tools/favicon)
+  > Create SVG & PNG favicon in seconds!
 - [Google Open Source](https://cs.opensource.google/)
   > Search all projects for code or files
 - [Google Play badge](https://play.google.com/intl/en_us/badges/)
