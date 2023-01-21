@@ -241,6 +241,12 @@ title: 💎 Miscellaneous
 
 [🔗](https://en.wikipedia.org/wiki/Box-drawing_character)
 
+### Fonts with ligatures
+
+- [FiraCode](https://github.com/tonsky/FiraCode)
+- [Hack](https://sourcefoundry.org/hack/)
+- [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+
 ### Gmail templates
 
 - Create a new Google Docs https://docs.new
