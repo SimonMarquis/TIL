@@ -146,37 +146,69 @@ title: 💎 Miscellaneous
 
 ### Bookmarklets
 
-- CSS boxes
+- <a class="md-button" href='javascript:{let o=void 0===_debug_layout_;[].forEach.call(document.querySelectorAll("*"),(function(l){l.style.outline=o?"1px solid #"+(~~(Math.random()*16777216)).toString(16):""}));var _debug_layout_=!!o||void 0}'>CSS boxes</a>
   ```javascript
-  javascript:{let d=(typeof _debug_layout_==='undefined');[].forEach.call(document.querySelectorAll("*"),function(a){a.style.outline=d?"1px solid #"+(~~(Math.random()*(1<<24))).toString(16):""});var _debug_layout_=d?true:undefined;}
+  let d = typeof _debug_layout_ === "undefined";
+  [].forEach.call(document.querySelectorAll("*"), function (a) {
+    a.style.outline = d
+      ? "1px solid #" + (~~(Math.random() * (1 << 24))).toString(16)
+      : "";
+  });
+  var _debug_layout_ = d ? true : undefined;
   ```
-- QrCode
+- <a class="md-button" href='javascript:var _size=400,_left=screen.width/2-_size/2,_top=screen.height/2-_size/2,_input=prompt("QRcode input",window.getSelection().toString());null!=_input&&window.open("https://chart.googleapis.com/chart?cht=qr&chs="+_size+"x"+_size+"&chld=L|0&choe=UTF-8&chl="+encodeURIComponent(_input),"_blank","titlebar=no,menubar=no,scrollbars=no,status=no,width="+_size+",height="+_size+",top="+_top+",left="+_left);'>QrCode</a>
   ```javascript
-  javascript:var _size=400;var _left=(screen.width/2)-(_size/2);var _top=(screen.height/2)-(_size/2);var _input = prompt("QRcode input",window.getSelection().toString());if(_input!=null)window.open("https://chart.googleapis.com/chart?cht=qr&chs="+_size+"x"+_size+"&chld=L|0&choe=UTF-8&chl="+encodeURIComponent(_input), "_blank", "titlebar=no,menubar=no,scrollbars=no,status=no,width="+_size+",height="+_size+",top="+_top+",left="+_left);
+  var _size = 400;
+  var _left = screen.width / 2 - _size / 2;
+  var _top = screen.height / 2 - _size / 2;
+  var _input = prompt("QRcode input", window.getSelection().toString());
+  if (_input != null)
+    window.open(
+      "https://chart.googleapis.com/chart?cht=qr" +
+        "&chs=" + _size + "x" + _size +
+        "&chld=L|0&choe=UTF-8" +
+        "&chl=" + encodeURIComponent(_input),
+      "_blank",
+      "titlebar=no,menubar=no,scrollbars=no,status=no" +
+        ",width=" + _size + ",height=" + _size + ",top=" + _top + ",left=" + _left
+    );
   ```
-- URL encoder
+- <a class="md-button" href='javascript:var decoded=prompt("URL encoder input:",window.getSelection().toString());null!=decoded&&prompt("URL encoder output:",encodeURIComponent(decoded));void 0'>URL encoder</a>
   ```javascript
-  javascript: var decoded = prompt("URL encoder input:",window.getSelection().toString()); if(decoded!=null) prompt('URL encoder output:', encodeURIComponent(decoded));
+  var decoded = prompt("URL encoder input:", window.getSelection().toString());
+  if (decoded != null) prompt("URL encoder output:", encodeURIComponent(decoded));
   ```
-- URL decoder
+- <a class="md-button" href='javascript:var encoded=prompt("URL decoder input:",window.getSelection().toString());null!=encoded&&prompt("URL decoder output:",decodeURIComponent(encoded));void 0'>URL decoder</a>
   ```javascript
-  javascript: var encoded = prompt("URL decoder input:",window.getSelection().toString()); if(encoded!=null) prompt('URL decoder output:', decodeURIComponent(encoded));
+  var encoded = prompt("URL decoder input:", window.getSelection().toString());
+  if (encoded != null) prompt("URL decoder output:", decodeURIComponent(encoded));
   ```
-- Base64 encoder
+- <a class="md-button" href='javascript:var decoded=prompt("Base64 encoder input:",window.getSelection().toString());try{prompt("Base64 encoder output:",btoa(decoded))}catch(e){alert(e)};void 0'>Base64 encoder</a>
   ```javascript
-  javascript: var decoded = prompt("Base64 encoder input:",window.getSelection().toString()); if(decoded != null) try {prompt('Base64 encoder output:', btoa(decoded)); } catch(error) { alert(error); }
+  var decoded = prompt("Base64 encoder input:", window.getSelection().toString());
+  try {
+    prompt("Base64 encoder output:", btoa(decoded));
+  } catch (error) {
+    alert(error);
+  }
   ```
-- Base64 decoder
+- <a class="md-button" href='javascript:var encoded=prompt("Base64 decoder input:",window.getSelection().toString());try{prompt("Base64 decoder output:",atob(encoded))}catch(e){alert(e)};void 0'>Base64 decoder</a>
   ```javascript
-  javascript: var encoded = prompt("Base64 decoder input:",window.getSelection().toString()); if(encoded != null) try {prompt('Base64 decoder output:', atob(encoded)); } catch(error) { alert(error); }
+  var encoded = prompt("Base64 decoder input:", window.getSelection().toString());
+  try {
+    prompt("Base64 decoder output:", atob(encoded));
+  } catch (error) {
+    alert(error);
+  }
   ```
-- Raw HTML
+- <a class="md-button" href='javascript:document.body.contentEditable="true",document.designMode="on";void 0'>Edit website</a>
   ```javascript
+  document.body.contentEditable = "true";
+  document.designMode = "on";
+  ```
+- <a class="md-button" href="data:text/html;charset=utf-8,">Raw HTML</a>
+  ```
   data:text/html;charset=utf-8,
-  ```
-- Edit website
-  ```javascript
-  javascript:document.body.contentEditable = 'true'; document.designMode='on'; void 0
   ```
 
 [🔗](https://en.wikipedia.org/wiki/Bookmarklet)
