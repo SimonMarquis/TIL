@@ -263,6 +263,18 @@ Most <mark>salamander</mark>s are nocturnal, and hunt for insects, worms, and ot
 Most <mark>salamander</mark>s are nocturnal, and hunt for insects, worms, and other small creatures.
 </div>
 
+### [`meta`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta)
+
+#### [`theme-color`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color)
+
+!!! quote
+	The `theme-color` value for the `name` attribute of the `<meta>` element indicates a suggested color that user agents should use to customize the display of the page or of the surrounding user interface. If specified, the `content` attribute must contain a valid CSS `<color>`.
+
+```html
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="cyan" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="black" />
+```
+
 ### [`meter`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter)
 
 ```html
