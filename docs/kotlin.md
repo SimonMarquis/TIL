@@ -65,6 +65,38 @@ suspend inline fun <T, R> T.runSuspendCatching(block: T.() -> R): Result<R> = ru
 
 [🧑‍💻](https://play.kotlinlang.org/#eyJ2ZXJzaW9uIjoiMS42LjEwIiwicGxhdGZvcm0iOiJqYXZhIiwiYXJncyI6IiIsIm5vbmVNYXJrZXJzIjp0cnVlLCJ0aGVtZSI6ImlkZWEiLCJjb2RlIjoiaW1wb3J0IGtvdGxpbnguY29yb3V0aW5lcy4qXG5cbmZ1biA8VD4gUmVzdWx0PFQ+LnRocm93SWYoXG4gICAgcHJlZGljYXRlOiAoVGhyb3dhYmxlKSAtPiBCb29sZWFuXG4pOiBSZXN1bHQ8VD4gPSBvbkZhaWx1cmUge1xuICAgIGlmIChwcmVkaWNhdGUoaXQpKSB0aHJvdyBpdFxufVxuXG5zdXNwZW5kIGZ1biA8VD4gcnVuU3VzcGVuZENhdGNoaW5nKFxuICAgIGJsb2NrOiAoKSAtPiBUXG4pOiBSZXN1bHQ8VD4gPSBydW5DYXRjaGluZyhibG9jaykudGhyb3dJZiB7XG4gICAgaXQgaXMgQ2FuY2VsbGF0aW9uRXhjZXB0aW9uXG59XG4ifQ==)
 
+### Execute commands in subprocess
+
+```kotlin
+/**
+ * ```
+ * val status: String = """git status""".exec()
+ * ```
+ */
+fun @receiver:Language("bash") String.exec() = Runtime.getRuntime().exec(this).text()
+
+/**
+ * ```
+ * val diff: String = """git diff""".execute {
+ *     environment() += ("GIT_DIFF_OPTS" to "--unified=10")
+ * }.text()
+ * ```
+ */
+fun @receiver:Language("bash") String.execute(
+    workingDir: File = Paths.get(".").toFile(),
+    redirectOutput: ProcessBuilder.Redirect = ProcessBuilder.Redirect.PIPE,
+    redirectError: ProcessBuilder.Redirect = ProcessBuilder.Redirect.PIPE,
+    configure: ProcessBuilder.() -> Unit = {},
+): Process = ProcessBuilder("""\s""".toRegex().split(this))
+    .directory(workingDir)
+    .redirectOutput(redirectOutput)
+    .redirectError(redirectError)
+    .apply(configure)
+    .start()
+
+private fun Process.text() = apply { waitFor() }.inputStream.bufferedReader().use { it.readText().trim() }
+```
+
 ### Expect test failures
 
 The following way of checking a test throws is strongly discouraged because of this single reason: it will succeed wherever the exception comes from, including from the setup code.
