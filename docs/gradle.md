@@ -150,6 +150,64 @@ systemProp.gradle.user.home=/gradle
 
 [🔗](https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_system_properties)
 
+### Test fixtures
+
+
+!!! note "Producer"
+
+    ```kotlin title="repo/build.gradle.kts"
+    plugins {
+        kotlin("jvm")
+        `java-test-fixtures`
+    }
+
+    dependencies {
+        // Dependencies of test fixtures (not leaked to consumers)
+        testFixturesImplementation("...")
+    }
+    ```
+
+    ```kotlin title="repo/src/main/kotlin/com/example/Repository.kt"
+    fun interface Repository {
+        operator fun invoke(id: String): Boolean
+    }
+    ```
+
+    ```kotlin title="repo/src/testFixtures/kotlin/com/example/FakeRepository.kt"
+    class FakeRepository(
+        private val block: (id: String) -> Boolean = ::fail
+    ): Repository {
+        override fun invoke(id: String): Boolean = block(id)
+    }
+    ```
+
+!!! note "Consumer"
+
+    ```kotlin title="app/build.gradle.kts"
+    plugins {
+        kotlin("jvm")
+    }
+
+    dependencies {
+        implementation(project(":repo"))
+        testImplementation(testFixtures(project(":repo")))
+    }
+    ```
+
+    ```kotlin title="app/src/test/kotlin/com/example/Test.kt"
+    class Test {
+
+        @Test
+        fun test() {
+            val repository: Repository = FakeRepository { id: String -> todo() }
+            /* ... */
+        }
+
+    }
+    ```
+
+[🔗](https://docs.gradle.org/current/userguide/java_testing.html#sec:java_test_fixtures)
+
 ### Upgrading the Gradle Wrapper
 
 ```bash
