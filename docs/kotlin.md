@@ -122,6 +122,118 @@ fun junit() {
 
 Also, the `expected` parameter has been removed from JUnit5.
 
+### Extensions
+
+#### Collections
+
+```kotlin
+fun <T> Sequence<T>.repeat() = sequence { while (true) yieldAll(this@repeat) }
+
+fun <T> Sequence<T>.repeat(n: Int) = sequence { repeat(n) inner@{ yieldAll(this@repeat) } }
+
+inline fun <T, R> Iterable<T>.foldInPlace(
+    initial: R,
+    operation: R.(T) -> Unit,
+): R = fold(initial) { acc: R, t: T -> acc.apply { operation(t) } }
+
+inline fun <T> Iterable<T>.partitionIndexed(
+    predicate: (index: Int, T) -> Boolean,
+): Pair<List<T>, List<T>> = withIndex()
+    .partition { (index, value) -> predicate(index, value) }
+    .map { it.map(IndexedValue<T>::value) }
+```
+
+#### Maths
+
+```kotlin
+@JvmName("intProduct")
+fun Iterable<Int>.product(): Long = fold(1L, Long::times)
+
+@JvmName("longProduct")
+fun Iterable<Long>.product(): Long = fold(1L, Long::times)
+
+fun <T> Iterable<T>.cartesianSquare(): List<Pair<T, T>> = flatMap { v -> map { v to it } }
+
+/**
+ * Euclid's algorithm for finding the greatest common divisor of a and b.
+ */
+fun gcd(a: Int, b: Int): Int = if (b == 0) a.absoluteValue else gcd(b, a % b)
+fun gcd(f: Int, vararg n: Int): Int = n.fold(f, ::gcd)
+fun Iterable<Int>.gcd(): Int = reduce(::gcd)
+
+/**
+ * Euclid's algorithm for finding the greatest common divisor of a and b.
+ */
+fun gcd(a: Long, b: Long): Long = if (b == 0L) a.absoluteValue else gcd(b, a % b)
+fun gcd(f: Long, vararg n: Long): Long = n.fold(f, ::gcd)
+fun Iterable<Long>.gcd(): Long = reduce(::gcd)
+
+/**
+ * Find the least common multiple of a and b using the gcd of a and b.
+ */
+fun lcm(a: Int, b: Int) = (a * b) / gcd(a, b)
+fun lcm(f: Int, vararg n: Int): Long = n.map { it.toLong() }.fold(f.toLong(), ::lcm)
+fun Iterable<Int>.lcm(): Long = map { it.toLong() }.reduce(::lcm)
+
+/**
+ * Find the least common multiple of a and b using the gcd of a and b.
+ */
+fun lcm(a: Long, b: Long) = (a * b) / gcd(a, b)
+fun lcm(f: Long, vararg n: Long): Long = n.fold(f, ::lcm)
+fun Iterable<Long>.lcm(): Long = reduce(::lcm)
+
+/**
+ * Simple algorithm to find the primes of the given Long.
+ */
+fun Long.primes(): Sequence<Long> = sequence {
+    var n = this@primes
+    var j = 2L
+    while (j * j <= n) {
+        while (n % j == 0L) {
+            yield(j)
+            n /= j
+        }
+        j++
+    }
+    if (n > 1) yield(n)
+}
+```
+
+#### Misc
+
+```kotlin
+operator fun String.times(n: Int) = repeat(n)
+
+inline fun <T, R> Pair<T, T>.map(transform: (T) -> R): Pair<R, R> = transform(first) to transform(second)
+```
+
+#### Permutations & Combinations
+
+```kotlin
+fun <T> List<T>.permutations(): List<List<T>> {
+    if (isEmpty()) return emptyList()
+    if (size == 1) return listOf(this)
+    val elementToInsert = first()
+    return drop(1).permutations().flatMap { p -> List(size) { p.toMutableList().apply { add(it, elementToInsert) } } }
+}
+
+fun <T> List<T>.permutationsSequence(): Sequence<List<T>> {
+    if (isEmpty()) return emptySequence()
+    if (size == 1) return sequenceOf(this)
+    val elementToInsert = first()
+    return drop(1).permutationsSequence()
+        .flatMap { p -> List(size) { p.toMutableList().apply { add(it, elementToInsert) } } }
+}
+
+fun <T> List<T>.pairs(): Sequence<Pair<T, T>> = sequence {
+    for (i in 0 until size - 1)
+        for (j in i + 1 until size) {
+            yield(this@pairs[i] to this@pairs[j])
+            yield(this@pairs[j] to this@pairs[i])
+        }
+}
+```
+
 ### Filter non-null values in a Map
 
 Kotlin already has a `Iterable<T?>.filterNotNull(): List<T>` but nothing for `Map`s. 🤷
