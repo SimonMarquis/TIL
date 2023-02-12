@@ -207,6 +207,14 @@ operator fun String.times(n: Int) = repeat(n)
 inline fun <T, R> Pair<T, T>.map(transform: (T) -> R): Pair<R, R> = transform(first) to transform(second)
 ```
 
+### Normalize line endings
+
+```kotlin
+fun String.normalizeLineEndings(
+    replacement: String = System.lineSeparator(),
+) = replace("""\r\n?""".toRegex(), replacement)
+```
+
 #### Permutations & Combinations
 
 ```kotlin
