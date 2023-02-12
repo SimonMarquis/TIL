@@ -22,3 +22,16 @@ title: 🔥 Firebase
 ```
 
 [🔗](https://firebase.google.com/docs/hosting/reserved-urls) [🔗](https://firebase.blog/posts/2017/04/easier-configuration-for-firebase-on-web)
+
+### Backup & Restore
+
+- :material-cloud-download-outline: Backup
+    ```bash
+    gsutil -m cp -R gs://xyz.appspot.com .
+    firebase database:get / --pretty > xyz.json
+    ```
+- :material-cloud-upload-outline: Restore
+    ```bash
+    gsutil -m cp -R . gs://xyz.appspot.com
+    firebase database:set / xyz.json
+    ```
