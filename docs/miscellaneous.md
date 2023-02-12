@@ -336,3 +336,18 @@ title: 💎 Miscellaneous
 - Insert →  Building blocks → Email draft
 
 Or simply type `@email draft`.
+
+### YAML Front Matter
+
+Front matter is metadata written in YAML, located at the top of a file and wrapped between `---`.
+
+```yaml
+---
+title: 💎 Miscellaneous
+author: Simon Marquis
+lang: en
+keywords:
+  - Miscellaneous
+  - Random
+---
+```
