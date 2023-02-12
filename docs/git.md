@@ -142,7 +142,7 @@ git rev-list --objects --all |
 ### Print changes between two refs
 
 ```bash
-git log --topo-order --pretty=format:"%h ~ %s" $1..$2 --no-merges
+git log --topo-order --pretty=format:"%h ~ %s" "$1..${2:-HEAD}" --no-merges
 ```
 
 ### Rebase dependent branch
