@@ -2,6 +2,182 @@
 title: 💽 Git
 ---
 
+??? example "Personal Git config files"
+
+    === ":simple-git: `~/.gitconfig`"
+
+        ```bash
+        [user]
+            name = Simon Marquis
+            email = contact@simon-marquis.fr
+
+        [branch]
+            autosetuprebase = always
+
+        [alias]
+            authors = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
+            branches = branch -a
+            changelog = "!f() { git log --topo-order --pretty=format:\"%h ~ %s\" \"$1..${2:-HEAD}\" --no-merges; }; f"
+            last = log -1 --stat
+            lg = log --all --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset" --abbrev-commit --date=relative
+            remotes = remote -v
+            start = !git init && git commit --allow-empty -m 'Initial commit'
+            tags = tag -n
+            this = !git init && git add --all && git commit -m 'Initial commit'
+            # git rebase --onto <what-branch> <from-exclusive>@{1} <up-to-inclusive>
+            rebase-onto = "!f() { git rebase --onto \"$1\" \"$1@{1}\" \"$2\"; }; f"
+            undo = reset --soft HEAD^
+            unstage = reset HEAD --
+            whoami= !git config --global user.name && git config --global user.email
+
+        [commit]
+            template = ~/.gitmessage
+
+        [core]
+            attributesFile = ~/.gitattributes
+            excludesfile = ~/.gitignore_global
+
+        [diff]
+            algorithm = patience
+
+        [diff "json.gz"]
+            binary = true
+            textconv = "!f(){ gzcat --suffix .gz \"$1\" | jq; }; f"
+
+        [filter "lfs"]
+            required = true
+            clean = git-lfs clean -- %f
+            smudge = git-lfs smudge -- %f
+            process = git-lfs filter-process
+
+        [fetch]
+            prune = true
+
+        [gitreview]
+            notopic = true
+
+        [init]
+            defaultBranch = main
+
+        [merge]
+            ff = false
+            autoStash = true
+
+        [pull]
+            rebase = true
+
+        [push]
+            default = current
+
+        [rebase]
+            autoSquash = true
+            autoStash = true
+
+        [rerere]
+            enabled = true
+        ```
+
+    === ":simple-git: `~/.gitignore_global`"
+
+        ```bash
+        ### Java / Kotlin ###
+        # Compiled class file
+        *.class
+
+        # Log file
+        *.log
+
+        # BlueJ files
+        *.ctxt
+
+        # Mobile Tools for Java (J2ME)
+        .mtj.tmp/
+
+        # virtual machine crash logs
+        hs_err_pid*
+        replay_pid*
+
+        ### Linux ###
+        *~
+
+        # temporary files which can be created if a process still has a handle open of a deleted file
+        .fuse_hidden*
+
+        # KDE directory preferences
+        .directory
+
+        # Linux trash folder which might appear on any partition or disk
+        .Trash-*
+
+        # .nfs files are created when an open file is removed but is still being accessed
+        .nfs*
+
+        ### macOS ###
+        # General
+        .DS_Store
+        .AppleDouble
+        .LSOverride
+
+        # Icon must end with two \r
+        Icon
+
+
+        # Thumbnails
+        ._*
+
+        # Files that might appear in the root of a volume
+        .DocumentRevisions-V100
+        .fseventsd
+        .Spotlight-V100
+        .TemporaryItems
+        .Trashes
+        .VolumeIcon.icns
+        .com.apple.timemachine.donotpresent
+
+        # Directories potentially created on remote AFP share
+        .AppleDB
+        .AppleDesktop
+        Network Trash Folder
+        Temporary Items
+        .apdisk
+
+        ### macOS Patch ###
+        # iCloud generated files
+        *.icloud
+
+        ### Windows ###
+        # Windows thumbnail cache files
+        Thumbs.db
+        Thumbs.db:encryptable
+        ehthumbs.db
+        ehthumbs_vista.db
+
+        # Dump file
+        *.stackdump
+
+        # Folder config file
+        [Dd]esktop.ini
+
+        # Recycle Bin used on file shares
+        $RECYCLE.BIN/
+
+        # Windows Installer files
+        *.cab
+        *.msi
+        *.msix
+        *.msm
+        *.msp
+
+        # Windows shortcuts
+        *.lnk
+        ```
+
+    === ":simple-git: `~/.gitattributes`"
+
+        ```bash
+        *.json.gz diff=json.gz
+        ```
+
 ### Alias to function
 
 ```bash title="~/.gitconfig"
@@ -13,7 +189,7 @@ title: 💽 Git
 
 ```bash title="~/.gitconfig"
 [alias]
-    authors = "!git log --pretty=format:%aN | sort | uniq -c | sort -rn"
+    authors = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
 ```
 
 ### Change author without changing dates
