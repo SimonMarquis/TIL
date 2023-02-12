@@ -64,6 +64,7 @@ ij_kotlin_allow_trailing_comma_on_call_site = true
 
 - [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
 - [Atom Material Icons](https://plugins.jetbrains.com/plugin/10044-atom-material-icons)
+- [File Expander](https://plugins.jetbrains.com/plugin/11940-file-expander)
 - [XWin Keymap](https://plugins.jetbrains.com/plugin/13094-xwin-keymap)
 
 ### Project icon
