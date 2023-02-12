@@ -40,6 +40,15 @@ or
 git diff-index [--cached] [--stat] [--quiet] --exit-code HEAD # 1:yes, 0:no
 ```
 
+### Commit with message from standard input
+
+```bash
+( \
+  echo -e "Hello, World!" ; \
+  any-command-that-will-produce-text-output ; \
+) | git commit --file -
+```
+
 ### Default commit message
 
 ```bash
