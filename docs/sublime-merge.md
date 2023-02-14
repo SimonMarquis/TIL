@@ -4,8 +4,10 @@ title: 🔀 Sublime Merge
 
 ### Custom commands
 
-> `Preferences` → `Browse Packages`  
-> [Documentation](https://www.sublimemerge.com/docs/custom_commands)
+!!! example "`Preferences` → `Browse Packages`"
+
+    - [Menus](https://www.sublimemerge.com/docs/menus)
+    - [Custom Commands](https://www.sublimemerge.com/docs/custom_commands)
 
 === "`Action.sublime-menu`"
     ```json
@@ -20,13 +22,31 @@ title: 🔀 Sublime Merge
     ]
     ```
 
+=== "`Branch.sublime-menu`"
+    ```json
+    [
+        { "caption": "-", "id": "end" },
+        {
+            "caption": "🔗 Open Branch $branch",
+            "command": "git",
+            "args": { "argv": ["open", "branch", "$branch"] }
+        },
+        {
+            "caption": "🔗 Open Pull Request on $branch",
+            "command": "git",
+            "args": { "argv": ["open", "pr", "$branch"] }
+        }
+    ]
+    ```
+
 === "`Commit.sublime-menu`"
     ```json
     [
+        { "caption": "-", "id": "end" },
         {
-            "caption": "Gerrit: Open commit $short_commit",
+            "caption": "🔗 Open Commit $short_commit",
             "command": "git",
-            "args": { "argv": ["gerrit-query", "commit:", "$commit"] }
+            "args": { "argv": ["open", "commit", "$commit"] }
         }
     ]
     ```
@@ -75,23 +95,36 @@ title: 🔀 Sublime Merge
             "command": "git",
             "args": {"argv": ["branch", "--no-merged", "$select_branch"]}
         },
-        // Gerrit UI
-        // git config gerrit.web-ui-url "https://..."
-        // git config --global alias.gerrit-query "!f() { IFS='' ; URL=\"$(git config gerrit.web-ui-url)/q/$*\" ; explorer \"$URL\" ; }; f"
+        // Code Review
         {
-            "caption": "Gerrit: Search…\t/q/<query>",
+            "caption": "🔗 Open Repository…",
             "command": "git",
-            "args": { "argv": ["gerrit-query", "$text"] }
+            "args": { "argv": ["open", "repo"] }
         },
         {
-            "caption": "Gerrit: Open commit…\t/q/commit:<commit>",
+            "caption": "🔗 Open Branch…",
             "command": "git",
-            "args": { "argv": ["gerrit-query", "commit:", "$select_commit"] }
+            "args": { "argv": ["open", "branch", "$select_branch"] }
         },
         {
-            "caption": "Gerrit: Open branch…\t/q/branch:<branch>",
+            "caption": "🔗 Open Pull Request…",
             "command": "git",
-            "args": { "argv": ["gerrit-query", "branch:", "$select_local_branch"] }
+            "args": { "argv": ["open", "pr", "$select_branch"] }
+        },
+        {
+            "caption": "🔗 Open Tag…",
+            "command": "git",
+            "args": { "argv": ["open", "tag", "$select_tag"] }
+        },
+        {
+            "caption": "🔗 Open Commit…",
+            "command": "git",
+            "args": { "argv": ["open", "commit", "$select_commit"] }
+        },
+        {
+            "caption": "🔗 Open Search…",
+            "command": "git",
+            "args": { "argv": ["open", "search", "$text"] }
         },
         // Gerrit Review
         {
@@ -166,4 +199,33 @@ title: 🔀 Sublime Merge
         "hide_menu": true,
         "always_show_command_status": true
     }
+    ```
+
+=== "`Remote Branch.sublime-menu`"
+    ```json
+    [
+        { "caption": "-", "id": "end" },
+        {
+            "caption": "🔗 Open Branch $branch",
+            "command": "git",
+            "args": { "argv": ["open", "branch", "$branch"] }
+        },
+        {
+            "caption": "🔗 Open Pull Request on $branch",
+            "command": "git",
+            "args": { "argv": ["open", "pr", "$branch"] }
+        }
+    ]
+    ```
+
+=== "`Tag.sublime-menu`"
+    ```json
+    [
+        { "caption": "-", "id": "end" },
+        {
+            "caption": "🔗 Open Tag $tag_name",
+            "command": "git",
+            "args": { "argv": ["open", "tag", "$tag_name"] }
+        }
+    ]
     ```
