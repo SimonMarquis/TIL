@@ -21,6 +21,7 @@ title: 💽 Git
             changelog = "!f() { git log --topo-order --pretty=format:\"%h ~ %s\" \"$1..${2:-HEAD}\" --no-merges; }; f"
             last = log -1 --stat
             lg = log --all --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset" --abbrev-commit --date=relative
+            open = "!f() {\n local type=\"${1:-branch}\"\n local target=\"${2:-HEAD}\"\n local current_upstream=\"$(git for-each-ref --format=\"%(upstream:remotename)\" \"$(git symbolic-ref -q \"$target\")\")\"\n local first_remote=\"$(git remote show | head -n 1)\"\n local remote=${current_upstream:-$first_remote}\n remote=${upstream:-origin}\n\n if [ \"$type\" = \"branch\" ] || [ \"$type\" = \"pr\" ]; then\n # get full name (i.e. refs/heads/*; refs/remotes/*/*); src: https://stackoverflow.com/a/9753364\n target=\"$(git rev-parse --symbolic-full-name \"$target\")\"\n\n if [ \"$target\" != \"${target#\"refs/remotes/\"}\" ]; then\n # extract from remote branch reference\n target=\"${target#\"refs/remotes/\"}\"\n else\n # extract from local branch reference; src: https://stackoverflow.com/a/9753364\n target=\"$(git for-each-ref --format=\"%(upstream:short)\" \"$target\")\"\n fi\n # split remote/branch\n remote=\"${target%%/*}\"\n target=\"${target#\"$remote/\"}\"\n\n if [ -z \"$remote\" ]; then\n echo \"Branch ($2) does not point to a remote repository.\" >&2\n return 2\n fi\n fi\n\n local repo_url=\"$(git remote get-url \"$remote\" | sed -E -e \"s/(\\.(com|org|io))\\:/\\1\\//\" -e \"s/git@/https:\\/\\//\" -e \"s/\\.git$//\")\"\n if [ -z \"$repo_url\" ]; then\n echo \"Cannot open: no remote repository configured under ($remote)\" >&2\n return 1\n fi\n\n case \"$(echo \"$repo_url\" | tr \"[:upper:]\" \"[:lower:]\")\" in\n *github*)\n case \"$type\" in\n \"repo\") ;;\n \"commit\") repo_url=\"$repo_url/commit/$(git rev-parse \"$target\")\" ;;\n \"pr\")  repo_url=\"$repo_url/compare/$target?quick_pull=1\" ;;\n \"tag\") repo_url=\"$repo_url/releases/tag/$target\" ;;\n \"branch\") repo_url=\"$repo_url/tree/$target\" ;;\n *) echo \"Unsupported action: $type\" >&2 ; return 1 ;;\n esac\n ;;\n *bitbucket*)\n case \"$type\" in\n \"repo\") ;;\n \"commit\") repo_url=\"$repo_url/commits/$(git rev-parse \"$target\")\" ;;\n \"pr\")  repo_url=\"$repo_url/pull-requests/new?source=$target\" ;;\n \"tag\") repo_url=\"$repo_url/src/$target\" ;;\n \"branch\") repo_url=\"$repo_url/src/$target\" ;;\n *) echo \"Unsupported action: $type\" >&2 ; return 1 ;;\n esac\n ;;\n *gitlab*)\n case \"$type\" in\n \"repo\") ;;\n \"commit\") repo_url=\"$repo_url/-/commit/$(git rev-parse \"$target\")\" ;;\n \"pr\")  repo_url=\"$repo_url/-/merge_requests/new?merge_request[source_branch]=$target\" ;;\n \"tag\") repo_url=\"$repo_url/-/tags/$target\" ;;\n \"branch\") repo_url=\"$repo_url/-/tree/$target\" ;;\n *) echo \"Unsupported action: $type\" >&2 ; return 1 ;;\n esac\n ;;\n *azure*)\n case \"$type\" in\n \"repo\") ;;\n \"commit\") repo_url=\"$repo_url/commit/$(git rev-parse \"$target\")\" ;;\n \"pr\")  repo_url=\"$repo_url/pullrequestcreate?sourceRef=$target\" ;;\n \"tag\") repo_url=\"$repo_url?version=GT$target\" ;;\n \"branch\") repo_url=\"$repo_url?version=GB$target\" ;;\n *) echo \"Unsupported action: $type\" >&2 ; return 1 ;;\n esac\n ;;\n *review*|*gerrit*)\n local gerrit_repo_url=$(git config gerrit.web-ui-url)\n if [ -z \"$gerrit_repo_url\" ]; then\n echo \"Unknown Gerrit URL: git config gerrit.web-ui-url <url>\" >&2\n return 1\n fi\n case \"$type\" in\n \"repo\") repo_url=\"$gerrit_repo_url\" ;;\n \"commit\") repo_url=\"$gerrit_repo_url/q/commit:$(git rev-parse \"$target\")\" ;;\n \"tag\") repo_url=\"$gerrit_repo_url/q/tag:$target\" ;;\n \"branch\") repo_url=\"$gerrit_repo_url/q/branch:$target\" ;;\n \"search\") repo_url=\"$gerrit_repo_url/q/$target\" ;;\n *) echo \"Unsupported action: $type\" >&2 ; return 1 ;;\n esac\n ;;\n *) echo \"Unsupported repository type: $repo_url\" >&2 ; return 1 ;;\n esac\n\n case \"$(uname -sr)\" in\n Darwin*) open \"$repo_url\" ;; # macOS\n Linux*Microsoft*) explorer.exe \"$repo_url\" ;; # WSL\n Linux*) xdg-open \"$repo_url\" ;; # Linux\n CYGWIN*|MINGW*|MINGW32*|MSYS*) powershell start $repo_url ;; # Windows\n *) echo \"Unsupported OS $(uname -sr)\" >&2 ; return 1 ;;\n esac\n\n}; f"
             remotes = remote -v
             start = git init && git commit --allow-empty -m 'Initial commit'
             tags = tag -n
@@ -177,6 +178,116 @@ title: 💽 Git
 
         ```bash
         *.json.gz diff=json.gz
+        ```
+
+    === ":material-console: `~/setup-code-review.sh`"
+
+        ```bash
+        #!/usr/bin/env bash
+
+        git config --global alias.open '!f() {
+            local type="${1:-branch}"
+            local target="${2:-HEAD}"
+            local current_upstream="$(git for-each-ref --format="%(upstream:remotename)" "$(git symbolic-ref -q "$target")")"
+            local first_remote="$(git remote show | head -n 1)"
+            local remote=${current_upstream:-$first_remote}
+            remote=${upstream:-origin}
+
+            if [ "$type" = "branch" ] || [ "$type" = "pr" ]; then
+                # get full name (i.e. refs/heads/*; refs/remotes/*/*); src: https://stackoverflow.com/a/9753364
+                target="$(git rev-parse --symbolic-full-name "$target")"
+
+                if [ "$target" != "${target#"refs/remotes/"}" ]; then
+                    # extract from remote branch reference
+                    target="${target#"refs/remotes/"}"
+                else
+                    # extract from local branch reference; src: https://stackoverflow.com/a/9753364
+                    target="$(git for-each-ref --format="%(upstream:short)" "$target")"
+                fi
+                # split remote/branch
+                remote="${target%%/*}"
+                target="${target#"$remote/"}"
+
+                if [ -z "$remote" ]; then
+                    echo "Branch ($2) does not point to a remote repository." >&2
+                    return 2
+                fi
+            fi
+
+            local repo_url="$(git remote get-url "$remote" | sed -E -e "s/(\.(com|org|io))\:/\1\//" -e "s/git@/https:\/\//" -e "s/\.git$//")"
+            if [ -z "$repo_url" ]; then
+                echo "Cannot open: no remote repository configured under ($remote)" >&2
+                return 1
+            fi
+
+            case "$(echo "$repo_url" | tr "[:upper:]" "[:lower:]")" in
+                *github*)
+                    case "$type" in
+                        "repo") ;;
+                        "commit") repo_url="$repo_url/commit/$(git rev-parse "$target")" ;;
+                        "pr")     repo_url="$repo_url/compare/$target?quick_pull=1" ;;
+                        "tag")    repo_url="$repo_url/releases/tag/$target" ;;
+                        "branch") repo_url="$repo_url/tree/$target" ;;
+                        *) echo "Unsupported action: $type" >&2 ; return 1 ;;
+                    esac
+                    ;;
+                *bitbucket*)
+                    case "$type" in
+                        "repo") ;;
+                        "commit") repo_url="$repo_url/commits/$(git rev-parse "$target")" ;;
+                        "pr")     repo_url="$repo_url/pull-requests/new?source=$target" ;;
+                        "tag")    repo_url="$repo_url/src/$target" ;;
+                        "branch") repo_url="$repo_url/src/$target" ;;
+                        *) echo "Unsupported action: $type" >&2 ; return 1 ;;
+                    esac
+                    ;;
+                *gitlab*)
+                    case "$type" in
+                        "repo") ;;
+                        "commit") repo_url="$repo_url/-/commit/$(git rev-parse "$target")" ;;
+                        "pr")     repo_url="$repo_url/-/merge_requests/new?merge_request[source_branch]=$target" ;;
+                        "tag")    repo_url="$repo_url/-/tags/$target" ;;
+                        "branch") repo_url="$repo_url/-/tree/$target" ;;
+                        *) echo "Unsupported action: $type" >&2 ; return 1 ;;
+                    esac
+                    ;;
+                *azure*)
+                    case "$type" in
+                        "repo") ;;
+                        "commit") repo_url="$repo_url/commit/$(git rev-parse "$target")" ;;
+                        "pr")     repo_url="$repo_url/pullrequestcreate?sourceRef=$target" ;;
+                        "tag")    repo_url="$repo_url?version=GT$target" ;;
+                        "branch") repo_url="$repo_url?version=GB$target" ;;
+                        *) echo "Unsupported action: $type" >&2 ; return 1 ;;
+                    esac
+                    ;;
+                *review*|*gerrit*)
+                    local gerrit_repo_url=$(git config gerrit.web-ui-url)
+                    if [ -z "$gerrit_repo_url" ]; then
+                        echo "Unknown Gerrit URL: git config gerrit.web-ui-url <url>" >&2
+                        return 1
+                    fi
+                    case "$type" in
+                        "repo")   repo_url="$gerrit_repo_url" ;;
+                        "commit") repo_url="$gerrit_repo_url/q/commit:$(git rev-parse "$target")" ;;
+                        "tag")    repo_url="$gerrit_repo_url/q/tag:$target" ;;
+                        "branch") repo_url="$gerrit_repo_url/q/branch:$target" ;;
+                        "search") repo_url="$gerrit_repo_url/q/$target" ;;
+                        *) echo "Unsupported action: $type" >&2 ; return 1 ;;
+                    esac
+                    ;;
+                *) echo "Unsupported repository type: $repo_url" >&2 ; return 1 ;;
+            esac
+
+            case "$(uname -sr)" in
+                Darwin*)                       open "$repo_url" ;;           # macOS
+                Linux*Microsoft*)              explorer.exe "$repo_url" ;;   # WSL
+                Linux*)                        xdg-open "$repo_url" ;;       # Linux
+                CYGWIN*|MINGW*|MINGW32*|MSYS*) powershell start $repo_url ;; # Windows
+                *) echo "Unsupported OS $(uname -sr)" >&2 ; return 1 ;;
+            esac
+
+        }; f'
         ```
 
 ### Alias to function
