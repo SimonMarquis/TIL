@@ -54,6 +54,8 @@ title: 🕸️ Online tools
   > SVG icon animation tool for Android, iOS, and the web
 - [ShellCheck](https://www.shellcheck.net/)
   > finds bugs in your shell scripts.
+- [Simple Icons](https://github.com/simple-icons/simple-icons)
+  > Free SVG icons for popular brands
 - [SlidesCodeHighlighter](https://romannurik.github.io/SlidesCodeHighlighter/)
   > A little web app that helps you copy+paste syntax-highlighted code into slide decks.
 - [SQLite Viewer](https://inloop.github.io/sqlite-viewer/)
