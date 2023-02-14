@@ -15,20 +15,21 @@ title: 💽 Git
             autosetuprebase = always
 
         [alias]
-            authors = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
+            aliases = git config --global -l | grep alias | sort;
+            authors = git log --pretty=format:%aN | sort | uniq -c | sort -rn
             branches = branch -a
             changelog = "!f() { git log --topo-order --pretty=format:\"%h ~ %s\" \"$1..${2:-HEAD}\" --no-merges; }; f"
             last = log -1 --stat
             lg = log --all --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset" --abbrev-commit --date=relative
             remotes = remote -v
-            start = !git init && git commit --allow-empty -m 'Initial commit'
+            start = git init && git commit --allow-empty -m 'Initial commit'
             tags = tag -n
-            this = !git init && git add --all && git commit -m 'Initial commit'
+            this = git init && git add --all && git commit -m 'Initial commit'
             # git rebase --onto <what-branch> <from-exclusive>@{1} <up-to-inclusive>
             rebase-onto = "!f() { git rebase --onto \"$1\" \"$1@{1}\" \"$2\"; }; f"
             undo = reset --soft HEAD^
             unstage = reset HEAD --
-            whoami= !git config --global user.name && git config --global user.email
+            whoami = git config --global user.name && git config --global user.email
 
         [commit]
             template = ~/.gitmessage
