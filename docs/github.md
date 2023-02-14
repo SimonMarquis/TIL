@@ -350,7 +350,9 @@ jobs:
     - `skip-checks:true`
     - `skip-checks: true`
 
-[🔗](https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs)
+    To *request* checks for a commit, end the commit message with two empty lines followed by `request-checks: true`.
+
+[🔗](https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs) [🔗](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#skipping-and-requesting-checks-for-individual-commits)
 
 ### Workflow input types
 
