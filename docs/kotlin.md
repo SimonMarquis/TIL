@@ -433,6 +433,41 @@ fun coJustAwait(
 }
 ```
 
+### NoWhenBranchMatchedException
+
+Using the `java.io.Serializable` interface (or custom `android.os.Parcelable` code) for sealed classe objects might lead to `kotlin.NoWhenBranchMatchedException` while using the Kotlin's `when` expression.  
+The reason is fairly simple but not obvious…
+
+When an object is serialized and then deserialized, the result won't be the same object instance anymore.  
+But unfortunately, the Kotlin compiler does not warn us about this.  
+Which means the following test code will fail without any warning:
+
+```kotlin
+sealed class SealedClass : Serializable {
+    object SealedObject: SealedClass()
+}
+
+@Test
+fun test() = SealedObject.serialize().deserialize<SealedObject>().check()
+
+fun SealedClass.check() = when(this) {
+    SealedObject -> Unit
+    // This will crash here with: kotlin.NoWhenBranchMatchedException
+}
+```
+
+Even the `Add remaining branches` context action will fall into this issue.   
+What must be done instead is to check for **structural** equality (`==`) instead of **referential** equality (`===`).
+
+```kotlin
+fun SealedClass.check() = when(this) {
+    is SealedObject -> Unit
+    // This will no longer crash
+}
+```
+
+This is also the case when creating mock objects (with MockK or Mockito).
+
 ### Property delegate to cancel previous Job
 
 ```kotlin
@@ -744,38 +779,3 @@ suspend fun <T> Deferred<T>.await(
     defaultValue: T,
 ): T = withTimeout(duration) { await() } ?: defaultValue
 ```
-
-### NoWhenBranchMatchedException
-
-Using the `java.io.Serializable` interface (or custom `android.os.Parcelable` code) for sealed classe objects might lead to `kotlin.NoWhenBranchMatchedException` while using the Kotlin's `when` expression.  
-The reason is fairly simple but not obvious…
-
-When an object is serialized and then deserialized, the result won't be the same object instance anymore.  
-But unfortunately, the Kotlin compiler does not warn us about this.  
-Which means the following test code will fail without any warning:
-
-```kotlin
-sealed class SealedClass : Serializable {
-    object SealedObject: SealedClass()
-}
-
-@Test
-fun test() = SealedObject.serialize().deserialize<SealedObject>().check()
-
-fun SealedClass.check() = when(this) {
-    SealedObject -> Unit
-    // This will crash here with: kotlin.NoWhenBranchMatchedException
-}
-```
-
-Even the `Add remaining branches` context action will fall into this issue.   
-What must be done instead is to check for **structural** equality (`==`) instead of **referential** equality (`===`).
-
-```kotlin
-fun SealedClass.check() = when(this) {
-    is SealedObject -> Unit
-    // This will no longer crash
-}
-```
-
-This is also the case when creating mock objects (with MockK or Mockito).
