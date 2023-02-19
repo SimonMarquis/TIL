@@ -779,3 +779,13 @@ suspend fun <T> Deferred<T>.await(
     defaultValue: T,
 ): T = withTimeout(duration) { await() } ?: defaultValue
 ```
+
+### Warnings as errors
+
+```kotlin
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        allWarningsAsErrors = true
+    }
+}
+```
