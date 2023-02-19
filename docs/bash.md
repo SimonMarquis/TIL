@@ -45,3 +45,11 @@ time {
 ```bash
 find . -path "*/build" -prune -o -name "*.kt" -print
 ```
+
+### Remove ANSI escape sequences
+
+```bash
+sed -e 's/\x1b\[[0-9;]*m//g'
+```
+
+[🔗](https://superuser.com/a/380778/733209)
