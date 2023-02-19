@@ -157,17 +157,22 @@ jobs:
 
 ### Matching multiple steps outcome
 
+!!! warning
+    
+    A status check function call is **required**, otherwise an implicit `success()` is will be applied.
+
+
 ```yaml
 steps:
   - id: foo
     run: ...
 
   - name: 👎
-    if: ${{ steps.foo.outcome == "success" || steps.foo.outcome == "failure }}
+    if: ${{ always() && (steps.foo.outcome == "success" || steps.foo.outcome == "failure) }}
     run: ...
 
   - name: 👍
-    if: ${{ contains(fromJSON('["success", "failure"]'), steps.foo.outcome) }}
+    if: ${{ always() && contains(fromJSON('["success", "failure"]'), steps.foo.outcome) }}
     run: ...
 ```
 
