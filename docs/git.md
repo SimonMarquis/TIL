@@ -427,6 +427,14 @@ git rev-list --objects --all |
 
 [🔗](https://stackoverflow.com/a/42544963/3615879)
 
+### Override URLs or protocols
+
+```bash
+git config --global url."https://github".insteadOf "git://github"
+```
+
+[🔗](https://git-scm.com/docs/git-config#Documentation/git-config.txt-urlltbasegtinsteadOf)
+
 ### Print changes between two refs
 
 ```bash
