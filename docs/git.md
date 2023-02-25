@@ -177,6 +177,16 @@ title: 💽 Git
     === ":simple-git: `~/.gitattributes`"
 
         ```bash
+        * text=auto
+
+        *.bat text eol=crlf
+
+        *.jar binary
+        *.png binary
+        *.gif binary
+        *.jpg binary
+        *.jpeg binary
+
         *.json.gz diff=json.gz
         ```
 
@@ -465,6 +475,14 @@ git rebase --onto featureA featureA@{1} featureB
 ```bash
 find . -name '*.git' -execdir sh -c 'cd {} && git gc' \;
 ```
+
+### Renormalize line endings
+
+```bash
+git add --renormalize .
+```
+
+[🔗](https://git-scm.com/docs/git-add#Documentation/git-add.txt---renormalize)
 
 ### Signing commits with GPG
 
