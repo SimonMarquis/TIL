@@ -389,6 +389,18 @@ git config --global commit.template ~/.gitmessage
     algorithm = patience
 ```
 
+### Executable file permission on Windows
+
+```bash
+git add --chmod=+x -- <file>
+```
+
+or
+
+```bash
+git update-index --chmod=+x <file>
+```
+
 ### Ignoring commits in the blame view
 
 ```bash title=".git-blame-ignore-revs"
