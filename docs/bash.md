@@ -32,6 +32,26 @@ time {
 } > merged.log
 ```
 
+### Multiline commands output to variable
+
+```bash
+RESULT=$( \
+    echo "↓↓↓" ;\
+    echo "Hello, $RANDOM!" ;\
+    echo "↑↑↑" ;\
+)
+```
+
+And to capture `stderr` as well:
+
+```bash
+RESULT=$(( \
+    echo "↓↓↓" ;\
+    >&2 echo "Hello, $RANDOM!" ;\
+    echo "↑↑↑" ;\
+) 2>&1 )
+```
+
 ### Prefered Bash shebang
 
 ```bash
