@@ -4,12 +4,20 @@ title: 🐘 Gradle
 
 ### Cleanup caches and build directories
 
-```bash
-# Gradle cache
-rm -rf ~/.gradle/caches
+```bash title="⚠️ Global cache"
+for d in ~/.gradle/{.tmp,build-scan-data,caches,daemon,jdks,native,wrapper}; do
+    test -d "$d" && \
+    du --human-readable --summarize "$d" && \
+    rm --recursive "$d"
+done
+```
 
-# Gradle build dirs
-find . -type d -name "build" -prune -exec echo '{}' \; -exec rm -r '{}' \;
+```bash title="⚠️ Local cache"
+test -d .gradle && du --human-readable --summarize .gradle && rm --recursive .gradle
+```
+
+```bash title="⚠️ Build directories"
+find . -type d -name 'build' -prune -exec du --human-readable --summarize '{}' \; -exec rm --recursive '{}' \;
 ```
 
 ### Declaring a repository filter
