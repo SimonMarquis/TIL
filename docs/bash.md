@@ -15,6 +15,66 @@ grep -- -v file
 
 [🔗](https://unix.stackexchange.com/a/11382)
 
+### Heredoc
+
+```bash title="General syntax"
+[cmd] <<[-] delimeter [cmd]
+    content
+delimeter
+```
+
+!!! note "Notes"
+    - `<<-` instead of `<<` to ignore leading (tab-only) indentation
+    - `|| true` to suppress the return code (1 by default)
+    - `'EOF'` to disable command and variable expansion
+    - `>/dev/null` to not echo content to stdout
+
+```bash title="Multiline content to variable"
+read -d '' my_var << EOF || true
+↓↓↓
+$PWD
+↑↑↑
+EOF
+```
+<div class="result" markdown>
+```
+↓↓↓
+/home/user
+↑↑↑
+```
+</div>
+
+```bash title="Multiline content without expansion to variable"
+read -d '' my_var << 'EOF' || true
+↓↓↓
+$PWD
+↑↑↑
+EOF
+```
+<div class="result" markdown>
+```
+↓↓↓
+$PWD
+↑↑↑
+```
+</div>
+
+```bash title="Multiline content to file (overwrite)"
+tee file << EOF >/dev/null || true
+↓↓↓
+$PWD
+↑↑↑
+EOF
+```
+
+```bash title="Multiline content to file (append)"
+tee file.txt << EOF >/dev/null || true
+↓↓↓
+$PWD
+↑↑↑
+EOF
+```
+
 ### Inline comment on multiline commands
 
 ```bash
