@@ -26,3 +26,15 @@ icacls C:\files /reset /T /C /L /Q
 ```bat
 shutdown /r /fw /f /t 0
 ```
+
+### URL file
+
+```ini title="email.url"
+[InternetShortcut]
+URL=mailto:test@example.org
+```
+
+```ini title="example.url"
+[InternetShortcut]
+URL=https://example.org
+```
