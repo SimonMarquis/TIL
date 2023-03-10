@@ -59,6 +59,20 @@ jobs:
           git push
 ```
 
+### Embedded Gists
+
+```html
+<script src="https://gist.github.com/<user>/<id>.js"></script>
+```
+
+or a specific file:
+
+```html
+<script src="https://gist.github.com/<user>/<id>.js?file=<filename>"></script>
+```
+
+[🔗](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists)
+
 ### Environment variables
 
 ```yaml
