@@ -115,6 +115,33 @@ implementation(project(":lib")) {
 }
 ```
 
+### Override Version Catalog versions
+
+```kotlin
+dependencyResolutionManagement {
+    versionCatalogs {
+        val prefix = "libs_version_"
+        val overrides = providers.systemPropertiesPrefixedBy(prefix)
+            .get().mapKeys { (key, _) -> key.removePrefix(prefix) }
+        maybeCreate("libs").apply {
+            if (overrides.isNotEmpty()) logger.lifecycle("Overriding versions $overrides")
+            overrides.forEach { (key, value) -> version(key, value) }
+        }
+    }
+}
+```
+
+```bash
+gradlew --system-prop "libs_version_=1.2.3" --system-prop "libs_version_=3.2.1"
+# or simpler
+gradlew -Dlibs_version_foo=1.2.3 -Dlibs_version_bar=3.2.1
+```
+<div class="result" markdown>
+```
+Overriding versions {foo=1.2.3, bar=3.2.1}
+```
+</div>
+
 ### Project properties
 
 You can add properties directly to your Project object via the `-P` command line option.
