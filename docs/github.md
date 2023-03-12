@@ -26,23 +26,38 @@ git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.wiki.git
 
 [🔗](https://docs.github.com/en/communities/documenting-your-project-with-wikis/adding-or-editing-wiki-pages#adding-or-editing-wiki-pages-locally)
 
-### Comment on new issues with gh CLI
+### Comment on new issues and PRs with gh CLI
 
-```yaml title=".github/new-issue-comment.yml"
-name: Comment on new issue
+```yaml title=".github/workflows/comment-new-issue-and-pr.yaml"
+name: '💬 Comment on new issue and PRs'
+
 on:
   issues:
-    types:
-      - opened
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - run: gh issue comment $ISSUE --body "Thank you for opening this issue!"
+      - uses: actions/checkout@v3
+
+      - if: github.event_name == 'issues'
+        run: gh issue comment $ISSUE_NUMBER --body "Thank you for opening this issue!"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE: ${{ github.event.issue.html_url }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+
+      - if: github.event_name == 'pull_request'
+        run: gh issue comment $PR_NUMBER --body "Thank you for opening this pull request!"
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
 ```
+
+[🔗](https://github.com/SimonMarquis/GitHub-Actions-Playground/blob/main/.github/workflows/comment-new-issue-and-pr.yaml)
 
 ### Commit from workflow
 
