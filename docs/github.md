@@ -373,6 +373,20 @@ jobs:
 
 [🔗](https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs) [🔗](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#skipping-and-requesting-checks-for-individual-commits)
 
+### Ternary operator
+
+```yaml
+FOO: ${{ <condition> && <true> || <false> }}
+```
+
+!!! example
+    ```yaml
+    API_ENV: ${{ github.ref_name == 'main' && 'prod' || 'staging' }}
+    ```
+
+!!! warning
+    If the value of `<true>` is _falsy_, the result of the expression will be `<false>`.
+
 ### Workflow input types
 
 ```yaml
