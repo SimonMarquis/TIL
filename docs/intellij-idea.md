@@ -10,7 +10,7 @@ title: 📦 IntelliJ IDEA
 
 ### EditorConfig
 
-```ini
+```ini title=".editorconfig"
 root = true
 
 [*]
@@ -90,8 +90,7 @@ indent_style = space
 
 ++ctrl+alt+s++ → `Build, Execution, Deployment` → `Required Plugins`.
 
-```xml
-<!-- .idea/externalDependencies.xml -->
+```xml title=".idea/externalDependencies.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalDependencies">

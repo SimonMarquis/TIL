@@ -161,8 +161,7 @@ Gradle can also set project properties when it sees specially-named system prope
 
 ### Reproducible builds
 
-```kotlin
-/* build.gradle.kts */
+```kotlin title="build.gradle.kts"
 tasks.withType<AbstractArchiveTask>().configureEach {
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true
