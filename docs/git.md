@@ -41,6 +41,7 @@ title: 💽 Git
 
         [diff]
             algorithm = patience
+            renameLimit = 999999
 
         [diff "json.gz"]
             binary = true
@@ -64,6 +65,7 @@ title: 💽 Git
         [merge]
             ff = false
             autoStash = true
+            renameLimit = 999999
 
         [pull]
             rebase = true
