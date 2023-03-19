@@ -551,6 +551,22 @@ val day: String by result
 println("$year-$month-$day")
 ```
 
+### Reified generic in virtual functions
+
+```kotlin
+interface Repository<T: Any> {
+    fun get(key: String, clazz: KClass<T>) : T
+}
+
+inline fun <reified T: Any> Repository<T>.get(key: String): T = get(key, T::class)
+
+fun main(repository: Repository<Int>) {
+    val int = repository["key", Int::class]
+    // becomes
+    val int = repository["key"]
+}
+```
+
 ### Require an instance type
 
 ```kotlin
