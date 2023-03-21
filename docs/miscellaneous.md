@@ -2,6 +2,17 @@
 title: 💎 Miscellaneous
 ---
 
+### Apache distributed configuration file
+
+Directory indexing:
+
+```text title=".htaccess"
+Options +Indexes
+IndexOptions Charset=UTF-8 IgnoreCase FancyIndexing FoldersFirst NameWidth=*
+```
+
+[🔗](https://httpd.apache.org/docs/2.4/mod/mod_autoindex.html#indexoptions)
+
 ### AutoHotkey
 
 ```ahk
