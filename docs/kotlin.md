@@ -202,7 +202,11 @@ fun Long.primes(): Sequence<Long> = sequence {
 #### Misc
 
 ```kotlin
+inline fun <reified T : Any> Any?.cast(): T = this as T
+
 operator fun String.times(n: Int) = repeat(n)
+
+fun <A, B> Pair<A, B>.swap(): Pair<B, A> = Pair(second, first)
 
 inline fun <T, R> Pair<T, T>.map(transform: (T) -> R): Pair<R, R> = transform(first) to transform(second)
 ```
