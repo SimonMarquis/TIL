@@ -37,6 +37,10 @@ trim_trailing_whitespace = false
 [{*.yml,*.yaml}]
 indent_size = 2
 indent_style = space
+
+[*.json]
+indent_size = 2
+indent_style = space
 ```
 
 [🔗](https://www.jetbrains.com/help/idea/editorconfig.html)
