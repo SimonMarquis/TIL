@@ -386,7 +386,7 @@ import org.junit.runner.Description
  * Then, use `runTest` to execute your tests.
  */
 @ExperimentalCoroutinesApi
-class MainCoroutineRule(val dispatcher = StandardTestDispatcher()) : TestWatcher() {
+class MainCoroutineRule(val dispatcher: TestDispatcher = StandardTestDispatcher()) : TestWatcher() {
 
     override fun starting(description: Description) = Dispatchers.setMain(dispatcher)
 
