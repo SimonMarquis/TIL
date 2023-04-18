@@ -140,6 +140,24 @@ jobs:
     name: Will ONLY run on forks
 ```
 
+### Google's Maven repository for dependabot
+
+```yml title=".github/dependabot.yml"
+version: 2
+updates:
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    registries: "*"
+    labels: [ ]
+registries:
+  maven-google:
+    type: "maven-repository"
+    url: "https://maven.google.com"
+    replaces-base: true
+```
+
 ### Job outputs
 
 ```yaml
