@@ -93,6 +93,51 @@ projects - Displays the sub-projects of root project.
 properties - Displays the properties of root project.
 ```
 
+## Kotlin extensions
+
+```kotlin
+fun Project.isRootProject() = rootProject === this
+
+fun Project.isJava() = isJavaLibrary() || project.pluginManager.hasPlugin("java")
+fun Project.isJavaLibrary() = project.pluginManager.hasPlugin("java-library")
+
+fun Project.isKotlin() = isKotlinAndroid() || isKotlinJvm()
+fun Project.isKotlinAndroid() = pluginManager.hasPlugin("org.jetbrains.kotlin.android")
+fun Project.isKotlinJvm() = pluginManager.hasPlugin("org.jetbrains.kotlin.jvm")
+
+fun Project.isAndroid() = isAndroidApplication() || isAndroidLibrary() || isAndroidTest() || isAndroidDynamicFeature()
+fun Project.isAndroidApplication() = plugins.hasPlugin(AppPlugin::class.java)
+fun Project.isAndroidLibrary() = plugins.hasPlugin(LibraryPlugin::class.java)
+fun Project.isAndroidTest() = plugins.hasPlugin(TestPlugin::class.java)
+fun Project.isAndroidDynamicFeature() = plugins.hasPlugin(DynamicFeaturePlugin::class.java)
+
+fun Project.isUsingKapt() = pluginManager.hasPlugin("org.jetbrains.kotlin.kapt")
+fun Project.isUsingKsp() = pluginManager.hasPlugin("com.google.devtools.ksp")
+fun Project.isUsingLint() = pluginManager.hasPlugin("com.android.internal.lint")
+
+
+/**
+ * Best-effort tries to apply an [action] on a task with matching [name]. If the task doesn't exist
+ * at the time this is called, a [TaskContainer.whenTaskAdded] callback is added to match on the
+ * name and execute the action when it's added.
+ *
+ * This approach has caveats, namely that you won't get an immediate failure or indication if you've
+ * requested action on a task that may never be added. This is intended to be similar to the
+ * behavior of [PluginManager.withPlugin].
+ */
+fun TaskContainer.withName(name: String, action: Action<Task>) {
+    try {
+        named(name, action)
+    } catch (_: UnknownTaskException) {
+        whenTaskAdded {
+            if (this@whenTaskAdded.name == name) action(this)
+        }
+    }
+}
+```
+
+[🔗](https://github.com/slackhq/slack-gradle-plugin)
+
 ### List project properties
 
 ```bash
