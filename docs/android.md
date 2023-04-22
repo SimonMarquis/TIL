@@ -676,9 +676,18 @@ adb shell pm path <package-name>
 apksigner sign --ks debug.keystore --key-pass pass:android --ks-key-alias androiddebugkey --ks-pass pass:android app-release.apk
 ```
 
-### Parcelable testing
+### Parcel extensions
 
-```kotlin
+```kotlin title="Testing utils"
+fun <T> Parcel.use(block: (Parcel) -> T): T = try { block(this) } finally { recycle() }
+
+context(Parceler<T>)
+fun <T> T.parcelize(): T = Parcel.obtain().use {
+    write(it, 0)
+    it.setDataPosition(0)
+    create(it)
+}
+
 inline fun <reified R : Parcelable> R.marshall(): ByteArray = Parcel.obtain().use {
     it.writeBundle(bundleOf(R::class.java.name to this))
     it.marshall()
@@ -692,9 +701,69 @@ inline fun <reified R : Parcelable> ByteArray.unmarshall(): R? = Parcel.obtain()
     classLoader = R::class.java.classLoader
     getParcelable(R::class.java.name)
 }
-
-fun <T> Parcel.use(block: (Parcel) -> T): T = try { block(this) } finally { recycle() }
 ```
+
+```kotlin title="Reading boxed primitive values"
+//region Read boxed primitive values
+@SuppressLint("ParcelClassLoader")
+fun Parcel.readIntValue(): Int? = readValue(null) as Int?
+
+@SuppressLint("ParcelClassLoader")
+fun Parcel.readLongValue(): Long? = readValue(null) as Long?
+
+@SuppressLint("ParcelClassLoader")
+fun Parcel.readFloatValue(): Float? = readValue(null) as Float?
+
+@SuppressLint("ParcelClassLoader")
+fun Parcel.readDoubleValue(): Double? = readValue(null) as Double?
+
+@SuppressLint("ParcelClassLoader")
+fun Parcel.readBooleanValue(): Boolean? = readValue(null) as Boolean?
+//endregion
+```
+
+```kotlin title="Read/Write nullable values"
+/**
+ * This will check an [Int] flag to switch between `null` and non-`null` value:
+ *  - `0` means the value is `null` and nothing must be read
+ *  - `1` means the value is non-`null` and can be read
+ */
+inline fun <T> Parcel.readNullable(reader: Parcel.() -> T) =
+    if (readInt() != 0) reader() else null
+
+/**
+ * This will write an [Int] flag to switch between `null` and non-`null` value:
+ * - `0` when the value is `null`
+ * - `1` when the value is non-`null`
+ */
+inline fun <T> Parcel.writeNullable(value: T?, writer: Parcel.(value: T) -> Unit) {
+    if (value == null) return writeInt(0)
+    writeInt(1)
+    writer(value)
+}
+```
+
+### Parcelize and TypeParceler
+
+```kotlin
+class Foo
+
+object FooParceler : Parceler<Foo?> {
+    override fun create(parcel: Parcel): Foo? = TODO()
+    override fun Foo?.write(parcel: Parcel, flags: Int) = TODO()
+}
+
+// typealias helpers
+typealias FooTypeParceler = TypeParceler<Foo, FooParceler>
+typealias FooNullableTypeParceler = TypeParceler<Foo?, FooParceler>
+
+@Parcelize
+@FooTypeParceler
+@FooNullableTypeParceler
+class Data(val foo: Foo, val nullableFoo: Foo?) : Parcelable
+```
+
+[🔗](https://developer.android.com/kotlin/parcelize)
 
 ### Print APK certificates
 
