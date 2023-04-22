@@ -263,6 +263,14 @@ name: Build
 run-name: Build by @${{ github.actor }}
 ```
 
+### Restrict workflow to a specific repository
+
+```yaml
+jobs:
+  deploy:
+    if: github.repository == 'UserName/RepositoryName'
+```
+
 ### Reuse local composite action 
 
 ```yaml title=".github/actions/hello/action.yml"
