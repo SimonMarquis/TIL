@@ -151,6 +151,15 @@ Here is a simple footnote[^1].
 
 [🔗](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md#github-custom-emoji)
 
+### Image with reference link
+
+```md
+[![alt text][image]][hyperlink]
+
+[hyperlink]: https://…
+[image]: https://… "tooltip"
+```
+
 ### Keyboard
 
 <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Suppr</kbd>
