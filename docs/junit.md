@@ -2,6 +2,22 @@
 title: 🧪 JUnit
 ---
 
+### Assume JDK version
+
+```kotlin
+import kotlin.reflect.KClass
+import static org.junit.Assume.assumeTrue
+
+fun KClass<System>.jdk(): String? = System.getProperty("java.specification.version")
+fun KClass<System>.hasJdk17() = (jdk()?.substringBefore(".")?.toInt() ?: 0) >= 17
+
+@Test
+fun runOnlyOnJdk17AndAbove() {
+    assumeTrue("System has JDK 17", System::class.hasJdk17())
+    /* ... */
+}
+```
+
 ### Flaky TestRule
 
 ```kotlin
