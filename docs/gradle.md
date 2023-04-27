@@ -4,21 +4,51 @@ title: 🐘 Gradle
 
 ### Cleanup caches and build directories
 
-```bash title="⚠️ Global cache"
-for d in ~/.gradle/{.tmp,build-scan-data,caches,daemon,jdks,native,wrapper}; do
-    test -d "$d" && \
-    du --human-readable --summarize "$d" && \
-    rm --recursive "$d"
-done
-```
+!!! warning "Global cache"
 
-```bash title="⚠️ Local cache"
-test -d .gradle && du --human-readable --summarize .gradle && rm --recursive .gradle
-```
+    === ":simple-linux: Linux"
 
-```bash title="⚠️ Build directories"
-find . -type d -name 'build' -prune -exec du --human-readable --summarize '{}' \; -exec rm --recursive '{}' \;
-```
+        ```bash
+        for d in ~/.gradle/{.tmp,build-scan-data,caches,daemon,jdks,native,wrapper}; do
+            test -d "$d" && du --human-readable --summarize "$d" && rm --recursive "$d"
+        done
+        ```
+
+    === ":material-apple: Apple"
+
+        ```bash
+        for d in ~/.gradle/{.tmp,build-scan-data,caches,daemon,jdks,native,wrapper}; do
+            test -d "$d" && du -hs "$d" && rm -rf "$d"
+        done
+        ```
+
+!!! warning "Local cache"
+
+    === ":simple-linux: Linux"
+
+        ```bash
+        test -d .gradle && du --human-readable --summarize .gradle && rm --recursive .gradle
+        ```
+
+    === ":material-apple: Apple"
+
+        ```bash
+        test -d .gradle && du -hs .gradle && rm -rf .gradle
+        ```
+
+!!! warning "Build directories"
+
+    === ":simple-linux: Linux"
+
+        ```bash
+        find . -type d -name 'build' -prune -exec du --human-readable --summarize '{}' \; -exec rm --recursive '{}' \;
+        ```
+
+    === ":material-apple: Apple"
+
+        ```bash
+        find . -type d -name 'build' -prune -exec du -hs '{}' \; -exec rm -rf '{}' \;
+        ```
 
 ### Declaring a repository filter
 
