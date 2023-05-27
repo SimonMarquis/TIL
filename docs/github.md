@@ -140,6 +140,16 @@ jobs:
     name: Will ONLY run on forks
 ```
 
+### Glob patterns checks
+
+If the pattern does not match any files, this returns an empty string.
+
+```yaml
+- name: 'Only if it contains any text file'
+  if: hashFiles('**/*.txt') != ''
+  run: echo "yes"
+```
+
 ### Google's Maven repository for dependabot
 
 ```yml title=".github/dependabot.yml"
