@@ -67,6 +67,8 @@ suspend inline fun <T, R> T.runSuspendCatching(block: T.() -> R): Result<R> = ru
 
 ### Execute commands in subprocess
 
+!!! warning "On Windows (:simple-windows:), you'll probably need to prefix the command with `cmd /c`."
+
 ```kotlin
 /**
  * ```
