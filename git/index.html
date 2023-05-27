@@ -1,0 +1,1470 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Simon Marquis">
+      
+      
+        <link rel="canonical" href="https://github.com/SimonMarquis/TIL/git/">
+      
+      
+        <link rel="prev" href="../gerrit/">
+      
+      
+        <link rel="next" href="../github/">
+      
+      <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
+    
+    
+      
+        <title>💽 Git - 🗓️ Today I Learned</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a6bdf11c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#alias-to-function" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="🗓️ Today I Learned" class="md-header__button md-logo" aria-label="🗓️ Today I Learned" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🗓️ Today I Learned
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              💽 Git
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SimonMarquis/TIL" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TIL
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="🗓️ Today I Learned" class="md-nav__button md-logo" aria-label="🗓️ Today I Learned" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    🗓️ Today I Learned
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SimonMarquis/TIL" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TIL
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../android/" class="md-nav__link">
+        🤖 Android
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bash/" class="md-nav__link">
+        🖥️ Bash
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chrome/" class="md-nav__link">
+        🌍 Chrome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../css/" class="md-nav__link">
+        🎨 CSS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dagger/" class="md-nav__link">
+        🗡️ Dagger
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase/" class="md-nav__link">
+        🔥 Firebase
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gerrit/" class="md-nav__link">
+        🏢 Gerrit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          💽 Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        💽 Git
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#alias-to-function" class="md-nav__link">
+    Alias to function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authors-with-commit-count" class="md-nav__link">
+    Authors with commit count
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-author-without-changing-dates" class="md-nav__link">
+    Change author without changing dates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-if-something-can-be-pushed" class="md-nav__link">
+    Check if something can be pushed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-if-something-has-changed" class="md-nav__link">
+    Check if something has changed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commit-with-message-from-standard-input" class="md-nav__link">
+    Commit with message from standard input
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-commit-message" class="md-nav__link">
+    Default commit message
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diffing-gzip-ed-json-files" class="md-nav__link">
+    Diffing Gzip-ed JSON files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diffing-with-patience" class="md-nav__link">
+    Diffing with patience
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executable-file-permission-on-windows" class="md-nav__link">
+    Executable file permission on Windows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ignoring-commits-in-the-blame-view" class="md-nav__link">
+    Ignoring commits in the blame view
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-objects-by-size" class="md-nav__link">
+    List objects by size
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#override-urls-or-protocols" class="md-nav__link">
+    Override URLs or protocols
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#print-changes-between-two-refs" class="md-nav__link">
+    Print changes between two refs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rebase-dependent-branch" class="md-nav__link">
+    Rebase dependent branch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursive-gc" class="md-nav__link">
+    Recursive gc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renormalize-line-endings" class="md-nav__link">
+    Renormalize line endings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signing-commits-with-gpg" class="md-nav__link">
+    Signing commits with GPG
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        🐙 GitHub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gradle/" class="md-nav__link">
+        🐘 Gradle
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html/" class="md-nav__link">
+        📜 HTML
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intellij-idea/" class="md-nav__link">
+        📦 IntelliJ IDEA
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/" class="md-nav__link">
+        ☕ Java
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/" class="md-nav__link">
+        🪢 JavaScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../junit/" class="md-nav__link">
+        🧪 JUnit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kotlin/" class="md-nav__link">
+        🧑‍💻 Kotlin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mac/" class="md-nav__link">
+        🍎 Mac
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../markdown/" class="md-nav__link">
+        📄 Markdown
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../miscellaneous/" class="md-nav__link">
+        💎 Miscellaneous
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../online-tools/" class="md-nav__link">
+        🕸️ Online tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open-source-projects/" class="md-nav__link">
+        🔓 Open Source projects
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regex/" class="md-nav__link">
+        🧮 Regex
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sublime-merge/" class="md-nav__link">
+        🔀 Sublime Merge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sublime-text/" class="md-nav__link">
+        🗃️ Sublime Text
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        🧰 Utils
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/" class="md-nav__link">
+        🪟 Windows
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#alias-to-function" class="md-nav__link">
+    Alias to function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authors-with-commit-count" class="md-nav__link">
+    Authors with commit count
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-author-without-changing-dates" class="md-nav__link">
+    Change author without changing dates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-if-something-can-be-pushed" class="md-nav__link">
+    Check if something can be pushed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-if-something-has-changed" class="md-nav__link">
+    Check if something has changed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commit-with-message-from-standard-input" class="md-nav__link">
+    Commit with message from standard input
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-commit-message" class="md-nav__link">
+    Default commit message
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diffing-gzip-ed-json-files" class="md-nav__link">
+    Diffing Gzip-ed JSON files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diffing-with-patience" class="md-nav__link">
+    Diffing with patience
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executable-file-permission-on-windows" class="md-nav__link">
+    Executable file permission on Windows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ignoring-commits-in-the-blame-view" class="md-nav__link">
+    Ignoring commits in the blame view
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-objects-by-size" class="md-nav__link">
+    List objects by size
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#override-urls-or-protocols" class="md-nav__link">
+    Override URLs or protocols
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#print-changes-between-two-refs" class="md-nav__link">
+    Print changes between two refs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rebase-dependent-branch" class="md-nav__link">
+    Rebase dependent branch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursive-gc" class="md-nav__link">
+    Recursive gc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#renormalize-line-endings" class="md-nav__link">
+    Renormalize line endings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signing-commits-with-gpg" class="md-nav__link">
+    Signing commits with GPG
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/SimonMarquis/TIL/edit/main/docs/git.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/SimonMarquis/TIL/raw/main/docs/git.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+  <h1>💽 Git</h1>
+
+<details class="example">
+<summary>Personal Git config files</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.546 10.93 13.067.452a1.55 1.55 0 0 0-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 0 1 2.327 2.341l2.658 2.66a1.838 1.838 0 0 1 1.9 3.039 1.837 1.837 0 0 1-2.6 0 1.846 1.846 0 0 1-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348a1.848 1.848 0 0 1 0 2.6 1.844 1.844 0 0 1-2.609 0 1.834 1.834 0 0 1 0-2.598c.182-.18.387-.316.605-.406V8.835a1.834 1.834 0 0 1-.996-2.41L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477a1.545 1.545 0 0 0 2.186 0l10.43-10.43a1.544 1.544 0 0 0 0-2.187"/></svg></span> <code>~/.gitconfig</code></label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.546 10.93 13.067.452a1.55 1.55 0 0 0-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 0 1 2.327 2.341l2.658 2.66a1.838 1.838 0 0 1 1.9 3.039 1.837 1.837 0 0 1-2.6 0 1.846 1.846 0 0 1-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348a1.848 1.848 0 0 1 0 2.6 1.844 1.844 0 0 1-2.609 0 1.834 1.834 0 0 1 0-2.598c.182-.18.387-.316.605-.406V8.835a1.834 1.834 0 0 1-.996-2.41L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477a1.545 1.545 0 0 0 2.186 0l10.43-10.43a1.544 1.544 0 0 0 0-2.187"/></svg></span> <code>~/.gitignore_global</code></label><label for="__tabbed_1_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.546 10.93 13.067.452a1.55 1.55 0 0 0-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 0 1 2.327 2.341l2.658 2.66a1.838 1.838 0 0 1 1.9 3.039 1.837 1.837 0 0 1-2.6 0 1.846 1.846 0 0 1-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348a1.848 1.848 0 0 1 0 2.6 1.844 1.844 0 0 1-2.609 0 1.834 1.834 0 0 1 0-2.598c.182-.18.387-.316.605-.406V8.835a1.834 1.834 0 0 1-.996-2.41L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477a1.545 1.545 0 0 0 2.186 0l10.43-10.43a1.544 1.544 0 0 0 0-2.187"/></svg></span> <code>~/.gitattributes</code></label><label for="__tabbed_1_4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 19V7H4v12h16m0-16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16m-7 14v-2h5v2h-5m-3.42-4L5.57 9H8.4l3.3 3.3c.39.39.39 1.03 0 1.42L8.42 17H5.59l3.99-4Z"/></svg></span> <code>~/setup-code-review.sh</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="o">[</span>user<span class="o">]</span>
+<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Simon<span class="w"> </span>Marquis
+<span class="w">    </span><span class="nv">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>contact@simon-marquis.fr
+
+<span class="o">[</span>branch<span class="o">]</span>
+<span class="w">    </span><span class="nv">autosetuprebase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>always
+
+<span class="o">[</span>alias<span class="o">]</span>
+<span class="w">    </span><span class="nv">aliases</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>!git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="p">;</span>
+<span class="w">    </span><span class="nv">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>!git<span class="w"> </span>log<span class="w"> </span>--pretty<span class="o">=</span>format:%aN<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn
+<span class="w">    </span><span class="nv">branches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>branch<span class="w"> </span>-a
+<span class="w">    </span><span class="nv">changelog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;!f() { git log --topo-order --pretty=format:\&quot;%h ~ %s\&quot; \&quot;</span><span class="nv">$1</span><span class="s2">..</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="nv">HEAD</span><span class="si">}</span><span class="s2">\&quot; --no-merges; }; f&quot;</span>
+<span class="w">    </span><span class="nv">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>log<span class="w"> </span>-1<span class="w"> </span>--stat
+<span class="w">    </span><span class="nv">lg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>log<span class="w"> </span>--all<span class="w"> </span>--graph<span class="w"> </span>--pretty<span class="o">=</span>format:<span class="s2">&quot;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue&lt;%an&gt;%Creset&quot;</span><span class="w"> </span>--abbrev-commit<span class="w"> </span>--date<span class="o">=</span>relative
+<span class="w">    </span><span class="nv">open</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;!f() {\n local type=\&quot;</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="nv">branch</span><span class="si">}</span><span class="s2">\&quot;\n local target=\&quot;</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="nv">HEAD</span><span class="si">}</span><span class="s2">\&quot;\n local current_upstream=\&quot;</span><span class="k">$(</span>git<span class="w"> </span><span class="k">for</span>-each-ref<span class="w"> </span>--format<span class="o">=</span><span class="se">\&quot;</span>%<span class="o">(</span>upstream:remotename<span class="k">)</span><span class="s2">\&quot; \&quot;</span><span class="k">$(</span>git<span class="w"> </span>symbolic-ref<span class="w"> </span>-q<span class="w"> </span><span class="se">\&quot;</span><span class="nv">$target</span><span class="se">\&quot;</span><span class="k">)</span><span class="s2">\&quot;)\&quot;\n local first_remote=\&quot;</span><span class="k">$(</span>git<span class="w"> </span>remote<span class="w"> </span>show<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span><span class="s2">\&quot;\n local remote=</span><span class="si">${</span><span class="nv">current_upstream</span><span class="k">:-</span><span class="nv">$first_remote</span><span class="si">}</span><span class="s2">\n remote=</span><span class="si">${</span><span class="nv">upstream</span><span class="k">:-</span><span class="nv">origin</span><span class="si">}</span><span class="s2">\n\n if [ \&quot;</span><span class="nv">$type</span><span class="s2">\&quot; = \&quot;branch\&quot; ] || [ \&quot;</span><span class="nv">$type</span><span class="s2">\&quot; = \&quot;pr\&quot; ]; then\n # get full name (i.e. refs/heads/*; refs/remotes/*/*); src: https://stackoverflow.com/a/9753364\n target=\&quot;</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span>--symbolic-full-name<span class="w"> </span><span class="se">\&quot;</span><span class="nv">$target</span><span class="se">\&quot;</span><span class="k">)</span><span class="s2">\&quot;\n\n if [ \&quot;</span><span class="nv">$target</span><span class="s2">\&quot; != \&quot;</span><span class="si">${</span><span class="nv">target</span><span class="p">#</span><span class="se">\&quot;</span><span class="nv">refs</span><span class="p">/remotes/</span><span class="se">\&quot;</span><span class="si">}</span><span class="s2">\&quot; ]; then\n # extract from remote branch reference\n target=\&quot;</span><span class="si">${</span><span class="nv">target</span><span class="p">#</span><span class="se">\&quot;</span><span class="nv">refs</span><span class="p">/remotes/</span><span class="se">\&quot;</span><span class="si">}</span><span class="s2">\&quot;\n else\n # extract from local branch reference; src: https://stackoverflow.com/a/9753364\n target=\&quot;</span><span class="k">$(</span>git<span class="w"> </span><span class="k">for</span>-each-ref<span class="w"> </span>--format<span class="o">=</span><span class="se">\&quot;</span>%<span class="o">(</span>upstream:short<span class="k">)</span><span class="s2">\&quot; \&quot;</span><span class="nv">$target</span><span class="s2">\&quot;)\&quot;\n fi\n # split remote/branch\n remote=\&quot;</span><span class="si">${</span><span class="nv">target</span><span class="p">%%/*</span><span class="si">}</span><span class="s2">\&quot;\n target=\&quot;</span><span class="si">${</span><span class="nv">target</span><span class="p">#</span><span class="se">\&quot;</span><span class="nv">$remote</span><span class="p">/</span><span class="se">\&quot;</span><span class="si">}</span><span class="s2">\&quot;\n\n if [ -z \&quot;</span><span class="nv">$remote</span><span class="s2">\&quot; ]; then\n echo \&quot;Branch (</span><span class="nv">$2</span><span class="s2">) does not point to a remote repository.\&quot; &gt;&amp;2\n return 2\n fi\n fi\n\n local repo_url=\&quot;</span><span class="k">$(</span>git<span class="w"> </span>remote<span class="w"> </span>get-url<span class="w"> </span><span class="se">\&quot;</span><span class="nv">$remote</span><span class="se">\&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-E<span class="w"> </span>-e<span class="w"> </span><span class="se">\&quot;</span>s/<span class="o">(</span><span class="se">\\</span>.<span class="o">(</span>com<span class="p">|</span>org<span class="p">|</span>io<span class="k">)</span><span class="s2">)\\:/\\1\\//\&quot; -e \&quot;s/git@/https:\\/\\//\&quot; -e \&quot;s/\\.git</span>$<span class="s2">//\&quot;)\&quot;\n if [ -z \&quot;</span><span class="nv">$repo_url</span><span class="s2">\&quot; ]; then\n echo \&quot;Cannot open: no remote repository configured under (</span><span class="nv">$remote</span><span class="s2">)\&quot; &gt;&amp;2\n return 1\n fi\n\n case \&quot;</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="se">\&quot;</span><span class="nv">$repo_url</span><span class="se">\&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="se">\&quot;</span><span class="o">[</span>:upper:<span class="o">]</span><span class="se">\&quot;</span><span class="w"> </span><span class="se">\&quot;</span><span class="o">[</span>:lower:<span class="o">]</span><span class="se">\&quot;</span><span class="k">)</span><span class="s2">\&quot; in\n *github*)\n case \&quot;</span><span class="nv">$type</span><span class="s2">\&quot; in\n \&quot;repo\&quot;) ;;\n \&quot;commit\&quot;) repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/commit/</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span><span class="se">\&quot;</span><span class="nv">$target</span><span class="se">\&quot;</span><span class="k">)</span><span class="s2">\&quot; ;;\n \&quot;pr\&quot;)  repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/compare/</span><span class="nv">$target</span><span class="s2">?quick_pull=1\&quot; ;;\n \&quot;tag\&quot;) repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/releases/tag/</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n \&quot;branch\&quot;) repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/tree/</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n *) echo \&quot;Unsupported action: </span><span class="nv">$type</span><span class="s2">\&quot; &gt;&amp;2 ; return 1 ;;\n esac\n ;;\n *bitbucket*)\n case \&quot;</span><span class="nv">$type</span><span class="s2">\&quot; in\n \&quot;repo\&quot;) ;;\n \&quot;commit\&quot;) repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/commits/</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span><span class="se">\&quot;</span><span class="nv">$target</span><span class="se">\&quot;</span><span class="k">)</span><span class="s2">\&quot; ;;\n \&quot;pr\&quot;)  repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/pull-requests/new?source=</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n \&quot;tag\&quot;) repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/src/</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n \&quot;branch\&quot;) repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/src/</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n *) echo \&quot;Unsupported action: </span><span class="nv">$type</span><span class="s2">\&quot; &gt;&amp;2 ; return 1 ;;\n esac\n ;;\n *gitlab*)\n case \&quot;</span><span class="nv">$type</span><span class="s2">\&quot; in\n \&quot;repo\&quot;) ;;\n \&quot;commit\&quot;) repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/-/commit/</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span><span class="se">\&quot;</span><span class="nv">$target</span><span class="se">\&quot;</span><span class="k">)</span><span class="s2">\&quot; ;;\n \&quot;pr\&quot;)  repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/-/merge_requests/new?merge_request[source_branch]=</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n \&quot;tag\&quot;) repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/-/tags/</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n \&quot;branch\&quot;) repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/-/tree/</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n *) echo \&quot;Unsupported action: </span><span class="nv">$type</span><span class="s2">\&quot; &gt;&amp;2 ; return 1 ;;\n esac\n ;;\n *azure*)\n case \&quot;</span><span class="nv">$type</span><span class="s2">\&quot; in\n \&quot;repo\&quot;) ;;\n \&quot;commit\&quot;) repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/commit/</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span><span class="se">\&quot;</span><span class="nv">$target</span><span class="se">\&quot;</span><span class="k">)</span><span class="s2">\&quot; ;;\n \&quot;pr\&quot;)  repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">/pullrequestcreate?sourceRef=</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n \&quot;tag\&quot;) repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">?version=GT</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n \&quot;branch\&quot;) repo_url=\&quot;</span><span class="nv">$repo_url</span><span class="s2">?version=GB</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n *) echo \&quot;Unsupported action: </span><span class="nv">$type</span><span class="s2">\&quot; &gt;&amp;2 ; return 1 ;;\n esac\n ;;\n *review*|*gerrit*)\n local gerrit_repo_url=</span><span class="k">$(</span>git<span class="w"> </span>config<span class="w"> </span>gerrit.web-ui-url<span class="k">)</span><span class="s2">\n if [ -z \&quot;</span><span class="nv">$gerrit_repo_url</span><span class="s2">\&quot; ]; then\n echo \&quot;Unknown Gerrit URL: git config gerrit.web-ui-url &lt;url&gt;\&quot; &gt;&amp;2\n return 1\n fi\n case \&quot;</span><span class="nv">$type</span><span class="s2">\&quot; in\n \&quot;repo\&quot;) repo_url=\&quot;</span><span class="nv">$gerrit_repo_url</span><span class="s2">\&quot; ;;\n \&quot;commit\&quot;) repo_url=\&quot;</span><span class="nv">$gerrit_repo_url</span><span class="s2">/q/commit:</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span><span class="se">\&quot;</span><span class="nv">$target</span><span class="se">\&quot;</span><span class="k">)</span><span class="s2">\&quot; ;;\n \&quot;tag\&quot;) repo_url=\&quot;</span><span class="nv">$gerrit_repo_url</span><span class="s2">/q/tag:</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n \&quot;branch\&quot;) repo_url=\&quot;</span><span class="nv">$gerrit_repo_url</span><span class="s2">/q/branch:</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n \&quot;search\&quot;) repo_url=\&quot;</span><span class="nv">$gerrit_repo_url</span><span class="s2">/q/</span><span class="nv">$target</span><span class="s2">\&quot; ;;\n *) echo \&quot;Unsupported action: </span><span class="nv">$type</span><span class="s2">\&quot; &gt;&amp;2 ; return 1 ;;\n esac\n ;;\n *) echo \&quot;Unsupported repository type: </span><span class="nv">$repo_url</span><span class="s2">\&quot; &gt;&amp;2 ; return 1 ;;\n esac\n\n case \&quot;</span><span class="k">$(</span>uname<span class="w"> </span>-sr<span class="k">)</span><span class="s2">\&quot; in\n Darwin*) open \&quot;</span><span class="nv">$repo_url</span><span class="s2">\&quot; ;; # macOS\n Linux*Microsoft*) explorer.exe \&quot;</span><span class="nv">$repo_url</span><span class="s2">\&quot; ;; # WSL\n Linux*) xdg-open \&quot;</span><span class="nv">$repo_url</span><span class="s2">\&quot; ;; # Linux\n CYGWIN*|MINGW*|MINGW32*|MSYS*) powershell start </span><span class="nv">$repo_url</span><span class="s2"> ;; # Windows\n *) echo \&quot;Unsupported OS </span><span class="k">$(</span>uname<span class="w"> </span>-sr<span class="k">)</span><span class="s2">\&quot; &gt;&amp;2 ; return 1 ;;\n esac\n\n}; f&quot;</span>
+<span class="w">    </span><span class="nv">remotes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>remote<span class="w"> </span>-v
+<span class="w">    </span><span class="nv">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>!git<span class="w"> </span>init<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--allow-empty<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;Initial commit&#39;</span>
+<span class="w">    </span><span class="nv">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>tag<span class="w"> </span>-n
+<span class="w">    </span><span class="nv">this</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>!git<span class="w"> </span>init<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>--all<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;Initial commit&#39;</span>
+<span class="w">    </span><span class="c1"># git rebase --onto &lt;what-branch&gt; &lt;from-exclusive&gt;@{1} &lt;up-to-inclusive&gt;</span>
+<span class="w">    </span>rebase-onto<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;!f() { git rebase --onto \&quot;</span><span class="nv">$1</span><span class="s2">\&quot; \&quot;</span><span class="nv">$1</span><span class="s2">@{1}\&quot; \&quot;</span><span class="nv">$2</span><span class="s2">\&quot;; }; f&quot;</span>
+<span class="w">    </span><span class="nv">undo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>HEAD^
+<span class="w">    </span><span class="nv">unstage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>reset<span class="w"> </span>HEAD<span class="w"> </span>--
+<span class="w">    </span><span class="nv">whoami</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>!git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email
+
+<span class="o">[</span>commit<span class="o">]</span>
+<span class="w">    </span><span class="nv">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>~/.gitmessage
+
+<span class="o">[</span>core<span class="o">]</span>
+<span class="w">    </span><span class="nv">attributesFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>~/.gitattributes
+<span class="w">    </span><span class="nv">excludesfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>~/.gitignore_global
+
+<span class="o">[</span>diff<span class="o">]</span>
+<span class="w">    </span><span class="nv">algorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>patience
+<span class="w">    </span><span class="nv">renameLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">999999</span>
+
+<span class="o">[</span>diff<span class="w"> </span><span class="s2">&quot;json.gz&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">binary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">    </span><span class="nv">textconv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;!f(){ gzcat --suffix .gz \&quot;</span><span class="nv">$1</span><span class="s2">\&quot; | jq; }; f&quot;</span>
+
+<span class="o">[</span>filter<span class="w"> </span><span class="s2">&quot;lfs&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">    </span><span class="nv">clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git-lfs<span class="w"> </span>clean<span class="w"> </span>--<span class="w"> </span>%f
+<span class="w">    </span><span class="nv">smudge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git-lfs<span class="w"> </span>smudge<span class="w"> </span>--<span class="w"> </span>%f
+<span class="w">    </span><span class="nv">process</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>git-lfs<span class="w"> </span>filter-process
+
+<span class="o">[</span>fetch<span class="o">]</span>
+<span class="w">    </span><span class="nv">prune</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="o">[</span>gitreview<span class="o">]</span>
+<span class="w">    </span><span class="nv">notopic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="o">[</span>init<span class="o">]</span>
+<span class="w">    </span><span class="nv">defaultBranch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>main
+
+<span class="o">[</span>merge<span class="o">]</span>
+<span class="w">    </span><span class="nv">ff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
+<span class="w">    </span><span class="nv">autoStash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">    </span><span class="nv">renameLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">999999</span>
+
+<span class="o">[</span>pull<span class="o">]</span>
+<span class="w">    </span><span class="nv">rebase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="o">[</span>push<span class="o">]</span>
+<span class="w">    </span><span class="nv">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>current
+
+<span class="o">[</span>rebase<span class="o">]</span>
+<span class="w">    </span><span class="nv">autoSquash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">    </span><span class="nv">autoStash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="o">[</span>rerere<span class="o">]</span>
+<span class="w">    </span><span class="nv">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">### Java / Kotlin ###</span>
+<span class="c1"># Compiled class file</span>
+*.class
+
+<span class="c1"># Log file</span>
+*.log
+
+<span class="c1"># BlueJ files</span>
+*.ctxt
+
+<span class="c1"># Mobile Tools for Java (J2ME)</span>
+.mtj.tmp/
+
+<span class="c1"># virtual machine crash logs</span>
+hs_err_pid*
+replay_pid*
+
+<span class="c1">### Linux ###</span>
+*~
+
+<span class="c1"># temporary files which can be created if a process still has a handle open of a deleted file</span>
+.fuse_hidden*
+
+<span class="c1"># KDE directory preferences</span>
+.directory
+
+<span class="c1"># Linux trash folder which might appear on any partition or disk</span>
+.Trash-*
+
+<span class="c1"># .nfs files are created when an open file is removed but is still being accessed</span>
+.nfs*
+
+<span class="c1">### macOS ###</span>
+<span class="c1"># General</span>
+.DS_Store
+.AppleDouble
+.LSOverride
+
+<span class="c1"># Icon must end with two \r</span>
+Icon
+
+
+<span class="c1"># Thumbnails</span>
+._*
+
+<span class="c1"># Files that might appear in the root of a volume</span>
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+<span class="c1"># Directories potentially created on remote AFP share</span>
+.AppleDB
+.AppleDesktop
+Network<span class="w"> </span>Trash<span class="w"> </span>Folder
+Temporary<span class="w"> </span>Items
+.apdisk
+
+<span class="c1">### macOS Patch ###</span>
+<span class="c1"># iCloud generated files</span>
+*.icloud
+
+<span class="c1">### Windows ###</span>
+<span class="c1"># Windows thumbnail cache files</span>
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+<span class="c1"># Dump file</span>
+*.stackdump
+
+<span class="c1"># Folder config file</span>
+<span class="o">[</span>Dd<span class="o">]</span>esktop.ini
+
+<span class="c1"># Recycle Bin used on file shares</span>
+<span class="nv">$RECYCLE</span>.BIN/
+
+<span class="c1"># Windows Installer files</span>
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+<span class="c1"># Windows shortcuts</span>
+*.lnk
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>*<span class="w"> </span><span class="nv">text</span><span class="o">=</span>auto
+
+*.bat<span class="w"> </span>text<span class="w"> </span><span class="nv">eol</span><span class="o">=</span>crlf
+
+*.jar<span class="w"> </span>binary
+*.png<span class="w"> </span>binary
+*.gif<span class="w"> </span>binary
+*.jpg<span class="w"> </span>binary
+*.jpeg<span class="w"> </span>binary
+
+*.json.gz<span class="w"> </span><span class="nv">diff</span><span class="o">=</span>json.gz
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>alias.open<span class="w"> </span><span class="s1">&#39;!f() {</span>
+<span class="s1">    local type=&quot;${1:-branch}&quot;</span>
+<span class="s1">    local target=&quot;${2:-HEAD}&quot;</span>
+<span class="s1">    local current_upstream=&quot;$(git for-each-ref --format=&quot;%(upstream:remotename)&quot; &quot;$(git symbolic-ref -q &quot;$target&quot;)&quot;)&quot;</span>
+<span class="s1">    local first_remote=&quot;$(git remote show | head -n 1)&quot;</span>
+<span class="s1">    local remote=${current_upstream:-$first_remote}</span>
+<span class="s1">    remote=${upstream:-origin}</span>
+
+<span class="s1">    if [ &quot;$type&quot; = &quot;branch&quot; ] || [ &quot;$type&quot; = &quot;pr&quot; ]; then</span>
+<span class="s1">        # get full name (i.e. refs/heads/*; refs/remotes/*/*); src: https://stackoverflow.com/a/9753364</span>
+<span class="s1">        target=&quot;$(git rev-parse --symbolic-full-name &quot;$target&quot;)&quot;</span>
+
+<span class="s1">        if [ &quot;$target&quot; != &quot;${target#&quot;refs/remotes/&quot;}&quot; ]; then</span>
+<span class="s1">            # extract from remote branch reference</span>
+<span class="s1">            target=&quot;${target#&quot;refs/remotes/&quot;}&quot;</span>
+<span class="s1">        else</span>
+<span class="s1">            # extract from local branch reference; src: https://stackoverflow.com/a/9753364</span>
+<span class="s1">            target=&quot;$(git for-each-ref --format=&quot;%(upstream:short)&quot; &quot;$target&quot;)&quot;</span>
+<span class="s1">        fi</span>
+<span class="s1">        # split remote/branch</span>
+<span class="s1">        remote=&quot;${target%%/*}&quot;</span>
+<span class="s1">        target=&quot;${target#&quot;$remote/&quot;}&quot;</span>
+
+<span class="s1">        if [ -z &quot;$remote&quot; ]; then</span>
+<span class="s1">            echo &quot;Branch ($2) does not point to a remote repository.&quot; &gt;&amp;2</span>
+<span class="s1">            return 2</span>
+<span class="s1">        fi</span>
+<span class="s1">    fi</span>
+
+<span class="s1">    local repo_url=&quot;$(git remote get-url &quot;$remote&quot; | sed -E -e &quot;s/(\.(com|org|io))\:/\1\//&quot; -e &quot;s/git@/https:\/\//&quot; -e &quot;s/\.git$//&quot;)&quot;</span>
+<span class="s1">    if [ -z &quot;$repo_url&quot; ]; then</span>
+<span class="s1">        echo &quot;Cannot open: no remote repository configured under ($remote)&quot; &gt;&amp;2</span>
+<span class="s1">        return 1</span>
+<span class="s1">    fi</span>
+
+<span class="s1">    case &quot;$(echo &quot;$repo_url&quot; | tr &quot;[:upper:]&quot; &quot;[:lower:]&quot;)&quot; in</span>
+<span class="s1">        *github*)</span>
+<span class="s1">            case &quot;$type&quot; in</span>
+<span class="s1">                &quot;repo&quot;) ;;</span>
+<span class="s1">                &quot;commit&quot;) repo_url=&quot;$repo_url/commit/$(git rev-parse &quot;$target&quot;)&quot; ;;</span>
+<span class="s1">                &quot;pr&quot;)     repo_url=&quot;$repo_url/compare/$target?quick_pull=1&quot; ;;</span>
+<span class="s1">                &quot;tag&quot;)    repo_url=&quot;$repo_url/releases/tag/$target&quot; ;;</span>
+<span class="s1">                &quot;branch&quot;) repo_url=&quot;$repo_url/tree/$target&quot; ;;</span>
+<span class="s1">                *) echo &quot;Unsupported action: $type&quot; &gt;&amp;2 ; return 1 ;;</span>
+<span class="s1">            esac</span>
+<span class="s1">            ;;</span>
+<span class="s1">        *bitbucket*)</span>
+<span class="s1">            case &quot;$type&quot; in</span>
+<span class="s1">                &quot;repo&quot;) ;;</span>
+<span class="s1">                &quot;commit&quot;) repo_url=&quot;$repo_url/commits/$(git rev-parse &quot;$target&quot;)&quot; ;;</span>
+<span class="s1">                &quot;pr&quot;)     repo_url=&quot;$repo_url/pull-requests/new?source=$target&quot; ;;</span>
+<span class="s1">                &quot;tag&quot;)    repo_url=&quot;$repo_url/src/$target&quot; ;;</span>
+<span class="s1">                &quot;branch&quot;) repo_url=&quot;$repo_url/src/$target&quot; ;;</span>
+<span class="s1">                *) echo &quot;Unsupported action: $type&quot; &gt;&amp;2 ; return 1 ;;</span>
+<span class="s1">            esac</span>
+<span class="s1">            ;;</span>
+<span class="s1">        *gitlab*)</span>
+<span class="s1">            case &quot;$type&quot; in</span>
+<span class="s1">                &quot;repo&quot;) ;;</span>
+<span class="s1">                &quot;commit&quot;) repo_url=&quot;$repo_url/-/commit/$(git rev-parse &quot;$target&quot;)&quot; ;;</span>
+<span class="s1">                &quot;pr&quot;)     repo_url=&quot;$repo_url/-/merge_requests/new?merge_request[source_branch]=$target&quot; ;;</span>
+<span class="s1">                &quot;tag&quot;)    repo_url=&quot;$repo_url/-/tags/$target&quot; ;;</span>
+<span class="s1">                &quot;branch&quot;) repo_url=&quot;$repo_url/-/tree/$target&quot; ;;</span>
+<span class="s1">                *) echo &quot;Unsupported action: $type&quot; &gt;&amp;2 ; return 1 ;;</span>
+<span class="s1">            esac</span>
+<span class="s1">            ;;</span>
+<span class="s1">        *azure*)</span>
+<span class="s1">            case &quot;$type&quot; in</span>
+<span class="s1">                &quot;repo&quot;) ;;</span>
+<span class="s1">                &quot;commit&quot;) repo_url=&quot;$repo_url/commit/$(git rev-parse &quot;$target&quot;)&quot; ;;</span>
+<span class="s1">                &quot;pr&quot;)     repo_url=&quot;$repo_url/pullrequestcreate?sourceRef=$target&quot; ;;</span>
+<span class="s1">                &quot;tag&quot;)    repo_url=&quot;$repo_url?version=GT$target&quot; ;;</span>
+<span class="s1">                &quot;branch&quot;) repo_url=&quot;$repo_url?version=GB$target&quot; ;;</span>
+<span class="s1">                *) echo &quot;Unsupported action: $type&quot; &gt;&amp;2 ; return 1 ;;</span>
+<span class="s1">            esac</span>
+<span class="s1">            ;;</span>
+<span class="s1">        *review*|*gerrit*)</span>
+<span class="s1">            local gerrit_repo_url=$(git config gerrit.web-ui-url)</span>
+<span class="s1">            if [ -z &quot;$gerrit_repo_url&quot; ]; then</span>
+<span class="s1">                echo &quot;Unknown Gerrit URL: git config gerrit.web-ui-url &lt;url&gt;&quot; &gt;&amp;2</span>
+<span class="s1">                return 1</span>
+<span class="s1">            fi</span>
+<span class="s1">            case &quot;$type&quot; in</span>
+<span class="s1">                &quot;repo&quot;)   repo_url=&quot;$gerrit_repo_url&quot; ;;</span>
+<span class="s1">                &quot;commit&quot;) repo_url=&quot;$gerrit_repo_url/q/commit:$(git rev-parse &quot;$target&quot;)&quot; ;;</span>
+<span class="s1">                &quot;tag&quot;)    repo_url=&quot;$gerrit_repo_url/q/tag:$target&quot; ;;</span>
+<span class="s1">                &quot;branch&quot;) repo_url=&quot;$gerrit_repo_url/q/branch:$target&quot; ;;</span>
+<span class="s1">                &quot;search&quot;) repo_url=&quot;$gerrit_repo_url/q/$target&quot; ;;</span>
+<span class="s1">                *) echo &quot;Unsupported action: $type&quot; &gt;&amp;2 ; return 1 ;;</span>
+<span class="s1">            esac</span>
+<span class="s1">            ;;</span>
+<span class="s1">        *) echo &quot;Unsupported repository type: $repo_url&quot; &gt;&amp;2 ; return 1 ;;</span>
+<span class="s1">    esac</span>
+
+<span class="s1">    case &quot;$(uname -sr)&quot; in</span>
+<span class="s1">        Darwin*)                       open &quot;$repo_url&quot; ;;           # macOS</span>
+<span class="s1">        Linux*Microsoft*)              explorer.exe &quot;$repo_url&quot; ;;   # WSL</span>
+<span class="s1">        Linux*)                        xdg-open &quot;$repo_url&quot; ;;       # Linux</span>
+<span class="s1">        CYGWIN*|MINGW*|MINGW32*|MSYS*) powershell start $repo_url ;; # Windows</span>
+<span class="s1">        *) echo &quot;Unsupported OS $(uname -sr)&quot; &gt;&amp;2 ; return 1 ;;</span>
+<span class="s1">    esac</span>
+
+<span class="s1">}; f&#39;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="alias-to-function">Alias to function<a class="headerlink" href="#alias-to-function" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">~/.gitconfig</span><pre><span></span><code><span class="o">[</span>alias<span class="o">]</span>
+<span class="w">    </span><span class="nv">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;!f() { echo \&quot;Hello, </span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="nv">World</span><span class="si">}</span><span class="s2">!\&quot; ; }; f&quot;</span>
+</code></pre></div>
+<h3 id="authors-with-commit-count">Authors with commit count<a class="headerlink" href="#authors-with-commit-count" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">~/.gitconfig</span><pre><span></span><code><span class="o">[</span>alias<span class="o">]</span>
+<span class="w">    </span><span class="nv">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>!git<span class="w"> </span>log<span class="w"> </span>--pretty<span class="o">=</span>format:%aN<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn
+</code></pre></div>
+<h3 id="change-author-without-changing-dates">Change author without changing dates<a class="headerlink" href="#change-author-without-changing-dates" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>-c<span class="w"> </span>rebase.instructionFormat<span class="o">=</span><span class="s1">&#39;%s%nexec GIT_COMMITTER_DATE=&quot;%cD&quot; git commit --amend --author=&lt;author&gt; --no-edit&#39;</span><span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </span>&lt;refspec&gt;
+</code></pre></div>
+<h3 id="check-if-something-can-be-pushed">Check if something can be pushed<a class="headerlink" href="#check-if-something-can-be-pushed" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>log<span class="w"> </span>&lt;sha1&gt;..HEAD<span class="w"> </span><span class="o">[</span>--oneline<span class="o">]</span><span class="w"> </span>--exit-code<span class="w"> </span><span class="c1"># 1:yes, 0:no</span>
+</code></pre></div>
+<h3 id="check-if-something-has-changed">Check if something has changed<a class="headerlink" href="#check-if-something-has-changed" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>diff<span class="w"> </span><span class="o">[</span>--cached<span class="o">]</span><span class="w"> </span><span class="o">[</span>--stat<span class="o">]</span><span class="w"> </span><span class="o">[</span>--quiet<span class="o">]</span><span class="w"> </span>--exit-code<span class="w"> </span>--<span class="w"> </span><span class="o">[</span>&lt;pathspec&gt;…<span class="o">]</span><span class="w"> </span><span class="c1"># 1:yes, 0:no</span>
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>diff-index<span class="w"> </span><span class="o">[</span>--cached<span class="o">]</span><span class="w"> </span><span class="o">[</span>--stat<span class="o">]</span><span class="w"> </span><span class="o">[</span>--quiet<span class="o">]</span><span class="w"> </span>--exit-code<span class="w"> </span>HEAD<span class="w"> </span><span class="c1"># 1:yes, 0:no</span>
+</code></pre></div>
+<h3 id="commit-with-message-from-standard-input">Commit with message from standard input<a class="headerlink" href="#commit-with-message-from-standard-input" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="o">(</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;Hello, World!&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>any-command-that-will-produce-text-output<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--file<span class="w"> </span>-
+</code></pre></div>
+<h3 id="default-commit-message">Default commit message<a class="headerlink" href="#default-commit-message" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>commit.template<span class="w"> </span>~/.gitmessage
+</code></pre></div>
+<h3 id="diffing-gzip-ed-json-files">Diffing Gzip-ed JSON files<a class="headerlink" href="#diffing-gzip-ed-json-files" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">~/.gitattributes</span><pre><span></span><code>*.json.gz<span class="w"> </span><span class="nv">diff</span><span class="o">=</span>json.gz
+</code></pre></div>
+<div class="highlight"><span class="filename">~/.gitconfig</span><pre><span></span><code><span class="o">[</span>core<span class="o">]</span>
+<span class="w">    </span><span class="nv">attributesFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>~/.gitattributes
+<span class="o">[</span>diff<span class="w"> </span><span class="s2">&quot;json.gz&quot;</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">binary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="w">    </span><span class="nv">textconv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;f() { uncompress -c \&quot;</span><span class="nv">$1</span><span class="s2">\&quot; | jq ; }; f&quot;</span>
+<span class="w">    </span><span class="c1"># OR # textconv = sh -c &#39;uncompress -c &quot;$0&quot; | jq&#39;</span>
+<span class="w">    </span><span class="c1"># OR with: zcat, gzcat, etc.</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Before
+  <div class="highlight"><pre><span></span><code><span class="gh">diff --git a/example.json.gz b/example.json.gz</span>
+<span class="gh">index 4ecec5e..ae04c42 100644</span>
+Binary files a/example.json.gz and b/example.json.gz differ
+</code></pre></div></p>
+</li>
+<li>
+<p>After
+  <div class="highlight"><pre><span></span><code><span class="gh">diff --git a/example.json.gz b/example.json.gz</span>
+<span class="gh">index 4ecec5e..ae04c42 100644</span>
+<span class="gd">--- a/example.json.gz</span>
+<span class="gi">+++ b/example.json.gz</span>
+<span class="gu">@@ -1,3 +1,3 @@</span>
+<span class="w"> </span>{
+<span class="gd">-  &quot;key&quot;: true</span>
+<span class="gi">+  &quot;key&quot;: false</span>
+<span class="w"> </span>}
+</code></pre></div></p>
+</li>
+</ul>
+<p><a href="https://git-scm.com/docs/gitattributes#_performing_text_diffs_of_binary_files">🔗</a></p>
+<h3 id="diffing-with-patience">Diffing with patience<a class="headerlink" href="#diffing-with-patience" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">~/.gitconfig</span><pre><span></span><code><span class="o">[</span>diff<span class="o">]</span>
+<span class="w">    </span><span class="c1"># git config --global diff.algorithm patience</span>
+<span class="w">    </span><span class="nv">algorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>patience
+</code></pre></div>
+<h3 id="executable-file-permission-on-windows">Executable file permission on Windows<a class="headerlink" href="#executable-file-permission-on-windows" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>--chmod<span class="o">=</span>+x<span class="w"> </span>--<span class="w"> </span>&lt;file&gt;
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>update-index<span class="w"> </span>--chmod<span class="o">=</span>+x<span class="w"> </span>&lt;file&gt;
+</code></pre></div>
+<h3 id="ignoring-commits-in-the-blame-view">Ignoring commits in the blame view<a class="headerlink" href="#ignoring-commits-in-the-blame-view" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">.git-blame-ignore-revs</span><pre><span></span><code><span class="c1"># Reformat code</span>
+44e8ca9a329dbb7a673b55cd25fbe982f10572fa
+<span class="c1"># Add newline at end of files</span>
+2f5f618ff431f87687e7446f0980849a88d01d9a
+</code></pre></div>
+<ul>
+<li>Manually
+    <div class="highlight"><pre><span></span><code>git<span class="w"> </span>blame<span class="w"> </span>--ignore-revs-file<span class="w"> </span>.git-blame-ignore-revs<span class="w"> </span>&lt;file&gt;
+</code></pre></div></li>
+<li>Automatically
+    <div class="highlight"><pre><span></span><code><span class="c1"># Ignore revisions listed in the file, one unabbreviated object name per line.</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>blame.ignoreRevsFile<span class="w"> </span>.git-blame-ignore-revs
+<span class="c1"># Mark any lines that have had a commit skipped using --ignore-rev with a `?`</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>blame.markIgnoredLines<span class="w"> </span><span class="nb">true</span>
+<span class="c1"># Mark any lines that were added in a skipped commit and can not be attributed with a `*`</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>blame.markUnblamableLines<span class="w"> </span><span class="nb">true</span>
+</code></pre></div></li>
+</ul>
+<p><a href="https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file#ignore-commits-in-the-blame-view">🔗</a></p>
+<h3 id="list-objects-by-size">List objects by size<a class="headerlink" href="#list-objects-by-size" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>rev-list<span class="w"> </span>--objects<span class="w"> </span>--all<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span>git<span class="w"> </span>cat-file<span class="w"> </span>--batch-check<span class="o">=</span><span class="s1">&#39;%(objecttype) %(objectname) %(objectsize) %(rest)&#39;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;s/^blob //p&#39;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span>sort<span class="w"> </span>--numeric-sort<span class="w"> </span>--key<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span>cut<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>-12,41-<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="k">$(</span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>gnumfmt<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>numfmt<span class="k">)</span><span class="w"> </span>--field<span class="o">=</span><span class="m">2</span><span class="w"> </span>--to<span class="o">=</span>iec-i<span class="w"> </span>--suffix<span class="o">=</span>B<span class="w"> </span>--padding<span class="o">=</span><span class="m">7</span><span class="w"> </span>--round<span class="o">=</span>nearest
+</code></pre></div>
+<p><a href="https://stackoverflow.com/a/42544963/3615879">🔗</a></p>
+<h3 id="override-urls-or-protocols">Override URLs or protocols<a class="headerlink" href="#override-urls-or-protocols" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>url.<span class="s2">&quot;https://github&quot;</span>.insteadOf<span class="w"> </span><span class="s2">&quot;git://github&quot;</span>
+</code></pre></div>
+<p><a href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-urlltbasegtinsteadOf">🔗</a></p>
+<h3 id="print-changes-between-two-refs">Print changes between two refs<a class="headerlink" href="#print-changes-between-two-refs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>log<span class="w"> </span>--topo-order<span class="w"> </span>--pretty<span class="o">=</span>format:<span class="s2">&quot;%h ~ %s&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">..</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="nv">HEAD</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--no-merges
+</code></pre></div>
+<h3 id="rebase-dependent-branch">Rebase dependent branch<a class="headerlink" href="#rebase-dependent-branch" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># git rebase --onto &lt;what-branch&gt; &lt;from-exclusive&gt;@{1} &lt;up-to-inclusive&gt;</span>
+git<span class="w"> </span>rebase<span class="w"> </span>--onto<span class="w"> </span>featureA<span class="w"> </span>featureA@<span class="o">{</span><span class="m">1</span><span class="o">}</span><span class="w"> </span>featureB
+</code></pre></div>
+<h3 id="recursive-gc">Recursive gc<a class="headerlink" href="#recursive-gc" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.git&#39;</span><span class="w"> </span>-execdir<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;cd {} &amp;&amp; git gc&#39;</span><span class="w"> </span><span class="se">\;</span>
+</code></pre></div>
+<h3 id="renormalize-line-endings">Renormalize line endings<a class="headerlink" href="#renormalize-line-endings" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>--renormalize<span class="w"> </span>.
+</code></pre></div>
+<p><a href="https://git-scm.com/docs/git-add#Documentation/git-add.txt---renormalize">🔗</a></p>
+<h3 id="signing-commits-with-gpg">Signing commits with GPG<a class="headerlink" href="#signing-commits-with-gpg" title="Permanent link">&para;</a></h3>
+<p><a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits">🔗</a> <a href="https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html">🔗</a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../gerrit/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 🏢 Gerrit" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                🏢 Gerrit
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../github/" class="md-footer__link md-footer__link--next" aria-label="Next: 🐙 GitHub" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                🐙 GitHub
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 Simon Marquis
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.tabs.link", "content.code.copy", "content.code.annotate", "navigation.footer", "navigation.instant", "navigation.indexes", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1202 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Simon Marquis">
+      
+      
+        <link rel="canonical" href="https://github.com/SimonMarquis/TIL/markdown/">
+      
+      
+        <link rel="prev" href="../mac/">
+      
+      
+        <link rel="next" href="../miscellaneous/">
+      
+      <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
+    
+    
+      
+        <title>📄 Markdown - 🗓️ Today I Learned</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a6bdf11c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#blockquote-highlight" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="🗓️ Today I Learned" class="md-header__button md-logo" aria-label="🗓️ Today I Learned" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🗓️ Today I Learned
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              📄 Markdown
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SimonMarquis/TIL" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TIL
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="🗓️ Today I Learned" class="md-nav__button md-logo" aria-label="🗓️ Today I Learned" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    🗓️ Today I Learned
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SimonMarquis/TIL" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TIL
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../android/" class="md-nav__link">
+        🤖 Android
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bash/" class="md-nav__link">
+        🖥️ Bash
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chrome/" class="md-nav__link">
+        🌍 Chrome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../css/" class="md-nav__link">
+        🎨 CSS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dagger/" class="md-nav__link">
+        🗡️ Dagger
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase/" class="md-nav__link">
+        🔥 Firebase
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gerrit/" class="md-nav__link">
+        🏢 Gerrit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        💽 Git
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        🐙 GitHub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gradle/" class="md-nav__link">
+        🐘 Gradle
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html/" class="md-nav__link">
+        📜 HTML
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intellij-idea/" class="md-nav__link">
+        📦 IntelliJ IDEA
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/" class="md-nav__link">
+        ☕ Java
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/" class="md-nav__link">
+        🪢 JavaScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../junit/" class="md-nav__link">
+        🧪 JUnit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kotlin/" class="md-nav__link">
+        🧑‍💻 Kotlin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mac/" class="md-nav__link">
+        🍎 Mac
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          📄 Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        📄 Markdown
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#blockquote-highlight" class="md-nav__link">
+    Blockquote highlight
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#details-summary" class="md-nav__link">
+    Details summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    Diff
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#footnotes" class="md-nav__link">
+    Footnotes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#geojson" class="md-nav__link">
+    GeoJSON
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-custom-emojis" class="md-nav__link">
+    GitHub Custom Emojis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-with-reference-link" class="md-nav__link">
+    Image with reference link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keyboard" class="md-nav__link">
+    Keyboard
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maths" class="md-nav__link">
+    Maths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mermaid" class="md-nav__link">
+    Mermaid
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prefers-color-scheme" class="md-nav__link">
+    Prefers color scheme
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-labels" class="md-nav__link">
+    Reference labels
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-alignment" class="md-nav__link">
+    Table alignment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#theme-context-for-images" class="md-nav__link">
+    Theme context for images
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../miscellaneous/" class="md-nav__link">
+        💎 Miscellaneous
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../online-tools/" class="md-nav__link">
+        🕸️ Online tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open-source-projects/" class="md-nav__link">
+        🔓 Open Source projects
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regex/" class="md-nav__link">
+        🧮 Regex
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sublime-merge/" class="md-nav__link">
+        🔀 Sublime Merge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sublime-text/" class="md-nav__link">
+        🗃️ Sublime Text
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        🧰 Utils
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/" class="md-nav__link">
+        🪟 Windows
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#blockquote-highlight" class="md-nav__link">
+    Blockquote highlight
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#details-summary" class="md-nav__link">
+    Details summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    Diff
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#footnotes" class="md-nav__link">
+    Footnotes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#geojson" class="md-nav__link">
+    GeoJSON
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-custom-emojis" class="md-nav__link">
+    GitHub Custom Emojis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-with-reference-link" class="md-nav__link">
+    Image with reference link
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keyboard" class="md-nav__link">
+    Keyboard
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maths" class="md-nav__link">
+    Maths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mermaid" class="md-nav__link">
+    Mermaid
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prefers-color-scheme" class="md-nav__link">
+    Prefers color scheme
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-labels" class="md-nav__link">
+    Reference labels
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-alignment" class="md-nav__link">
+    Table alignment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#theme-context-for-images" class="md-nav__link">
+    Theme context for images
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/SimonMarquis/TIL/edit/main/docs/markdown.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/SimonMarquis/TIL/raw/main/docs/markdown.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+  <h1>📄 Markdown</h1>
+
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Most of these entries are only compatible with <abbr title="GitHub Flavored Markdown"><a href="https://github.github.com/gfm/">GFM</a></abbr>.<br />
+<a href="https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg></span> View on GitHub</a></p>
+</div>
+<h3 id="blockquote-highlight">Blockquote highlight<a class="headerlink" href="#blockquote-highlight" title="Permanent link">&para;</a></h3>
+<div class="admonition danger">
+<p class="admonition-title"><a href="https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#blockquote-highlight"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg></span> View on GitHub</a></p>
+</div>
+<ul>
+<li>Single line</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong> This is a single line note</p>
+<p><strong>Warning</strong> This is a single line warning</p>
+</blockquote>
+<ul>
+<li>Multiline</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong><br />
+This is a
+multiline note</p>
+<p><strong>Warning</strong><br />
+This is a
+multiline warning</p>
+</blockquote>
+<p><a href="https://github.com/community/community/discussions/16925">🔗</a></p>
+<h3 id="details-summary">Details summary<a class="headerlink" href="#details-summary" title="Permanent link">&para;</a></h3>
+<p>Toggle with the <code>open</code> attribute in the <code>&lt;details&gt;</code> tag.</p>
+<details open>
+    <summary>Details</summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">details</span> <span class="na">open</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">summary</span><span class="p">&gt;</span>Details<span class="p">&lt;/</span><span class="nt">summary</span><span class="p">&gt;</span>
+    Something small enough to escape casual notice.
+<span class="p">&lt;/</span><span class="nt">details</span><span class="p">&gt;</span>
+</code></pre></div>
+</details>
+
+<h3 id="diff">Diff<a class="headerlink" href="#diff" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gd">- Hello, World!</span>
+<span class="gi">+ Hello, Simon!</span>
+</code></pre></div>
+<h3 id="footnotes">Footnotes<a class="headerlink" href="#footnotes" title="Permanent link">&para;</a></h3>
+<div class="admonition danger">
+<p class="admonition-title"><a href="https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#footnotes"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg></span> View on GitHub</a></p>
+</div>
+<p>Here is a simple footnote[^1].</p>
+<p>[^1]: My reference.</p>
+<p><a href="https://github.blog/changelog/2021-09-30-footnotes-now-supported-in-markdown-fields/">🔗</a></p>
+<h3 id="geojson">GeoJSON<a class="headerlink" href="#geojson" title="Permanent link">&para;</a></h3>
+<div class="admonition danger">
+<p class="admonition-title"><a href="https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#geojson"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg></span> View on GitHub</a></p>
+</div>
+<p><a href="https://geojson.org/">Specs</a> &amp; <a href="https://geojson.io/">Viewer</a></p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;type&quot;: &quot;FeatureCollection&quot;,
+    &quot;features&quot;: [
+        {
+            &quot;type&quot;: &quot;Feature&quot;,
+            &quot;properties&quot;: {
+                &quot;label&quot;: &quot;Paris&quot;
+            },
+            &quot;geometry&quot;: {
+                &quot;type&quot;: &quot;Point&quot;,
+                &quot;coordinates&quot;: [
+                    2.3522,
+                    48.8566
+                ]
+            }
+        },
+        {
+            &quot;type&quot;: &quot;Feature&quot;,
+            &quot;properties&quot;: {
+                &quot;label&quot;: &quot;France&quot;
+            },
+            &quot;geometry&quot;: {
+                &quot;type&quot;: &quot;Polygon&quot;,
+                &quot;coordinates&quot;: [
+                    [
+                        [
+                            -5.225,
+                            41.333
+                        ],
+                        [
+                            9.55,
+                            41.333
+                        ],
+                        [
+                            9.55,
+                            41.333
+                        ],
+                        [
+                            9.55,
+                            51.2
+                        ],
+                        [
+                            -5.225,
+                            51.2
+                        ],
+                        [
+                            -5.225,
+                            41.333
+                        ]
+                    ]
+                ]
+            }
+        }
+    ]
+}
+</code></pre></div>
+<h3 id="github-custom-emojis">GitHub Custom Emojis<a class="headerlink" href="#github-custom-emojis" title="Permanent link">&para;</a></h3>
+<div class="admonition danger">
+<p class="admonition-title"><a href="https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#github-custom-emojis"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg></span> View on GitHub</a></p>
+</div>
+<ul>
+<li><img alt="⚛" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/269b.svg" title=":atom:" /> <code>:atom:</code></li>
+<li>:basecamp: <code>:basecamp:</code></li>
+<li>:basecampy: <code>:basecampy:</code></li>
+<li>:bowtie: <code>:bowtie:</code></li>
+<li>:electron: <code>:electron:</code></li>
+<li>:feelsgood: <code>:feelsgood:</code></li>
+<li>:finnadie: <code>:finnadie:</code></li>
+<li>:goberserk: <code>:goberserk:</code></li>
+<li>:godmode: <code>:godmode:</code></li>
+<li>:hurtrealbad: <code>:hurtrealbad:</code></li>
+<li>:neckbeard: <code>:neckbeard:</code></li>
+<li>:octocat: <code>:octocat:</code></li>
+<li>:rage1: <code>:rage1:</code></li>
+<li>:rage2: <code>:rage2:</code></li>
+<li>:rage3: <code>:rage3:</code></li>
+<li>:rage4: <code>:rage4:</code></li>
+<li>:shipit: <code>:shipit:</code></li>
+<li>:suspect: <code>:suspect:</code></li>
+<li>:trollface: <code>:trollface:</code></li>
+</ul>
+<p><a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md#github-custom-emoji">🔗</a></p>
+<h3 id="image-with-reference-link">Image with reference link<a class="headerlink" href="#image-with-reference-link" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>[<span class="nt">![alt text</span>][<span class="nl">image</span>]][hyperlink]
+
+[<span class="nl">hyperlink</span>]: <span class="na">https://…</span>
+[<span class="nl">image</span>]: <span class="na">https://… &quot;tooltip&quot;</span>
+</code></pre></div>
+<h3 id="keyboard">Keyboard<a class="headerlink" href="#keyboard" title="Permanent link">&para;</a></h3>
+<p><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Suppr</kbd></p>
+<h3 id="maths">Maths<a class="headerlink" href="#maths" title="Permanent link">&para;</a></h3>
+<div class="admonition danger">
+<p class="admonition-title"><a href="https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#maths"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg></span> View on GitHub</a></p>
+</div>
+<p>This sentence uses <code>$</code> delimiters to show math inline:  $\sqrt{3x-1}+(1+x)^2$</p>
+<p><strong>The Cauchy-Schwarz Inequality</strong></p>
+<p>$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$</p>
+<div class="highlight"><pre><span></span><code>\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+</code></pre></div>
+<p><a href="https://github.blog/changelog/2022-06-28-fenced-block-syntax-for-mathematical-expressions/">🔗</a></p>
+<h3 id="mermaid">Mermaid<a class="headerlink" href="#mermaid" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph LR
+    A[Square Rect] -- Link text --&gt; B((Circle))
+    A --&gt; C(Round Rect)
+    B --&gt; D{Rhombus}
+    C --&gt; D</code></pre>
+<h3 id="prefers-color-scheme">Prefers color scheme<a class="headerlink" href="#prefers-color-scheme" title="Permanent link">&para;</a></h3>
+<p><picture>
+  <source width="150em" media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/25423296/163456776-7f95b81a-f1ed-45f7-b7ab-8fa810d529fa.png">
+  <img width="150em" alt="Shows an illustrated sun in light color mode and a moon with stars in dark color mode." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
+</picture></p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">picture</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">source</span> <span class="na">media</span><span class="o">=</span><span class="s">&quot;(prefers-color-scheme: dark)&quot;</span> <span class="na">srcset</span><span class="o">=</span><span class="s">&quot;https://user-images.githubusercontent.com/25423296/163456776-7f95b81a-f1ed-45f7-b7ab-8fa810d529fa.png&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Shows an illustrated sun in light color mode and a moon with stars in dark color mode.&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">picture</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><a href="https://github.blog/changelog/2022-05-19-specify-theme-context-for-images-in-markdown-beta/">🔗</a></p>
+<h3 id="reference-labels">Reference labels<a class="headerlink" href="#reference-labels" title="Permanent link">&para;</a></h3>
+<div class="admonition danger">
+<p class="admonition-title"><a href="https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#reference-labels"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg></span> View on GitHub</a></p>
+</div>
+<p><a href="https://github.com/SimonMarquis/TIL/labels/bug">https://github.com/SimonMarquis/TIL/labels/bug</a> • <a href="https://github.com/SimonMarquis/TIL/labels/enhancement">https://github.com/SimonMarquis/TIL/labels/enhancement</a> • <a href="https://github.com/SimonMarquis/TIL/labels/good%20first%20issue">https://github.com/SimonMarquis/TIL/labels/good%20first%20issue</a> • <a href="https://github.com/SimonMarquis/TIL/labels/help%20wanted">https://github.com/SimonMarquis/TIL/labels/help%20wanted</a> • <a href="https://github.com/SimonMarquis/TIL/labels/invalid">https://github.com/SimonMarquis/TIL/labels/invalid</a> • <a href="https://github.com/SimonMarquis/TIL/labels/question">https://github.com/SimonMarquis/TIL/labels/question</a> • <a href="https://github.com/SimonMarquis/TIL/labels/wontfix">https://github.com/SimonMarquis/TIL/labels/wontfix</a></p>
+<p><a href="https://github.blog/changelog/2022-02-03-reference-labels-in-markdown/">🔗</a></p>
+<h3 id="table-alignment">Table alignment<a class="headerlink" href="#table-alignment" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th align="left">Left</th>
+<th align="center">Center</th>
+<th align="right">Right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">⬤</td>
+<td align="center">⬤</td>
+<td align="right">⬤</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>| Left | Center | Right |
+|:-----|:------:|------:|
+| ⬤ | ⬤ | ⬤ |
+</code></pre></div>
+<h3 id="theme-context-for-images">Theme context for images<a class="headerlink" href="#theme-context-for-images" title="Permanent link">&para;</a></h3>
+<div class="admonition danger">
+<p class="admonition-title"><a href="https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#theme-context-for-images"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/></svg></span> View on GitHub</a></p>
+</div>
+<p><img alt="GitHub-Mark-Light" src="https://user-images.githubusercontent.com/3369400/139447912-e0f43f33-6d9f-45f8-be46-2df5bbc91289.png#gh-dark-mode-only" /><img alt="GitHub-Mark-Dark" src="https://user-images.githubusercontent.com/3369400/139448065-39a229ba-4b06-434b-bc67-616e2ed80c8f.png#gh-light-mode-only" /></p>
+<div class="highlight"><pre><span></span><code>![<span class="nt">GitHub-Mark-Light</span>](<span class="na">https://user-images.githubusercontent.com/3369400/139447912-e0f43f33-6d9f-45f8-be46-2df5bbc91289.png#gh-dark-mode-only</span>)![<span class="nt">GitHub-Mark-Dark</span>](<span class="na">https://user-images.githubusercontent.com/3369400/139448065-39a229ba-4b06-434b-bc67-616e2ed80c8f.png#gh-light-mode-only</span>)
+</code></pre></div>
+<p><a href="https://github.blog/changelog/2021-11-24-specify-theme-context-for-images-in-markdown/">🔗</a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../mac/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 🍎 Mac" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                🍎 Mac
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../miscellaneous/" class="md-footer__link md-footer__link--next" aria-label="Next: 💎 Miscellaneous" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                💎 Miscellaneous
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 Simon Marquis
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.tabs.link", "content.code.copy", "content.code.annotate", "navigation.footer", "navigation.instant", "navigation.indexes", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>

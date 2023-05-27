@@ -1,0 +1,2024 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Simon Marquis">
+      
+      
+        <link rel="canonical" href="https://github.com/SimonMarquis/TIL/kotlin/">
+      
+      
+        <link rel="prev" href="../junit/">
+      
+      
+        <link rel="next" href="../mac/">
+      
+      <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
+    
+    
+      
+        <title>🧑‍💻 Kotlin - 🗓️ Today I Learned</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a6bdf11c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bitflags" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="🗓️ Today I Learned" class="md-header__button md-logo" aria-label="🗓️ Today I Learned" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🗓️ Today I Learned
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🧑‍💻 Kotlin
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SimonMarquis/TIL" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TIL
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="🗓️ Today I Learned" class="md-nav__button md-logo" aria-label="🗓️ Today I Learned" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    🗓️ Today I Learned
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SimonMarquis/TIL" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TIL
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../android/" class="md-nav__link">
+        🤖 Android
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bash/" class="md-nav__link">
+        🖥️ Bash
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chrome/" class="md-nav__link">
+        🌍 Chrome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../css/" class="md-nav__link">
+        🎨 CSS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dagger/" class="md-nav__link">
+        🗡️ Dagger
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase/" class="md-nav__link">
+        🔥 Firebase
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gerrit/" class="md-nav__link">
+        🏢 Gerrit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        💽 Git
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        🐙 GitHub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gradle/" class="md-nav__link">
+        🐘 Gradle
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html/" class="md-nav__link">
+        📜 HTML
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intellij-idea/" class="md-nav__link">
+        📦 IntelliJ IDEA
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/" class="md-nav__link">
+        ☕ Java
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/" class="md-nav__link">
+        🪢 JavaScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../junit/" class="md-nav__link">
+        🧪 JUnit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          🧑‍💻 Kotlin
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        🧑‍💻 Kotlin
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bitflags" class="md-nav__link">
+    BitFlags
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-if-a-class-is-in-the-classpath" class="md-nav__link">
+    Check if a class is in the classpath
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coroutines-cancellationexception-with-runcatching" class="md-nav__link">
+    Coroutine's CancellationException with runCatching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execute-commands-in-subprocess" class="md-nav__link">
+    Execute commands in subprocess
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expect-test-failures" class="md-nav__link">
+    Expect test failures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensions" class="md-nav__link">
+    Extensions
+  </a>
+  
+    <nav class="md-nav" aria-label="Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collections" class="md-nav__link">
+    Collections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maths" class="md-nav__link">
+    Maths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    Misc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalize-line-endings" class="md-nav__link">
+    Normalize line endings
+  </a>
+  
+    <nav class="md-nav" aria-label="Normalize line endings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#permutations-combinations" class="md-nav__link">
+    Permutations &amp; Combinations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter-non-null-values-in-a-map" class="md-nav__link">
+    Filter non-null values in a Map
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implicit-lamda-result-with-run-and-let" class="md-nav__link">
+    Implicit lamda result with run and let
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infinitely-repeating-sequence" class="md-nav__link">
+    Infinitely repeating Sequence
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invoke-operator-on-companion-objects" class="md-nav__link">
+    Invoke operator on Companion objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invoke-operator-on-coroutines-dispatchers" class="md-nav__link">
+    Invoke operator on Coroutines Dispatchers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kotlin-script" class="md-nav__link">
+    Kotlin script
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#language-injection" class="md-nav__link">
+    Language injection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazymutable" class="md-nav__link">
+    LazyMutable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maincoroutinerule" class="md-nav__link">
+    MainCoroutineRule
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map-parallelized" class="md-nav__link">
+    Map parallelized
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mockk-extension-to-wait-indefinitely" class="md-nav__link">
+    MockK extension to wait indefinitely
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nowhenbranchmatchedexception" class="md-nav__link">
+    NoWhenBranchMatchedException
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-delegate-to-cancel-previous-job" class="md-nav__link">
+    Property delegate to cancel previous Job
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-resource-file" class="md-nav__link">
+    Read resource file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursive-flatmap" class="md-nav__link">
+    Recursive flatMap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regex-destructuring" class="md-nav__link">
+    Regex destructuring
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regex-destructuring-capturing-groups" class="md-nav__link">
+    Regex destructuring capturing groups
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reified-generic-in-virtual-functions" class="md-nav__link">
+    Reified generic in virtual functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#require-an-instance-type" class="md-nav__link">
+    Require an instance type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retry-coroutine-operations" class="md-nav__link">
+    Retry coroutine operations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sealed-object-instances" class="md-nav__link">
+    Sealed object instances
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semver" class="md-nav__link">
+    SemVer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#singleton" class="md-nav__link">
+    Singleton
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synchronize-a-map-with-a-new-map-of-values" class="md-nav__link">
+    Synchronize a Map with a new Map of values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#takewhileinclusive" class="md-nav__link">
+    takeWhileInclusive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeout-for-async-operations" class="md-nav__link">
+    Timeout for async operations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#warnings-as-errors" class="md-nav__link">
+    Warnings as errors
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mac/" class="md-nav__link">
+        🍎 Mac
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../markdown/" class="md-nav__link">
+        📄 Markdown
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../miscellaneous/" class="md-nav__link">
+        💎 Miscellaneous
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../online-tools/" class="md-nav__link">
+        🕸️ Online tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open-source-projects/" class="md-nav__link">
+        🔓 Open Source projects
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regex/" class="md-nav__link">
+        🧮 Regex
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sublime-merge/" class="md-nav__link">
+        🔀 Sublime Merge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sublime-text/" class="md-nav__link">
+        🗃️ Sublime Text
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        🧰 Utils
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/" class="md-nav__link">
+        🪟 Windows
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bitflags" class="md-nav__link">
+    BitFlags
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-if-a-class-is-in-the-classpath" class="md-nav__link">
+    Check if a class is in the classpath
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coroutines-cancellationexception-with-runcatching" class="md-nav__link">
+    Coroutine's CancellationException with runCatching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execute-commands-in-subprocess" class="md-nav__link">
+    Execute commands in subprocess
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expect-test-failures" class="md-nav__link">
+    Expect test failures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensions" class="md-nav__link">
+    Extensions
+  </a>
+  
+    <nav class="md-nav" aria-label="Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collections" class="md-nav__link">
+    Collections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maths" class="md-nav__link">
+    Maths
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misc" class="md-nav__link">
+    Misc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normalize-line-endings" class="md-nav__link">
+    Normalize line endings
+  </a>
+  
+    <nav class="md-nav" aria-label="Normalize line endings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#permutations-combinations" class="md-nav__link">
+    Permutations &amp; Combinations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter-non-null-values-in-a-map" class="md-nav__link">
+    Filter non-null values in a Map
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implicit-lamda-result-with-run-and-let" class="md-nav__link">
+    Implicit lamda result with run and let
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infinitely-repeating-sequence" class="md-nav__link">
+    Infinitely repeating Sequence
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invoke-operator-on-companion-objects" class="md-nav__link">
+    Invoke operator on Companion objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invoke-operator-on-coroutines-dispatchers" class="md-nav__link">
+    Invoke operator on Coroutines Dispatchers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kotlin-script" class="md-nav__link">
+    Kotlin script
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#language-injection" class="md-nav__link">
+    Language injection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazymutable" class="md-nav__link">
+    LazyMutable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maincoroutinerule" class="md-nav__link">
+    MainCoroutineRule
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map-parallelized" class="md-nav__link">
+    Map parallelized
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mockk-extension-to-wait-indefinitely" class="md-nav__link">
+    MockK extension to wait indefinitely
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nowhenbranchmatchedexception" class="md-nav__link">
+    NoWhenBranchMatchedException
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#property-delegate-to-cancel-previous-job" class="md-nav__link">
+    Property delegate to cancel previous Job
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-resource-file" class="md-nav__link">
+    Read resource file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursive-flatmap" class="md-nav__link">
+    Recursive flatMap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regex-destructuring" class="md-nav__link">
+    Regex destructuring
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regex-destructuring-capturing-groups" class="md-nav__link">
+    Regex destructuring capturing groups
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reified-generic-in-virtual-functions" class="md-nav__link">
+    Reified generic in virtual functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#require-an-instance-type" class="md-nav__link">
+    Require an instance type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retry-coroutine-operations" class="md-nav__link">
+    Retry coroutine operations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sealed-object-instances" class="md-nav__link">
+    Sealed object instances
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semver" class="md-nav__link">
+    SemVer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#singleton" class="md-nav__link">
+    Singleton
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#synchronize-a-map-with-a-new-map-of-values" class="md-nav__link">
+    Synchronize a Map with a new Map of values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#takewhileinclusive" class="md-nav__link">
+    takeWhileInclusive
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeout-for-async-operations" class="md-nav__link">
+    Timeout for async operations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#warnings-as-errors" class="md-nav__link">
+    Warnings as errors
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/SimonMarquis/TIL/edit/main/docs/kotlin.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/SimonMarquis/TIL/raw/main/docs/kotlin.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+  <h1>🧑‍💻 Kotlin</h1>
+
+<p><a href="https://play.kotlinlang.org/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> Kotlin Playground</a></p>
+<h3 id="bitflags">BitFlags<a class="headerlink" href="#bitflags" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">kotlin.experimental.*</span>
+
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Long</span><span class="p">.</span><span class="nf">hasFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">):</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">flag</span>
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Long</span><span class="p">.</span><span class="nf">withFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">):</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">flag</span>
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Long</span><span class="p">.</span><span class="nf">minusFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">):</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">flag</span><span class="p">.</span><span class="na">inv</span><span class="p">()</span>
+
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Int</span><span class="p">.</span><span class="nf">hasFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">flag</span>
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Int</span><span class="p">.</span><span class="nf">withFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">flag</span>
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Int</span><span class="p">.</span><span class="nf">minusFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">flag</span><span class="p">.</span><span class="na">inv</span><span class="p">()</span>
+
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Short</span><span class="p">.</span><span class="nf">hasFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Short</span><span class="p">):</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">flag</span>
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Short</span><span class="p">.</span><span class="nf">withFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Short</span><span class="p">):</span><span class="w"> </span><span class="kt">Short</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">flag</span>
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Short</span><span class="p">.</span><span class="nf">minusFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Short</span><span class="p">):</span><span class="w"> </span><span class="kt">Short</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">flag</span><span class="p">.</span><span class="na">inv</span><span class="p">()</span>
+
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Byte</span><span class="p">.</span><span class="nf">hasFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Byte</span><span class="p">):</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">flag</span>
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Byte</span><span class="p">.</span><span class="nf">withFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Byte</span><span class="p">):</span><span class="w"> </span><span class="kt">Byte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">flag</span>
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Byte</span><span class="p">.</span><span class="nf">minusFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Byte</span><span class="p">):</span><span class="w"> </span><span class="kt">Byte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">flag</span><span class="p">.</span><span class="na">inv</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="check-if-a-class-is-in-the-classpath">Check if a class is in the classpath<a class="headerlink" href="#check-if-a-class-is-in-the-classpath" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">internal</span><span class="w"> </span><span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="nf">ifInClasspath</span><span class="p">(</span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">R</span><span class="p">):</span><span class="w"> </span><span class="n">R? </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isInClasspath</span><span class="p">())</span><span class="w"> </span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="kc">null</span>
+
+<span class="kd">internal</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="nf">isInClasspath</span><span class="p">():</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kotlin</span><span class="p">.</span><span class="na">runCatching</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Class</span><span class="p">.</span><span class="na">forName</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+<span class="p">}.</span><span class="na">fold</span><span class="p">(</span>
+<span class="w">    </span><span class="n">onSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="n">onFailure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="coroutines-cancellationexception-with-runcatching">Coroutine's CancellationException with runCatching<a class="headerlink" href="#coroutines-cancellationexception-with-runcatching" title="Permanent link">&para;</a></h3>
+<p><code>kotlin.runCatching</code> is not coroutines-aware, and therefore does not automatically rethrow <code>CancellationException</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">kotlinx.coroutines</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Executes [kotlin.runCatching] but rethrow any [CancellationException].</span>
+<span class="cm"> * @see kotlin.runCatching</span>
+<span class="cm"> */</span>
+<span class="kd">suspend</span><span class="w"> </span><span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">runSuspendCatching</span><span class="p">(</span><span class="n">block</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">R</span><span class="p">):</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runCatching</span><span class="p">(</span><span class="n">block</span><span class="p">).</span><span class="na">onFailure</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">it</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">CancellationException</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="nb">it</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Executes [kotlin.runCatching] but rethrow any [CancellationException].</span>
+<span class="cm"> * @see kotlin.runCatching</span>
+<span class="cm"> */</span>
+<span class="kd">suspend</span><span class="w"> </span><span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="nf">runSuspendCatching</span><span class="p">(</span><span class="n">block</span><span class="p">:</span><span class="w"> </span><span class="n">T</span><span class="p">.()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">R</span><span class="p">):</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runCatching</span><span class="p">(</span><span class="n">block</span><span class="p">).</span><span class="na">onFailure</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">it</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">CancellationException</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="nb">it</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a href="https://play.kotlinlang.org/#eyJ2ZXJzaW9uIjoiMS42LjEwIiwicGxhdGZvcm0iOiJqYXZhIiwiYXJncyI6IiIsIm5vbmVNYXJrZXJzIjp0cnVlLCJ0aGVtZSI6ImlkZWEiLCJjb2RlIjoiaW1wb3J0IGtvdGxpbnguY29yb3V0aW5lcy4qXG5cbmZ1biA8VD4gUmVzdWx0PFQ+LnRocm93SWYoXG4gICAgcHJlZGljYXRlOiAoVGhyb3dhYmxlKSAtPiBCb29sZWFuXG4pOiBSZXN1bHQ8VD4gPSBvbkZhaWx1cmUge1xuICAgIGlmIChwcmVkaWNhdGUoaXQpKSB0aHJvdyBpdFxufVxuXG5zdXNwZW5kIGZ1biA8VD4gcnVuU3VzcGVuZENhdGNoaW5nKFxuICAgIGJsb2NrOiAoKSAtPiBUXG4pOiBSZXN1bHQ8VD4gPSBydW5DYXRjaGluZyhibG9jaykudGhyb3dJZiB7XG4gICAgaXQgaXMgQ2FuY2VsbGF0aW9uRXhjZXB0aW9uXG59XG4ifQ==">🧑‍💻</a></p>
+<h3 id="execute-commands-in-subprocess">Execute commands in subprocess<a class="headerlink" href="#execute-commands-in-subprocess" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">On Windows (<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg></span>), you'll probably need to prefix the command with <code>cmd /c</code>.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * ```</span>
+<span class="cm"> * val status: String = &quot;&quot;&quot;git status&quot;&quot;&quot;.exec()</span>
+<span class="cm"> * ```</span>
+<span class="cm"> */</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">@receiver</span><span class="p">:</span><span class="n">Language</span><span class="p">(</span><span class="s">&quot;bash&quot;</span><span class="p">)</span><span class="w"> </span><span class="kt">String</span><span class="p">.</span><span class="na">exec</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">().</span><span class="na">exec</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="na">text</span><span class="p">()</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ```</span>
+<span class="cm"> * val diff: String = &quot;&quot;&quot;git diff&quot;&quot;&quot;.execute {</span>
+<span class="cm"> *     environment() += (&quot;GIT_DIFF_OPTS&quot; to &quot;--unified=10&quot;)</span>
+<span class="cm"> * }.text()</span>
+<span class="cm"> * ```</span>
+<span class="cm"> */</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">@receiver</span><span class="p">:</span><span class="n">Language</span><span class="p">(</span><span class="s">&quot;bash&quot;</span><span class="p">)</span><span class="w"> </span><span class="kt">String</span><span class="p">.</span><span class="na">execute</span><span class="p">(</span>
+<span class="w">    </span><span class="n">workingDir</span><span class="p">:</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">).</span><span class="na">toFile</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">redirectOutput</span><span class="p">:</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">.</span><span class="na">Redirect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">.</span><span class="na">Redirect</span><span class="p">.</span><span class="na">PIPE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">redirectError</span><span class="p">:</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">.</span><span class="na">Redirect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">.</span><span class="na">Redirect</span><span class="p">.</span><span class="na">PIPE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">configure</span><span class="p">:</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">.()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{},</span>
+<span class="p">):</span><span class="w"> </span><span class="n">Process</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">&quot;&quot;&quot;\s&quot;&quot;&quot;</span><span class="p">.</span><span class="na">toRegex</span><span class="p">().</span><span class="na">split</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+<span class="w">    </span><span class="p">.</span><span class="na">directory</span><span class="p">(</span><span class="n">workingDir</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">redirectOutput</span><span class="p">(</span><span class="n">redirectOutput</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">redirectError</span><span class="p">(</span><span class="n">redirectError</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">apply</span><span class="p">(</span><span class="n">configure</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">start</span><span class="p">()</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Process</span><span class="p">.</span><span class="nf">text</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">waitFor</span><span class="p">()</span><span class="w"> </span><span class="p">}.</span><span class="na">inputStream</span><span class="p">.</span><span class="na">bufferedReader</span><span class="p">().</span><span class="na">use</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">readText</span><span class="p">().</span><span class="na">trim</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="expect-test-failures">Expect test failures<a class="headerlink" href="#expect-test-failures" title="Permanent link">&para;</a></h3>
+<p>The following way of checking a test throws is strongly discouraged because of this single reason: it will succeed wherever the exception comes from, including from the setup code.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span><span class="p">(</span><span class="n">expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ArithmeticException</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">test</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>Instead, the better solution is to use:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">kotlinTest</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">kotlin</span><span class="p">.</span><span class="na">test</span><span class="p">.</span><span class="na">assertFailsWith</span><span class="o">&lt;</span><span class="n">ArithmeticException</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">1</span><span class="o">/</span><span class="m">0</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Test</span><span class="p">()</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">junit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">org</span><span class="p">.</span><span class="na">junit</span><span class="p">.</span><span class="na">jupiter</span><span class="p">.</span><span class="na">api</span><span class="p">.</span><span class="na">assertThrows</span><span class="o">&lt;</span><span class="n">ArithmeticException</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">1</span><span class="o">/</span><span class="m">0</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Also, the <code>expected</code> parameter has been removed from JUnit5.</p>
+<h3 id="extensions">Extensions<a class="headerlink" href="#extensions" title="Permanent link">&para;</a></h3>
+<h4 id="collections">Collections<a class="headerlink" href="#collections" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Sequence</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">repeat</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="n">yieldAll</span><span class="p">(</span><span class="k">this</span><span class="nd">@repeat</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Sequence</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">repeat</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">repeat</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="nd">inner@</span><span class="p">{</span><span class="w"> </span><span class="n">yieldAll</span><span class="p">(</span><span class="k">this</span><span class="nd">@repeat</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Iterable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">foldInPlace</span><span class="p">(</span>
+<span class="w">    </span><span class="n">initial</span><span class="p">:</span><span class="w"> </span><span class="n">R</span><span class="p">,</span>
+<span class="w">    </span><span class="n">operation</span><span class="p">:</span><span class="w"> </span><span class="n">R</span><span class="p">.(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">,</span>
+<span class="p">):</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fold</span><span class="p">(</span><span class="n">initial</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">acc</span><span class="p">:</span><span class="w"> </span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">:</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">acc</span><span class="p">.</span><span class="na">apply</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">operation</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Iterable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">partitionIndexed</span><span class="p">(</span>
+<span class="w">    </span><span class="n">predicate</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Boolean</span><span class="p">,</span>
+<span class="p">):</span><span class="w"> </span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withIndex</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">partition</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">predicate</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">IndexedValue</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h4 id="maths">Maths<a class="headerlink" href="#maths" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nd">@JvmName</span><span class="p">(</span><span class="s">&quot;intProduct&quot;</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">Iterable</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">.</span><span class="na">product</span><span class="p">():</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fold</span><span class="p">(</span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="kt">Long</span><span class="o">::</span><span class="n">times</span><span class="p">)</span>
+
+<span class="nd">@JvmName</span><span class="p">(</span><span class="s">&quot;longProduct&quot;</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">Iterable</span><span class="o">&lt;</span><span class="kt">Long</span><span class="o">&gt;</span><span class="p">.</span><span class="na">product</span><span class="p">():</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fold</span><span class="p">(</span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="kt">Long</span><span class="o">::</span><span class="n">times</span><span class="p">)</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Iterable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">cartesianSquare</span><span class="p">():</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flatMap</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Euclid&#39;s algorithm for finding the greatest common divisor of a and b.</span>
+<span class="cm"> */</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="na">absoluteValue</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">gcd</span><span class="p">(</span><span class="n">f</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="k">vararg</span><span class="w"> </span><span class="n">n</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">fold</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="o">::</span><span class="n">gcd</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">Iterable</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">.</span><span class="na">gcd</span><span class="p">():</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reduce</span><span class="p">(</span><span class="o">::</span><span class="n">gcd</span><span class="p">)</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Euclid&#39;s algorithm for finding the greatest common divisor of a and b.</span>
+<span class="cm"> */</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">):</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0L</span><span class="p">)</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="na">absoluteValue</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">gcd</span><span class="p">(</span><span class="n">f</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">,</span><span class="w"> </span><span class="k">vararg</span><span class="w"> </span><span class="n">n</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">):</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">fold</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="o">::</span><span class="n">gcd</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">Iterable</span><span class="o">&lt;</span><span class="kt">Long</span><span class="o">&gt;</span><span class="p">.</span><span class="na">gcd</span><span class="p">():</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reduce</span><span class="p">(</span><span class="o">::</span><span class="n">gcd</span><span class="p">)</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Find the least common multiple of a and b using the gcd of a and b.</span>
+<span class="cm"> */</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">lcm</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">lcm</span><span class="p">(</span><span class="n">f</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="k">vararg</span><span class="w"> </span><span class="n">n</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">toLong</span><span class="p">()</span><span class="w"> </span><span class="p">}.</span><span class="na">fold</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="na">toLong</span><span class="p">(),</span><span class="w"> </span><span class="o">::</span><span class="n">lcm</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">Iterable</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">.</span><span class="na">lcm</span><span class="p">():</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">toLong</span><span class="p">()</span><span class="w"> </span><span class="p">}.</span><span class="na">reduce</span><span class="p">(</span><span class="o">::</span><span class="n">lcm</span><span class="p">)</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Find the least common multiple of a and b using the gcd of a and b.</span>
+<span class="cm"> */</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">lcm</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">lcm</span><span class="p">(</span><span class="n">f</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">,</span><span class="w"> </span><span class="k">vararg</span><span class="w"> </span><span class="n">n</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">):</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">fold</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="o">::</span><span class="n">lcm</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">Iterable</span><span class="o">&lt;</span><span class="kt">Long</span><span class="o">&gt;</span><span class="p">.</span><span class="na">lcm</span><span class="p">():</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reduce</span><span class="p">(</span><span class="o">::</span><span class="n">lcm</span><span class="p">)</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Simple algorithm to find the primes of the given Long.</span>
+<span class="cm"> */</span>
+<span class="kd">fun</span><span class="w"> </span><span class="n">Long</span><span class="p">.</span><span class="nf">primes</span><span class="p">():</span><span class="w"> </span><span class="n">Sequence</span><span class="o">&lt;</span><span class="kt">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="nd">@primes</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2L</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0L</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">yield</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+<span class="w">            </span><span class="n">n</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">j</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">j</span><span class="o">++</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="n">yield</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="misc">Misc<a class="headerlink" href="#misc" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="k">reified</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Any</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Any</span><span class="o">?.</span><span class="na">cast</span><span class="p">():</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span>
+
+<span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="nf">times</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repeat</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Pair</span><span class="o">&lt;</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="o">&gt;</span><span class="p">.</span><span class="na">swap</span><span class="p">():</span><span class="w"> </span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pair</span><span class="p">(</span><span class="n">second</span><span class="p">,</span><span class="w"> </span><span class="n">first</span><span class="p">)</span>
+
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Pair</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">transform</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">R</span><span class="p">):</span><span class="w"> </span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transform</span><span class="p">(</span><span class="n">first</span><span class="p">)</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">transform</span><span class="p">(</span><span class="n">second</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="normalize-line-endings">Normalize line endings<a class="headerlink" href="#normalize-line-endings" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="nf">normalizeLineEndings</span><span class="p">(</span>
+<span class="w">    </span><span class="n">replacement</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">lineSeparator</span><span class="p">(),</span>
+<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;&quot;&quot;\r\n?&quot;&quot;&quot;</span><span class="p">.</span><span class="na">toRegex</span><span class="p">(),</span><span class="w"> </span><span class="n">replacement</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="permutations-combinations">Permutations &amp; Combinations<a class="headerlink" href="#permutations-combinations" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">permutations</span><span class="p">():</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">emptyList</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">elementToInsert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first</span><span class="p">()</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">drop</span><span class="p">(</span><span class="m">1</span><span class="p">).</span><span class="na">permutations</span><span class="p">().</span><span class="na">flatMap</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">List</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">toMutableList</span><span class="p">().</span><span class="na">apply</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="nb">it</span><span class="p">,</span><span class="w"> </span><span class="n">elementToInsert</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">permutationsSequence</span><span class="p">():</span><span class="w"> </span><span class="n">Sequence</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">emptySequence</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">sequenceOf</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">elementToInsert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first</span><span class="p">()</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">drop</span><span class="p">(</span><span class="m">1</span><span class="p">).</span><span class="na">permutationsSequence</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">flatMap</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">List</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">toMutableList</span><span class="p">().</span><span class="na">apply</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="nb">it</span><span class="p">,</span><span class="w"> </span><span class="n">elementToInsert</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">pairs</span><span class="p">():</span><span class="w"> </span><span class="n">Sequence</span><span class="o">&lt;</span><span class="n">Pair</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">yield</span><span class="p">(</span><span class="k">this</span><span class="nd">@pairs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">this</span><span class="nd">@pairs</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">)</span>
+<span class="w">            </span><span class="n">yield</span><span class="p">(</span><span class="k">this</span><span class="nd">@pairs</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">this</span><span class="nd">@pairs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="filter-non-null-values-in-a-map">Filter non-null values in a Map<a class="headerlink" href="#filter-non-null-values-in-a-map" title="Permanent link">&para;</a></h3>
+<p>Kotlin already has a <code>Iterable&lt;T?&gt;.filterNotNull(): List&lt;T&gt;</code> but nothing for <code>Map</code>s. 🤷</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Returns a map containing all key-value pairs with values that are not `null`.</span>
+<span class="cm"> * The returned map preserves the entry iteration order of the original map.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @see filterNotNull</span>
+<span class="cm"> */</span>
+<span class="nd">@Suppress</span><span class="p">(</span><span class="s">&quot;UNCHECKED_CAST&quot;</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">:</span><span class="w"> </span><span class="n">Any</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Map</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">V?&gt;</span><span class="p">.</span><span class="na">filterNotNullValues</span><span class="p">():</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filterValues</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="o">&gt;</span>
+</code></pre></div>
+<h3 id="implicit-lamda-result-with-run-and-let">Implicit lamda result with run and let<a class="headerlink" href="#implicit-lamda-result-with-run-and-let" title="Permanent link">&para;</a></h3>
+<p>When using the following syntax, both doSomething() and fallback() will be exectued when the return value of the lambda is null.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// AVOID</span>
+<span class="n">somethingNullable</span><span class="o">?.</span><span class="na">run</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">doSomething</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">fallback</span><span class="p">()</span>
+<span class="n">somethingNullable</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">doSomething</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">fallback</span><span class="p">()</span>
+<span class="c1">// PREFER</span>
+<span class="n">somethingNullable</span><span class="o">?.</span><span class="na">also</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">doSomething</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">fallback</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="infinitely-repeating-sequence">Infinitely repeating Sequence<a class="headerlink" href="#infinitely-repeating-sequence" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Sequence</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">repeat</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="n">yieldAll</span><span class="p">(</span><span class="k">this</span><span class="nd">@repeat</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Sequence</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">repeat</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequence</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">repeat</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="nd">inner@</span><span class="p">{</span><span class="w"> </span><span class="n">yieldAll</span><span class="p">(</span><span class="k">this</span><span class="nd">@repeat</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="invoke-operator-on-companion-objects">Invoke operator on Companion objects<a class="headerlink" href="#invoke-operator-on-companion-objects" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Operation</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">companion</span><span class="w"> </span><span class="kd">object</span><span class="w"> </span><span class="err">{</span>
+<span class="w">        </span><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">invoke</span><span class="p">(</span><span class="n">block</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">block</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Operation</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="invoke-operator-on-coroutines-dispatchers">Invoke operator on Coroutines Dispatchers<a class="headerlink" href="#invoke-operator-on-coroutines-dispatchers" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.invoke</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.Dispatchers.IO</span>
+
+<span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IO</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="kotlin-script">Kotlin script<a class="headerlink" href="#kotlin-script" title="Permanent link">&para;</a></h3>
+<ul>
+<li>REPL Worksheet file <code>*.ws.kts</code></li>
+<li>Simple but extendable utility scripts <code>*.main.kts</code> <a href="https://github.com/Kotlin/KEEP/blob/master/proposals/scripting-support.md">🔗 Keep</a> <a href="https://github.com/Kotlin/kotlin-script-examples/blob/master/jvm/main-kts/MainKts.md">🔗 Github</a> <a href="https://kotlinlang.org/docs/custom-script-deps-tutorial.html">🔗 Docs</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">#!/usr/bin/env kotlin</span>
+
+<span class="nd">@file</span><span class="p">:</span><span class="n">Repository</span><span class="p">(</span><span class="s">&quot;https://repo1.maven.org/maven2&quot;</span><span class="p">)</span>
+<span class="nd">@file</span><span class="p">:</span><span class="n">DependsOn</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0&quot;</span><span class="p">)</span>
+<span class="nd">@file</span><span class="p">:</span><span class="n">CompilerOptions</span><span class="p">(</span><span class="s">&quot;-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi&quot;</span><span class="p">)</span>
+
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.runBlocking</span>
+
+
+<span class="n">runBlocking</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="language-injection">Language injection<a class="headerlink" href="#language-injection" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nd">@org.intellij.lang.annotations.Language</span><span class="p">(</span><span class="s">&quot;JSON&quot;</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;{&quot;key&quot;: &quot;value&quot;}&quot;&quot;&quot;</span>
+
+<span class="n">println</span><span class="p">(</span><span class="cm">/*language=JSON*/</span><span class="w"> </span><span class="s">&quot;&quot;&quot;{&quot;key&quot;: &quot;value&quot;}&quot;&quot;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="lazymutable">LazyMutable<a class="headerlink" href="#lazymutable" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nv">lazyMutable</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">lazyMutable</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="na">nextInt</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">lazyMutable</span><span class="p">(</span><span class="n">initializer</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">):</span><span class="w"> </span><span class="n">LazyMutable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LazyMutable</span><span class="p">(</span><span class="n">initializer</span><span class="p">)</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">LazyMutable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">initializer</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ReadWriteProperty</span><span class="o">&lt;</span><span class="kt">Any?</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">object</span><span class="w"> </span><span class="nc">NotInitialized</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">prop</span><span class="p">:</span><span class="w"> </span><span class="kt">Any?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NotInitialized</span>
+
+<span class="w">    </span><span class="nd">@Suppress</span><span class="p">(</span><span class="s">&quot;UNCHECKED_CAST&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getValue</span><span class="p">(</span><span class="n">thisRef</span><span class="p">:</span><span class="w"> </span><span class="kt">Any?</span><span class="p">,</span><span class="w"> </span><span class="n">property</span><span class="p">:</span><span class="w"> </span><span class="n">KProperty</span><span class="o">&lt;*&gt;</span><span class="p">):</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">prop</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">NotInitialized</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">synchronized</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">prop</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">NotInitialized</span><span class="p">)</span><span class="w"> </span><span class="n">initializer</span><span class="p">().</span><span class="na">also</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">prop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">prop</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">prop</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span>
+
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">setValue</span><span class="p">(</span><span class="n">thisRef</span><span class="p">:</span><span class="w"> </span><span class="kt">Any?</span><span class="p">,</span><span class="w"> </span><span class="n">property</span><span class="p">:</span><span class="w"> </span><span class="n">KProperty</span><span class="o">&lt;*&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">synchronized</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">prop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="maincoroutinerule">MainCoroutineRule<a class="headerlink" href="#maincoroutinerule" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/android/architecture-components-samples/blob/main/LiveDataSample/app/src/test/java/com/android/example/livedatabuilder/util/MainCoroutineRule.kt">🔗</a></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.Dispatchers</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.ExperimentalCoroutinesApi</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.test.StandardTestDispatcher</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.test.UnconfinedTestDispatcher</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.test.resetMain</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.test.setMain</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">org.junit.rules.TestWatcher</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">org.junit.runner.Description</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Sets the main coroutines dispatcher to a [StandardTestDispatcher] for unit testing.</span>
+<span class="cm"> * A [StandardTestDispatcher] provides control over the execution of coroutines.</span>
+<span class="cm"> * Alternatively, you can use an [UnconfinedTestDispatcher].</span>
+<span class="cm"> *</span>
+<span class="cm"> * Declare it as a JUnit Rule:</span>
+<span class="cm"> *</span>
+<span class="cm"> * ```</span>
+<span class="cm"> * @get:Rule</span>
+<span class="cm"> * var mainCoroutineRule = MainCoroutineRule()</span>
+<span class="cm"> * ```</span>
+<span class="cm"> *</span>
+<span class="cm"> * Then, use `runTest` to execute your tests.</span>
+<span class="cm"> */</span>
+<span class="nd">@ExperimentalCoroutinesApi</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">MainCoroutineRule</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">dispatcher</span><span class="p">:</span><span class="w"> </span><span class="n">TestDispatcher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StandardTestDispatcher</span><span class="p">())</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">TestWatcher</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">starting</span><span class="p">(</span><span class="n">description</span><span class="p">:</span><span class="w"> </span><span class="n">Description</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dispatchers</span><span class="p">.</span><span class="na">setMain</span><span class="p">(</span><span class="n">dispatcher</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">finished</span><span class="p">(</span><span class="n">description</span><span class="p">:</span><span class="w"> </span><span class="n">Description</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dispatchers</span><span class="p">.</span><span class="na">resetMain</span><span class="p">()</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="map-parallelized">Map parallelized<a class="headerlink" href="#map-parallelized" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Iterable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">mapParallelized</span><span class="p">(</span>
+<span class="w">    </span><span class="n">permits</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Int</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">transform</span><span class="p">:</span><span class="w"> </span><span class="n">suspend</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">R</span><span class="p">,</span>
+<span class="p">):</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coroutineScope</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">semaphore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Semaphore</span><span class="p">(</span><span class="n">permits</span><span class="p">)</span>
+<span class="w">    </span><span class="n">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">async</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">semaphore</span><span class="p">.</span><span class="na">withPermit</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">transform</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}.</span><span class="na">awaitAll</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Iterable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">mapParallelized</span><span class="p">(</span>
+<span class="w">    </span><span class="n">dispatcher</span><span class="p">:</span><span class="w"> </span><span class="n">CoroutineDispatcher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dispatchers</span><span class="p">.</span><span class="na">Default</span><span class="p">,</span>
+<span class="w">    </span><span class="n">parallelism</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Int</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">transform</span><span class="p">:</span><span class="w"> </span><span class="n">suspend</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">R</span><span class="p">,</span>
+<span class="p">):</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coroutineScope</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">limited</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dispatcher</span><span class="p">.</span><span class="na">limitedParallelism</span><span class="p">(</span><span class="n">parallelism</span><span class="p">)</span>
+<span class="w">    </span><span class="n">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">async</span><span class="p">(</span><span class="n">limited</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">transform</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}.</span><span class="na">awaitAll</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a href="https://pl.kotl.in/IycUh1l2g">🔗</a></p>
+<h3 id="mockk-extension-to-wait-indefinitely">MockK extension to wait indefinitely<a class="headerlink" href="#mockk-extension-to-wait-indefinitely" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">io.mockk.*</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.*</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Stub block to never return.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Used to define what behaviour is going to be mocked.</span>
+<span class="cm"> * @see [io.mockk.coJustRun]</span>
+<span class="cm"> */</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">coJustAwait</span><span class="p">(</span>
+<span class="w">    </span><span class="n">stubBlock</span><span class="p">:</span><span class="w"> </span><span class="n">suspend</span><span class="w"> </span><span class="n">MockKMatcherScope</span><span class="p">.()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span>
+<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coEvery</span><span class="p">(</span><span class="n">stubBlock</span><span class="p">)</span><span class="w"> </span><span class="n">coAnswers</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">awaitCancellation</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="nowhenbranchmatchedexception">NoWhenBranchMatchedException<a class="headerlink" href="#nowhenbranchmatchedexception" title="Permanent link">&para;</a></h3>
+<p>Using the <code>java.io.Serializable</code> interface (or custom <code>android.os.Parcelable</code> code) for sealed classe objects might lead to <code>kotlin.NoWhenBranchMatchedException</code> while using the Kotlin's <code>when</code> expression.<br />
+The reason is fairly simple but not obvious…</p>
+<p>When an object is serialized and then deserialized, the result won't be the same object instance anymore.<br />
+But unfortunately, the Kotlin compiler does not warn us about this.<br />
+Which means the following test code will fail without any warning:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">sealed</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">SealedClass</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">object</span><span class="w"> </span><span class="nc">SealedObject</span><span class="p">:</span><span class="w"> </span><span class="n">SealedClass</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="nd">@Test</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">test</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SealedObject</span><span class="p">.</span><span class="na">serialize</span><span class="p">().</span><span class="na">deserialize</span><span class="o">&lt;</span><span class="n">SealedObject</span><span class="o">&gt;</span><span class="p">().</span><span class="na">check</span><span class="p">()</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="n">SealedClass</span><span class="p">.</span><span class="nf">check</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">when</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SealedObject</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span>
+<span class="w">    </span><span class="c1">// This will crash here with: kotlin.NoWhenBranchMatchedException</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Even the <code>Add remaining branches</code> context action will fall into this issue. <br />
+What must be done instead is to check for <strong>structural</strong> equality (<code>==</code>) instead of <strong>referential</strong> equality (<code>===</code>).</p>
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="n">SealedClass</span><span class="p">.</span><span class="nf">check</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">when</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">is</span><span class="w"> </span><span class="n">SealedObject</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span>
+<span class="w">    </span><span class="c1">// This will no longer crash</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This is also the case when creating mock objects (with MockK or Mockito).</p>
+<h3 id="property-delegate-to-cancel-previous-job">Property delegate to cancel previous Job<a class="headerlink" href="#property-delegate-to-cancel-previous-job" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.Job</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlin.properties.ReadWriteProperty</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlin.reflect.KProperty</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * This delegate takes care of cancelling the previous [Job] when a new one is assigned.</span>
+<span class="cm"> */</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">CancelPreviousJob</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ReadWriteProperty</span><span class="o">&lt;</span><span class="kt">Any?</span><span class="p">,</span><span class="w"> </span><span class="n">Job?&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">job</span><span class="p">:</span><span class="w"> </span><span class="n">Job? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getValue</span><span class="p">(</span><span class="n">thisRef</span><span class="p">:</span><span class="w"> </span><span class="kt">Any?</span><span class="p">,</span><span class="w"> </span><span class="n">property</span><span class="p">:</span><span class="w"> </span><span class="n">KProperty</span><span class="o">&lt;*&gt;</span><span class="p">):</span><span class="w"> </span><span class="n">Job? </span><span class="o">=</span><span class="w"> </span><span class="n">job</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">setValue</span><span class="p">(</span><span class="n">thisRef</span><span class="p">:</span><span class="w"> </span><span class="kt">Any?</span><span class="p">,</span><span class="w"> </span><span class="n">property</span><span class="p">:</span><span class="w"> </span><span class="n">KProperty</span><span class="o">&lt;*&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="n">Job?)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">job</span><span class="o">?.</span><span class="na">cancel</span><span class="p">()</span>
+<span class="w">        </span><span class="n">job</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nv">job</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CancelPreviousJob</span><span class="p">()</span>
+<span class="n">job</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="cm">/* ... */</span>
+<span class="n">job</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="read-resource-file">Read resource file<a class="headerlink" href="#read-resource-file" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">object</span><span class="w"> </span><span class="nc">Resources</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">readText</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">classLoader</span><span class="p">.</span><span class="na">getResource</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">?.</span><span class="na">readText</span><span class="p">().</span><span class="na">orEmpty</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="recursive-flatmap">Recursive flatMap<a class="headerlink" href="#recursive-flatmap" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">internal</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="nf">recursiveFlatMap</span><span class="p">(</span>
+<span class="w">    </span><span class="n">transform</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Iterable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">):</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">transform</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="na">flatMap</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">recursiveFlatMap</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Node</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">children</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">emptyList</span><span class="p">())</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;2&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;3&quot;</span><span class="p">)))))</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">.</span><span class="na">recursiveFlatMap</span><span class="p">(</span><span class="n">Node</span><span class="o">::</span><span class="n">children</span><span class="p">)</span>
+<span class="c1">// [Node(id=1, children=[Node(id=2, children=[Node(id=3)])]), Node(id=2, children=[Node(id=3)]), Node(id=3)]</span>
+</code></pre></div>
+<h3 id="regex-destructuring">Regex destructuring<a class="headerlink" href="#regex-destructuring" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">regex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;(\d+)-(\d+)-(\d+)&quot;&quot;&quot;</span><span class="p">.</span><span class="na">toRegex</span><span class="p">()</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="nf">toDate</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">Date? </span><span class="o">=</span><span class="w"> </span><span class="n">regex</span><span class="p">.</span><span class="na">find</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+<span class="w">    </span><span class="o">?.</span><span class="na">destructured</span>
+<span class="w">    </span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="n">Date</span><span class="p">(</span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">.</span><span class="na">toInt</span><span class="p">(),</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="na">toInt</span><span class="p">(),</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="na">toInt</span><span class="p">())</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<h3 id="regex-destructuring-capturing-groups">Regex destructuring capturing groups<a class="headerlink" href="#regex-destructuring-capturing-groups" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">MatchResult</span><span class="p">.</span><span class="nf">getValue</span><span class="p">(</span>
+<span class="w">    </span><span class="n">thisRef</span><span class="p">:</span><span class="w"> </span><span class="kt">Any?</span><span class="p">,</span>
+<span class="w">    </span><span class="n">property</span><span class="p">:</span><span class="w"> </span><span class="n">KProperty</span><span class="o">&lt;*&gt;</span>
+<span class="p">):</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">groups</span><span class="o">[</span><span class="n">property</span><span class="p">.</span><span class="na">name</span><span class="o">]!!</span><span class="p">.</span><span class="na">value</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">regex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{1,2})-(?&lt;day&gt;\d{1,2})&quot;&quot;&quot;</span><span class="p">.</span><span class="na">toRegex</span><span class="p">()</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">regex</span><span class="p">.</span><span class="na">find</span><span class="p">(</span><span class="s">&quot;2022-10-12&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="k">return</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">year</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">result</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">month</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">result</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">day</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">result</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">year</span><span class="s">-</span><span class="si">$</span><span class="n">month</span><span class="s">-</span><span class="si">$</span><span class="n">day</span><span class="s">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="reified-generic-in-virtual-functions">Reified generic in virtual functions<a class="headerlink" href="#reified-generic-in-virtual-functions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nc">Repository</span><span class="o">&lt;</span><span class="n">T</span><span class="p">:</span><span class="w"> </span><span class="kt">Any</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">clazz</span><span class="p">:</span><span class="w"> </span><span class="n">KClass</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">T</span>
+<span class="p">}</span>
+
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="k">reified</span><span class="w"> </span><span class="n">T</span><span class="p">:</span><span class="w"> </span><span class="n">Any</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Repository</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">repository</span><span class="p">:</span><span class="w"> </span><span class="n">Repository</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repository</span><span class="o">[</span><span class="s">&quot;key&quot;</span><span class="p">,</span><span class="w"> </span><span class="kt">Int</span><span class="o">::</span><span class="n">class</span><span class="o">]</span>
+<span class="w">    </span><span class="c1">// becomes</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repository</span><span class="o">[</span><span class="s">&quot;key&quot;</span><span class="o">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="require-an-instance-type">Require an instance type<a class="headerlink" href="#require-an-instance-type" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">kotlin.contracts.*</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Throws an [IllegalArgumentException] if the [value] is not of type [T].</span>
+<span class="cm"> */</span>
+<span class="nd">@OptIn</span><span class="p">(</span><span class="n">ExperimentalContracts</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="k">reified</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">requireInstanceOf</span><span class="p">(</span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="kt">Any?</span><span class="p">):</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">contract</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">returns</span><span class="p">()</span><span class="w"> </span><span class="n">implies</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">requireInstanceOf</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;Required value was </span><span class="si">${</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="s">&quot;</span><span class="kc">null</span><span class="s">&quot;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">value</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">qualifiedName</span><span class="si">}</span><span class="s"> instead of </span><span class="si">${</span><span class="n">T</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">qualifiedName</span><span class="si">}</span><span class="s">&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Throws an [IllegalArgumentException] with the result of calling [lazyMessage] if the [value] is not of type [T].</span>
+<span class="cm"> */</span>
+<span class="nd">@OptIn</span><span class="p">(</span><span class="n">ExperimentalContracts</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="k">reified</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">requireInstanceOf</span><span class="p">(</span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="kt">Any?</span><span class="p">,</span><span class="w"> </span><span class="n">lazyMessage</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Any</span><span class="p">):</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">contract</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">returns</span><span class="p">()</span><span class="w"> </span><span class="n">implies</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">require</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">lazyMessage</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">value</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="retry-coroutine-operations">Retry coroutine operations<a class="headerlink" href="#retry-coroutine-operations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.*</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlin.time.*</span>
+
+<span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">retry</span><span class="p">(</span>
+<span class="w">    </span><span class="n">times</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">:</span><span class="w"> </span><span class="n">Duration</span><span class="p">,</span>
+<span class="w">    </span><span class="n">block</span><span class="p">:</span><span class="w"> </span><span class="n">suspend</span><span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">,</span>
+<span class="p">):</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">require</span><span class="p">(</span><span class="n">times</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Expected times &gt; 1, but had </span><span class="si">$</span><span class="n">times</span><span class="s">&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="n">repeat</span><span class="p">(</span><span class="n">times</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">kotlin</span><span class="p">.</span><span class="na">runCatching</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">block</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="p">.</span><span class="na">onSuccess</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="p">.</span><span class="na">onFailure</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">delay</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">block</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="sealed-object-instances">Sealed object instances<a class="headerlink" href="#sealed-object-instances" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/SimonMarquis/SealedObjectInstances"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> SimonMarquis/SealedObjectInstances</a></p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">kotlin.reflect.KClass</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Any</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">KClass</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">sealedObjectInstances</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">recursiveSealedObjectInstances</span><span class="p">()</span>
+
+<span class="kd">private</span><span class="w"> </span><span class="kd">tailrec</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Any</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">KClass</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">recursiveSealedObjectInstances</span><span class="p">(</span>
+<span class="w">    </span><span class="n">sealedSubclasses</span><span class="p">:</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">KClass</span><span class="o">&lt;</span><span class="k">out</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="k">this</span><span class="p">),</span>
+<span class="w">    </span><span class="n">acc</span><span class="p">:</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">emptySet</span><span class="p">(),</span>
+<span class="p">):</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sealedSubclasses</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">acc</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">recursiveSealedObjectInstances</span><span class="p">(</span>
+<span class="w">        </span><span class="n">acc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sealedSubclasses</span><span class="p">.</span><span class="na">mapNotNull</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">objectInstance</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="n">sealedSubclasses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sealedSubclasses</span><span class="p">.</span><span class="na">flatMap</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">sealedSubclasses</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sealed</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">sealedObjectInstances</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">joinToString</span><span class="p">(</span><span class="n">separator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;\n&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">javaClass</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">.</span><span class="na">let</span><span class="p">(</span><span class="o">::</span><span class="n">println</span><span class="p">)</span>
+
+<span class="c1">// Sealed$SealedObject</span>
+<span class="c1">// Sealed$SealedObject$NestedSealedObject</span>
+<span class="c1">// ExternalSealedObject</span>
+<span class="c1">// Sealed$SubSealed$SubSealedObject</span>
+
+<span class="kd">sealed</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Sealed</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">object</span><span class="w"> </span><span class="nc">SealedObject</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Sealed</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">object</span><span class="w"> </span><span class="nc">NestedSealedObject</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Sealed</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">sealed</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">SubSealed</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Sealed</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">object</span><span class="w"> </span><span class="nc">SubSealedObject</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">SubSealed</span><span class="p">()</span>
+<span class="w">        </span><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">DataSubSealed</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">any</span><span class="p">:</span><span class="w"> </span><span class="kt">Any</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">SubSealed</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">object</span><span class="w"> </span><span class="nc">ExternalSealedObject</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Sealed</span><span class="p">()</span>
+</code></pre></div>
+<p><a href="https://gist.github.com/SimonMarquis/5843c7f42b71659d48fc7de6eb3d4dab">🔗</a></p>
+<h3 id="semver">SemVer<a class="headerlink" href="#semver" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">SemVer</span><span class="p">(</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">major</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">minor</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">patch</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">label</span><span class="p">:</span><span class="w"> </span><span class="kt">String?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+<span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">SemVer</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">companion</span><span class="w"> </span><span class="kd">object</span><span class="w"> </span><span class="err">{</span>
+<span class="w">        </span><span class="kd">fun</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="n">version</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="n">SemVer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Regex</span><span class="p">(</span><span class="s">&quot;&quot;&quot;(\d+)(?:\.(\d+)(?:\.(\d+))?)?(?:-(.+))?&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pattern</span><span class="p">.</span><span class="na">matchEntire</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+<span class="w">                </span><span class="o">?:</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">&quot;Invalid version string [</span><span class="si">$</span><span class="n">version</span><span class="s">]&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">SemVer</span><span class="p">(</span>
+<span class="w">                </span><span class="n">major</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">groupValues</span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="p">.</span><span class="na">toIntOrNull</span><span class="p">()</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
+<span class="w">                </span><span class="n">minor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">groupValues</span><span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="p">.</span><span class="na">toIntOrNull</span><span class="p">()</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
+<span class="w">                </span><span class="n">patch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">groupValues</span><span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="p">.</span><span class="na">toIntOrNull</span><span class="p">()</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
+<span class="w">                </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">groupValues</span><span class="o">[</span><span class="m">4</span><span class="o">]</span><span class="p">.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">ifEmpty</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">init</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">require</span><span class="p">(</span><span class="n">major</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Major version must be a positive number&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="n">require</span><span class="p">(</span><span class="n">minor</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Minor version must be a positive number&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="n">require</span><span class="p">(</span><span class="n">patch</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Patch version must be a positive number&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="n">label</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">require</span><span class="p">(</span><span class="nb">it</span><span class="p">.</span><span class="na">matches</span><span class="p">(</span><span class="n">Regex</span><span class="p">(</span><span class="s">&quot;&quot;&quot;.+&quot;&quot;&quot;</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Label is not valid&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">toString</span><span class="p">():</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buildString</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">append</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">major</span><span class="s">.</span><span class="si">$</span><span class="n">minor</span><span class="s">.</span><span class="si">$</span><span class="n">patch</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">label</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="s">&quot;-</span><span class="si">$</span><span class="n">it</span><span class="s">&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * @return a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">other</span><span class="p">:</span><span class="w"> </span><span class="n">SemVer</span><span class="p">):</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">major</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="na">major</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">major</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">major</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">minor</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="na">minor</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">minor</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">minor</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">patch</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="na">patch</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">patch</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">patch</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="na">label</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">label</span><span class="p">.</span><span class="na">isNullOrEmpty</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1">// 1.0.0 &gt; 1.0.0-alpha</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">label</span><span class="p">.</span><span class="na">isNullOrEmpty</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="m">1</span><span class="w">  </span><span class="c1">// 1.0.0-alpha &lt; 1.0.0</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">label</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">label</span><span class="p">,</span><span class="w"> </span><span class="n">ignoreCase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="singleton">Singleton<a class="headerlink" href="#singleton" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">open</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Singleton</span><span class="o">&lt;</span><span class="k">out</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">A</span><span class="o">&gt;</span><span class="p">(</span><span class="n">creator</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">creator</span><span class="p">:</span><span class="w"> </span><span class="p">((</span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="o">?</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">creator</span>
+
+<span class="w">    </span><span class="nd">@Volatile</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">instance</span><span class="p">:</span><span class="w"> </span><span class="n">T? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">instance</span><span class="p">(</span><span class="n">arg</span><span class="p">:</span><span class="w"> </span><span class="n">A</span><span class="p">):</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">instance</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">i</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">synchronized</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">val</span><span class="w"> </span><span class="nv">i2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">instance</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i2</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">i2</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kd">val</span><span class="w"> </span><span class="nv">created</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">creator</span><span class="o">!!</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+<span class="w">                </span><span class="n">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">created</span>
+<span class="w">                </span><span class="n">creator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">                </span><span class="n">created</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a href="https://www.jetbrains.com/help/idea/using-language-injections.html">🔗</a></p>
+<h3 id="synchronize-a-map-with-a-new-map-of-values">Synchronize a Map with a new Map of values<a class="headerlink" href="#synchronize-a-map-with-a-new-map-of-values" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Synchronize this [MutableMap] with a new [Map] of items, based on their keys.</span>
+<span class="cm"> * @param onRemoved is called for each removed entry.</span>
+<span class="cm"> * @param update is called for each entry that must be updated, with the corresponding [T] data.</span>
+<span class="cm"> * @param onAdded is called for each new entry that must be inserted, and for which you need to provide a corresponding [Value].</span>
+<span class="cm"> */</span>
+<span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">MutableMap</span><span class="o">&lt;</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="o">&gt;</span><span class="p">.</span><span class="na">sync</span><span class="p">(</span>
+<span class="w">    </span><span class="n">items</span><span class="p">:</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">onRemoved</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">entry</span><span class="p">:</span><span class="w"> </span><span class="n">Map</span><span class="p">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">,</span>
+<span class="w">    </span><span class="n">update</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">entry</span><span class="p">:</span><span class="w"> </span><span class="n">MutableMap</span><span class="p">.</span><span class="na">MutableEntry</span><span class="o">&lt;</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Value</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Unit</span><span class="p">,</span>
+<span class="w">    </span><span class="n">onAdded</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">entry</span><span class="p">:</span><span class="w"> </span><span class="n">Map</span><span class="p">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Value</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">itemsToRemove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filterKeys</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="k">!in</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">itemsToUpdate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">filterKeys</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">itemsToAdd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">filterKeys</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">it</span><span class="w"> </span><span class="k">!in</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Remove</span>
+<span class="w">    </span><span class="n">entries</span><span class="p">.</span><span class="na">removeAll</span><span class="p">(</span><span class="n">itemsToRemove</span><span class="p">.</span><span class="na">entries</span><span class="p">)</span>
+<span class="w">    </span><span class="n">itemsToRemove</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">onRemoved</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Update</span>
+<span class="w">    </span><span class="n">entries</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">update</span><span class="p">(</span><span class="nb">it</span><span class="p">,</span><span class="w"> </span><span class="n">itemsToUpdate</span><span class="o">[</span><span class="nb">it</span><span class="p">.</span><span class="na">key</span><span class="o">]!!</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Add</span>
+<span class="w">    </span><span class="n">itemsToAdd</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">put</span><span class="p">(</span><span class="nb">it</span><span class="p">.</span><span class="na">key</span><span class="p">,</span><span class="w"> </span><span class="n">onAdded</span><span class="p">(</span><span class="nb">it</span><span class="p">))</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="takewhileinclusive">takeWhileInclusive<a class="headerlink" href="#takewhileinclusive" title="Permanent link">&para;</a></h3>
+<p>Similar to <code class="highlight"><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Sequence</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">takeWhile</span><span class="p">(</span><span class="n">predicate</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Boolean</span><span class="p">):</span><span class="w"> </span><span class="n">Sequence</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span></code> but also includes the next non-matching element as well.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Sequence</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">takeWhileInclusive</span><span class="p">(</span><span class="n">predicate</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Boolean</span><span class="p">):</span><span class="w"> </span><span class="n">Sequence</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">shouldContinue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">takeWhile</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">shouldContinue</span><span class="p">.</span><span class="na">also</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">shouldContinue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">predicate</span><span class="p">(</span><span class="nb">it</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a href="https://jivimberg.io/blog/2018/06/02/implementing-takewhileinclusive-in-kotlin/">🔗</a> <a href="https://gist.github.com/matklad/54776705250e3b375618f59a8247a237">🔗</a></p>
+<h3 id="timeout-for-async-operations">Timeout for async operations<a class="headerlink" href="#timeout-for-async-operations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">suspend</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Deferred</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">await</span><span class="p">(</span>
+<span class="w">    </span><span class="n">duration</span><span class="p">:</span><span class="w"> </span><span class="n">Duration</span><span class="p">,</span>
+<span class="w">    </span><span class="n">defaultValue</span><span class="p">:</span><span class="w"> </span><span class="n">T</span><span class="p">,</span>
+<span class="p">):</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withTimeout</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">await</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">defaultValue</span>
+</code></pre></div>
+<h3 id="warnings-as-errors">Warnings as errors<a class="headerlink" href="#warnings-as-errors" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">withType</span><span class="o">&lt;</span><span class="n">KotlinCompile</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">kotlinOptions</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">allWarningsAsErrors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../junit/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 🧪 JUnit" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                🧪 JUnit
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../mac/" class="md-footer__link md-footer__link--next" aria-label="Next: 🍎 Mac" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                🍎 Mac
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 Simon Marquis
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.tabs.link", "content.code.copy", "content.code.annotate", "navigation.footer", "navigation.instant", "navigation.indexes", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>

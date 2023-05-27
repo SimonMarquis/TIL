@@ -1,0 +1,1352 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Simon Marquis">
+      
+      
+        <link rel="canonical" href="https://github.com/SimonMarquis/TIL/miscellaneous/">
+      
+      
+        <link rel="prev" href="../markdown/">
+      
+      
+        <link rel="next" href="../online-tools/">
+      
+      <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
+    
+    
+      
+        <title>💎 Miscellaneous - 🗓️ Today I Learned</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a6bdf11c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#apache-distributed-configuration-file" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="🗓️ Today I Learned" class="md-header__button md-logo" aria-label="🗓️ Today I Learned" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🗓️ Today I Learned
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              💎 Miscellaneous
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SimonMarquis/TIL" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TIL
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="🗓️ Today I Learned" class="md-nav__button md-logo" aria-label="🗓️ Today I Learned" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    🗓️ Today I Learned
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SimonMarquis/TIL" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TIL
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../android/" class="md-nav__link">
+        🤖 Android
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bash/" class="md-nav__link">
+        🖥️ Bash
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chrome/" class="md-nav__link">
+        🌍 Chrome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../css/" class="md-nav__link">
+        🎨 CSS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dagger/" class="md-nav__link">
+        🗡️ Dagger
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase/" class="md-nav__link">
+        🔥 Firebase
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gerrit/" class="md-nav__link">
+        🏢 Gerrit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        💽 Git
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        🐙 GitHub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gradle/" class="md-nav__link">
+        🐘 Gradle
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html/" class="md-nav__link">
+        📜 HTML
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intellij-idea/" class="md-nav__link">
+        📦 IntelliJ IDEA
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/" class="md-nav__link">
+        ☕ Java
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/" class="md-nav__link">
+        🪢 JavaScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../junit/" class="md-nav__link">
+        🧪 JUnit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kotlin/" class="md-nav__link">
+        🧑‍💻 Kotlin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mac/" class="md-nav__link">
+        🍎 Mac
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../markdown/" class="md-nav__link">
+        📄 Markdown
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          💎 Miscellaneous
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        💎 Miscellaneous
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#apache-distributed-configuration-file" class="md-nav__link">
+    Apache distributed configuration file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autohotkey" class="md-nav__link">
+    AutoHotkey
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bell-code" class="md-nav__link">
+    Bell code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary-prefix" class="md-nav__link">
+    Binary prefix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bookmarklets" class="md-nav__link">
+    Bookmarklets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arrows" class="md-nav__link">
+    Arrows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#box-drawing-characters" class="md-nav__link">
+    Box drawing characters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editorconfig" class="md-nav__link">
+    EditorConfig
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fonts-with-ligatures" class="md-nav__link">
+    Fonts with ligatures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gmail-templates" class="md-nav__link">
+    Gmail templates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yaml-front-matter" class="md-nav__link">
+    YAML Front Matter
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../online-tools/" class="md-nav__link">
+        🕸️ Online tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open-source-projects/" class="md-nav__link">
+        🔓 Open Source projects
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regex/" class="md-nav__link">
+        🧮 Regex
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sublime-merge/" class="md-nav__link">
+        🔀 Sublime Merge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sublime-text/" class="md-nav__link">
+        🗃️ Sublime Text
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        🧰 Utils
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/" class="md-nav__link">
+        🪟 Windows
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#apache-distributed-configuration-file" class="md-nav__link">
+    Apache distributed configuration file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autohotkey" class="md-nav__link">
+    AutoHotkey
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bell-code" class="md-nav__link">
+    Bell code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary-prefix" class="md-nav__link">
+    Binary prefix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bookmarklets" class="md-nav__link">
+    Bookmarklets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arrows" class="md-nav__link">
+    Arrows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#box-drawing-characters" class="md-nav__link">
+    Box drawing characters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editorconfig" class="md-nav__link">
+    EditorConfig
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fonts-with-ligatures" class="md-nav__link">
+    Fonts with ligatures
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gmail-templates" class="md-nav__link">
+    Gmail templates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yaml-front-matter" class="md-nav__link">
+    YAML Front Matter
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/SimonMarquis/TIL/edit/main/docs/miscellaneous.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/SimonMarquis/TIL/raw/main/docs/miscellaneous.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+  <h1>💎 Miscellaneous</h1>
+
+<h3 id="apache-distributed-configuration-file">Apache distributed configuration file<a class="headerlink" href="#apache-distributed-configuration-file" title="Permanent link">&para;</a></h3>
+<p>Directory indexing:</p>
+<div class="highlight"><span class="filename">.htaccess</span><pre><span></span><code>Options +Indexes
+IndexOptions Charset=UTF-8 IgnoreCase FancyIndexing FoldersFirst NameWidth=*
+</code></pre></div>
+<p><a href="https://httpd.apache.org/docs/2.4/mod/mod_autoindex.html#indexoptions">🔗</a></p>
+<h3 id="autohotkey">AutoHotkey<a class="headerlink" href="#autohotkey" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">;   ! = alt</span>
+<span class="c1">;   + = shift</span>
+<span class="c1">;   ^ = ctrl</span>
+<span class="c1">;   # = win</span>
+
+<span class="nb">#NoEnv</span><span class="c1">  ; Recommended for performance and compatibility with future AutoHotkey releases.</span>
+<span class="c1">; #Warn  ; Enable warnings to assist with detecting common errors.</span>
+<span class="nb">SendMode</span> <span class="n">Input</span><span class="c1">  ; Recommended for new scripts due to its superior speed and reliability.</span>
+<span class="nb">SetWorkingDir</span> <span class="nv">%A_ScriptDir%</span><span class="c1">  ; Ensures a consistent starting directory.</span>
+
+<span class="c1">; make the scroll lock key (ScrLk) toggle all hotkeys.</span>
+<span class="nl">$ScrollLock::</span><span class="n">Suspend</span>
+
+<span class="nl">::``right::</span><span class="err">→</span>
+<span class="o">::</span><span class="se">``</span><span class="n">left</span><span class="o">::</span><span class="err">←</span>
+<span class="o">::</span><span class="se">``</span><span class="n">up</span><span class="o">::</span><span class="err">↑</span>
+<span class="o">::</span><span class="se">``</span><span class="n">down</span><span class="o">::</span><span class="err">↓</span>
+<span class="o">::</span><span class="se">``</span><span class="n">r</span><span class="o">::</span><span class="err">→</span>
+<span class="o">::</span><span class="se">``</span><span class="n">l</span><span class="o">::</span><span class="err">←</span>
+<span class="o">::</span><span class="se">``</span><span class="n">u</span><span class="o">::</span><span class="err">↑</span>
+<span class="o">::</span><span class="se">``</span><span class="n">d</span><span class="o">::</span><span class="err">↓</span>
+<span class="o">::</span><span class="se">``</span><span class="n">ur</span><span class="o">::</span><span class="err">↗︎</span>
+<span class="o">::</span><span class="se">``</span><span class="n">ul</span><span class="o">::</span><span class="err">↖</span>
+<span class="o">::</span><span class="se">``</span><span class="n">dr</span><span class="o">::</span><span class="err">↘</span>
+<span class="o">::</span><span class="se">``</span><span class="n">dl</span><span class="o">::</span><span class="err">↙</span>
+<span class="o">::</span><span class="se">``</span><span class="n">lte</span><span class="o">::</span><span class="err">≤</span>
+<span class="o">::</span><span class="se">``</span><span class="n">gte</span><span class="o">::</span><span class="err">≥</span>
+
+<span class="nl">::èuro::</span><span class="err">€</span>
+</code></pre></div>
+<h3 id="bell-code">Bell code<a class="headerlink" href="#bell-code" title="Permanent link">&para;</a></h3>
+<p><code>echo ^G</code> 🔔</p>
+<p>(<code>^G</code> is <kbd>Ctrl</kbd> + <kbd>G</kbd>)</p>
+<p><a href="https://en.wikipedia.org/wiki/Bell_character">🔗</a></p>
+<h3 id="binary-prefix">Binary prefix<a class="headerlink" href="#binary-prefix" title="Permanent link">&para;</a></h3>
+<table>
+   <tbody>
+      <tr>
+         <td>
+            <table>
+               <tbody>
+                  <tr>
+                     <th colspan="3">Decimal</th>
+                  </tr>
+                  <tr>
+                     <th colspan="1">Value</th>
+                     <th colspan="2">SI</th>
+                  </tr>
+                  <tr>
+                     <td>1000</td>
+                     <td>k</td>
+                     <td>kilo</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>2</sup></td>
+                     <td>M</td>
+                     <td>mega</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>3</sup></td>
+                     <td>G</td>
+                     <td>giga</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>4</sup></td>
+                     <td>T</td>
+                     <td>tera</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>5</sup></td>
+                     <td>P</td>
+                     <td>peta</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>6</sup></td>
+                     <td>E</td>
+                     <td>exa</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>7</sup></td>
+                     <td>Z</td>
+                     <td>zetta</td>
+                  </tr>
+                  <tr>
+                     <td>1000<sup>8</sup></td>
+                     <td>Y</td>
+                     <td>yotta</td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+         <td>
+            <table>
+               <tbody>
+                  <tr>
+                     <th colspan="5">Binary</th>
+                  </tr>
+                  <tr>
+                     <th colspan="1">Value</th>
+                     <th colspan="2">IEC</th>
+                     <th colspan="2">Legacy</th>
+                  </tr>
+                  <tr>
+                     <td>1024</td>
+                     <td>Ki</td>
+                     <td>kibi</td>
+                     <td>K</td>
+                     <td>kilo</td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>2</sup></td>
+                     <td>Mi</td>
+                     <td>mebi</td>
+                     <td>M</td>
+                     <td>mega</td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>3</sup></td>
+                     <td>Gi</td>
+                     <td>gibi</td>
+                     <td>G</td>
+                     <td>giga</td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>4</sup></td>
+                     <td>Ti</td>
+                     <td>tebi</td>
+                     <td>T</td>
+                     <td>tera</td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>5</sup></td>
+                     <td>Pi</td>
+                     <td>pebi</td>
+                     <td>–</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>6</sup></td>
+                     <td>Ei</td>
+                     <td>exbi</td>
+                     <td>–</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>7</sup></td>
+                     <td>Zi</td>
+                     <td>zebi</td>
+                     <td>–</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>1024<sup>8</sup></td>
+                     <td>Yi</td>
+                     <td>yobi</td>
+                     <td>–</td>
+                     <td></td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+<p><a href="https://en.wikipedia.org/wiki/Binary_prefix">🔗</a></p>
+<h3 id="bookmarklets">Bookmarklets<a class="headerlink" href="#bookmarklets" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a class="md-button" href='javascript:{let o=void 0===_debug_layout_;[].forEach.call(document.querySelectorAll("*"),(function(l){l.style.outline=o?"1px solid #"+(~~(Math.random()*16777216)).toString(16):""}));var _debug_layout_=!!o||void 0}'>CSS boxes</a>
+  <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">_debug_layout_</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;undefined&quot;</span><span class="p">;</span>
+<span class="p">[].</span><span class="nx">forEach</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">),</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">a</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">outline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">d</span>
+<span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;1px solid #&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="o">~~</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mf">24</span><span class="p">))).</span><span class="nx">toString</span><span class="p">(</span><span class="mf">16</span><span class="p">)</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">_debug_layout_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">d</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
+</code></pre></div></li>
+<li><a class="md-button" href='javascript:var _size=400,_left=screen.width/2-_size/2,_top=screen.height/2-_size/2,_input=prompt("QRcode input",window.getSelection().toString());null!=_input&&window.open("https://chart.googleapis.com/chart?cht=qr&chs="+_size+"x"+_size+"&chld=L|0&choe=UTF-8&chl="+encodeURIComponent(_input),"_blank","titlebar=no,menubar=no,scrollbars=no,status=no,width="+_size+",height="+_size+",top="+_top+",left="+_left);'>QrCode</a>
+  <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">400</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">_left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">_size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">_top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">_size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">_input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;QRcode input&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">_input</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;https://chart.googleapis.com/chart?cht=qr&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">      </span><span class="s2">&quot;&amp;chs=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">_size</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;x&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">_size</span><span class="w"> </span><span class="o">+</span>
+<span class="w">      </span><span class="s2">&quot;&amp;chld=L|0&amp;choe=UTF-8&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">      </span><span class="s2">&quot;&amp;chl=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">_input</span><span class="p">),</span>
+<span class="w">    </span><span class="s2">&quot;_blank&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;titlebar=no,menubar=no,scrollbars=no,status=no&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">      </span><span class="s2">&quot;,width=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">_size</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;,height=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">_size</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;,top=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">_top</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;,left=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">_left</span>
+<span class="w">  </span><span class="p">);</span>
+</code></pre></div></li>
+<li><a class="md-button" href='javascript:var decoded=prompt("URL encoder input:",window.getSelection().toString());null!=decoded&&prompt("URL encoder output:",encodeURIComponent(decoded));void 0'>URL encoder</a>
+  <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;URL encoder input:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">decoded</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;URL encoder output:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">decoded</span><span class="p">));</span>
+</code></pre></div></li>
+<li><a class="md-button" href='javascript:var encoded=prompt("URL decoder input:",window.getSelection().toString());null!=encoded&&prompt("URL decoder output:",decodeURIComponent(encoded));void 0'>URL decoder</a>
+  <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">encoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;URL decoder input:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">encoded</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;URL decoder output:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">encoded</span><span class="p">));</span>
+</code></pre></div></li>
+<li><a class="md-button" href='javascript:var decoded=prompt("Base64 encoder input:",window.getSelection().toString());try{prompt("Base64 encoder output:",btoa(decoded))}catch(e){alert(e)};void 0'>Base64 encoder</a>
+  <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">decoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Base64 encoder input:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Base64 encoder output:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">btoa</span><span class="p">(</span><span class="nx">decoded</span><span class="p">));</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">alert</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li><a class="md-button" href='javascript:var encoded=prompt("Base64 decoder input:",window.getSelection().toString());try{prompt("Base64 decoder output:",atob(encoded))}catch(e){alert(e)};void 0'>Base64 decoder</a>
+  <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">encoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Base64 decoder input:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">getSelection</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
+<span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">prompt</span><span class="p">(</span><span class="s2">&quot;Base64 decoder output:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">atob</span><span class="p">(</span><span class="nx">encoded</span><span class="p">));</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">alert</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li><a class="md-button" href='javascript:document.body.contentEditable="true",document.designMode="on";void 0'>Edit website</a>
+  <div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">contentEditable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">designMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;on&quot;</span><span class="p">;</span>
+</code></pre></div></li>
+<li><a class="md-button" href="data:text/html;charset=utf-8,">Raw HTML</a>
+  <div class="highlight"><pre><span></span><code>data:text/html;charset=utf-8,
+</code></pre></div></li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Bookmarklet">🔗</a></p>
+<h3 id="arrows">Arrows<a class="headerlink" href="#arrows" title="Permanent link">&para;</a></h3>
+<div class="admonition quote">
+<p class="admonition-title"><code>2190–21FF</code> <a href="https://en.wikipedia.org/wiki/Arrows">Arrows</a></p>
+<p><div style="font-size: x-large;">
+<div class="highlight"><pre><span></span><code>←  ↑  →  ↓  ↔  ↕  ↖  ↗  ↘  ↙  ↚  ↛  ↜  ↝  ↞  ↟
+↠  ↡  ↢  ↣  ↤  ↥  ↦  ↧  ↨  ↩  ↪  ↫  ↬  ↭  ↮  ↯
+↰  ↱  ↲  ↳  ↴  ↵  ↶  ↷  ↸  ↹  ↺  ↻  ↼  ↽  ↾  ↿
+⇀  ⇁  ⇂  ⇃  ⇄  ⇅  ⇆  ⇇  ⇈  ⇉  ⇊  ⇋  ⇌  ⇍  ⇎  ⇏
+⇐  ⇑  ⇒  ⇓  ⇔  ⇕  ⇖  ⇗  ⇘  ⇙  ⇚  ⇛  ⇜  ⇝  ⇞  ⇟
+⇠  ⇡  ⇢  ⇣  ⇤  ⇥  ⇦  ⇧  ⇨  ⇩  ⇪  ⇫  ⇬  ⇭  ⇮  ⇯
+⇰  ⇱  ⇲  ⇳  ⇴  ⇵  ⇶  ⇷  ⇸  ⇹  ⇺  ⇻  ⇼  ⇽  ⇾  ⇿
+</code></pre></div>
+</div></p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title"><code>27F0–27FF</code> <a href="https://en.wikipedia.org/wiki/Supplemental_Arrows-A">Supplemental Arrows-A</a></p>
+<p><div style="font-size: x-large;">
+<div class="highlight"><pre><span></span><code>⟰  ⟱  ⟲  ⟳  ⟴  ⟵  ⟶  ⟷  ⟸  ⟹  ⟺  ⟻  ⟼  ⟽  ⟾  ⟿
+</code></pre></div>
+</div></p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title"><code>2900–297F</code> <a href="https://en.wikipedia.org/wiki/Supplemental_Arrows-B">Supplemental Arrows-B</a></p>
+<p><div style="font-size: x-large;">
+<div class="highlight"><pre><span></span><code>⤀  ⤁  ⤂  ⤃  ⤄  ⤅  ⤆  ⤇  ⤈  ⤉  ⤊  ⤋  ⤌  ⤍  ⤎  ⤏
+⤐  ⤑  ⤒  ⤓  ⤔  ⤕  ⤖  ⤗  ⤘  ⤙  ⤚  ⤛  ⤜  ⤝  ⤞  ⤟
+⤠  ⤡  ⤢  ⤣  ⤤  ⤥  ⤦  ⤧  ⤨  ⤩  ⤪  ⤫  ⤬  ⤭  ⤮  ⤯
+⤰  ⤱  ⤲  ⤳  ⤴  ⤵  ⤶  ⤷  ⤸  ⤹  ⤺  ⤻  ⤼  ⤽  ⤾  ⤿
+⥀  ⥁  ⥂  ⥃  ⥄  ⥅  ⥆  ⥇  ⥈  ⥉  ⥊  ⥋  ⥌  ⥍  ⥎  ⥏
+⥐  ⥑  ⥒  ⥓  ⥔  ⥕  ⥖  ⥗  ⥘  ⥙  ⥚  ⥛  ⥜  ⥝  ⥞  ⥟
+⥠  ⥡  ⥢  ⥣  ⥤  ⥥  ⥦  ⥧  ⥨  ⥩  ⥪  ⥫  ⥬  ⥭  ⥮  ⥯
+⥰  ⥱  ⥲  ⥳  ⥴  ⥵  ⥶  ⥷  ⥸  ⥹  ⥺  ⥻  ⥼  ⥽  ⥾  ⥿
+</code></pre></div>
+</div></p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title"><code>1F800–1F8FF</code> <a href="https://en.wikipedia.org/wiki/Supplemental_Arrows-C">Supplemental Arrows-C</a></p>
+<p><div style="font-size: x-large;">
+<div class="highlight"><pre><span></span><code>🠀  🠁  🠂  🠃  🠄  🠅  🠆  🠇  🠈  🠉  🠊  🠋           
+🠐  🠑  🠒  🠓  🠔  🠕  🠖  🠗  🠘  🠙  🠚  🠛  🠜  🠝  🠞  🠟
+🠠  🠡  🠢  🠣  🠤  🠥  🠦  🠧  🠨  🠩  🠪  🠫  🠬  🠭  🠮  🠯
+🠰  🠱  🠲  🠳  🠴  🠵  🠶  🠷  🠸  🠹  🠺  🠻  🠼  🠽  🠾  🠿
+🡀  🡁  🡂  🡃  🡄  🡅  🡆  🡇                       
+🡐  🡑  🡒  🡓  🡔  🡕  🡖  🡗  🡘  🡙                 
+🡠  🡡  🡢  🡣  🡤  🡥  🡦  🡧  🡨  🡩  🡪  🡫  🡬  🡭  🡮  🡯
+🡰  🡱  🡲  🡳  🡴  🡵  🡶  🡷  🡸  🡹  🡺  🡻  🡼  🡽  🡾  🡿
+🢀  🢁  🢂  🢃  🢄  🢅  🢆  🢇                       
+🢐  🢑  🢒  🢓  🢔  🢕  🢖  🢗  🢘  🢙  🢚  🢛  🢜  🢝  🢞  🢟
+🢠  🢡  🢢  🢣  🢤  🢥  🢦  🢧  🢨  🢩  🢪  🢫  🢬  🢭  
+</code></pre></div>
+</div></p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title"><code>2B00–2BFF</code> <a href="https://en.wikipedia.org/wiki/Miscellaneous_Symbols_and_Arrows">Miscellaneous Symbols and Arrows</a></p>
+<p><div style="font-size: x-large;">
+<div class="highlight"><pre><span></span><code>⬀  ⬁  ⬂  ⬃  ⬄  ⬅  ⬆  ⬇  ⬈  ⬉  ⬊  ⬋  ⬌  ⬍  ⬎  ⬏
+⬐  ⬑  ⬒  ⬓  ⬔  ⬕  ⬖  ⬗  ⬘  ⬙  ⬚  ⬛  ⬜  ⬝  ⬞  ⬟
+⬠  ⬡  ⬢  ⬣  ⬤  ⬥  ⬦  ⬧  ⬨  ⬩  ⬪  ⬫  ⬬  ⬭  ⬮  ⬯
+⬰  ⬱  ⬲  ⬳  ⬴  ⬵  ⬶  ⬷  ⬸  ⬹  ⬺  ⬻  ⬼  ⬽  ⬾  ⬿
+⭀  ⭁  ⭂  ⭃  ⭄  ⭅  ⭆  ⭇  ⭈  ⭉  ⭊  ⭋  ⭌  ⭍  ⭎  ⭏
+⭐  ⭑  ⭒  ⭓  ⭔  ⭕  ⭖  ⭗  ⭘  ⭙  ⭚  ⭛  ⭜  ⭝  ⭞  ⭟
+⭠  ⭡  ⭢  ⭣  ⭤  ⭥  ⭦  ⭧  ⭨  ⭩  ⭪  ⭫  ⭬  ⭭  ⭮  ⭯
+⭰  ⭱  ⭲  ⭳        ⭶  ⭷  ⭸  ⭹  ⭺  ⭻  ⭼  ⭽  ⭾  ⭿
+⮀  ⮁  ⮂  ⮃  ⮄  ⮅  ⮆  ⮇  ⮈  ⮉  ⮊  ⮋  ⮌  ⮍  ⮎  ⮏
+⮐  ⮑  ⮒  ⮓  ⮔  ⮕     ⮗  ⮘  ⮙  ⮚  ⮛  ⮜  ⮝  ⮞  ⮟
+⮠  ⮡  ⮢  ⮣  ⮤  ⮥  ⮦  ⮧  ⮨  ⮩  ⮪  ⮫  ⮬  ⮭  ⮮  ⮯
+⮰  ⮱  ⮲  ⮳  ⮴  ⮵  ⮶  ⮷  ⮸  ⮹  ⮺  ⮻  ⮼  ⮽  ⮾  ⮿
+⯀  ⯁  ⯂  ⯃  ⯄  ⯅  ⯆  ⯇  ⯈  ⯉  ⯊  ⯋  ⯌  ⯍  ⯎  ⯏
+⯐  ⯑  ⯒  ⯓  ⯔  ⯕  ⯖  ⯗  ⯘  ⯙  ⯚  ⯛  ⯜  ⯝  ⯞  ⯟
+⯠  ⯡  ⯢  ⯣  ⯤  ⯥  ⯦  ⯧  ⯨  ⯩  ⯪  ⯫  ⯬  ⯭  ⯮  ⯯
+</code></pre></div>
+</div></p>
+</div>
+<h3 id="box-drawing-characters">Box drawing characters<a class="headerlink" href="#box-drawing-characters" title="Permanent link">&para;</a></h3>
+<div style="font-size: x-large;">
+
+<div class="highlight"><pre><span></span><code>┌ ┬ ─ ┐ ┏ ┳ ━ ┓ ╔ ╦ ═ ╗
+├ ┼ ─ ┤ ┣ ╋ ━ ┫ ╠ ╬ ═ ╣
+│ │ │ │ ┃ ┃ ┃ ┃ ║ ║ ║ ║
+└ ┴ ─ ┘ ┗ ┻ ━ ┛ ╚ ╩ ═ ╝
+
+╒ ╤ ╕ ╓ ╥ ╖ ┍ ┯ ┑
+╞ ╪ ╡ ╟ ╫ ╢ ┝ ┿ ┥
+╘ ╧ ╛ ╙ ╨ ╜ ┕ ┷ ┙
+
+╌ ╎ ╍ ╏
+┄ ┆ ┊ ┈
+┅ ┇ ┉ ┋
+
+╭ ╮
+╰ ╯
+
+▁ ▂ ▃ ▄ ▅ ▆ ▇ █
+
+▉ ▊ ▋ ▌ ▍ ▎ ▏
+
+░ ▒ ▓
+
+◲◱
+◳◰
+
+◶◵
+◷◴
+
+◐◓
+◒◑
+</code></pre></div>
+
+</div>
+
+<p><a href="https://en.wikipedia.org/wiki/Box-drawing_character">🔗</a></p>
+<h3 id="editorconfig">EditorConfig<a class="headerlink" href="#editorconfig" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">.editorconfig</span><pre><span></span><code><span class="na">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+
+<span class="k">[*]</span>
+<span class="na">charset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">utf-8</span>
+<span class="na">indent_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
+<span class="na">indent_style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">space</span>
+<span class="na">insert_final_newline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="na">max_line_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">200</span>
+<span class="na">tab_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
+
+<span class="k">[{*.kt,*.kts}]</span>
+<span class="na">ij_kotlin_code_style_defaults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">KOTLIN_OFFICIAL</span>
+<span class="na">ij_kotlin_allow_trailing_comma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="na">ij_kotlin_allow_trailing_comma_on_call_site</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="na">ij_kotlin_name_count_to_use_star_import</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2147483647</span>
+<span class="na">ij_kotlin_name_count_to_use_star_import_for_members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2147483647</span>
+<span class="na">ij_kotlin_packages_to_use_import_on_demand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">unset</span>
+
+<span class="k">[{*.md,*.mdown,*.markdown}]</span>
+<span class="na">indent_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span>
+<span class="na">indent_style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">space</span>
+<span class="na">trim_trailing_whitespace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+
+<span class="k">[{*.yml,*.yaml}]</span>
+<span class="na">indent_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span>
+<span class="na">indent_style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">space</span>
+
+<span class="k">[*.json]</span>
+<span class="na">indent_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2</span>
+<span class="na">indent_style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">space</span>
+</code></pre></div>
+<p><a href="https://www.jetbrains.com/help/idea/editorconfig.html">🔗</a></p>
+<h3 id="fonts-with-ligatures">Fonts with ligatures<a class="headerlink" href="#fonts-with-ligatures" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/tonsky/FiraCode">FiraCode</a></li>
+<li><a href="https://sourcefoundry.org/hack/">Hack</a></li>
+<li><a href="https://www.jetbrains.com/lp/mono/">JetBrains Mono</a></li>
+</ul>
+<h3 id="gmail-templates">Gmail templates<a class="headerlink" href="#gmail-templates" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Create a new Google Docs <a href="https://docs.new">https://docs.new</a></li>
+<li>Insert →  Building blocks → Email draft</li>
+</ul>
+<p>Or simply type <code>@email draft</code>.</p>
+<h3 id="yaml-front-matter">YAML Front Matter<a class="headerlink" href="#yaml-front-matter" title="Permanent link">&para;</a></h3>
+<p>Front matter is metadata written in YAML, located at the top of a file and wrapped between <code>---</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">💎 Miscellaneous</span>
+<span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Simon Marquis</span>
+<span class="nt">lang</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en</span>
+<span class="nt">keywords</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Miscellaneous</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Random</span>
+<span class="nn">---</span>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../markdown/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 📄 Markdown" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                📄 Markdown
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../online-tools/" class="md-footer__link md-footer__link--next" aria-label="Next: 🕸️ Online tools" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                🕸️ Online tools
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 Simon Marquis
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.tabs.link", "content.code.copy", "content.code.annotate", "navigation.footer", "navigation.instant", "navigation.indexes", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>

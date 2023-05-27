@@ -1,0 +1,1405 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Simon Marquis">
+      
+      
+        <link rel="canonical" href="https://github.com/SimonMarquis/TIL/gradle/">
+      
+      
+        <link rel="prev" href="../github/">
+      
+      
+        <link rel="next" href="../html/">
+      
+      <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
+    
+    
+      
+        <title>🐘 Gradle - 🗓️ Today I Learned</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a6bdf11c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cleanup-caches-and-build-directories" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="🗓️ Today I Learned" class="md-header__button md-logo" aria-label="🗓️ Today I Learned" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🗓️ Today I Learned
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🐘 Gradle
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SimonMarquis/TIL" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TIL
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="🗓️ Today I Learned" class="md-nav__button md-logo" aria-label="🗓️ Today I Learned" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    🗓️ Today I Learned
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SimonMarquis/TIL" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TIL
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../android/" class="md-nav__link">
+        🤖 Android
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bash/" class="md-nav__link">
+        🖥️ Bash
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chrome/" class="md-nav__link">
+        🌍 Chrome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../css/" class="md-nav__link">
+        🎨 CSS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dagger/" class="md-nav__link">
+        🗡️ Dagger
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase/" class="md-nav__link">
+        🔥 Firebase
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gerrit/" class="md-nav__link">
+        🏢 Gerrit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git/" class="md-nav__link">
+        💽 Git
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        🐙 GitHub
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          🐘 Gradle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        🐘 Gradle
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cleanup-caches-and-build-directories" class="md-nav__link">
+    Cleanup caches and build directories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declaring-a-repository-filter" class="md-nav__link">
+    Declaring a repository filter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declaring-content-exclusively-found-in-one-repository" class="md-nav__link">
+    Declaring content exclusively found in one repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradle-tasks" class="md-nav__link">
+    Gradle tasks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kotlin-extensions" class="md-nav__link">
+    Kotlin extensions
+  </a>
+  
+    <nav class="md-nav" aria-label="Kotlin extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-project-properties" class="md-nav__link">
+    List project properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#override-build-type-attribute" class="md-nav__link">
+    Override build type attribute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#override-version-catalog-versions" class="md-nav__link">
+    Override Version Catalog versions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-properties" class="md-nav__link">
+    Project properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reproducible-builds" class="md-nav__link">
+    Reproducible builds
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-properties" class="md-nav__link">
+    System properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-fixtures" class="md-nav__link">
+    Test fixtures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-the-gradle-wrapper" class="md-nav__link">
+    Upgrading the Gradle Wrapper
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-catalog-extensions-and-delegates" class="md-nav__link">
+    Version Catalog extensions and delegates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-declaration-semantics" class="md-nav__link">
+    Version declaration semantics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#welcome-message" class="md-nav__link">
+    Welcome message
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html/" class="md-nav__link">
+        📜 HTML
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intellij-idea/" class="md-nav__link">
+        📦 IntelliJ IDEA
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java/" class="md-nav__link">
+        ☕ Java
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javascript/" class="md-nav__link">
+        🪢 JavaScript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../junit/" class="md-nav__link">
+        🧪 JUnit
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kotlin/" class="md-nav__link">
+        🧑‍💻 Kotlin
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mac/" class="md-nav__link">
+        🍎 Mac
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../markdown/" class="md-nav__link">
+        📄 Markdown
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../miscellaneous/" class="md-nav__link">
+        💎 Miscellaneous
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../online-tools/" class="md-nav__link">
+        🕸️ Online tools
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../open-source-projects/" class="md-nav__link">
+        🔓 Open Source projects
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regex/" class="md-nav__link">
+        🧮 Regex
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sublime-merge/" class="md-nav__link">
+        🔀 Sublime Merge
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sublime-text/" class="md-nav__link">
+        🗃️ Sublime Text
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        🧰 Utils
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/" class="md-nav__link">
+        🪟 Windows
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cleanup-caches-and-build-directories" class="md-nav__link">
+    Cleanup caches and build directories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declaring-a-repository-filter" class="md-nav__link">
+    Declaring a repository filter
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declaring-content-exclusively-found-in-one-repository" class="md-nav__link">
+    Declaring content exclusively found in one repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gradle-tasks" class="md-nav__link">
+    Gradle tasks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kotlin-extensions" class="md-nav__link">
+    Kotlin extensions
+  </a>
+  
+    <nav class="md-nav" aria-label="Kotlin extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-project-properties" class="md-nav__link">
+    List project properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#override-build-type-attribute" class="md-nav__link">
+    Override build type attribute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#override-version-catalog-versions" class="md-nav__link">
+    Override Version Catalog versions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-properties" class="md-nav__link">
+    Project properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reproducible-builds" class="md-nav__link">
+    Reproducible builds
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-properties" class="md-nav__link">
+    System properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-fixtures" class="md-nav__link">
+    Test fixtures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-the-gradle-wrapper" class="md-nav__link">
+    Upgrading the Gradle Wrapper
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-catalog-extensions-and-delegates" class="md-nav__link">
+    Version Catalog extensions and delegates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-declaration-semantics" class="md-nav__link">
+    Version declaration semantics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#welcome-message" class="md-nav__link">
+    Welcome message
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/SimonMarquis/TIL/edit/main/docs/gradle.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/SimonMarquis/TIL/raw/main/docs/gradle.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+  <h1>🐘 Gradle</h1>
+
+<h3 id="cleanup-caches-and-build-directories">Cleanup caches and build directories<a class="headerlink" href="#cleanup-caches-and-build-directories" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Global cache</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 0 0-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 0 0-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 0 1-.004-.021l-.004-.024a1.807 1.807 0 0 1-.15.706.953.953 0 0 1-.213.335.71.71 0 0 0-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 0 0-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 0 0-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 0 0-.205.334 1.18 1.18 0 0 0-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 0 1-.018-.2v-.02a1.772 1.772 0 0 1 .15-.768 1.08 1.08 0 0 1 .43-.533.985.985 0 0 1 .594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 0 0-.166-.267.248.248 0 0 0-.183-.064h-.021c-.071.006-.13.04-.186.132a.552.552 0 0 0-.12.27.944.944 0 0 0-.023.33v.015c.012.135.037.2.08.334.046.134.098.2.166.268.01.009.02.018.034.024-.07.057-.117.07-.176.136a.304.304 0 0 1-.131.068 2.62 2.62 0 0 1-.275-.402 1.772 1.772 0 0 1-.155-.667 1.759 1.759 0 0 1 .08-.668 1.43 1.43 0 0 1 .283-.535c.128-.133.26-.2.418-.2zm1.37 1.706c.332 0 .733.065 1.216.399.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.571.571 0 0 1 .016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465-.276.135-.588.292-1.012.267a1.139 1.139 0 0 1-.448-.067 3.566 3.566 0 0 1-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71-.07-.268-.005-.47.193-.6.224-.135.38-.271.483-.336.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473.286.534.855 1.659 1.102 3.024.156-.005.33.018.513.064.646-1.671-.546-3.467-1.089-3.966-.22-.2-.232-.335-.123-.335.59.534 1.365 1.572 1.646 2.757.13.535.16 1.104.021 1.67.067.028.135.06.205.067 1.032.534 1.413.938 1.23 1.537v-.043c-.06-.003-.12 0-.18 0h-.016c.151-.467-.182-.825-1.065-1.224-.915-.4-1.646-.336-1.77.465-.008.043-.013.066-.018.135-.068.023-.139.053-.209.064-.43.268-.662.669-.793 1.187-.13.533-.17 1.156-.205 1.869v.003c-.02.334-.17.838-.319 1.35-1.5 1.072-3.58 1.538-5.348.334a2.645 2.645 0 0 0-.402-.533 1.45 1.45 0 0 0-.275-.333c.182 0 .338-.03.465-.067a.615.615 0 0 0 .314-.334c.108-.267 0-.697-.345-1.163-.345-.467-.931-.995-1.788-1.521-.63-.4-.986-.87-1.15-1.396-.165-.534-.143-1.085-.015-1.645.245-1.07.873-2.11 1.274-2.763.107-.065.037.135-.408.974-.396.751-1.14 2.497-.122 3.854a8.123 8.123 0 0 1 .647-2.876c.564-1.278 1.743-3.504 1.836-5.268.048.036.217.135.289.202.218.133.38.333.59.465.21.201.477.335.876.335.039.003.075.006.11.006.412 0 .73-.134.997-.268.29-.134.52-.334.74-.4h.005c.467-.135.835-.402 1.044-.7zm2.185 8.958c.037.6.343 1.245.882 1.377.588.134 1.434-.333 1.791-.765l.211-.01c.315-.007.577.01.847.268l.003.003c.208.199.305.53.391.876.085.4.154.78.409 1.066.486.527.645.906.636 1.14l.003-.007v.018l-.003-.012c-.015.262-.185.396-.498.595-.63.401-1.746.712-2.457 1.57-.618.737-1.37 1.14-2.036 1.191-.664.053-1.237-.2-1.574-.898l-.005-.003c-.21-.4-.12-1.025.056-1.69.176-.668.428-1.344.463-1.897.037-.714.076-1.335.195-1.814.12-.465.308-.797.641-.984l.045-.022zm-10.814.049h.01c.053 0 .105.005.157.014.376.055.706.333 1.023.752l.91 1.664.003.003c.243.533.754 1.064 1.189 1.637.434.598.77 1.131.729 1.57v.006c-.057.744-.48 1.148-1.125 1.294-.645.135-1.52.002-2.395-.464-.968-.536-2.118-.469-2.857-.602-.369-.066-.61-.2-.723-.4-.11-.2-.113-.602.123-1.23v-.004l.002-.003c.117-.334.03-.752-.027-1.118-.055-.401-.083-.71.043-.94.16-.334.396-.4.69-.533.294-.135.64-.202.915-.47h.002v-.002c.256-.268.445-.601.668-.838.19-.201.38-.336.663-.336zm7.159-9.074c-.435.201-.945.535-1.488.535-.542 0-.97-.267-1.28-.466-.154-.134-.28-.268-.373-.335-.164-.134-.144-.333-.074-.333.109.016.129.134.199.2.096.066.215.2.36.333.292.2.68.467 1.167.467.485 0 1.053-.267 1.398-.466.195-.135.445-.334.648-.467.156-.136.149-.267.279-.267.128.016.034.134-.147.332a8.097 8.097 0 0 1-.69.468zm-1.082-1.583V5.64c-.006-.02.013-.042.029-.05.074-.043.18-.027.26.004.063 0 .16.067.15.135-.006.049-.085.066-.135.066-.055 0-.092-.043-.141-.068-.052-.018-.146-.008-.163-.065zm-.551 0c-.02.058-.113.049-.166.066-.047.025-.086.068-.14.068-.05 0-.13-.02-.136-.068-.01-.066.088-.133.15-.133.08-.031.184-.047.259-.005.019.009.036.03.03.05v.02h.003z"/></svg></span> Linux</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11Z"/></svg></span> Apple</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>d<span class="w"> </span><span class="k">in</span><span class="w"> </span>~/.gradle/<span class="o">{</span>.tmp,build-scan-data,caches,daemon,jdks,native,wrapper<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nb">test</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>du<span class="w"> </span>--human-readable<span class="w"> </span>--summarize<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>--recursive<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>d<span class="w"> </span><span class="k">in</span><span class="w"> </span>~/.gradle/<span class="o">{</span>.tmp,build-scan-data,caches,daemon,jdks,native,wrapper<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nb">test</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>du<span class="w"> </span>-hs<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$d</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Local cache</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 0 0-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 0 0-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 0 1-.004-.021l-.004-.024a1.807 1.807 0 0 1-.15.706.953.953 0 0 1-.213.335.71.71 0 0 0-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 0 0-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 0 0-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 0 0-.205.334 1.18 1.18 0 0 0-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 0 1-.018-.2v-.02a1.772 1.772 0 0 1 .15-.768 1.08 1.08 0 0 1 .43-.533.985.985 0 0 1 .594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 0 0-.166-.267.248.248 0 0 0-.183-.064h-.021c-.071.006-.13.04-.186.132a.552.552 0 0 0-.12.27.944.944 0 0 0-.023.33v.015c.012.135.037.2.08.334.046.134.098.2.166.268.01.009.02.018.034.024-.07.057-.117.07-.176.136a.304.304 0 0 1-.131.068 2.62 2.62 0 0 1-.275-.402 1.772 1.772 0 0 1-.155-.667 1.759 1.759 0 0 1 .08-.668 1.43 1.43 0 0 1 .283-.535c.128-.133.26-.2.418-.2zm1.37 1.706c.332 0 .733.065 1.216.399.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.571.571 0 0 1 .016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465-.276.135-.588.292-1.012.267a1.139 1.139 0 0 1-.448-.067 3.566 3.566 0 0 1-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71-.07-.268-.005-.47.193-.6.224-.135.38-.271.483-.336.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473.286.534.855 1.659 1.102 3.024.156-.005.33.018.513.064.646-1.671-.546-3.467-1.089-3.966-.22-.2-.232-.335-.123-.335.59.534 1.365 1.572 1.646 2.757.13.535.16 1.104.021 1.67.067.028.135.06.205.067 1.032.534 1.413.938 1.23 1.537v-.043c-.06-.003-.12 0-.18 0h-.016c.151-.467-.182-.825-1.065-1.224-.915-.4-1.646-.336-1.77.465-.008.043-.013.066-.018.135-.068.023-.139.053-.209.064-.43.268-.662.669-.793 1.187-.13.533-.17 1.156-.205 1.869v.003c-.02.334-.17.838-.319 1.35-1.5 1.072-3.58 1.538-5.348.334a2.645 2.645 0 0 0-.402-.533 1.45 1.45 0 0 0-.275-.333c.182 0 .338-.03.465-.067a.615.615 0 0 0 .314-.334c.108-.267 0-.697-.345-1.163-.345-.467-.931-.995-1.788-1.521-.63-.4-.986-.87-1.15-1.396-.165-.534-.143-1.085-.015-1.645.245-1.07.873-2.11 1.274-2.763.107-.065.037.135-.408.974-.396.751-1.14 2.497-.122 3.854a8.123 8.123 0 0 1 .647-2.876c.564-1.278 1.743-3.504 1.836-5.268.048.036.217.135.289.202.218.133.38.333.59.465.21.201.477.335.876.335.039.003.075.006.11.006.412 0 .73-.134.997-.268.29-.134.52-.334.74-.4h.005c.467-.135.835-.402 1.044-.7zm2.185 8.958c.037.6.343 1.245.882 1.377.588.134 1.434-.333 1.791-.765l.211-.01c.315-.007.577.01.847.268l.003.003c.208.199.305.53.391.876.085.4.154.78.409 1.066.486.527.645.906.636 1.14l.003-.007v.018l-.003-.012c-.015.262-.185.396-.498.595-.63.401-1.746.712-2.457 1.57-.618.737-1.37 1.14-2.036 1.191-.664.053-1.237-.2-1.574-.898l-.005-.003c-.21-.4-.12-1.025.056-1.69.176-.668.428-1.344.463-1.897.037-.714.076-1.335.195-1.814.12-.465.308-.797.641-.984l.045-.022zm-10.814.049h.01c.053 0 .105.005.157.014.376.055.706.333 1.023.752l.91 1.664.003.003c.243.533.754 1.064 1.189 1.637.434.598.77 1.131.729 1.57v.006c-.057.744-.48 1.148-1.125 1.294-.645.135-1.52.002-2.395-.464-.968-.536-2.118-.469-2.857-.602-.369-.066-.61-.2-.723-.4-.11-.2-.113-.602.123-1.23v-.004l.002-.003c.117-.334.03-.752-.027-1.118-.055-.401-.083-.71.043-.94.16-.334.396-.4.69-.533.294-.135.64-.202.915-.47h.002v-.002c.256-.268.445-.601.668-.838.19-.201.38-.336.663-.336zm7.159-9.074c-.435.201-.945.535-1.488.535-.542 0-.97-.267-1.28-.466-.154-.134-.28-.268-.373-.335-.164-.134-.144-.333-.074-.333.109.016.129.134.199.2.096.066.215.2.36.333.292.2.68.467 1.167.467.485 0 1.053-.267 1.398-.466.195-.135.445-.334.648-.467.156-.136.149-.267.279-.267.128.016.034.134-.147.332a8.097 8.097 0 0 1-.69.468zm-1.082-1.583V5.64c-.006-.02.013-.042.029-.05.074-.043.18-.027.26.004.063 0 .16.067.15.135-.006.049-.085.066-.135.066-.055 0-.092-.043-.141-.068-.052-.018-.146-.008-.163-.065zm-.551 0c-.02.058-.113.049-.166.066-.047.025-.086.068-.14.068-.05 0-.13-.02-.136-.068-.01-.066.088-.133.15-.133.08-.031.184-.047.259-.005.019.009.036.03.03.05v.02h.003z"/></svg></span> Linux</label><label for="__tabbed_2_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11Z"/></svg></span> Apple</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">test</span><span class="w"> </span>-d<span class="w"> </span>.gradle<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>du<span class="w"> </span>--human-readable<span class="w"> </span>--summarize<span class="w"> </span>.gradle<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>--recursive<span class="w"> </span>.gradle
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">test</span><span class="w"> </span>-d<span class="w"> </span>.gradle<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>du<span class="w"> </span>-hs<span class="w"> </span>.gradle<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>.gradle
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Build directories</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 0 0-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 0 0-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 0 1-.004-.021l-.004-.024a1.807 1.807 0 0 1-.15.706.953.953 0 0 1-.213.335.71.71 0 0 0-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 0 0-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 0 0-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 0 0-.205.334 1.18 1.18 0 0 0-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 0 1-.018-.2v-.02a1.772 1.772 0 0 1 .15-.768 1.08 1.08 0 0 1 .43-.533.985.985 0 0 1 .594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 0 0-.166-.267.248.248 0 0 0-.183-.064h-.021c-.071.006-.13.04-.186.132a.552.552 0 0 0-.12.27.944.944 0 0 0-.023.33v.015c.012.135.037.2.08.334.046.134.098.2.166.268.01.009.02.018.034.024-.07.057-.117.07-.176.136a.304.304 0 0 1-.131.068 2.62 2.62 0 0 1-.275-.402 1.772 1.772 0 0 1-.155-.667 1.759 1.759 0 0 1 .08-.668 1.43 1.43 0 0 1 .283-.535c.128-.133.26-.2.418-.2zm1.37 1.706c.332 0 .733.065 1.216.399.293.2.523.269 1.052.468h.003c.255.136.405.266.478.399v-.131a.571.571 0 0 1 .016.47c-.123.31-.516.643-1.063.842v.002c-.268.135-.501.333-.775.465-.276.135-.588.292-1.012.267a1.139 1.139 0 0 1-.448-.067 3.566 3.566 0 0 1-.322-.198c-.195-.135-.363-.332-.612-.465v-.005h-.005c-.4-.246-.616-.512-.686-.71-.07-.268-.005-.47.193-.6.224-.135.38-.271.483-.336.104-.074.143-.102.176-.131h.002v-.003c.169-.202.436-.47.839-.601.139-.036.294-.065.466-.065zm2.8 2.142c.358 1.417 1.196 3.475 1.735 4.473.286.534.855 1.659 1.102 3.024.156-.005.33.018.513.064.646-1.671-.546-3.467-1.089-3.966-.22-.2-.232-.335-.123-.335.59.534 1.365 1.572 1.646 2.757.13.535.16 1.104.021 1.67.067.028.135.06.205.067 1.032.534 1.413.938 1.23 1.537v-.043c-.06-.003-.12 0-.18 0h-.016c.151-.467-.182-.825-1.065-1.224-.915-.4-1.646-.336-1.77.465-.008.043-.013.066-.018.135-.068.023-.139.053-.209.064-.43.268-.662.669-.793 1.187-.13.533-.17 1.156-.205 1.869v.003c-.02.334-.17.838-.319 1.35-1.5 1.072-3.58 1.538-5.348.334a2.645 2.645 0 0 0-.402-.533 1.45 1.45 0 0 0-.275-.333c.182 0 .338-.03.465-.067a.615.615 0 0 0 .314-.334c.108-.267 0-.697-.345-1.163-.345-.467-.931-.995-1.788-1.521-.63-.4-.986-.87-1.15-1.396-.165-.534-.143-1.085-.015-1.645.245-1.07.873-2.11 1.274-2.763.107-.065.037.135-.408.974-.396.751-1.14 2.497-.122 3.854a8.123 8.123 0 0 1 .647-2.876c.564-1.278 1.743-3.504 1.836-5.268.048.036.217.135.289.202.218.133.38.333.59.465.21.201.477.335.876.335.039.003.075.006.11.006.412 0 .73-.134.997-.268.29-.134.52-.334.74-.4h.005c.467-.135.835-.402 1.044-.7zm2.185 8.958c.037.6.343 1.245.882 1.377.588.134 1.434-.333 1.791-.765l.211-.01c.315-.007.577.01.847.268l.003.003c.208.199.305.53.391.876.085.4.154.78.409 1.066.486.527.645.906.636 1.14l.003-.007v.018l-.003-.012c-.015.262-.185.396-.498.595-.63.401-1.746.712-2.457 1.57-.618.737-1.37 1.14-2.036 1.191-.664.053-1.237-.2-1.574-.898l-.005-.003c-.21-.4-.12-1.025.056-1.69.176-.668.428-1.344.463-1.897.037-.714.076-1.335.195-1.814.12-.465.308-.797.641-.984l.045-.022zm-10.814.049h.01c.053 0 .105.005.157.014.376.055.706.333 1.023.752l.91 1.664.003.003c.243.533.754 1.064 1.189 1.637.434.598.77 1.131.729 1.57v.006c-.057.744-.48 1.148-1.125 1.294-.645.135-1.52.002-2.395-.464-.968-.536-2.118-.469-2.857-.602-.369-.066-.61-.2-.723-.4-.11-.2-.113-.602.123-1.23v-.004l.002-.003c.117-.334.03-.752-.027-1.118-.055-.401-.083-.71.043-.94.16-.334.396-.4.69-.533.294-.135.64-.202.915-.47h.002v-.002c.256-.268.445-.601.668-.838.19-.201.38-.336.663-.336zm7.159-9.074c-.435.201-.945.535-1.488.535-.542 0-.97-.267-1.28-.466-.154-.134-.28-.268-.373-.335-.164-.134-.144-.333-.074-.333.109.016.129.134.199.2.096.066.215.2.36.333.292.2.68.467 1.167.467.485 0 1.053-.267 1.398-.466.195-.135.445-.334.648-.467.156-.136.149-.267.279-.267.128.016.034.134-.147.332a8.097 8.097 0 0 1-.69.468zm-1.082-1.583V5.64c-.006-.02.013-.042.029-.05.074-.043.18-.027.26.004.063 0 .16.067.15.135-.006.049-.085.066-.135.066-.055 0-.092-.043-.141-.068-.052-.018-.146-.008-.163-.065zm-.551 0c-.02.058-.113.049-.166.066-.047.025-.086.068-.14.068-.05 0-.13-.02-.136-.068-.01-.066.088-.133.15-.133.08-.031.184-.047.259-.005.019.009.036.03.03.05v.02h.003z"/></svg></span> Linux</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11Z"/></svg></span> Apple</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;build&#39;</span><span class="w"> </span>-prune<span class="w"> </span>-exec<span class="w"> </span>du<span class="w"> </span>--human-readable<span class="w"> </span>--summarize<span class="w"> </span><span class="s1">&#39;{}&#39;</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span>-exec<span class="w"> </span>rm<span class="w"> </span>--recursive<span class="w"> </span><span class="s1">&#39;{}&#39;</span><span class="w"> </span><span class="se">\;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;build&#39;</span><span class="w"> </span>-prune<span class="w"> </span>-exec<span class="w"> </span>du<span class="w"> </span>-hs<span class="w"> </span><span class="s1">&#39;{}&#39;</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span>-exec<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s1">&#39;{}&#39;</span><span class="w"> </span><span class="se">\;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h3 id="declaring-a-repository-filter">Declaring a repository filter<a class="headerlink" href="#declaring-a-repository-filter" title="Permanent link">&para;</a></h3>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Gradle exposes an API to declare what a repository may or may not contain.</p>
+<p>By default, repositories include everything and exclude nothing:  </p>
+<ul>
+<li>If you declare an include, then it excludes everything but what is included.</li>
+<li>If you declare an exclude, then it includes everything but what is excluded.</li>
+<li>If you declare both includes and excludes, then it includes only what is explicitly included and not excluded.</li>
+</ul>
+</div>
+<p>See <a href="https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/repositories/RepositoryContentDescriptor.html">RepositoryContentDescriptor</a> for all available methods.</p>
+<div class="highlight"><pre><span></span><code><span class="n">repositories</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">maven</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uri</span><span class="p">(</span><span class="s">&quot;https://repo.mycompany.com/maven2&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">content</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// this repository *only* contains artifacts with group &quot;my.company&quot;</span>
+<span class="w">            </span><span class="n">includeGroup</span><span class="p">(</span><span class="s">&quot;my.company&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">mavenCentral</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">content</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// this repository contains everything BUT artifacts with group starting with &quot;my.company&quot;</span>
+<span class="w">            </span><span class="n">excludeGroupByRegex</span><span class="p">(</span><span class="s">&quot;my\\.company.*&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Filters declared using the repository-level content filter are not exclusive. This means that declaring that a repository includes an artifact doesn’t mean that the other repositories can’t have it either: you must declare what every repository contains in extension.</p>
+</div>
+<p><a href="https://docs.gradle.org/current/userguide/declaring_repositories.html#sec:declaring-repository-filter">🔗</a></p>
+<h3 id="declaring-content-exclusively-found-in-one-repository">Declaring content exclusively found in one repository<a class="headerlink" href="#declaring-content-exclusively-found-in-one-repository" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">repositories</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// This repository will _not_ be searched for artifacts in my.company despite being declared first</span>
+<span class="w">    </span><span class="n">mavenCentral</span><span class="p">()</span>
+<span class="w">    </span><span class="n">exclusiveContent</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">forRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">maven</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uri</span><span class="p">(</span><span class="s">&quot;https://repo.mycompany.com/maven2&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">filter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// this repository *only* contains artifacts with group &quot;my.company&quot;</span>
+<span class="w">            </span><span class="n">includeGroup</span><span class="p">(</span><span class="s">&quot;my.company&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a href="https://docs.gradle.org/current/userguide/declaring_repositories.html#declaring_content_exclusively_found_in_one_repository">🔗</a></p>
+<h3 id="gradle-tasks">Gradle tasks<a class="headerlink" href="#gradle-tasks" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>Build Setup tasks
+-----------------
+init - Initializes a new Gradle build.
+wrapper - Generates Gradle wrapper files.
+
+Help tasks
+----------
+javaToolchains - Displays the detected java toolchains.
+projects - Displays the sub-projects of root project.
+properties - Displays the properties of root project.
+</code></pre></div>
+<h2 id="kotlin-extensions">Kotlin extensions<a class="headerlink" href="#kotlin-extensions" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isRootProject</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rootProject</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="k">this</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isJava</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isJavaLibrary</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">project</span><span class="p">.</span><span class="na">pluginManager</span><span class="p">.</span><span class="na">hasPlugin</span><span class="p">(</span><span class="s">&quot;java&quot;</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isJavaLibrary</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">project</span><span class="p">.</span><span class="na">pluginManager</span><span class="p">.</span><span class="na">hasPlugin</span><span class="p">(</span><span class="s">&quot;java-library&quot;</span><span class="p">)</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isKotlin</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isKotlinAndroid</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">isKotlinJvm</span><span class="p">()</span>
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isKotlinAndroid</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pluginManager</span><span class="p">.</span><span class="na">hasPlugin</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlin.android&quot;</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isKotlinJvm</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pluginManager</span><span class="p">.</span><span class="na">hasPlugin</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlin.jvm&quot;</span><span class="p">)</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isAndroid</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isAndroidApplication</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">isAndroidLibrary</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">isAndroidTest</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">isAndroidDynamicFeature</span><span class="p">()</span>
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isAndroidApplication</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plugins</span><span class="p">.</span><span class="na">hasPlugin</span><span class="p">(</span><span class="n">AppPlugin</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isAndroidLibrary</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plugins</span><span class="p">.</span><span class="na">hasPlugin</span><span class="p">(</span><span class="n">LibraryPlugin</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isAndroidTest</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plugins</span><span class="p">.</span><span class="na">hasPlugin</span><span class="p">(</span><span class="n">TestPlugin</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isAndroidDynamicFeature</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plugins</span><span class="p">.</span><span class="na">hasPlugin</span><span class="p">(</span><span class="n">DynamicFeaturePlugin</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isUsingKapt</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pluginManager</span><span class="p">.</span><span class="na">hasPlugin</span><span class="p">(</span><span class="s">&quot;org.jetbrains.kotlin.kapt&quot;</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isUsingKsp</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pluginManager</span><span class="p">.</span><span class="na">hasPlugin</span><span class="p">(</span><span class="s">&quot;com.google.devtools.ksp&quot;</span><span class="p">)</span>
+<span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isUsingLint</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pluginManager</span><span class="p">.</span><span class="na">hasPlugin</span><span class="p">(</span><span class="s">&quot;com.android.internal.lint&quot;</span><span class="p">)</span>
+
+
+<span class="cm">/**</span>
+<span class="cm"> * Best-effort tries to apply an [action] on a task with matching [name]. If the task doesn&#39;t exist</span>
+<span class="cm"> * at the time this is called, a [TaskContainer.whenTaskAdded] callback is added to match on the</span>
+<span class="cm"> * name and execute the action when it&#39;s added.</span>
+<span class="cm"> *</span>
+<span class="cm"> * This approach has caveats, namely that you won&#39;t get an immediate failure or indication if you&#39;ve</span>
+<span class="cm"> * requested action on a task that may never be added. This is intended to be similar to the</span>
+<span class="cm"> * behavior of [PluginManager.withPlugin].</span>
+<span class="cm"> */</span>
+<span class="kd">fun</span><span class="w"> </span><span class="n">TaskContainer</span><span class="p">.</span><span class="nf">withName</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">action</span><span class="p">:</span><span class="w"> </span><span class="n">Action</span><span class="o">&lt;</span><span class="n">Task</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">named</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">action</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">:</span><span class="w"> </span><span class="n">UnknownTaskException</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">whenTaskAdded</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="nd">@whenTaskAdded.name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="n">action</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a href="https://github.com/slackhq/slack-gradle-plugin">🔗</a></p>
+<h3 id="list-project-properties">List project properties<a class="headerlink" href="#list-project-properties" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>gradlew<span class="w"> </span>properties
+
+<span class="c1"># To get a specific property</span>
+gradlew<span class="w"> </span>-q<span class="w"> </span>properties<span class="w"> </span>--console<span class="o">=</span>plain<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;^&lt;my-property&gt;:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{printf $2}&#39;</span>
+
+<span class="c1"># Or on newer versions</span>
+gradlew<span class="w"> </span>-q<span class="w"> </span>properties<span class="w"> </span>--property<span class="o">=</span>&lt;my-property&gt;
+</code></pre></div>
+<h3 id="override-build-type-attribute">Override build type attribute<a class="headerlink" href="#override-build-type-attribute" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="n">project</span><span class="p">(</span><span class="s">&quot;:lib&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">attributes</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">attribute</span><span class="p">(</span><span class="n">BuildTypeAttr</span><span class="p">.</span><span class="na">ATTRIBUTE</span><span class="p">,</span><span class="w"> </span><span class="n">objects</span><span class="p">.</span><span class="na">named</span><span class="o">&lt;</span><span class="n">BuildTypeAttr</span><span class="o">&gt;</span><span class="p">(</span><span class="n">DEBUG</span><span class="p">))</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="override-version-catalog-versions">Override Version Catalog versions<a class="headerlink" href="#override-version-catalog-versions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">dependencyResolutionManagement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">versionCatalogs</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;libs_version_&quot;</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">overrides</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">providers</span><span class="p">.</span><span class="na">systemPropertiesPrefixedBy</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">get</span><span class="p">().</span><span class="na">mapKeys</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="na">removePrefix</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="n">maybeCreate</span><span class="p">(</span><span class="s">&quot;libs&quot;</span><span class="p">).</span><span class="na">apply</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overrides</span><span class="p">.</span><span class="na">isNotEmpty</span><span class="p">())</span><span class="w"> </span><span class="n">logger</span><span class="p">.</span><span class="na">lifecycle</span><span class="p">(</span><span class="s">&quot;Overriding versions </span><span class="si">$</span><span class="n">overrides</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">overrides</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">version</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>gradlew<span class="w"> </span>--system-prop<span class="w"> </span><span class="s2">&quot;libs_version_=1.2.3&quot;</span><span class="w"> </span>--system-prop<span class="w"> </span><span class="s2">&quot;libs_version_=3.2.1&quot;</span>
+<span class="c1"># or simpler</span>
+gradlew<span class="w"> </span>-Dlibs_version_foo<span class="o">=</span><span class="m">1</span>.2.3<span class="w"> </span>-Dlibs_version_bar<span class="o">=</span><span class="m">3</span>.2.1
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code>Overriding versions {foo=1.2.3, bar=3.2.1}
+</code></pre></div>
+</div>
+<h3 id="project-properties">Project properties<a class="headerlink" href="#project-properties" title="Permanent link">&para;</a></h3>
+<p>You can add properties directly to your Project object via the <code>-P</code> command line option.
+Gradle can also set project properties when it sees specially-named system properties or environment variables.</p>
+<ul>
+<li>
+<p>Setting a project property via a system property:
+  <div class="highlight"><pre><span></span><code><span class="na">org.gradle.project.foo</span><span class="o">=</span><span class="s">bar</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Setting a project property via an environment variable:
+  <div class="highlight"><pre><span></span><code><span class="na">ORG_GRADLE_PROJECT_foo</span><span class="o">=</span><span class="s">bar</span>
+</code></pre></div></p>
+</li>
+</ul>
+<p><a href="https://docs.gradle.org/current/userguide/build_environment.html#sec:project_properties">🔗</a></p>
+<h3 id="reproducible-builds">Reproducible builds<a class="headerlink" href="#reproducible-builds" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">build.gradle.kts</span><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">withType</span><span class="o">&lt;</span><span class="n">AbstractArchiveTask</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">isPreserveFileTimestamps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="n">isReproducibleFileOrder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><a href="https://docs.gradle.org/current/userguide/working_with_files.html#sec:reproducible_archives">🔗</a></p>
+<h3 id="system-properties">System properties<a class="headerlink" href="#system-properties" title="Permanent link">&para;</a></h3>
+<p>Using the <code>-D</code> command-line option, you can pass a system property to the JVM which runs Gradle.<br />
+You can also set system properties in <code>gradle.properties</code> files with the prefix <code>systemProp.</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># gradle.properties</span>
+<span class="na">systemProp.gradle.user.home</span><span class="o">=</span><span class="s">/gradle</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>command-line options take precedence over system properties.</p>
+</div>
+<p><a href="https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_system_properties">🔗</a></p>
+<h3 id="test-fixtures">Test fixtures<a class="headerlink" href="#test-fixtures" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Producer</p>
+<div class="highlight"><span class="filename">repo/build.gradle.kts</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">kotlin</span><span class="p">(</span><span class="s">&quot;jvm&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">`java-test-fixtures`</span>
+<span class="p">}</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Dependencies of test fixtures (not leaked to consumers)</span>
+<span class="w">    </span><span class="n">testFixturesImplementation</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">repo/src/main/kotlin/com/example/Repository.kt</span><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nc">Repository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">operator</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">invoke</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="kt">Boolean</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">repo/src/testFixtures/kotlin/com/example/FakeRepository.kt</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">FakeRepository</span><span class="p">(</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">block</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">fail</span>
+<span class="p">):</span><span class="w"> </span><span class="n">Repository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">invoke</span><span class="p">(</span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">):</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">block</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Consumer</p>
+<div class="highlight"><span class="filename">app/build.gradle.kts</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">kotlin</span><span class="p">(</span><span class="s">&quot;jvm&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="n">project</span><span class="p">(</span><span class="s">&quot;:repo&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">testImplementation</span><span class="p">(</span><span class="n">testFixtures</span><span class="p">(</span><span class="n">project</span><span class="p">(</span><span class="s">&quot;:repo&quot;</span><span class="p">)))</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">app/src/test/kotlin/com/example/Test.kt</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Test</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">test</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">repository</span><span class="p">:</span><span class="w"> </span><span class="n">Repository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FakeRepository</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">todo</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="cm">/* ... */</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<p><a href="https://docs.gradle.org/current/userguide/java_testing.html#sec:java_test_fixtures">🔗</a></p>
+<h3 id="upgrading-the-gradle-wrapper">Upgrading the Gradle Wrapper<a class="headerlink" href="#upgrading-the-gradle-wrapper" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update the version in gradle/wrapper/gradle-wrapper.properties</span>
+./gradlew<span class="w"> </span>wrapper<span class="w"> </span>--gradle-version<span class="w"> </span>x.y.z<span class="w"> </span>--distribution-type<span class="w"> </span>bin
+<span class="c1"># Update the in gradle-wrapper.jar</span>
+./gradlew<span class="w"> </span>wrapper
+<span class="c1"># Validate the version</span>
+./gradlew<span class="w"> </span>--version
+</code></pre></div>
+<p><a href="https://docs.gradle.org/current/userguide/gradle_wrapper.html#sec:upgrading_wrapper">🔗</a></p>
+<h3 id="version-catalog-extensions-and-delegates">Version Catalog extensions and delegates<a class="headerlink" href="#version-catalog-extensions-and-delegates" title="Permanent link">&para;</a></h3>
+<p>Extension to access <code>VersionCatalog</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">versionCatalog</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;libs&quot;</span><span class="p">):</span><span class="w"> </span><span class="n">VersionCatalog</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">project</span><span class="p">.</span><span class="na">extensions</span><span class="p">.</span><span class="na">getByType</span><span class="o">&lt;</span><span class="n">VersionCatalogsExtension</span><span class="o">&gt;</span><span class="p">().</span><span class="na">named</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<p>Extensions to fetch versions, libraries, plugins and bundles from a <code>VersionCatalog</code> as delegates:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="n">VersionCatalog</span><span class="p">.</span><span class="nf">versions</span><span class="p">():</span><span class="w"> </span><span class="n">ReadOnlyProperty</span><span class="o">&lt;</span><span class="kt">Any?</span><span class="p">,</span><span class="w"> </span><span class="n">VersionConstraint</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ReadOnlyProperty</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">property</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="n">findVersion</span><span class="p">(</span><span class="n">property</span><span class="p">.</span><span class="na">name</span><span class="p">).</span><span class="na">orElseThrow</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;Version alias named </span><span class="si">${</span><span class="n">property</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="s"> doesn&#39;t exist in catalog named </span><span class="si">$</span><span class="n">name</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="n">VersionCatalog</span><span class="p">.</span><span class="nf">libraries</span><span class="p">():</span><span class="w"> </span><span class="n">ReadOnlyProperty</span><span class="o">&lt;</span><span class="kt">Any?</span><span class="p">,</span><span class="w"> </span><span class="n">Provider</span><span class="o">&lt;</span><span class="n">MinimalExternalModuleDependency</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ReadOnlyProperty</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">property</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="n">findLibrary</span><span class="p">(</span><span class="n">property</span><span class="p">.</span><span class="na">name</span><span class="p">).</span><span class="na">orElseThrow</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;Library alias named </span><span class="si">${</span><span class="n">property</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="s"> doesn&#39;t exist in catalog named </span><span class="si">$</span><span class="n">name</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="n">VersionCatalog</span><span class="p">.</span><span class="nf">plugins</span><span class="p">():</span><span class="w"> </span><span class="n">ReadOnlyProperty</span><span class="o">&lt;</span><span class="kt">Any?</span><span class="p">,</span><span class="w"> </span><span class="n">Provider</span><span class="o">&lt;</span><span class="n">PluginDependency</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ReadOnlyProperty</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">property</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="n">findPlugin</span><span class="p">(</span><span class="n">property</span><span class="p">.</span><span class="na">name</span><span class="p">).</span><span class="na">orElseThrow</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;Plugin alias named </span><span class="si">${</span><span class="n">property</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="s"> doesn&#39;t exist in catalog named </span><span class="si">$</span><span class="n">name</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="n">VersionCatalog</span><span class="p">.</span><span class="nf">bundles</span><span class="p">():</span><span class="w"> </span><span class="n">ReadOnlyProperty</span><span class="o">&lt;</span><span class="kt">Any?</span><span class="p">,</span><span class="w"> </span><span class="n">Provider</span><span class="o">&lt;</span><span class="n">ExternalModuleDependencyBundle</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ReadOnlyProperty</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">property</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">    </span><span class="n">findBundle</span><span class="p">(</span><span class="n">property</span><span class="p">.</span><span class="na">name</span><span class="p">).</span><span class="na">orElseThrow</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;Bundle alias named </span><span class="si">${</span><span class="n">property</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="s"> doesn&#39;t exist in catalog named </span><span class="si">$</span><span class="n">name</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This can then be used like this in a custom <code>Plugin</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># gradle/libs.versions.toml</span>
+<span class="k">[versions]</span>
+<span class="n">kotlin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1.7.10&quot;</span>
+
+<span class="k">[plugins]</span>
+<span class="n">org-jetbrains-kotlin-android</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;org.jetbrains.kotlin.android&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">.</span><span class="n">ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;kotlin&quot;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="k">[bundles]</span>
+<span class="n">example</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;lib1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lib2&quot;</span><span class="p">]</span>
+
+<span class="k">[libraries]</span>
+<span class="n">example1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;com.example:lib1:#&quot;</span>
+<span class="n">example2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;com.example:lib2:#&quot;</span>
+<span class="n">kotlinxCoroutinesCore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;org.jetbrains.kotlinx&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;kotlinx-coroutines-core&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1.6.4&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">MyCatalog</span><span class="p">(</span><span class="n">catalog</span><span class="p">:</span><span class="w"> </span><span class="n">VersionCatalog</span><span class="p">):</span><span class="w"> </span><span class="n">VersionCatalog</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">catalog</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">kotlin</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">versions</span><span class="p">()</span><span class="w"> </span><span class="c1">// &quot;1.7.10&quot;</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">`org-jetbrains-kotlin-android`</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">plugins</span><span class="p">()</span><span class="w"> </span><span class="c1">// &quot;org.jetbrains.kotlin.android:1.7.10&quot;</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">example</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">bundles</span><span class="p">()</span><span class="w"> </span><span class="c1">// [&quot;com.example:lib1:#&quot;, &quot;com.example:lib2:#&quot;]</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">kotlinxCoroutinesCore</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">library</span><span class="p">()</span><span class="w"> </span><span class="c1">// &quot;org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4&quot;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nc">MyPlugin</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Plugin</span><span class="o">&lt;</span><span class="n">Project</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="n">target</span><span class="p">:</span><span class="w"> </span><span class="n">Project</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">catalog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyCatalog</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="na">versionCatalog</span><span class="p">())</span>
+<span class="w">        </span><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">add</span><span class="p">(</span><span class="s">&quot;implementation&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">catalog</span><span class="p">.</span><span class="na">kotlinxCoroutinesCore</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="version-declaration-semantics">Version declaration semantics<a class="headerlink" href="#version-declaration-semantics" title="Permanent link">&para;</a></h3>
+<ul>
+<li>An exact version: e.g. <code>1.3</code>, <code>1.3.0-beta3</code>, <code>1.0-20150201.131010-1</code></li>
+<li>A Maven-style version range: e.g. <code>[1.0,)</code>, <code>[1.1, 2.0)</code>, <code>(1.2, 1.5]</code></li>
+<li>A prefix version range: e.g. <code>1.+</code>, <code>1.3.+</code></li>
+<li>A latest-status version: e.g. <code>latest.integration</code>, <code>latest.release</code></li>
+<li>A Maven <code>SNAPSHOT</code> version identifier: e.g. <code>1.0-SNAPSHOT</code>, <code>1.4.9-beta1-SNAPSHOT</code></li>
+</ul>
+<p>Shorthand notation for strict dependencies</p>
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// short-hand notation with !!</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.slf4j:slf4j-api:1.7.15!!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// is equivalent to</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">&quot;org.slf4j:slf4j-api&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">version</span><span class="w"> </span><span class="p">{</span>
+<span class="w">           </span><span class="n">strictly</span><span class="p">(</span><span class="s">&quot;1.7.15&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<p><a href="https://docs.gradle.org/current/userguide/single_versions.html">🔗</a></p>
+<h3 id="welcome-message">Welcome message<a class="headerlink" href="#welcome-message" title="Permanent link">&para;</a></h3>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Controls whether Gradle should print a welcome message. If set to <code>never</code> then the welcome message will be suppressed. If set to <code>once</code> then the message is printed once for each new version of Gradle. Default is <code>once</code>.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># gradle.properties</span>
+<span class="na">org.gradle.welcome</span><span class="o">=</span><span class="s">never</span>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../github/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 🐙 GitHub" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                🐙 GitHub
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../html/" class="md-footer__link md-footer__link--next" aria-label="Next: 📜 HTML" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                📜 HTML
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 Simon Marquis
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.tabs.link", "content.code.copy", "content.code.annotate", "navigation.footer", "navigation.instant", "navigation.indexes", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>
