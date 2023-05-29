@@ -108,6 +108,20 @@ repositories {
 
 [🔗](https://docs.gradle.org/current/userguide/declaring_repositories.html#declaring_content_exclusively_found_in_one_repository)
 
+### Download dependencies upfront
+
+This relies on the [dependency verification](https://docs.gradle.org/current/userguide/dependency_verification.html) feature:
+
+```bash
+./gradlew assemble lint test connectedAndroidTest --dry-run --write-verification-metadata sha256
+```
+
+This will then create `gradle/verification-metadata.dryrun.xml` as a side-effect.
+
+!!! quote
+
+    Because `--dry-run` doesn’t execute tasks, this would be much faster, but it will miss any resolution happening at task execution time.
+
 ### Gradle tasks
 
 ```
