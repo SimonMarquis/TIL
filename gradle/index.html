@@ -419,6 +419,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#download-dependencies-upfront" class="md-nav__link">
+    Download dependencies upfront
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gradle-tasks" class="md-nav__link">
     Gradle tasks
   </a>
@@ -809,6 +816,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#download-dependencies-upfront" class="md-nav__link">
+    Download dependencies upfront
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gradle-tasks" class="md-nav__link">
     Gradle tasks
   </a>
@@ -1039,6 +1053,15 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><a href="https://docs.gradle.org/current/userguide/declaring_repositories.html#declaring_content_exclusively_found_in_one_repository">🔗</a></p>
+<h3 id="download-dependencies-upfront">Download dependencies upfront<a class="headerlink" href="#download-dependencies-upfront" title="Permanent link">&para;</a></h3>
+<p>This relies on the <a href="https://docs.gradle.org/current/userguide/dependency_verification.html">dependency verification</a> feature:</p>
+<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>assemble<span class="w"> </span>lint<span class="w"> </span><span class="nb">test</span><span class="w"> </span>connectedAndroidTest<span class="w"> </span>--dry-run<span class="w"> </span>--write-verification-metadata<span class="w"> </span>sha256
+</code></pre></div>
+<p>This will then create <code>gradle/verification-metadata.dryrun.xml</code> as a side-effect.</p>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Because <code>--dry-run</code> doesn’t execute tasks, this would be much faster, but it will miss any resolution happening at task execution time.</p>
+</div>
 <h3 id="gradle-tasks">Gradle tasks<a class="headerlink" href="#gradle-tasks" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>Build Setup tasks
 -----------------
