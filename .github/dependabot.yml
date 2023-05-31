@@ -6,8 +6,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: "pip"
+    directory: "/docs"
     schedule:
       interval: "daily"
