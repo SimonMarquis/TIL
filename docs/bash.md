@@ -15,6 +15,12 @@ grep -- -v file
 
 [🔗](https://unix.stackexchange.com/a/11382)
 
+### Delete empty directories
+
+```bash
+find . -type d -empty -print -delete
+```
+
 ### Heredoc
 
 ```bash title="General syntax"
