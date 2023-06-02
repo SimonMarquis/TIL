@@ -285,6 +285,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#delete-empty-directories" class="md-nav__link">
+    Delete empty directories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#heredoc" class="md-nav__link">
     Heredoc
   </a>
@@ -733,6 +740,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#delete-empty-directories" class="md-nav__link">
+    Delete empty directories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#heredoc" class="md-nav__link">
     Heredoc
   </a>
@@ -824,6 +838,9 @@ Normally <code>-v</code> will be considered the option to reverse the matching m
 <div class="highlight"><pre><span></span><code>grep<span class="w"> </span>--<span class="w"> </span>-v<span class="w"> </span>file
 </code></pre></div>
 <p><a href="https://unix.stackexchange.com/a/11382">🔗</a></p>
+<h3 id="delete-empty-directories">Delete empty directories<a class="headerlink" href="#delete-empty-directories" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-empty<span class="w"> </span>-print<span class="w"> </span>-delete
+</code></pre></div>
 <h3 id="heredoc">Heredoc<a class="headerlink" href="#heredoc" title="Permanent link">&para;</a></h3>
 <div class="highlight"><span class="filename">General syntax</span><pre><span></span><code><span class="o">[</span>cmd<span class="o">]</span><span class="w"> </span>&lt;&lt;<span class="o">[</span>-<span class="o">]</span><span class="w"> </span>delimeter<span class="w"> </span><span class="o">[</span>cmd<span class="o">]</span>
 <span class="w">    </span>content
