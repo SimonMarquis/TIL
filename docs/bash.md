@@ -21,6 +21,14 @@ grep -- -v file
 find . -type d -empty -print -delete
 ```
 
+### Dynamic command arguments
+
+```bash
+args=()
+[[ -n "$INPUT" ]] && args+=( '--input' "$INPUT" )
+foo "${args[@]}"
+```
+
 ### Heredoc
 
 ```bash title="General syntax"
