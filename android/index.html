@@ -480,6 +480,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#print-keystore-entries" class="md-nav__link">
+    Print keystore entries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#project-view-by-default" class="md-nav__link">
     Project view by default
   </a>
@@ -870,6 +877,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../mkdocs/" class="md-nav__link">
+        📖 MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../online-tools/" class="md-nav__link">
         🕸️ Online tools
       </a>
@@ -1204,6 +1226,13 @@
         <li class="md-nav__item">
   <a href="#print-apk-certificates" class="md-nav__link">
     Print APK certificates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#print-keystore-entries" class="md-nav__link">
+    Print keystore entries
   </a>
   
 </li>
@@ -2012,6 +2041,30 @@ adb<span class="w"> </span>shell<span class="w"> </span>pm<span class="w"> </spa
 <h3 id="print-apk-certificates">Print APK certificates<a class="headerlink" href="#print-apk-certificates" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.apk&#39;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;APK: {}&quot;</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span>-exec<span class="w"> </span>keytool<span class="w"> </span>-printcert<span class="w"> </span>-jarfile<span class="w"> </span><span class="s2">&quot;{}&quot;</span><span class="w"> </span><span class="se">\;</span>
 </code></pre></div>
+<h3 id="print-keystore-entries">Print keystore entries<a class="headerlink" href="#print-keystore-entries" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>keytool<span class="w"> </span>-list<span class="w"> </span>-v<span class="w"> </span>-keystore<span class="w"> </span>~/.android/debug.keystore
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code>Keystore type: PKCS12
+Keystore provider: SUN
+Your keystore contains 1 entry
+Alias name: androiddebugkey
+Creation date: 24 Aug 2021
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: C=US, O=Android, CN=Android Debug
+Issuer: C=US, O=Android, CN=Android Debug
+Serial number: 1
+Valid from: Tue Aug 24 14:21:42 CEST 2021 until: Thu Aug 17 14:21:42 CEST 2051
+Certificate fingerprints:
+         SHA1: 9C:2B:0E:AD:D2:12:ED:68:42:00:F5:41:4A:29:A8:10:FD:4F:94:62
+         SHA256: 35:21:3A:55:E0:8E:2F:98:34:B6:B1:0B:13:DD:2B:25:A7:E5:9E:39:85:8C:4E:C3:F1:82:CD:33:2E:91:57:4D
+Signature algorithm name: SHA1withRSA (weak)
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 1
+</code></pre></div>
+</div>
 <h3 id="project-view-by-default">Project view by default<a class="headerlink" href="#project-view-by-default" title="Permanent link">&para;</a></h3>
 <p><code>Help</code> → <code>Edit Custom Properties</code> → <code>studio.projectview=true</code></p>
 <h3 id="recursive-view-children-sequence">Recursive View children sequence<a class="headerlink" href="#recursive-view-children-sequence" title="Permanent link">&para;</a></h3>

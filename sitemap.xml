@@ -101,6 +101,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/SimonMarquis/TIL/mkdocs/</loc>
+         <lastmod>2023-06-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/SimonMarquis/TIL/online-tools/</loc>
          <lastmod>2023-06-03</lastmod>
          <changefreq>daily</changefreq>
