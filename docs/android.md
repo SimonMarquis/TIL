@@ -790,6 +790,34 @@ class Data(val foo: Foo, val nullableFoo: Foo?) : Parcelable
 find . -name '*.apk' -type f -exec echo "APK: {}" \; -exec keytool -printcert -jarfile "{}" \;
 ```
 
+### Print keystore entries
+
+```bash
+keytool -list -v -keystore ~/.android/debug.keystore
+```
+<div class="result" markdown>
+```
+Keystore type: PKCS12
+Keystore provider: SUN
+Your keystore contains 1 entry
+Alias name: androiddebugkey
+Creation date: 24 Aug 2021
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: C=US, O=Android, CN=Android Debug
+Issuer: C=US, O=Android, CN=Android Debug
+Serial number: 1
+Valid from: Tue Aug 24 14:21:42 CEST 2021 until: Thu Aug 17 14:21:42 CEST 2051
+Certificate fingerprints:
+         SHA1: 9C:2B:0E:AD:D2:12:ED:68:42:00:F5:41:4A:29:A8:10:FD:4F:94:62
+         SHA256: 35:21:3A:55:E0:8E:2F:98:34:B6:B1:0B:13:DD:2B:25:A7:E5:9E:39:85:8C:4E:C3:F1:82:CD:33:2E:91:57:4D
+Signature algorithm name: SHA1withRSA (weak)
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 1
+```
+</div>
+
 ### Project view by default
 
 `Help` → `Edit Custom Properties` → `studio.projectview=true`
