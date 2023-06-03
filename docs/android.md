@@ -980,6 +980,38 @@ fun View.recursiveChildren(): Sequence<View> = sequence {
 adb shell run-as <package-name> <command> [<args>]
 ```
 
+### Step by step installation
+
+```bash
+# Installing OpenJDK
+# https://openjdk.org/install/
+sudo apt-get update
+sudo apt-get install openjdk-17-jdk
+
+# Installing Android Command Line Tools
+# https://developer.android.com/studio#command-line-tools-only
+cd ~
+curl https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -o /tmp/cmd-tools.zip
+mkdir -p android/cmdline-tools
+unzip -q -d android/cmdline-tools /tmp/cmd-tools.zip
+mv android/cmdline-tools/cmdline-tools android/cmdline-tools/latest
+rm /tmp/cmd-tools.zip
+
+# Setting up environment variables
+export ANDROID_HOME=$HOME/android
+export ANDROID_SDK_ROOT=${ANDROID_HOME}
+export PATH=${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${PATH}
+
+# Accepting SDK licenses
+yes | sdkmanager --licenses
+
+# Installing SDK components
+sdkmanager --update
+sdkmanager --list
+sdkmanager --list_installed
+sdkmanager --install "platforms;android-33"
+```
+
 ### screencap
 
 ```bash
