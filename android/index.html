@@ -522,6 +522,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#step-by-step-installation" class="md-nav__link">
+    Step by step installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#screencap" class="md-nav__link">
     screencap
   </a>
@@ -1268,6 +1275,13 @@
         <li class="md-nav__item">
   <a href="#run-command-as-a-specific-application-user-id" class="md-nav__link">
     Run command as a specific application user-id
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-by-step-installation" class="md-nav__link">
+    Step by step installation
   </a>
   
 </li>
@@ -2217,6 +2231,35 @@ Version: 1
 </div>
 <h3 id="run-command-as-a-specific-application-user-id">Run command as a specific application user-id<a class="headerlink" href="#run-command-as-a-specific-application-user-id" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>adb<span class="w"> </span>shell<span class="w"> </span>run-as<span class="w"> </span>&lt;package-name&gt;<span class="w"> </span>&lt;command&gt;<span class="w"> </span><span class="o">[</span>&lt;args&gt;<span class="o">]</span>
+</code></pre></div>
+<h3 id="step-by-step-installation">Step by step installation<a class="headerlink" href="#step-by-step-installation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Installing OpenJDK</span>
+<span class="c1"># https://openjdk.org/install/</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>openjdk-17-jdk
+
+<span class="c1"># Installing Android Command Line Tools</span>
+<span class="c1"># https://developer.android.com/studio#command-line-tools-only</span>
+<span class="nb">cd</span><span class="w"> </span>~
+curl<span class="w"> </span>https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip<span class="w"> </span>-o<span class="w"> </span>/tmp/cmd-tools.zip
+mkdir<span class="w"> </span>-p<span class="w"> </span>android/cmdline-tools
+unzip<span class="w"> </span>-q<span class="w"> </span>-d<span class="w"> </span>android/cmdline-tools<span class="w"> </span>/tmp/cmd-tools.zip
+mv<span class="w"> </span>android/cmdline-tools/cmdline-tools<span class="w"> </span>android/cmdline-tools/latest
+rm<span class="w"> </span>/tmp/cmd-tools.zip
+
+<span class="c1"># Setting up environment variables</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANDROID_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/android
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANDROID_SDK_ROOT</span><span class="o">=</span><span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span>/cmdline-tools/latest/bin:<span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span>/platform-tools:<span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span>/tools:<span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span>/tools/bin:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+
+<span class="c1"># Accepting SDK licenses</span>
+yes<span class="w"> </span><span class="p">|</span><span class="w"> </span>sdkmanager<span class="w"> </span>--licenses
+
+<span class="c1"># Installing SDK components</span>
+sdkmanager<span class="w"> </span>--update
+sdkmanager<span class="w"> </span>--list
+sdkmanager<span class="w"> </span>--list_installed
+sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="s2">&quot;platforms;android-33&quot;</span>
 </code></pre></div>
 <h3 id="screencap">screencap<a class="headerlink" href="#screencap" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>adb<span class="w"> </span>shell<span class="w"> </span>screencap<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;/sdcard/screencap.png&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>adb<span class="w"> </span>pull<span class="w"> </span><span class="s2">&quot;/sdcard/screencap.png&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">/Desktop/%time::=-%%random%.png&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>adb<span class="w"> </span>shell<span class="w"> </span>rm<span class="w"> </span><span class="s2">&quot;/sdcard/screencap.png&quot;</span>
