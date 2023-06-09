@@ -420,6 +420,12 @@ suspend fun <T, R> Iterable<T>.mapParallelized(
 
 [🔗](https://pl.kotl.in/IycUh1l2g)
 
+### Migrate source folders from Java to Kotlin
+
+```bash
+find . -depth -type d -path "*/src/*" -name "java" -exec git mv "{}" "{}"/../kotlin \;
+```
+
 ### MockK extension to wait indefinitely
 
 ```kotlin
