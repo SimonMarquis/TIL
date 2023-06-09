@@ -647,6 +647,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#migrate-source-folders-from-java-to-kotlin" class="md-nav__link">
+    Migrate source folders from Java to Kotlin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mockk-extension-to-wait-indefinitely" class="md-nav__link">
     MockK extension to wait indefinitely
   </a>
@@ -1117,6 +1124,13 @@
         <li class="md-nav__item">
   <a href="#map-parallelized" class="md-nav__link">
     Map parallelized
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migrate-source-folders-from-java-to-kotlin" class="md-nav__link">
+    Migrate source folders from Java to Kotlin
   </a>
   
 </li>
@@ -1620,6 +1634,9 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><a href="https://pl.kotl.in/IycUh1l2g">🔗</a></p>
+<h3 id="migrate-source-folders-from-java-to-kotlin">Migrate source folders from Java to Kotlin<a class="headerlink" href="#migrate-source-folders-from-java-to-kotlin" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-depth<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-path<span class="w"> </span><span class="s2">&quot;*/src/*&quot;</span><span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="w"> </span>-exec<span class="w"> </span>git<span class="w"> </span>mv<span class="w"> </span><span class="s2">&quot;{}&quot;</span><span class="w"> </span><span class="s2">&quot;{}&quot;</span>/../kotlin<span class="w"> </span><span class="se">\;</span>
+</code></pre></div>
 <h3 id="mockk-extension-to-wait-indefinitely">MockK extension to wait indefinitely<a class="headerlink" href="#mockk-extension-to-wait-indefinitely" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">io.mockk.*</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.*</span>
