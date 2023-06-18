@@ -122,6 +122,21 @@ This will then create `gradle/verification-metadata.dryrun.xml` as a side-effect
 
     Because `--dry-run` doesn’t execute tasks, this would be much faster, but it will miss any resolution happening at task execution time.
 
+### Gradle properties are not passed to included builds
+
+When requesting an included build like this:
+
+```kotlin title="settings.gradle.kts"
+pluginManagement {
+    includeBuild("build-logic")
+}
+```
+
+**Gradle properties from the default `gradle.properties` are not passed to it.**
+Instead you must have a dedicated `build-logic/gradle.properties`, or use a symbolic link.
+
+[🔗](https://github.com/gradle/gradle/issues/2534)
+
 ### Gradle tasks
 
 ```
