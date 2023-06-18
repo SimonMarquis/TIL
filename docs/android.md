@@ -695,6 +695,109 @@ adb shell pm path <package-name>
 apksigner sign --ks debug.keystore --key-pass pass:android --ks-key-alias androiddebugkey --ks-pass pass:android app-release.apk
 ```
 
+### Mutliplatform Parcelize plugin
+
+Kotlin's [Parcelize](https://developer.android.com/kotlin/parcelize) plugin works only on Android project.
+Wrapping it in a Kotlin Multiplatform project allows us to use it in JVM projects, without leaking Android implementation details.
+
+```kotlin title="build.gradle.kts"
+plugins {
+    kotlin("multiplatform")
+    id("com.android.library")
+    id("kotlin-parcelize")
+}
+
+android { /* ... */ }
+
+kotlin {
+    android()
+    jvm()
+
+    sourceSets {
+        val commonMain by getting { /* ... */ }
+        val commonTest by getting { /* ... */ }
+        val jvmMain by getting { /* ... */ }
+        val jvmTest by getting { /* ... */ }
+        val androidMain by getting { /* ... */ }
+        val androidUnitTest by getting { /* ... */ }
+        val androidInstrumentedTest by getting { /* ... */ }
+    }
+}
+```
+!!! quote ""
+    === "Common"
+        ```kotlin title="commonMain/kotlin/Parcel.kt"
+        expect class Parcel {
+            fun writeLong(long: Long)
+            fun readLong(): Long
+        }
+        
+        expect interface Parcelable
+        ```
+        
+        ```kotlin title="commonMain/kotlin/Parcelize.kt"
+        @OptIn(ExperimentalMultiplatform::class)
+        @OptionalExpectation
+        @Target(AnnotationTarget.CLASS)
+        @Retention(AnnotationRetention.BINARY)
+        expect annotation class Parcelize()
+        
+        @OptIn(ExperimentalMultiplatform::class)
+        @OptionalExpectation
+        @Repeatable
+        @Target(AnnotationTarget.CLASS, AnnotationTarget.PROPERTY)
+        expect annotation class TypeParceler<T, P : Parceler<in T>>
+        
+        expect interface Parceler<T> {
+            fun create(parcel: Parcel): T
+            fun T.write(parcel: Parcel, flags: Int)
+        }
+        
+        @OptIn(ExperimentalMultiplatform::class)
+        @OptionalExpectation
+        @Target(AnnotationTarget.PROPERTY)
+        @Retention(AnnotationRetention.BINARY)
+        expect annotation class IgnoredOnParcel()
+        ```
+    === "Android"
+        ```kotlin title="androidMain/kotlin/Parcel.kt"
+        actual typealias Parcel = android.os.Parcel
+        
+        actual typealias Parcelable = android.os.Parcelable
+        ```
+        
+        ```kotlin title="androidMain/kotlin/Parcelize.kt"
+        actual typealias Parcelize = kotlinx.parcelize.Parcelize
+        
+        actual typealias TypeParceler<T, P> = kotlinx.parcelize.TypeParceler<T, P>
+        
+        actual typealias Parceler<T> = kotlinx.parcelize.Parceler<T>
+        
+        actual typealias IgnoredOnParcel = kotlinx.parcelize.IgnoredOnParcel
+        ```
+    === "JVM"
+        ```kotlin title="jvmMain/kotlin/Parcel.kt"
+        actual class Parcel {
+            actual fun writeLong(long: Long): Unit = TODO()
+            actual fun readLong(): Long = TODO()
+        }
+        
+        actual interface Parcelable
+        ```
+        
+        ```kotlin title="jvmMain/kotlin/Parcelize.kt"
+        actual annotation class Parcelize
+        
+        actual annotation class TypeParceler<T, P : Parceler<in T>>
+        
+        actual interface Parceler<T> {
+            actual fun create(parcel: Parcel): T
+            actual fun T.write(parcel: Parcel, flags: Int)
+        }
+        
+        actual annotation class IgnoredOnParcel
+        ```
+
 ### Parcel extensions
 
 ```kotlin title="Testing utils"
