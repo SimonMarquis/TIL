@@ -811,17 +811,14 @@ fun <T> T.parcelize(): T = Parcel.obtain().use {
 }
 
 inline fun <reified R : Parcelable> R.marshall(): ByteArray = Parcel.obtain().use {
-    it.writeBundle(bundleOf(R::class.java.name to this))
+    it.writeValue(this)
     it.marshall()
 }
 
 inline fun <reified R : Parcelable> ByteArray.unmarshall(): R? = Parcel.obtain().use {
     it.unmarshall(this, 0, size)
     it.setDataPosition(0)
-    it
-}.readBundle()?.run {
-    classLoader = R::class.java.classLoader
-    getParcelable(R::class.java.name)
+    it.readValue(R::class.java.classLoader) as T
 }
 ```
 
