@@ -545,6 +545,24 @@ class Hidden {
 
 [🔗](https://googlesamples.github.io/android-custom-lint-rules/checks/EasterEgg.md.html)
 
+### List AOSP ATD devices
+
+```bash
+"$ANDROID_HOME"/cmdline-tools/latest/bin/sdkmanager --list --channel=3 | grep atd | cut -d ' ' -f 3
+```
+<div class="result" markdown>
+```
+system-images;android-30;aosp_atd;arm64-v8a
+system-images;android-30;aosp_atd;x86
+system-images;android-30;aosp_atd;x86_64
+system-images;android-30;google_atd;arm64-v8a
+system-images;android-30;google_atd;x86
+system-images;android-30;google_atd;x86_64
+system-images;android-31;aosp_atd;x86_64
+system-images;android-31;google_atd;x86_64
+```
+</div>
+
 ### List resources at runtime
 
 ```kotlin
