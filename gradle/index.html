@@ -426,6 +426,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gradle-properties-are-not-passed-to-included-builds" class="md-nav__link">
+    Gradle properties are not passed to included builds
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gradle-tasks" class="md-nav__link">
     Gradle tasks
   </a>
@@ -838,6 +845,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gradle-properties-are-not-passed-to-included-builds" class="md-nav__link">
+    Gradle properties are not passed to included builds
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gradle-tasks" class="md-nav__link">
     Gradle tasks
   </a>
@@ -1077,6 +1091,15 @@
 <p class="admonition-title">Quote</p>
 <p>Because <code>--dry-run</code> doesn’t execute tasks, this would be much faster, but it will miss any resolution happening at task execution time.</p>
 </div>
+<h3 id="gradle-properties-are-not-passed-to-included-builds">Gradle properties are not passed to included builds<a class="headerlink" href="#gradle-properties-are-not-passed-to-included-builds" title="Permanent link">&para;</a></h3>
+<p>When requesting an included build like this:</p>
+<div class="highlight"><span class="filename">settings.gradle.kts</span><pre><span></span><code><span class="n">pluginManagement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">includeBuild</span><span class="p">(</span><span class="s">&quot;build-logic&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Gradle properties from the default <code>gradle.properties</code> are not passed to it.</strong>
+Instead you must have a dedicated <code>build-logic/gradle.properties</code>, or use a symbolic link.</p>
+<p><a href="https://github.com/gradle/gradle/issues/2534">🔗</a></p>
 <h3 id="gradle-tasks">Gradle tasks<a class="headerlink" href="#gradle-tasks" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>Build Setup tasks
 -----------------

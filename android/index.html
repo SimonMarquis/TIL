@@ -417,6 +417,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#list-aosp-atd-devices" class="md-nav__link">
+    List AOSP ATD devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#list-resources-at-runtime" class="md-nav__link">
     List resources at runtime
   </a>
@@ -454,6 +461,13 @@
         <li class="md-nav__item">
   <a href="#manually-sign-apk" class="md-nav__link">
     Manually sign APK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutliplatform-parcelize-plugin" class="md-nav__link">
+    Mutliplatform Parcelize plugin
   </a>
   
 </li>
@@ -1175,6 +1189,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#list-aosp-atd-devices" class="md-nav__link">
+    List AOSP ATD devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#list-resources-at-runtime" class="md-nav__link">
     List resources at runtime
   </a>
@@ -1212,6 +1233,13 @@
         <li class="md-nav__item">
   <a href="#manually-sign-apk" class="md-nav__link">
     Manually sign APK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutliplatform-parcelize-plugin" class="md-nav__link">
+    Mutliplatform Parcelize plugin
   </a>
   
 </li>
@@ -1848,6 +1876,20 @@ gradlew<span class="w"> </span>pixelsGroupDebugAndroidTest
 <span class="p">}</span>
 </code></pre></div>
 <p><a href="https://googlesamples.github.io/android-custom-lint-rules/checks/EasterEgg.md.html">🔗</a></p>
+<h3 id="list-aosp-atd-devices">List AOSP ATD devices<a class="headerlink" href="#list-aosp-atd-devices" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;</span><span class="nv">$ANDROID_HOME</span><span class="s2">&quot;</span>/cmdline-tools/latest/bin/sdkmanager<span class="w"> </span>--list<span class="w"> </span>--channel<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>atd<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span>-f<span class="w"> </span><span class="m">3</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code>system-images;android-30;aosp_atd;arm64-v8a
+system-images;android-30;aosp_atd;x86
+system-images;android-30;aosp_atd;x86_64
+system-images;android-30;google_atd;arm64-v8a
+system-images;android-30;google_atd;x86
+system-images;android-30;google_atd;x86_64
+system-images;android-31;aosp_atd;x86_64
+system-images;android-31;google_atd;x86_64
+</code></pre></div>
+</div>
 <h3 id="list-resources-at-runtime">List resources at runtime<a class="headerlink" href="#list-resources-at-runtime" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="cm">/* Colors */</span>
 <span class="n">R</span><span class="p">.</span><span class="na">color</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">fields</span><span class="p">.</span><span class="na">forEach</span><span class="w"> </span><span class="p">{</span>
@@ -1974,6 +2016,104 @@ adb<span class="w"> </span>shell<span class="w"> </span>pm<span class="w"> </spa
 <h3 id="manually-sign-apk">Manually sign APK<a class="headerlink" href="#manually-sign-apk" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>apksigner<span class="w"> </span>sign<span class="w"> </span>--ks<span class="w"> </span>debug.keystore<span class="w"> </span>--key-pass<span class="w"> </span>pass:android<span class="w"> </span>--ks-key-alias<span class="w"> </span>androiddebugkey<span class="w"> </span>--ks-pass<span class="w"> </span>pass:android<span class="w"> </span>app-release.apk
 </code></pre></div>
+<h3 id="mutliplatform-parcelize-plugin">Mutliplatform Parcelize plugin<a class="headerlink" href="#mutliplatform-parcelize-plugin" title="Permanent link">&para;</a></h3>
+<p>Kotlin's <a href="https://developer.android.com/kotlin/parcelize">Parcelize</a> plugin works only on Android project.
+Wrapping it in a Kotlin Multiplatform project allows us to use it in JVM projects, without leaking Android implementation details.</p>
+<div class="highlight"><span class="filename">build.gradle.kts</span><pre><span></span><code><span class="n">plugins</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">kotlin</span><span class="p">(</span><span class="s">&quot;multiplatform&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;com.android.library&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">id</span><span class="p">(</span><span class="s">&quot;kotlin-parcelize&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">android</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+
+<span class="n">kotlin</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">android</span><span class="p">()</span>
+<span class="w">    </span><span class="n">jvm</span><span class="p">()</span>
+
+<span class="w">    </span><span class="n">sourceSets</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">commonMain</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">getting</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">commonTest</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">getting</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">jvmMain</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">getting</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">jvmTest</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">getting</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">androidMain</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">getting</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">androidUnitTest</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">getting</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">androidInstrumentedTest</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">getting</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition quote">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Common</label><label for="__tabbed_2_2">Android</label><label for="__tabbed_2_3">JVM</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">commonMain/kotlin/Parcel.kt</span><pre><span></span><code><span class="kd">expect</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Parcel</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">writeLong</span><span class="p">(</span><span class="n">long</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">readLong</span><span class="p">():</span><span class="w"> </span><span class="kt">Long</span>
+<span class="p">}</span>
+
+<span class="kd">expect</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nc">Parcelable</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">commonMain/kotlin/Parcelize.kt</span><pre><span></span><code><span class="nd">@OptIn</span><span class="p">(</span><span class="n">ExperimentalMultiplatform</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="nd">@OptionalExpectation</span>
+<span class="nd">@Target</span><span class="p">(</span><span class="n">AnnotationTarget</span><span class="p">.</span><span class="na">CLASS</span><span class="p">)</span>
+<span class="nd">@Retention</span><span class="p">(</span><span class="n">AnnotationRetention</span><span class="p">.</span><span class="na">BINARY</span><span class="p">)</span>
+<span class="kd">expect</span><span class="w"> </span><span class="kd">annotation</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Parcelize</span><span class="p">()</span>
+
+<span class="nd">@OptIn</span><span class="p">(</span><span class="n">ExperimentalMultiplatform</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="nd">@OptionalExpectation</span>
+<span class="nd">@Repeatable</span>
+<span class="nd">@Target</span><span class="p">(</span><span class="n">AnnotationTarget</span><span class="p">.</span><span class="na">CLASS</span><span class="p">,</span><span class="w"> </span><span class="n">AnnotationTarget</span><span class="p">.</span><span class="na">PROPERTY</span><span class="p">)</span>
+<span class="kd">expect</span><span class="w"> </span><span class="kd">annotation</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">TypeParceler</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Parceler</span><span class="o">&lt;</span><span class="k">in</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;&gt;</span>
+
+<span class="kd">expect</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nc">Parceler</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="n">parcel</span><span class="p">:</span><span class="w"> </span><span class="n">Parcel</span><span class="p">):</span><span class="w"> </span><span class="n">T</span>
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">parcel</span><span class="p">:</span><span class="w"> </span><span class="n">Parcel</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nd">@OptIn</span><span class="p">(</span><span class="n">ExperimentalMultiplatform</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="nd">@OptionalExpectation</span>
+<span class="nd">@Target</span><span class="p">(</span><span class="n">AnnotationTarget</span><span class="p">.</span><span class="na">PROPERTY</span><span class="p">)</span>
+<span class="nd">@Retention</span><span class="p">(</span><span class="n">AnnotationRetention</span><span class="p">.</span><span class="na">BINARY</span><span class="p">)</span>
+<span class="kd">expect</span><span class="w"> </span><span class="kd">annotation</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">IgnoredOnParcel</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">androidMain/kotlin/Parcel.kt</span><pre><span></span><code><span class="n">actual</span><span class="w"> </span><span class="k">typealias</span><span class="w"> </span><span class="n">Parcel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">android</span><span class="p">.</span><span class="na">os</span><span class="p">.</span><span class="na">Parcel</span>
+
+<span class="n">actual</span><span class="w"> </span><span class="k">typealias</span><span class="w"> </span><span class="n">Parcelable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">android</span><span class="p">.</span><span class="na">os</span><span class="p">.</span><span class="na">Parcelable</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">androidMain/kotlin/Parcelize.kt</span><pre><span></span><code><span class="n">actual</span><span class="w"> </span><span class="k">typealias</span><span class="w"> </span><span class="n">Parcelize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kotlinx</span><span class="p">.</span><span class="na">parcelize</span><span class="p">.</span><span class="na">Parcelize</span>
+
+<span class="n">actual</span><span class="w"> </span><span class="k">typealias</span><span class="w"> </span><span class="n">TypeParceler</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">P</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kotlinx</span><span class="p">.</span><span class="na">parcelize</span><span class="p">.</span><span class="na">TypeParceler</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">P</span><span class="o">&gt;</span>
+
+<span class="n">actual</span><span class="w"> </span><span class="k">typealias</span><span class="w"> </span><span class="n">Parceler</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kotlinx</span><span class="p">.</span><span class="na">parcelize</span><span class="p">.</span><span class="na">Parceler</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+
+<span class="n">actual</span><span class="w"> </span><span class="k">typealias</span><span class="w"> </span><span class="n">IgnoredOnParcel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kotlinx</span><span class="p">.</span><span class="na">parcelize</span><span class="p">.</span><span class="na">IgnoredOnParcel</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">jvmMain/kotlin/Parcel.kt</span><pre><span></span><code><span class="kd">actual</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Parcel</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">actual</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">writeLong</span><span class="p">(</span><span class="n">long</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">):</span><span class="w"> </span><span class="kt">Unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TODO</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">actual</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">readLong</span><span class="p">():</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TODO</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">actual</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nc">Parcelable</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">jvmMain/kotlin/Parcelize.kt</span><pre><span></span><code><span class="kd">actual</span><span class="w"> </span><span class="kd">annotation</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Parcelize</span>
+
+<span class="kd">actual</span><span class="w"> </span><span class="kd">annotation</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">TypeParceler</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Parceler</span><span class="o">&lt;</span><span class="k">in</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;&gt;</span>
+
+<span class="kd">actual</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nc">Parceler</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">actual</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="n">parcel</span><span class="p">:</span><span class="w"> </span><span class="n">Parcel</span><span class="p">):</span><span class="w"> </span><span class="n">T</span>
+<span class="w">    </span><span class="kd">actual</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">parcel</span><span class="p">:</span><span class="w"> </span><span class="n">Parcel</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">actual</span><span class="w"> </span><span class="kd">annotation</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">IgnoredOnParcel</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
 <h3 id="parcel-extensions">Parcel extensions<a class="headerlink" href="#parcel-extensions" title="Permanent link">&para;</a></h3>
 <div class="highlight"><span class="filename">Testing utils</span><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Parcel</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="n">block</span><span class="p">:</span><span class="w"> </span><span class="p">(</span><span class="n">Parcel</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">T</span><span class="p">):</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">block</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">recycle</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
 
@@ -1985,17 +2125,14 @@ adb<span class="w"> </span>shell<span class="w"> </span>pm<span class="w"> </spa
 <span class="p">}</span>
 
 <span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="k">reified</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Parcelable</span><span class="o">&gt;</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="nf">marshall</span><span class="p">():</span><span class="w"> </span><span class="n">ByteArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Parcel</span><span class="p">.</span><span class="na">obtain</span><span class="p">().</span><span class="na">use</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">writeBundle</span><span class="p">(</span><span class="n">bundleOf</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="k">this</span><span class="p">))</span>
+<span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">writeValue</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
 <span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">marshall</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="k">reified</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Parcelable</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ByteArray</span><span class="p">.</span><span class="nf">unmarshall</span><span class="p">():</span><span class="w"> </span><span class="n">R? </span><span class="o">=</span><span class="w"> </span><span class="n">Parcel</span><span class="p">.</span><span class="na">obtain</span><span class="p">().</span><span class="na">use</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">unmarshall</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">)</span>
 <span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">setDataPosition</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">it</span>
-<span class="p">}.</span><span class="na">readBundle</span><span class="p">()</span><span class="o">?.</span><span class="na">run</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">classLoader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">classLoader</span>
-<span class="w">    </span><span class="n">getParcelable</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">name</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">readValue</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">classLoader</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">Reading boxed primitive values</span><pre><span></span><code><span class="c1">//region Read boxed primitive values</span>
@@ -2097,7 +2234,7 @@ Version: 1
 <span class="nt">&lt;/resources&gt;</span>
 </code></pre></div>
 <h3 id="resources-abstraction">Resources abstraction<a class="headerlink" href="#resources-abstraction" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>BooleanResource.kt</code></label><label for="__tabbed_2_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>ColorResource.kt</code></label><label for="__tabbed_2_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>DrawableResource.kt</code></label><label for="__tabbed_2_4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>TextResource.kt</code></label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>BooleanResource.kt</code></label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>ColorResource.kt</code></label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>DrawableResource.kt</code></label><label for="__tabbed_3_4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>TextResource.kt</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">android.content.res.Resources</span>
