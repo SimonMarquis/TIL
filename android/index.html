@@ -375,6 +375,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#forcing-lint-version" class="md-nav__link">
+    Forcing Lint version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#google-maps-outlined-marker-label" class="md-nav__link">
     Google Maps Outlined Marker Label
   </a>
@@ -1147,6 +1154,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#forcing-lint-version" class="md-nav__link">
+    Forcing Lint version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#google-maps-outlined-marker-label" class="md-nav__link">
     Google Maps Outlined Marker Label
   </a>
@@ -1708,6 +1722,12 @@ adb<span class="w"> </span>shell<span class="w"> </span>setprop<span class="w"> 
 adb<span class="w"> </span>shell<span class="w"> </span>setprop<span class="w"> </span>log.tag.FA-SVC<span class="w"> </span>VERBOSE
 adb<span class="w"> </span>logcat<span class="w"> </span>-v<span class="w"> </span><span class="nb">time</span><span class="w"> </span>-s<span class="w"> </span>FA<span class="w"> </span>FA-SVC
 </code></pre></div>
+<h3 id="forcing-lint-version">Forcing Lint version<a class="headerlink" href="#forcing-lint-version" title="Permanent link">&para;</a></h3>
+<p>This allows to run a specific version of Lint without changing the Android Gradle plugin (AGP).</p>
+<div class="highlight"><span class="filename">gradle.properties</span><pre><span></span><code><span class="c1"># lint = agp + 23.0.0</span>
+<span class="na">android.experimental.lint.version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8.2.0-alpha07</span>
+</code></pre></div>
+<p><a href="https://googlesamples.github.io/android-custom-lint-rules/user-guide.html#combiningagpwithnewerlint/configuringthelintversion">🔗</a></p>
 <h3 id="google-maps-outlined-marker-label">Google Maps Outlined Marker Label<a class="headerlink" href="#google-maps-outlined-marker-label" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
