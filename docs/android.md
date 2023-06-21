@@ -361,6 +361,18 @@ adb shell setprop log.tag.FA-SVC VERBOSE
 adb logcat -v time -s FA FA-SVC
 ```
 
+### Forcing Lint version
+
+This allows to run a specific version of Lint without changing the Android Gradle plugin (AGP).
+
+```properties title="gradle.properties"
+# lint = agp + 23.0.0
+# https://googlesamples.github.io/android-custom-lint-rules/api-guide.html#example:samplelintcheckgithubproject/lintversion?
+android.experimental.lint.version = 8.2.0-alpha07
+```
+
+[🔗](https://googlesamples.github.io/android-custom-lint-rules/user-guide.html#combiningagpwithnewerlint/configuringthelintversion)
+
 ### Google Maps Outlined Marker Label
 
 | 📹 | 🖼️ |
