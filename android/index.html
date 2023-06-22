@@ -2099,7 +2099,7 @@ Wrapping it in a Kotlin Multiplatform project allows us to use it in JVM project
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">androidMain/kotlin/Parcel.kt</span><pre><span></span><code><span class="n">actual</span><span class="w"> </span><span class="k">typealias</span><span class="w"> </span><span class="n">Parcel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">android</span><span class="p">.</span><span class="na">os</span><span class="p">.</span><span class="na">Parcel</span>
+<div class="highlight"><span class="filename">androidMain/kotlin/Parcel.android.kt</span><pre><span></span><code><span class="n">actual</span><span class="w"> </span><span class="k">typealias</span><span class="w"> </span><span class="n">Parcel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">android</span><span class="p">.</span><span class="na">os</span><span class="p">.</span><span class="na">Parcel</span>
 
 <span class="n">actual</span><span class="w"> </span><span class="k">typealias</span><span class="w"> </span><span class="n">Parcelable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">android</span><span class="p">.</span><span class="na">os</span><span class="p">.</span><span class="na">Parcelable</span>
 </code></pre></div>
@@ -2113,7 +2113,7 @@ Wrapping it in a Kotlin Multiplatform project allows us to use it in JVM project
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">jvmMain/kotlin/Parcel.kt</span><pre><span></span><code><span class="kd">actual</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Parcel</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">jvmMain/kotlin/Parcel.jvm.kt</span><pre><span></span><code><span class="kd">actual</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Parcel</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">actual</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">writeLong</span><span class="p">(</span><span class="n">long</span><span class="p">:</span><span class="w"> </span><span class="kt">Long</span><span class="p">):</span><span class="w"> </span><span class="kt">Unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TODO</span><span class="p">()</span>
 <span class="w">    </span><span class="kd">actual</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">readLong</span><span class="p">():</span><span class="w"> </span><span class="kt">Long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TODO</span><span class="p">()</span>
 <span class="p">}</span>
