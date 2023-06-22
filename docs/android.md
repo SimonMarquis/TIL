@@ -790,7 +790,7 @@ kotlin {
         expect annotation class IgnoredOnParcel()
         ```
     === "Android"
-        ```kotlin title="androidMain/kotlin/Parcel.kt"
+        ```kotlin title="androidMain/kotlin/Parcel.android.kt"
         actual typealias Parcel = android.os.Parcel
         
         actual typealias Parcelable = android.os.Parcelable
@@ -806,7 +806,7 @@ kotlin {
         actual typealias IgnoredOnParcel = kotlinx.parcelize.IgnoredOnParcel
         ```
     === "JVM"
-        ```kotlin title="jvmMain/kotlin/Parcel.kt"
+        ```kotlin title="jvmMain/kotlin/Parcel.jvm.kt"
         actual class Parcel {
             actual fun writeLong(long: Long): Unit = TODO()
             actual fun readLong(): Long = TODO()
