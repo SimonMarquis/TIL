@@ -2,6 +2,18 @@
 title: 💎 Miscellaneous
 ---
 
+### Anonymous Google profile images
+
+{{{% set users = ['alligator', 'anteater', 'armadillo', 'auroch', 'axolotl', 'badger', 'bat', 'beaver', 'buffalo', 'camel', 'chameleon', 'cheetah', 'chipmunk', 'chinchilla', 'chupacabra', 'cormorant', 'coyote', 'crow', 'dingo', 'dinosaur', 'dolphin', 'duck', 'elephant', 'ferret', 'fox', 'frog', 'giraffe', 'gopher', 'grizzly', 'hedgehog', 'hippo', 'hyena', 'jackal', 'ibex', 'ifrit', 'iguana', 'koala', 'kraken', 'lemur', 'leopard', 'liger', 'llama', 'manatee', 'mink', 'monkey', 'narwhal', 'orangutan', 'otter', 'panda', 'penguin', 'platypus', 'python', 'pumpkin', 'quagga', 'rabbit', 'raccoon', 'rhino', 'sheep', 'shrew', 'skunk', 'squirrel', 'turtle', 'walrus', 'wolf', 'wolverine', 'wombat'] %}}}
+
+!!! quote ""
+
+    {{{% for user in users %}}} ![{{{ user }}}](https://ssl.gstatic.com/docs/common/profile/{{{user}}}_sm.png "{{{ user }}}") {{{% endfor %}}}
+
+    ??? quote "Larger images…"
+
+        {{{% for user in users %}}} ![{{{ user }}}](https://ssl.gstatic.com/docs/common/profile/{{{user}}}_lg.png "{{{ user }}}") {{{% endfor %}}}
+
 ### Apache distributed configuration file
 
 Directory indexing:
