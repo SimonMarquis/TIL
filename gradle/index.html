@@ -1242,8 +1242,7 @@ Gradle can also set project properties when it sees specially-named system prope
 <h3 id="system-properties">System properties<a class="headerlink" href="#system-properties" title="Permanent link">&para;</a></h3>
 <p>Using the <code>-D</code> command-line option, you can pass a system property to the JVM which runs Gradle.<br />
 You can also set system properties in <code>gradle.properties</code> files with the prefix <code>systemProp.</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># gradle.properties</span>
-<span class="na">systemProp.gradle.user.home</span><span class="o">=</span><span class="s">/gradle</span>
+<div class="highlight"><span class="filename">gradle.properties</span><pre><span></span><code><span class="na">systemProp.gradle.user.home</span><span class="o">=</span><span class="s">/gradle</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -1337,8 +1336,7 @@ You can also set system properties in <code>gradle.properties</code> files with 
 <span class="p">}</span>
 </code></pre></div>
 <p>This can then be used like this in a custom <code>Plugin</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># gradle/libs.versions.toml</span>
-<span class="k">[versions]</span>
+<div class="highlight"><span class="filename">gradle/libs.versions.toml</span><pre><span></span><code><span class="k">[versions]</span>
 <span class="n">kotlin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1.7.10&quot;</span>
 
 <span class="k">[plugins]</span>
