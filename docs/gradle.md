@@ -279,8 +279,7 @@ tasks.withType<AbstractArchiveTask> {
 Using the `-D` command-line option, you can pass a system property to the JVM which runs Gradle.  
 You can also set system properties in `gradle.properties` files with the prefix `systemProp.`.
 
-```properties
-# gradle.properties
+```properties title="gradle.properties"
 systemProp.gradle.user.home=/gradle
 ```
 !!! info
@@ -398,8 +397,7 @@ fun VersionCatalog.bundles(): ReadOnlyProperty<Any?, Provider<ExternalModuleDepe
 
 This can then be used like this in a custom `Plugin`:
 
-```toml
-# gradle/libs.versions.toml
+```toml title="gradle/libs.versions.toml"
 [versions]
 kotlin = "1.7.10"
 
@@ -462,7 +460,6 @@ dependencies {
 !!! quote
     Controls whether Gradle should print a welcome message. If set to `never` then the welcome message will be suppressed. If set to `once` then the message is printed once for each new version of Gradle. Default is `once`.
 
-```properties
-# gradle.properties
+```properties title="gradle.properties"
 org.gradle.welcome=never
 ```
