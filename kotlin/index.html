@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bitflags" class="md-skip">
+        <a href="#annotations-array-notation" class="md-skip">
           Skip to content
         </a>
       
@@ -512,6 +512,13 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#annotations-array-notation" class="md-nav__link">
+    Annotations array notation
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#bitflags" class="md-nav__link">
@@ -1003,6 +1010,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#annotations-array-notation" class="md-nav__link">
+    Annotations array notation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bitflags" class="md-nav__link">
     BitFlags
   </a>
@@ -1328,6 +1342,21 @@
   <h1>🧑‍💻 Kotlin</h1>
 
 <p><a href="https://play.kotlinlang.org/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> Kotlin Playground</a></p>
+<h3 id="annotations-array-notation">Annotations array notation<a class="headerlink" href="#annotations-array-notation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="err">@</span><span class="o">[</span><span class="n">Inject</span><span class="w"> </span><span class="n">Named</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">)</span><span class="o">]</span>
+<span class="kd">lateinit</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">foo</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span>
+
+<span class="cm">/* is equivalent to */</span>
+
+<span class="nd">@Inject</span><span class="w"> </span><span class="nd">@Named</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
+<span class="kd">lateinit</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">foo</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span>
+</code></pre></div>
+<div class="admonition tips">
+<p class="admonition-title">If you have multiple annotations with the same target, you can avoid repeating the target by adding brackets after the target and putting all the annotations inside the brackets: <a href="https://kotlinlang.org/docs/annotations.html#annotation-use-site-targets">🔗</a></p>
+<div class="highlight"><pre><span></span><code><span class="nd">@set</span><span class="p">:</span><span class="o">[</span><span class="n">Inject</span><span class="w"> </span><span class="n">VisibleForTesting</span><span class="w"> </span><span class="n">Named</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">)</span><span class="o">]</span>
+<span class="kd">lateinit</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">foo</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span>
+</code></pre></div>
+</div>
 <h3 id="bitflags">BitFlags<a class="headerlink" href="#bitflags" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">kotlin.experimental.*</span>
 
