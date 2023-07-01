@@ -4,6 +4,25 @@ title: 🧑‍💻 Kotlin
 
 [:simple-kotlin: Kotlin Playground](https://play.kotlinlang.org/)
 
+### Annotations array notation
+
+```kotlin
+@[Inject Named("foo")]
+lateinit var foo: String
+
+/* is equivalent to */
+
+@Inject @Named("foo")
+lateinit var foo: String
+```
+
+!!! tips "If you have multiple annotations with the same target, you can avoid repeating the target by adding brackets after the target and putting all the annotations inside the brackets: [🔗](https://kotlinlang.org/docs/annotations.html#annotation-use-site-targets)"
+
+    ```kotlin
+    @set:[Inject VisibleForTesting Named("foo")]
+    lateinit var foo: String
+    ```
+
 ### BitFlags
 
 ```kotlin
