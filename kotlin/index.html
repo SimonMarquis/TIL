@@ -521,6 +521,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#calling-internal-code" class="md-nav__link">
+    Calling internal code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#check-if-a-class-is-in-the-classpath" class="md-nav__link">
     Check if a class is in the classpath
   </a>
@@ -1003,6 +1010,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#calling-internal-code" class="md-nav__link">
+    Calling internal code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#check-if-a-class-is-in-the-classpath" class="md-nav__link">
     Check if a class is in the classpath
   </a>
@@ -1332,6 +1346,17 @@
 <span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Byte</span><span class="p">.</span><span class="nf">hasFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Byte</span><span class="p">):</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">flag</span>
 <span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Byte</span><span class="p">.</span><span class="nf">withFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Byte</span><span class="p">):</span><span class="w"> </span><span class="kt">Byte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">flag</span>
 <span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">Byte</span><span class="p">.</span><span class="nf">minusFlag</span><span class="p">(</span><span class="n">flag</span><span class="p">:</span><span class="w"> </span><span class="kt">Byte</span><span class="p">):</span><span class="w"> </span><span class="kt">Byte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">flag</span><span class="p">.</span><span class="na">inv</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="calling-internal-code">Calling internal code<a class="headerlink" href="#calling-internal-code" title="Permanent link">&para;</a></h3>
+<div class="admonition quote">
+<p class="admonition-title">The internal visibility modifier means that the member is visible within the same module. <a href="https://kotlinlang.org/docs/visibility-modifiers.html#modules">🔗</a></p>
+</div>
+<div class="highlight"><span class="filename">project1/src/main/kotlin/Main.kt</span><pre><span></span><code><span class="kd">internal</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="n">any</span><span class="p">:</span><span class="w"> </span><span class="n">Bar</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">println</span><span class="p">(</span><span class="n">any</span><span class="p">)</span>
+<span class="kd">internal</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Bar</span><span class="p">(</span><span class="n">bar</span><span class="p">:</span><span class="w"> </span><span class="n">Bar? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="kd">internal</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">baz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Bar</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">project2/src/main/kotlin/Main.kt</span><pre><span></span><code><span class="nd">@Suppress</span><span class="p">(</span><span class="s">&quot;INVISIBLE_REFERENCE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;INVISIBLE_MEMBER&quot;</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">(</span><span class="n">Bar</span><span class="p">(</span><span class="n">baz</span><span class="p">))</span>
 </code></pre></div>
 <h3 id="check-if-a-class-is-in-the-classpath">Check if a class is in the classpath<a class="headerlink" href="#check-if-a-class-is-in-the-classpath" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">internal</span><span class="w"> </span><span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="nf">ifInClasspath</span><span class="p">(</span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">R</span><span class="p">):</span><span class="w"> </span><span class="n">R? </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isInClasspath</span><span class="p">())</span><span class="w"> </span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="kc">null</span>
