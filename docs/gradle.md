@@ -455,6 +455,16 @@ dependencies {
 
 [🔗](https://docs.gradle.org/current/userguide/single_versions.html)
 
+### Versions checks
+
+```kotlin title="Gradle"
+GradleVersion.current() >= GradleVersion.version("8.0")
+```
+
+```kotlin title="Java"
+JavaVersion.current() >= JavaVersion.VERSION_17
+```
+
 ### Welcome message
 
 !!! quote
