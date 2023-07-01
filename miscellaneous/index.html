@@ -636,15 +636,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#uri" class="md-nav__link">
-    URI
+  <a href="#tiniest-data-urls-images" class="md-nav__link">
+    Tiniest data URLs images
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#yaml-front-matter" class="md-nav__link">
-    YAML Front Matter
+  <a href="#uri" class="md-nav__link">
+    URI
   </a>
   
 </li>
@@ -777,6 +777,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yaml/" class="md-nav__link">
+        📋 YAML
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -879,15 +894,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#uri" class="md-nav__link">
-    URI
+  <a href="#tiniest-data-urls-images" class="md-nav__link">
+    Tiniest data URLs images
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#yaml-front-matter" class="md-nav__link">
-    YAML Front Matter
+  <a href="#uri" class="md-nav__link">
+    URI
   </a>
   
 </li>
@@ -1322,6 +1337,28 @@ IndexOptions Charset=UTF-8 IgnoreCase FancyIndexing FoldersFirst NameWidth=*
 <li>Insert →  Building blocks → Email draft</li>
 </ul>
 <p>Or simply type <code>@email draft</code>.</p>
+<h3 id="tiniest-data-urls-images">Tiniest data URLs images<a class="headerlink" href="#tiniest-data-urls-images" title="Permanent link">&para;</a></h3>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs"><code>data:[&lt;mediatype&gt;][;base64],&lt;data&gt;</code></a></p>
+<details class="example">
+<summary><code>data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg'/&gt;</code></summary>
+<p><img alt="" src="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg'/&gt;" style="outline: 1px solid red;" /></p>
+</details>
+<details class="example">
+<summary><code>data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==</code> <a href="http://probablyprogramming.com/2009/03/15/the-tiniest-gif-ever">🔗</a></summary>
+<p><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="outline: 1px solid red;" /></p>
+</details>
+<details class="example">
+<summary><code>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=</code></summary>
+<p><img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=" style="outline: 1px solid red;" /></p>
+</details>
+<details class="example">
+<summary><code>data:image/x-icon;base64,AAABAAEAAQECAAEAAQA4AAAAFgAAACgAAAABAAAAAgAAAAEAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA</code></summary>
+<p><img alt="" src="data:image/x-icon;base64,AAABAAEAAQECAAEAAQA4AAAAFgAAACgAAAABAAAAAgAAAAEAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA" style="outline: 1px solid red;" /></p>
+</details>
+<details class="example">
+<summary><code>data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=</code></summary>
+<p><img alt="" src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=" style="outline: 1px solid red;" /></p>
+</details>
 <h3 id="uri">URI<a class="headerlink" href="#uri" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>                    hierarchical part
         ┌───────────────────┴─────────────────────┐
@@ -1365,17 +1402,6 @@ scheme                    path
 </code></pre></div>
 </details>
 <p><a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">🔗</a></p>
-<h3 id="yaml-front-matter">YAML Front Matter<a class="headerlink" href="#yaml-front-matter" title="Permanent link">&para;</a></h3>
-<p>Front matter is metadata written in YAML, located at the top of a file and wrapped between <code>---</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nn">---</span>
-<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">💎 Miscellaneous</span>
-<span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Simon Marquis</span>
-<span class="nt">lang</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">en</span>
-<span class="nt">keywords</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Miscellaneous</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Random</span>
-<span class="nn">---</span>
-</code></pre></div>
 
 
 

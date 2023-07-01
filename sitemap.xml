@@ -140,4 +140,9 @@
          <lastmod>2023-07-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://github.com/SimonMarquis/TIL/yaml/</loc>
+         <lastmod>2023-07-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
