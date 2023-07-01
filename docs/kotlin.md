@@ -26,6 +26,21 @@ inline fun Byte.withFlag(flag: Byte): Byte = this or flag
 inline fun Byte.minusFlag(flag: Byte): Byte = this and flag.inv()
 ```
 
+### Calling internal code
+
+!!! quote "The internal visibility modifier means that the member is visible within the same module. [🔗](https://kotlinlang.org/docs/visibility-modifiers.html#modules)"
+
+```kotlin title="project1/src/main/kotlin/Main.kt"
+internal fun foo(any: Bar) = println(any)
+internal class Bar(bar: Bar? = null)
+internal val baz = Bar()
+```
+
+```kotlin title="project2/src/main/kotlin/Main.kt"
+@Suppress("INVISIBLE_REFERENCE", "INVISIBLE_MEMBER")
+foo(Bar(baz))
+```
+
 ### Check if a class is in the classpath
 
 ```kotlin
