@@ -506,18 +506,3 @@ scheme  user information     host     port            query   fragment
     ```
 
 [🔗](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier)
-
-### YAML Front Matter
-
-Front matter is metadata written in YAML, located at the top of a file and wrapped between `---`.
-
-```yaml
----
-title: 💎 Miscellaneous
-author: Simon Marquis
-lang: en
-keywords:
-  - Miscellaneous
-  - Random
----
-```
