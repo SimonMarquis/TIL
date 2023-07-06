@@ -67,6 +67,9 @@ markdown_extensions:
 
 plugins:
   - search
+  - git-revision-date-localized:
+      exclude:
+        - index.md
   - macros:
       verbose: true
       on_error_fail: true
