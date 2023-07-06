@@ -19,5 +19,5 @@ jobs:
         with:
           python-version: '3.11.1'
           cache: 'pip'
-      - run: pip install --requirement docs/requirements.txt
+      - run: pip install --requirement requirements.txt
       - run: mkdocs gh-deploy
