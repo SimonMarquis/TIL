@@ -34,7 +34,6 @@ theme:
     - content.tabs.link
     - content.code.copy
     - content.code.annotate
-    - navigation.footer
     - navigation.instant
     - navigation.indexes
     - navigation.top
