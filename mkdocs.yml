@@ -81,6 +81,13 @@ plugins:
 
 extra:
   generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/SimonMarquis
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/simonmarquis
+    - icon: fontawesome/solid/user
+      link: https://www.simon-marquis.fr
   key: value
 
 nav:
