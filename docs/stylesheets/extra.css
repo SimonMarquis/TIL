@@ -1,0 +1,5 @@
+/* Disable first navigation item (empty index page) */
+.md-nav--primary > .md-nav__list > .md-nav__item:nth-child(1) {
+    display: none;
+}
+

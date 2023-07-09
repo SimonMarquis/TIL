@@ -120,3 +120,6 @@ nav:
   - utils.md
   - windows.md
   - yaml.md
+
+extra_css:
+    - stylesheets/extra.css
