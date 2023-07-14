@@ -472,7 +472,13 @@ git rev-list --objects --all |
 ### Most insertions and deletions
 
 ```bash
-git log --format=format:"%h %s" --shortstat | perl -00 -ne 'my ($hash, $subject, $files, $insertions, $deletions) = $_ =~ /(?:[0-9a-f]+\n)*([0-9a-f]+)(?: ?(.*))\n(?: (\d+) files? changed,)?(?: (\d+) insertions?...,?)?(?: (\d+) deletions?...)?/g; printf "%s\t%d\t+%d\t-%d\t%s\n", $hash, $insertions + $deletions, $insertions, $deletions, $subject;' | sort -k 2 -nr | head
+git log --format=format:"%h %s" --shortstat \
+  | perl -00 -ne '
+      my ($hash, $subject, $files, $insertions, $deletions) = $_ =~ /(?:[0-9a-f]+\n)*([0-9a-f]+)(?: ?(.*))\n(?: (\d+) files? changed,)?(?: (\d+) insertions?...,?)?(?: (\d+) deletions?...)?/g;
+      printf "%s\t%d\t+%d\t-%d\t%s\n", $hash, $insertions + $deletions, $insertions, $deletions, $subject;
+    ' \
+  | sort -k 2 -nr \
+  | head
 ```
 
 ### Override URLs or protocols
