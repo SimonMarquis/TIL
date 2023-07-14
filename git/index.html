@@ -483,6 +483,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#most-changed-files" class="md-nav__link">
+    Most changed files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#most-insertions-and-deletions" class="md-nav__link">
+    Most insertions and deletions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#override-urls-or-protocols" class="md-nav__link">
     Override URLs or protocols
   </a>
@@ -936,6 +950,20 @@
         <li class="md-nav__item">
   <a href="#list-objects-by-size" class="md-nav__link">
     List objects by size
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#most-changed-files" class="md-nav__link">
+    Most changed files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#most-insertions-and-deletions" class="md-nav__link">
+    Most insertions and deletions
   </a>
   
 </li>
@@ -1415,6 +1443,27 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 <span class="w">  </span><span class="k">$(</span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>gnumfmt<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>numfmt<span class="k">)</span><span class="w"> </span>--field<span class="o">=</span><span class="m">2</span><span class="w"> </span>--to<span class="o">=</span>iec-i<span class="w"> </span>--suffix<span class="o">=</span>B<span class="w"> </span>--padding<span class="o">=</span><span class="m">7</span><span class="w"> </span>--round<span class="o">=</span>nearest
 </code></pre></div>
 <p><a href="https://stackoverflow.com/a/42544963/3615879">🔗</a></p>
+<h3 id="most-changed-files">Most changed files<a class="headerlink" href="#most-changed-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Paths
+  <div class="highlight"><pre><span></span><code>git<span class="w"> </span>rev-list<span class="w"> </span>--objects<span class="w"> </span>--all<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;$2&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-k2<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-cf1<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</code></pre></div></p>
+</li>
+<li>
+<p>Blobs
+  <div class="highlight"><pre><span></span><code>git<span class="w"> </span>rev-list<span class="w"> </span>--objects<span class="w"> </span>--all<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;$2&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-k2<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-cf1<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn<span class="w"> </span><span class="p">|</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>frequency<span class="w"> </span>sample<span class="w"> </span>file
+<span class="w">    </span><span class="k">do</span><span class="w"> </span>
+<span class="w">       </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;blob&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>git<span class="w"> </span>cat-file<span class="w"> </span>-t<span class="w"> </span><span class="nv">$sample</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$frequency</span><span class="s2">\t</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">done</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</code></pre></div></p>
+</li>
+</ul>
+<p><a href="https://stackoverflow.com/a/5670168/3615879">🔗</a></p>
+<h3 id="most-insertions-and-deletions">Most insertions and deletions<a class="headerlink" href="#most-insertions-and-deletions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>log<span class="w"> </span>--format<span class="o">=</span>format:<span class="s2">&quot;%h %s&quot;</span><span class="w"> </span>--shortstat<span class="w"> </span><span class="p">|</span><span class="w"> </span>perl<span class="w"> </span>-00<span class="w"> </span>-ne<span class="w"> </span><span class="s1">&#39;my ($hash, $subject, $files, $insertions, $deletions) = $_ =~ /(?:[0-9a-f]+\n)*([0-9a-f]+)(?: ?(.*))\n(?: (\d+) files? changed,)?(?: (\d+) insertions?...,?)?(?: (\d+) deletions?...)?/g; printf &quot;%s\t%d\t+%d\t-%d\t%s\n&quot;, $hash, $insertions + $deletions, $insertions, $deletions, $subject;&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-k<span class="w"> </span><span class="m">2</span><span class="w"> </span>-nr<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</code></pre></div>
 <h3 id="override-urls-or-protocols">Override URLs or protocols<a class="headerlink" href="#override-urls-or-protocols" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>url.<span class="s2">&quot;https://github&quot;</span>.insteadOf<span class="w"> </span><span class="s2">&quot;git://github&quot;</span>
 </code></pre></div>
@@ -1441,7 +1490,7 @@ git<span class="w"> </span>rebase<span class="w"> </span>--onto<span class="w"> 
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 19, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 14, 2023</span>
       
     
   </small>
