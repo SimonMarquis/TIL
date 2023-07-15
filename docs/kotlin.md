@@ -99,6 +99,32 @@ suspend inline fun <T, R> T.runSuspendCatching(block: T.() -> R): Result<R> = ru
 
 [🧑‍💻](https://play.kotlinlang.org/#eyJ2ZXJzaW9uIjoiMS42LjEwIiwicGxhdGZvcm0iOiJqYXZhIiwiYXJncyI6IiIsIm5vbmVNYXJrZXJzIjp0cnVlLCJ0aGVtZSI6ImlkZWEiLCJjb2RlIjoiaW1wb3J0IGtvdGxpbnguY29yb3V0aW5lcy4qXG5cbmZ1biA8VD4gUmVzdWx0PFQ+LnRocm93SWYoXG4gICAgcHJlZGljYXRlOiAoVGhyb3dhYmxlKSAtPiBCb29sZWFuXG4pOiBSZXN1bHQ8VD4gPSBvbkZhaWx1cmUge1xuICAgIGlmIChwcmVkaWNhdGUoaXQpKSB0aHJvdyBpdFxufVxuXG5zdXNwZW5kIGZ1biA8VD4gcnVuU3VzcGVuZENhdGNoaW5nKFxuICAgIGJsb2NrOiAoKSAtPiBUXG4pOiBSZXN1bHQ8VD4gPSBydW5DYXRjaGluZyhibG9jaykudGhyb3dJZiB7XG4gICAgaXQgaXMgQ2FuY2VsbGF0aW9uRXhjZXB0aW9uXG59XG4ifQ==)
 
+### DeepRecursiveFunction
+
+!!! quote
+    Defines deep recursive function that keeps its stack on the heap, which allows very deep recursive computations that do not use the actual call stack. As a rule of thumb, it should be used if recursion goes deeper than a thousand calls.
+
+```kotlin
+class Tree(val left: Tree? = null, val right: Tree? = null)
+
+val tree = generateSequence(Tree(), ::Tree).take(100_000).last()
+
+/* Regular recursive depth will produce a StackOverflowError */
+fun Tree?.recursiveDepth(): Int =
+    if (this == null) 0 else max(left.recursiveDepth(), right.recursiveDepth()) + 1
+
+println(tree.recursiveDepth()) // StackOverflowError
+
+/* DeepRecursiveFunction using heap stack instead of call stack */
+val deepRecursiveDepth = DeepRecursiveFunction<Tree?, Int> {
+    if (it == null) 0 else max(callRecursive(it.left), callRecursive(it.right)) + 1
+}
+
+println(deepRecursiveDepth(tree)) // 👍
+```
+
+[🔗](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-deep-recursive-function/)
+
 ### Execute commands in subprocess
 
 !!! warning "On Windows (:simple-windows:), you'll probably need to prefix the command with `cmd /c`."
