@@ -554,6 +554,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#deeprecursivefunction" class="md-nav__link">
+    DeepRecursiveFunction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#execute-commands-in-subprocess" class="md-nav__link">
     Execute commands in subprocess
   </a>
@@ -1065,6 +1072,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#deeprecursivefunction" class="md-nav__link">
+    DeepRecursiveFunction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#execute-commands-in-subprocess" class="md-nav__link">
     Execute commands in subprocess
   </a>
@@ -1438,6 +1452,29 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><a href="https://play.kotlinlang.org/#eyJ2ZXJzaW9uIjoiMS42LjEwIiwicGxhdGZvcm0iOiJqYXZhIiwiYXJncyI6IiIsIm5vbmVNYXJrZXJzIjp0cnVlLCJ0aGVtZSI6ImlkZWEiLCJjb2RlIjoiaW1wb3J0IGtvdGxpbnguY29yb3V0aW5lcy4qXG5cbmZ1biA8VD4gUmVzdWx0PFQ+LnRocm93SWYoXG4gICAgcHJlZGljYXRlOiAoVGhyb3dhYmxlKSAtPiBCb29sZWFuXG4pOiBSZXN1bHQ8VD4gPSBvbkZhaWx1cmUge1xuICAgIGlmIChwcmVkaWNhdGUoaXQpKSB0aHJvdyBpdFxufVxuXG5zdXNwZW5kIGZ1biA8VD4gcnVuU3VzcGVuZENhdGNoaW5nKFxuICAgIGJsb2NrOiAoKSAtPiBUXG4pOiBSZXN1bHQ8VD4gPSBydW5DYXRjaGluZyhibG9jaykudGhyb3dJZiB7XG4gICAgaXQgaXMgQ2FuY2VsbGF0aW9uRXhjZXB0aW9uXG59XG4ifQ==">🧑‍💻</a></p>
+<h3 id="deeprecursivefunction">DeepRecursiveFunction<a class="headerlink" href="#deeprecursivefunction" title="Permanent link">&para;</a></h3>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Defines deep recursive function that keeps its stack on the heap, which allows very deep recursive computations that do not use the actual call stack. As a rule of thumb, it should be used if recursion goes deeper than a thousand calls.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">Tree</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">left</span><span class="p">:</span><span class="w"> </span><span class="n">Tree? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">right</span><span class="p">:</span><span class="w"> </span><span class="n">Tree? </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generateSequence</span><span class="p">(</span><span class="n">Tree</span><span class="p">(),</span><span class="w"> </span><span class="o">::</span><span class="n">Tree</span><span class="p">).</span><span class="na">take</span><span class="p">(</span><span class="m">100</span><span class="n">_000</span><span class="p">).</span><span class="na">last</span><span class="p">()</span>
+
+<span class="cm">/* Regular recursive depth will produce a StackOverflowError */</span>
+<span class="kd">fun</span><span class="w"> </span><span class="nf">Tree</span><span class="o">?.</span><span class="na">recursiveDepth</span><span class="p">():</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">left</span><span class="p">.</span><span class="na">recursiveDepth</span><span class="p">(),</span><span class="w"> </span><span class="n">right</span><span class="p">.</span><span class="na">recursiveDepth</span><span class="p">())</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span>
+
+<span class="n">println</span><span class="p">(</span><span class="n">tree</span><span class="p">.</span><span class="na">recursiveDepth</span><span class="p">())</span><span class="w"> </span><span class="c1">// StackOverflowError</span>
+
+<span class="cm">/* DeepRecursiveFunction using heap stack instead of call stack */</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">deepRecursiveDepth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DeepRecursiveFunction</span><span class="o">&lt;</span><span class="n">Tree?,</span><span class="w"> </span><span class="kt">Int</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">it</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">callRecursive</span><span class="p">(</span><span class="nb">it</span><span class="p">.</span><span class="na">left</span><span class="p">),</span><span class="w"> </span><span class="n">callRecursive</span><span class="p">(</span><span class="nb">it</span><span class="p">.</span><span class="na">right</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span>
+<span class="p">}</span>
+
+<span class="n">println</span><span class="p">(</span><span class="n">deepRecursiveDepth</span><span class="p">(</span><span class="n">tree</span><span class="p">))</span><span class="w"> </span><span class="c1">// 👍</span>
+</code></pre></div>
+<p><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-deep-recursive-function/">🔗</a></p>
 <h3 id="execute-commands-in-subprocess">Execute commands in subprocess<a class="headerlink" href="#execute-commands-in-subprocess" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">On Windows (<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg></span>), you'll probably need to prefix the command with <code>cmd /c</code>.</p>
@@ -2066,7 +2103,7 @@ What must be done instead is to check for <strong>structural</strong> equality (
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 1, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 15, 2023</span>
       
     
   </small>
