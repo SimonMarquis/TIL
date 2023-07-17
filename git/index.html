@@ -1455,7 +1455,7 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>rev-list<span class="w"> </span>--objects<span class="w"> </span>--all<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;$2&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-k2<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-cf1<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn<span class="w"> </span><span class="p">|</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>frequency<span class="w"> </span>sample<span class="w"> </span>file
 <span class="w">    </span><span class="k">do</span><span class="w"> </span>
-<span class="w">       </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;blob&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>git<span class="w"> </span>cat-file<span class="w"> </span>-t<span class="w"> </span><span class="nv">$sample</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$frequency</span><span class="s2">\t</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="w">       </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;blob&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>git<span class="w"> </span>cat-file<span class="w"> </span>-t<span class="w"> </span><span class="nv">$sample</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$frequency</span><span class="s2">\t</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="k">done</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head
 </code></pre></div></p>
 </li>
@@ -1496,7 +1496,7 @@ git<span class="w"> </span>rebase<span class="w"> </span>--onto<span class="w"> 
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 14, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 17, 2023</span>
       
     
   </small>
