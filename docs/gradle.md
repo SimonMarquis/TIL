@@ -145,6 +145,11 @@ Build Setup tasks
 init - Initializes a new Gradle build.
 wrapper - Generates Gradle wrapper files.
 
+Gradle Enterprise tasks
+-----------------------
+buildScanPublishPrevious - Publishes the data captured by the last build.
+provisionGradleEnterpriseAccessKey - Provisions a new access key for this build environment.
+
 Help tasks
 ----------
 javaToolchains - Displays the detected java toolchains.
