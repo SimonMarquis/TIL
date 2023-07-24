@@ -2,6 +2,12 @@
 title: 🐘 Gradle
 ---
 
+!!! info
+    - [Documentation](https://docs.gradle.org/)
+    - [Releases](https://gradle.org/releases/)
+    - [Distributions](https://services.gradle.org/distributions/)
+    - [Checksums](https://gradle.org/release-checksums/)
+
 ### Cleanup caches and build directories
 
 !!! warning "Global cache"
