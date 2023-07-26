@@ -68,6 +68,7 @@ markdown_extensions:
 plugins:
   - search
   - git-revision-date-localized:
+      enabled: !ENV [CI, GITHUB_ACTIONS, False]
       exclude:
         - index.md
   - macros:
