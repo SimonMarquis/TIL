@@ -20,3 +20,7 @@ jobs:
           cache: "pip"
       - run: pip install --requirement requirements.txt
       - run: mkdocs build --strict
+      - uses: actions/upload-artifact@v3
+        with:
+          name: site
+          path: "site"
