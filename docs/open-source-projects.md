@@ -36,7 +36,7 @@ title: 🔓 Open Source projects
   > An experimental tool for building console UI in Kotlin using the Jetpack Compose compiler/runtime
 - [JakeWharton/ProcessPhoenix](https://github.com/JakeWharton/ProcessPhoenix)
   > Process Phoenix facilitates restarting your application process.
-- [jmfayard/refreshVersions](jmfayard/refreshVersions)
+- [jmfayard/refreshVersions](https://github.com/jmfayard/refreshVersions)
   > Life is too short to google for dependencies and versions
 - [jraska/modules-graph-assert](https://github.com/jraska/modules-graph-assert)
   > Gradle plugin to keep your modules graph healthy and lean.
