@@ -1,13 +1,12 @@
-name: MkDocs
+name: "🏗️ Build"
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-permissions:
-  contents: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,7 +16,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.11.1'
-          cache: 'pip'
+          python-version: "3.11.1"
+          cache: "pip"
       - run: pip install --requirement requirements.txt
-      - run: mkdocs gh-deploy
+      - run: mkdocs build --strict
