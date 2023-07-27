@@ -124,3 +124,8 @@ nav:
 
 extra_css:
     - stylesheets/extra.css
+
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
