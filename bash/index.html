@@ -330,6 +330,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#find-and-run-commands-in-parallel" class="md-nav__link">
+    Find and run commands in parallel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#heredoc" class="md-nav__link">
     Heredoc
   </a>
@@ -822,6 +829,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#find-and-run-commands-in-parallel" class="md-nav__link">
+    Find and run commands in parallel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#heredoc" class="md-nav__link">
     Heredoc
   </a>
@@ -921,6 +935,10 @@ Normally <code>-v</code> will be considered the option to reverse the matching m
 <span class="o">[[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INPUT</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">args</span><span class="o">+=(</span><span class="w"> </span><span class="s1">&#39;--input&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INPUT</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">)</span>
 foo<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">args</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
+<h3 id="find-and-run-commands-in-parallel">Find and run commands in parallel<a class="headerlink" href="#find-and-run-commands-in-parallel" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span>-print0<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-0<span class="w"> </span>--verbose<span class="w"> </span>--max-args<span class="o">=</span><span class="m">1</span><span class="w"> </span>--max-procs<span class="o">=</span><span class="m">0</span><span class="w"> </span>-I<span class="w"> </span>%<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;%&quot;</span>
+</code></pre></div>
+<p><a href="https://explainshell.com/explain?cmd=find+.+-type+f+-name+%22*%22+-print0+%7C+xargs+-0+--verbose+--max-args%3D1+--max-procs%3D0+-I+%25+echo+%22%25%22">🔗</a></p>
 <h3 id="heredoc">Heredoc<a class="headerlink" href="#heredoc" title="Permanent link">&para;</a></h3>
 <div class="highlight"><span class="filename">General syntax</span><pre><span></span><code><span class="o">[</span>cmd<span class="o">]</span><span class="w"> </span>&lt;&lt;<span class="o">[</span>-<span class="o">]</span><span class="w"> </span>delimeter<span class="w"> </span><span class="o">[</span>cmd<span class="o">]</span>
 <span class="w">    </span>content
@@ -1013,7 +1031,7 @@ $PWD
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 3, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 28, 2023</span>
       
     
   </small>
