@@ -29,6 +29,14 @@ args=()
 foo "${args[@]}"
 ```
 
+### Find and run commands in parallel
+
+```bash
+find . -type f -name "*" -print0 | xargs -0 --verbose --max-args=1 --max-procs=0 -I % echo "%"
+```
+
+[🔗](https://explainshell.com/explain?cmd=find+.+-type+f+-name+%22*%22+-print0+%7C+xargs+-0+--verbose+--max-args%3D1+--max-procs%3D0+-I+%25+echo+%22%25%22)
+
 ### Heredoc
 
 ```bash title="General syntax"
