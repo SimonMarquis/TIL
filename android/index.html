@@ -981,6 +981,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../puzzlers/" class="md-nav__link">
+        🧩 Puzzlers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../regex/" class="md-nav__link">
         🧮 Regex
       </a>
@@ -1711,8 +1726,12 @@ I/IntentFilterIntentSvc: Verification 1 complete. Success:false. Failed hosts:sm
 <span class="kd">internal</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="n">LibraryAndroidComponentsExtension</span><span class="p">.</span><span class="nf">disableUnnecessaryAndroidTests</span><span class="p">(</span>
 <span class="w">    </span><span class="n">project</span><span class="p">:</span><span class="w"> </span><span class="n">Project</span><span class="p">,</span>
 <span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">beforeVariants</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">enableAndroidTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">enableAndroidTest</span>
-<span class="w">        </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">project</span><span class="p">.</span><span class="na">projectDir</span><span class="p">.</span><span class="na">resolve</span><span class="p">(</span><span class="s">&quot;src/androidTest&quot;</span><span class="p">).</span><span class="na">exists</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;</span><span class="si">${</span><span class="n">project</span><span class="p">.</span><span class="na">projectDir</span><span class="si">}</span><span class="s">/src/androidTest&quot;</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">buildTyped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">buildType</span><span class="o">?.</span><span class="na">capitalized</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">flavored</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">flavorName</span><span class="o">?.</span><span class="na">capitalized</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">variant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flavored</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">buildType</span><span class="o">?.</span><span class="na">capitalized</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">dirs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sequenceOf</span><span class="p">(</span><span class="n">base</span><span class="p">,</span><span class="w"> </span><span class="n">buildTyped</span><span class="p">,</span><span class="w"> </span><span class="n">flavored</span><span class="p">,</span><span class="w"> </span><span class="n">variant</span><span class="p">).</span><span class="na">map</span><span class="p">(</span><span class="n">project</span><span class="o">::</span><span class="n">file</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">enableAndroidTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">enableAndroidTest</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">dirs</span><span class="p">.</span><span class="na">any</span><span class="p">(</span><span class="n">File</span><span class="o">::</span><span class="n">exists</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="download-all-apk-files">Download all APK files<a class="headerlink" href="#download-all-apk-files" title="Permanent link">&para;</a></h3>
@@ -2603,7 +2622,7 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 22, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2023</span>
       
     
   </small>

@@ -10,20 +10,20 @@
         <meta name="author" content="Simon Marquis">
       
       
-        <link rel="canonical" href="https://simonmarquis.github.io/TIL/gerrit/">
+        <link rel="canonical" href="https://simonmarquis.github.io/TIL/puzzlers/">
       
       
-        <link rel="prev" href="../firebase/">
+        <link rel="prev" href="../open-source-projects/">
       
       
-        <link rel="next" href="../git/">
+        <link rel="next" href="../regex/">
       
       <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>">
       <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
     
     
       
-        <title>🏢 Gerrit - Today I Learned</title>
+        <title>🧩 Puzzlers - Today I Learned</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#customized-dashboard" class="md-skip">
+        <a href="#if-else-priorities" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              🏢 Gerrit
+              🧩 Puzzlers
             
           </span>
         </div>
@@ -352,55 +352,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          🏢 Gerrit
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../gerrit/" class="md-nav__link">
         🏢 Gerrit
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#customized-dashboard" class="md-nav__link">
-    Customized dashboard
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gmail-filters" class="md-nav__link">
-    Gmail filters
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -636,11 +592,48 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../puzzlers/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          🧩 Puzzlers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         🧩 Puzzlers
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#if-else-priorities" class="md-nav__link">
+    if-else priorities
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -760,15 +753,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#customized-dashboard" class="md-nav__link">
-    Customized dashboard
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gmail-filters" class="md-nav__link">
-    Gmail filters
+  <a href="#if-else-priorities" class="md-nav__link">
+    if-else priorities
   </a>
   
 </li>
@@ -788,7 +774,7 @@
                   
 
   
-    <a href="https://github.com/SimonMarquis/TIL/edit/main/docs/gerrit.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/SimonMarquis/TIL/edit/main/docs/puzzlers.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -797,28 +783,44 @@
     
       
     
-    <a href="https://github.com/SimonMarquis/TIL/raw/main/docs/gerrit.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/SimonMarquis/TIL/raw/main/docs/puzzlers.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-  <h1>🏢 Gerrit</h1>
+  <h1>🧩 Puzzlers</h1>
 
-<h3 id="customized-dashboard">Customized dashboard<a class="headerlink" href="#customized-dashboard" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>/dashboard/?title=👨%E2%80%8D💻My+Dashboard&amp;🔔=status:open+(ownerin:my-group+OR+project:my-project)+hashtag:prio&amp;📄=has:draft&amp;🧪=is:open+owner:self+is:wip&amp;📧=is:open+-is:ignored+cc:self&amp;📤=is:open+owner:self+-is:wip+-is:ignored&amp;📥=is:open+(ownerin:my-group+OR+project:my-project)+-owner:self+-is:wip+-is:ignored+-label:Code-Review=2+(reviewer:self+OR+assignee:self)+limit:50
+<h2 id="if-else-priorities"><em>if-else</em> priorities<a class="headerlink" href="#if-else-priorities" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="cm">/**/</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="cm">/**/</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="cm">/**/</span>
+<span class="p">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span>
 </code></pre></div>
-<h3 id="gmail-filters">Gmail filters<a class="headerlink" href="#gmail-filters" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>from:(review@domain.tld) -{(&quot;Gerrit-Owner: Simon MARQUIS&quot; &quot;Gerrit-HasComments: Yes&quot;) &quot;Gerrit-Comment-In-Reply-To: Simon MARQUIS&quot; (&quot;Gerrit-MessageType: setassignee&quot; &quot;Gerrit-Assignee: Simon MARQUIS&quot;)}
+<details class="tip">
+<summary> </summary>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="cm">/**/</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="cm">/**/</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="cm">/**/</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span>
+<span class="p">}</span>
 </code></pre></div>
+</details>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 11, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2023</span>
       
     
   </small>
