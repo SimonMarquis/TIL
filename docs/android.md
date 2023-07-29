@@ -276,8 +276,12 @@ adb shell pm hide com.samsung.android.hmt.vrsvc
 internal fun LibraryAndroidComponentsExtension.disableUnnecessaryAndroidTests(
     project: Project,
 ) = beforeVariants {
-    it.enableAndroidTest = it.enableAndroidTest
-        && project.projectDir.resolve("src/androidTest").exists()
+    val base = "${project.projectDir}/src/androidTest"
+    val buildTyped = base + it.buildType?.capitalized()
+    val flavored = base + it.flavorName?.capitalized()
+    val variant = flavored + it.buildType?.capitalized()
+    val dirs = sequenceOf(base, buildTyped, flavored, variant).map(project::file)
+    it.enableAndroidTest = it.enableAndroidTest && dirs.any(File::exists)
 }
 ```
 
