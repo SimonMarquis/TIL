@@ -155,3 +155,12 @@ sed -e 's/\x1b\[[0-9;]*m//g'
 ```
 
 [🔗](https://superuser.com/a/380778/733209)
+
+### Safer scripts
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+```
+
+[🔗](https://explainshell.com/explain?cmd=set+-euo+pipefail)
