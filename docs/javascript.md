@@ -15,6 +15,23 @@ title: 🪢 JavaScript
 
 [🔗](https://www.json.org/json-en.html)
 
+### Map object entries
+
+```javascript
+const mapObject = (obj, fn) => Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, fn(v)]));
+```
+
+!!! example "JSON stringify object values"
+
+    ```javascript
+    mapObject({key: {foo: "bar"}}, (v) => JSON.stringify(v));
+    ```
+    <div class="result" markdown>
+    ```
+    {key: '{"foo":"bar"}'}
+    ```
+    </div>
+
 ### Named capturing group regex
 
 ```js
