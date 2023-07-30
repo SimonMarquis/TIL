@@ -27,7 +27,7 @@ const mapObject = (obj, fn) => Object.fromEntries(Object.entries(obj).map(([k, v
     mapObject({key: {foo: "bar"}}, (v) => JSON.stringify(v));
     ```
     <div class="result" markdown>
-    ```
+    ```javascript
     {key: '{"foo":"bar"}'}
     ```
     </div>
