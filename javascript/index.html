@@ -496,6 +496,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#map-object-entries" class="md-nav__link">
+    Map object entries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#named-capturing-group-regex" class="md-nav__link">
     Named capturing group regex
   </a>
@@ -774,6 +781,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#map-object-entries" class="md-nav__link">
+    Map object entries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#named-capturing-group-regex" class="md-nav__link">
     Named capturing group regex
   </a>
@@ -830,6 +844,18 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><a href="https://www.json.org/json-en.html">🔗</a></p>
+<h3 id="map-object-entries">Map object entries<a class="headerlink" href="#map-object-entries" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">mapObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span><span class="w"> </span><span class="nx">fn</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">map</span><span class="p">(([</span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="p">])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="nx">fn</span><span class="p">(</span><span class="nx">v</span><span class="p">)]));</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">JSON stringify object values</p>
+<p><div class="highlight"><pre><span></span><code><span class="nx">mapObject</span><span class="p">({</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">}},</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">v</span><span class="p">));</span>
+</code></pre></div>
+<div class="result" markdown>
+<div class="highlight"><pre><span></span><code>{key: &#39;{&quot;foo&quot;:&quot;bar&quot;}&#39;}
+</code></pre></div>
+</div></p>
+</div>
 <h3 id="named-capturing-group-regex">Named capturing group regex<a class="headerlink" href="#named-capturing-group-regex" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">semver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/^(?&lt;major&gt;\d+)(?:\.(?&lt;minor&gt;\d+)(?:\.(?&lt;patch&gt;\d+))?)?(?:-(?&lt;label&gt;.+))?$/</span><span class="p">;</span>
 
@@ -853,7 +879,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 11, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 30, 2023</span>
       
     
   </small>
