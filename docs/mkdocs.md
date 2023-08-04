@@ -26,6 +26,19 @@ mkdocs-material==9.1.16
 pip install --requirement docs/requirements.txt
 ```
 
+### Downloadable file
+
+```md
+[:material-launch:](../sitemap.xml){: .md-button }
+[:material-download:](../sitemap.xml){: .md-button download="sitemap.xml" }
+```
+<div class="result" markdown>
+
+[:material-launch:](../sitemap.xml){: .md-button }
+[:material-download:](../sitemap.xml){: .md-button download="sitemap.xml" }
+
+</div>
+
 ### Environment variables
 
 ```yaml title="mkdocs.yml"
