@@ -126,6 +126,7 @@ nav:
 extra_css:
     - stylesheets/extra.css
 
+strict: !ENV [MKDOCS_STRICT, True]
 validation:
   omitted_files: warn
   absolute_links: warn
