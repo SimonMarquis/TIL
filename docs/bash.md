@@ -104,6 +104,30 @@ cmd1 `# This is a comment` \
   cmd2 # This is another comment
 ```
 
+### JVM utilities
+
+- Heap info
+  ```bash
+  jps -l `# list VMs` |
+    grep -E "*" `# optional filter` |
+    cut -d " " -f1 `# extract pid` |
+    xargs -t -n1 -I % jcmd % GC.heap_info
+  ```
+- GC
+  ```bash
+  jps -l `# list VMs` |
+    grep -E "*" `# optional filter` |
+    cut -d " " -f1 `# extract pid` |
+    xargs -t -n1 -I % jcmd % GC.run
+  ```
+- Kill
+  ```bash
+  jps -l `# list VMs` |
+    grep -E "*" `# optional filter` |
+    cut -d " " -f1 `# extract pid` |
+    xargs -t -n1 kill -9
+  ```
+
 ### Merge files together
 
 ```bash
