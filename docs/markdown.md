@@ -11,6 +11,17 @@ title: 📄 Markdown
 
 !!! danger "[:material-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#blockquote-highlight)"
 
+> [!NOTE]  
+> Highlights information that users should take into account, even when skimming.
+
+> [!IMPORTANT]  
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]  
+> Critical content demanding immediate user attention due to potential risks.
+
+The initial syntax used on GitHub was:
+
 - Single line
 
   > **Note** This is a single line note
