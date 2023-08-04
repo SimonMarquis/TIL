@@ -2,6 +2,19 @@
 title: 📖 MkDocs
 ---
 
+### Attribute Lists
+
+```md
+[Hello, World!](#){: #someid .someclass somekey='some value' }
+```
+<div class="result" markdown>
+
+[Hello, World!](#){: #someid .someclass somekey='some value' }
+
+</div>
+
+[🔗](https://python-markdown.github.io/extensions/attr_list)
+
 ### Dependency management
 
 ```python title="docs/requirements.txt"
