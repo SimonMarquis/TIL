@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dependency-management" class="md-skip">
+        <a href="#attribute-lists" class="md-skip">
           Skip to content
         </a>
       
@@ -579,8 +579,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#attribute-lists" class="md-nav__link">
+    Attribute Lists
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dependency-management" class="md-nav__link">
     Dependency management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloadable-file" class="md-nav__link">
+    Downloadable file
   </a>
   
 </li>
@@ -767,8 +781,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#attribute-lists" class="md-nav__link">
+    Attribute Lists
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dependency-management" class="md-nav__link">
     Dependency management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloadable-file" class="md-nav__link">
+    Downloadable file
   </a>
   
 </li>
@@ -820,12 +848,27 @@
 
   <h1>📖 MkDocs</h1>
 
+<h3 id="attribute-lists">Attribute Lists<a class="headerlink" href="#attribute-lists" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>[<span class="nt">Hello, World!</span>](<span class="na">#</span>){: <span class="ni">#someid</span> .someclass somekey=&#39;some value&#39; }
+</code></pre></div>
+<div class="result">
+<p><a class="someclass" href="#" id="someid" somekey="some value">Hello, World!</a></p>
+</div>
+<p><a href="https://python-markdown.github.io/extensions/attr_list">🔗</a></p>
 <h3 id="dependency-management">Dependency management<a class="headerlink" href="#dependency-management" title="Permanent link">&para;</a></h3>
 <div class="highlight"><span class="filename">docs/requirements.txt</span><pre><span></span><code><span class="n">mkdocs</span><span class="o">==</span><span class="mf">1.4.3</span>
 <span class="n">mkdocs</span><span class="o">-</span><span class="n">material</span><span class="o">==</span><span class="mf">9.1.16</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>--requirement<span class="w"> </span>docs/requirements.txt
 </code></pre></div>
+<h3 id="downloadable-file">Downloadable file<a class="headerlink" href="#downloadable-file" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>[<span class="nt">:material-launch:</span>](<span class="na">../sitemap.xml</span>){: .md-button }
+[<span class="nt">:material-download:</span>](<span class="na">../sitemap.xml</span>){: .md-button download=&quot;sitemap.xml&quot; }
+</code></pre></div>
+<div class="result">
+<p><a class="md-button" href="../sitemap.xml"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></a>
+<a class="md-button" download="sitemap.xml" href="../sitemap.xml"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7Z"/></svg></span></a></p>
+</div>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <div class="highlight"><span class="filename">mkdocs.yml</span><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo-plugin</span><span class="p">:</span>
@@ -845,7 +888,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 27, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 4, 2023</span>
       
     
   </small>
