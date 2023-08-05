@@ -2,6 +2,23 @@
 title: 🪟 Windows
 ---
 
+### Dev Drive setup
+
+```cmd
+:: https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_environment_variables
+SETX GRADLE_USER_HOME E:\.gradle
+
+:: https://maven.apache.org/configure.html
+SETX MAVEN_OPTS "-Dmaven.repo.local=E:\.m2\repository"
+
+:: https://developer.android.com/tools/variables
+SETX ANDROID_HOME E:\Android
+SETX ANDROID_SDK_ROOT E:\Android
+SETX ANDROID_USER_HOME E:\.android
+```
+
+[🔗](https://learn.microsoft.com/en-us/windows/dev-drive/)
+
 ### Reboot GPU driver
 
 === "MkDocs"
