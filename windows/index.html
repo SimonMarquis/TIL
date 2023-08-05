@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#reboot-gpu-driver" class="md-skip">
+        <a href="#dev-drive-setup" class="md-skip">
           Skip to content
         </a>
       
@@ -699,6 +699,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#dev-drive-setup" class="md-nav__link">
+    Dev Drive setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reboot-gpu-driver" class="md-nav__link">
     Reboot GPU driver
   </a>
@@ -774,6 +781,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#dev-drive-setup" class="md-nav__link">
+    Dev Drive setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reboot-gpu-driver" class="md-nav__link">
     Reboot GPU driver
   </a>
@@ -834,6 +848,19 @@
 
   <h1>🪟 Windows</h1>
 
+<h3 id="dev-drive-setup">Dev Drive setup<a class="headerlink" href="#dev-drive-setup" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>:: https://docs.gradle.org/current/userguide/build_environment.html#sec:gradle_environment_variables
+SETX GRADLE_USER_HOME E:\.gradle
+
+:: https://maven.apache.org/configure.html
+SETX MAVEN_OPTS &quot;-Dmaven.repo.local=E:\.m2\repository&quot;
+
+:: https://developer.android.com/tools/variables
+SETX ANDROID_HOME E:\Android
+SETX ANDROID_SDK_ROOT E:\Android
+SETX ANDROID_USER_HOME E:\.android
+</code></pre></div>
+<p><a href="https://learn.microsoft.com/en-us/windows/dev-drive/">🔗</a></p>
 <h3 id="reboot-gpu-driver">Reboot GPU driver<a class="headerlink" href="#reboot-gpu-driver" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">MkDocs</label><label for="__tabbed_1_2">GitHub</label></div>
 <div class="tabbed-content">
@@ -868,7 +895,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 10, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 5, 2023</span>
       
     
   </small>
