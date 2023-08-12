@@ -399,6 +399,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#write-variable-to-file" class="md-nav__link">
+    Write variable to file
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -927,6 +934,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#write-variable-to-file" class="md-nav__link">
+    Write variable to file
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1094,13 +1108,24 @@ $PWD
 <span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
 </code></pre></div>
 <p><a href="https://explainshell.com/explain?cmd=set+-euo+pipefail">🔗</a></p>
+<h3 id="write-variable-to-file">Write variable to file<a class="headerlink" href="#write-variable-to-file" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">echo</span><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$var</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>out.txt
+</code></pre></div>
+<div class="highlight"><span class="filename">printf</span><pre><span></span><code><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;%s\n&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$var</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>out.txt
+</code></pre></div>
+<div class="highlight"><span class="filename">here string</span><pre><span></span><code>cat<span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$var</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>out.txt
+</code></pre></div>
+<div class="highlight"><span class="filename">here doc</span><pre><span></span><code>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; out.txt</span>
+<span class="s">$var</span>
+<span class="s">EOF</span>
+</code></pre></div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 4, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 12, 2023</span>
       
     
   </small>
