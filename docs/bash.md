@@ -188,3 +188,23 @@ set -euo pipefail
 ```
 
 [🔗](https://explainshell.com/explain?cmd=set+-euo+pipefail)
+
+### Write variable to file
+
+```bash title="echo"
+echo "$var" > out.txt
+```
+
+```bash title="printf"
+printf "%s\n" "$var" > out.txt
+```
+
+```bash title="here string"
+cat <<< "$var" > out.txt
+```
+
+```bash title="here doc"
+cat << EOF > out.txt
+$var
+EOF
+```
