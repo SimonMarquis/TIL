@@ -40,6 +40,18 @@ The initial syntax used on GitHub was:
 
 [🔗](https://github.com/community/community/discussions/16925)
 
+### Color models
+
+!!! quote "In issues, pull requests, and discussions, you can call out colors within a sentence by using backticks."
+
+| Color | Syntax | Example | Output |
+|---|---|---:|---:|
+| HEX | `#RRGGBB` | `#0055A4` | <code class="notranslate">#0055A4<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: #0055A4; height: 8px; width: 8px;"></span></code> |
+| RGB | `rgb(R,G,B)` | `rgb(255, 255, 255)` | <code class="notranslate">rgb(255, 255, 255)<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: rgb(255, 255, 255); height: 8px; width: 8px;"></span></code> |
+| HSL | `hsl(H,S,L)` | `hsl(4, 85%, 57%)` | <code class="notranslate">hsl(4, 85%, 57%)<span class="ml-1 d-inline-block border circle color-border-subtle" style="background-color: hsl(4, 85%, 57%); height: 8px; width: 8px;"></span></code> |
+
+[🔗](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#supported-color-models)
+
 ### Details summary
 
 Toggle with the `open` attribute in the `<details>` tag.
