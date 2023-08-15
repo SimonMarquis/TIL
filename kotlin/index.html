@@ -561,6 +561,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#enum-with-annotation" class="md-nav__link">
+    Enum with annotation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#execute-commands-in-subprocess" class="md-nav__link">
     Execute commands in subprocess
   </a>
@@ -1094,6 +1101,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#enum-with-annotation" class="md-nav__link">
+    Enum with annotation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#execute-commands-in-subprocess" class="md-nav__link">
     Execute commands in subprocess
   </a>
@@ -1490,6 +1504,20 @@
 <span class="n">println</span><span class="p">(</span><span class="n">deepRecursiveDepth</span><span class="p">(</span><span class="n">tree</span><span class="p">))</span><span class="w"> </span><span class="c1">// 👍</span>
 </code></pre></div>
 <p><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-deep-recursive-function/">🔗</a></p>
+<h3 id="enum-with-annotation">Enum with annotation<a class="headerlink" href="#enum-with-annotation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">annotation</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">DisplayName</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span>
+
+<span class="kd">enum</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Data</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">Foo</span><span class="p">,</span>
+<span class="w">    </span><span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">Bar</span><span class="p">,</span>
+<span class="w">    </span><span class="nd">@DisplayName</span><span class="p">(</span><span class="s">&quot;c&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">Baz</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="k">reified</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Annotation</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">Enum</span><span class="o">&lt;*&gt;</span><span class="p">.</span><span class="na">annotation</span><span class="p">():</span><span class="w"> </span><span class="n">A? </span><span class="o">=</span>
+<span class="w">    </span><span class="k">this</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">getField</span><span class="p">(</span><span class="n">name</span><span class="p">).</span><span class="na">getAnnotation</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">)</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">displayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Foo</span><span class="p">.</span><span class="na">annotation</span><span class="o">&lt;</span><span class="n">DisplayName</span><span class="o">&gt;</span><span class="p">()</span><span class="o">?.</span><span class="na">value</span><span class="w"> </span><span class="c1">// &quot;a&quot;</span>
+</code></pre></div>
 <h3 id="execute-commands-in-subprocess">Execute commands in subprocess<a class="headerlink" href="#execute-commands-in-subprocess" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">On Windows (<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h11.377v11.372H0Zm12.623 0H24v11.372H12.623ZM0 12.623h11.377V24H0Zm12.623 0H24V24H12.623"/></svg></span>), you'll probably need to prefix the command with <code>cmd /c</code>.</p>
@@ -2118,7 +2146,7 @@ What must be done instead is to check for <strong>structural</strong> equality (
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 15, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 15, 2023</span>
       
     
   </small>
