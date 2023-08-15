@@ -125,6 +125,23 @@ println(deepRecursiveDepth(tree)) // 👍
 
 [🔗](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-deep-recursive-function/)
 
+### Enum with annotation
+
+```kotlin
+annotation class DisplayName(val value: String)
+
+enum class Data {
+    @DisplayName("a") Foo,
+    @DisplayName("b") Bar,
+    @DisplayName("c") Baz,
+}
+
+inline fun <reified A : Annotation> Enum<*>.annotation(): A? =
+    this::class.java.getField(name).getAnnotation(A::class.java)
+
+val displayName = Foo.annotation<DisplayName>()?.value // "a"
+```
+
 ### Execute commands in subprocess
 
 !!! warning "On Windows (:simple-windows:), you'll probably need to prefix the command with `cmd /c`."
