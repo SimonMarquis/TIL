@@ -609,6 +609,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#uninstall-apps-by-package-name" class="md-nav__link">
+    Uninstall apps by package name
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ussd-and-secret-codes" class="md-nav__link">
     USSD and secret codes
   </a>
@@ -1413,6 +1420,13 @@
         <li class="md-nav__item">
   <a href="#tools-sample-resources-as-json-files" class="md-nav__link">
     Tools sample resources as JSON files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-apps-by-package-name" class="md-nav__link">
+    Uninstall apps by package name
   </a>
   
 </li>
@@ -2557,6 +2571,12 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
 <span class="w">    </span><span class="na">tools:text=</span><span class="s">&quot;@sample/users.json/data/address&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p><a href="https://developer.android.com/studio/write/tool-attributes#toolssample_resources">🔗 <code>@tools:sample/*</code></a></p>
+<h3 id="uninstall-apps-by-package-name">Uninstall apps by package name<a class="headerlink" href="#uninstall-apps-by-package-name" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>adb<span class="w"> </span>shell<span class="w"> </span>pm<span class="w"> </span>list<span class="w"> </span>packages<span class="w"> </span><span class="sb">`</span><span class="c1"># List packages` |</span>
+<span class="w">  </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="w"> </span>-f2<span class="w"> </span><span class="sb">`</span><span class="c1"># Extract package name` |</span>
+<span class="w">  </span>grep<span class="w"> </span>^com.<span class="w"> </span><span class="sb">`</span><span class="c1"># Optional pattern` |</span>
+<span class="w">  </span>xargs<span class="w"> </span>-t<span class="w"> </span>-n1<span class="w"> </span>adb<span class="w"> </span>uninstall
+</code></pre></div>
 <h3 id="ussd-and-secret-codes">USSD and secret codes<a class="headerlink" href="#ussd-and-secret-codes" title="Permanent link">&para;</a></h3>
 <p>These codes must be typed in the dialer app.</p>
 <ul>
@@ -2622,7 +2642,7 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 17, 2023</span>
       
     
   </small>
