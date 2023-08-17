@@ -1278,7 +1278,16 @@ FragmentStrictMode.defaultPolicy = FragmentStrictMode.Policy.Builder()
 adb shell pm list packages `# List packages` |
   cut -d ':' -f2 `# Extract package name` |
   grep ^com. `# Optional pattern` |
-  xargs -t -n1 adb uninstall
+  xargs --verbose -n1 adb uninstall
+```
+
+Or with fzf
+
+```bash
+adb shell pm list packages `# List packages` |
+  cut -d ':' -f2 `# Extract package name` |
+  fzf --header '📦 Select one or more packages to uninstall' --border --reverse --multi |
+  xargs --no-run-if-empty --verbose -n1 adb uninstall
 ```
 
 ### USSD and secret codes
