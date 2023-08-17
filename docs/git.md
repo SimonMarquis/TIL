@@ -519,3 +519,23 @@ git add --renormalize .
 ### Signing commits with GPG
 
 [🔗](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits) [🔗](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html)
+
+### Sort tags by SemVer
+
+```bash
+git -c versionsort.suffix=- tag --list --sort=version:refname
+```
+<div class="result" markdown>
+```
+0.0.1
+0.0.2
+0.0.3
+0.1.0-alpha
+0.1.0-beta
+0.1.0-rc
+0.1.0
+1.0.0
+```
+</div>
+
+[🔗](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---sortltkeygt)
