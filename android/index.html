@@ -2619,7 +2619,13 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
 <div class="highlight"><pre><span></span><code>adb<span class="w"> </span>shell<span class="w"> </span>pm<span class="w"> </span>list<span class="w"> </span>packages<span class="w"> </span><span class="sb">`</span><span class="c1"># List packages` |</span>
 <span class="w">  </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="w"> </span>-f2<span class="w"> </span><span class="sb">`</span><span class="c1"># Extract package name` |</span>
 <span class="w">  </span>grep<span class="w"> </span>^com.<span class="w"> </span><span class="sb">`</span><span class="c1"># Optional pattern` |</span>
-<span class="w">  </span>xargs<span class="w"> </span>-t<span class="w"> </span>-n1<span class="w"> </span>adb<span class="w"> </span>uninstall
+<span class="w">  </span>xargs<span class="w"> </span>--verbose<span class="w"> </span>-n1<span class="w"> </span>adb<span class="w"> </span>uninstall
+</code></pre></div>
+<p>Or with fzf</p>
+<div class="highlight"><pre><span></span><code>adb<span class="w"> </span>shell<span class="w"> </span>pm<span class="w"> </span>list<span class="w"> </span>packages<span class="w"> </span><span class="sb">`</span><span class="c1"># List packages` |</span>
+<span class="w">  </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="w"> </span>-f2<span class="w"> </span><span class="sb">`</span><span class="c1"># Extract package name` |</span>
+<span class="w">  </span>fzf<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;📦 Select one or more packages to uninstall&#39;</span><span class="w"> </span>--border<span class="w"> </span>--reverse<span class="w"> </span>--multi<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span>xargs<span class="w"> </span>--no-run-if-empty<span class="w"> </span>--verbose<span class="w"> </span>-n1<span class="w"> </span>adb<span class="w"> </span>uninstall
 </code></pre></div>
 <h3 id="ussd-and-secret-codes">USSD and secret codes<a class="headerlink" href="#ussd-and-secret-codes" title="Permanent link">&para;</a></h3>
 <p>These codes must be typed in the dialer app.</p>
