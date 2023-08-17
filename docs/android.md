@@ -23,6 +23,40 @@ android {
 
 [🔗](https://developer.android.com/reference/tools/gradle-api/7.4/com/android/build/api/dsl/AndroidResources#ignoreAssetsPatterns())
 
+### ADB with fzf
+
+```bash
+adb devices -l `# list devices` |
+  tail -n +2 `# ignore first line` |
+  head -n -1 `# ignore last line` |
+  cut -d " " -f1 `# extract device id` |
+  fzf --header '📱 Select one or more devices' --border --reverse --multi \
+      --preview-window="right:66%" \
+      --preview="adb -s {} shell getprop | grep -E 'ro.build.(description|fingerprint|version.(release|sdk))|ro.product.(cpu.abi|device|locale|manufacturer|model|name)'" |
+  xargs --no-run-if-empty --verbose -I % adb -s % `# run your command of choice`
+```
+<div class="result" markdown>
+```raw
+> <search>                     ┌────────────────────────────────────────────────────────┐
+  3/3                          │ [ro.build.description]: [sdk_gphone64_x86_64-user 14 U │
+  Select one or more devices   │ [ro.build.fingerprint]: [google/sdk_gphone64_x86_64/em │
+  18261FDEE000YJ               │ [ro.build.version.release]: [14]                       │
+> emulator-5554                │ [ro.build.version.release_or_codename]: [14]           │
+  emulator-5556                │ [ro.build.version.release_or_preview_display]: [14]    │
+                               │ [ro.build.version.sdk]: [34]                           │
+                               │ [ro.product.cpu.abi]: [x86_64]                         │
+                               │ [ro.product.cpu.abilist]: [x86_64,arm64-v8a]           │
+                               │ [ro.product.cpu.abilist32]: []                         │
+                               │ [ro.product.cpu.abilist64]: [x86_64,arm64-v8a]         │
+                               │ [ro.product.device]: [emu64xa]                         │
+                               │ [ro.product.locale]: [en-US]                           │
+                               │ [ro.product.manufacturer]: [Google]                    │
+                               │ [ro.product.model]: [sdk_gphone64_x86_64]              │
+                               │ [ro.product.name]: [sdk_gphone64_x86_64]               │
+                               └────────────────────────────────────────────────────────┘
+```
+</div>
+
 ### APK MIME type
 
 `application/vnd.android.package-archive`
