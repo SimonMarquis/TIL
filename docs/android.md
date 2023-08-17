@@ -1238,6 +1238,15 @@ FragmentStrictMode.defaultPolicy = FragmentStrictMode.Policy.Builder()
 
 [🔗 `@tools:sample/*`](https://developer.android.com/studio/write/tool-attributes#toolssample_resources)
 
+### Uninstall apps by package name
+
+```bash
+adb shell pm list packages `# List packages` |
+  cut -d ':' -f2 `# Extract package name` |
+  grep ^com. `# Optional pattern` |
+  xargs -t -n1 adb uninstall
+```
+
 ### USSD and secret codes
 
 These codes must be typed in the dialer app.
