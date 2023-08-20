@@ -1534,7 +1534,7 @@ If you store a (compressed) <code>/assets/data.json.gz</code> file, AAPT will on
 </code></pre></div>
 <p><a href="https://developer.android.com/reference/tools/gradle-api/7.4/com/android/build/api/dsl/AndroidResources#ignoreAssetsPatterns()">🔗</a></p>
 <h3 id="adb-with-fzf">ADB with fzf<a class="headerlink" href="#adb-with-fzf" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>adb<span class="w"> </span>devices<span class="w"> </span>-l<span class="w"> </span><span class="sb">`</span><span class="c1"># list devices` |</span>
+<div class="highlight"><pre><span></span><code>adb<span class="w"> </span>devices<span class="w"> </span>-l<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="sb">`</span><span class="c1"># list devices and ignore daemon messages` |</span>
 <span class="w">  </span>tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span><span class="sb">`</span><span class="c1"># ignore first line` |</span>
 <span class="w">  </span>head<span class="w"> </span>-n<span class="w"> </span>-1<span class="w"> </span><span class="sb">`</span><span class="c1"># ignore last line` |</span>
 <span class="w">  </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>-f1<span class="w"> </span><span class="sb">`</span><span class="c1"># extract device id` |</span>
@@ -1562,6 +1562,21 @@ If you store a (compressed) <code>/assets/data.json.gz</code> file, AAPT will on
                                │ [ro.product.name]: [sdk_gphone64_x86_64]               │
                                └────────────────────────────────────────────────────────┘
 </code></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">This can also be used as an alias, for example <code>adbz</code></p>
+<div class="highlight"><span class="filename">~/.bashrc</span><pre><span></span><code><span class="k">function</span><span class="w"> </span>adbz<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>adb<span class="w"> </span>devices<span class="w"> </span>-l<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="sb">`</span><span class="c1"># list devices and ignore daemon messages` |</span>
+<span class="w">    </span>tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span><span class="sb">`</span><span class="c1"># ignore first line` |</span>
+<span class="w">    </span>head<span class="w"> </span>-n<span class="w"> </span>-1<span class="w"> </span><span class="sb">`</span><span class="c1"># ignore last line` |</span>
+<span class="w">    </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>-f1<span class="w"> </span><span class="sb">`</span><span class="c1"># extract device id` |</span>
+<span class="w">    </span>fzf<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;📱 Select one or more devices&#39;</span><span class="w"> </span>--border<span class="w"> </span>--reverse<span class="w"> </span>--multi<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--preview-window<span class="o">=</span><span class="s2">&quot;right:66%&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--preview<span class="o">=</span><span class="s2">&quot;adb -s {} shell getprop | grep -E &#39;ro.build.(description|fingerprint|version.(release|sdk))|ro.product.(cpu.abi|device|locale|manufacturer|model|name)&#39;&quot;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">    </span>xargs<span class="w"> </span>--no-run-if-empty<span class="w"> </span>--verbose<span class="w"> </span>-I<span class="w"> </span>%<span class="w"> </span>adb<span class="w"> </span>-s<span class="w"> </span>%<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span><span class="w"> </span><span class="sb">`</span><span class="c1"># run the command with provided arguments`</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>Then simply execute your regular <code>adb</code> command with <code class="highlight">adbz<span class="w"> </span>install<span class="w"> </span>app.apk</code></p>
 </div>
 <h3 id="apk-mime-type">APK MIME type<a class="headerlink" href="#apk-mime-type" title="Permanent link">&para;</a></h3>
 <p><code>application/vnd.android.package-archive</code></p>
@@ -2692,7 +2707,7 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 17, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 20, 2023</span>
       
     
   </small>
