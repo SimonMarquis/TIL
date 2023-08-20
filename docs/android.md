@@ -336,10 +336,19 @@ internal fun LibraryAndroidComponentsExtension.disableUnnecessaryAndroidTests(
 }
 ```
 
-### Download all APK files
+### Download APK files
 
 ```bash
-for package in $(adb shell pm list packages -3 | tr -d '\r' | sed 's/package://g'); do apk=$(adb shell pm path $package | tr -d '\r' | sed 's/package://g'); echo "Pulling $apk"; adb pull -p $apk "$package".apk; done
+adb shell pm list packages 2> /dev/null `# List packages` |
+  cut -d ':' -f2 `# Extract package name` |
+  fzf --header '📱 Select one or more packages to download' --border --reverse --multi |
+  xargs --no-run-if-empty -I % sh -c '
+    mkdir -p "%";
+    for path in $(adb shell pm path "%" | sed "s/package://g")
+    do
+        package=$(basename $path);
+        adb pull "$path" "%/$package";
+    done'
 ```
 
 ### Edit SharePreferences
