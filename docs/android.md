@@ -26,7 +26,7 @@ android {
 ### ADB with fzf
 
 ```bash
-adb devices -l `# list devices` |
+adb devices -l 2> /dev/null `# list devices and ignore daemon messages` |
   tail -n +2 `# ignore first line` |
   head -n -1 `# ignore last line` |
   cut -d " " -f1 `# extract device id` |
