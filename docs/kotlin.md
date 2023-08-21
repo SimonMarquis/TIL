@@ -16,7 +16,7 @@ lateinit var foo: String
 lateinit var foo: String
 ```
 
-!!! tips "If you have multiple annotations with the same target, you can avoid repeating the target by adding brackets after the target and putting all the annotations inside the brackets: [🔗](https://kotlinlang.org/docs/annotations.html#annotation-use-site-targets)"
+!!! tip "If you have multiple annotations with the same target, you can avoid repeating the target by adding brackets after the target and putting all the annotations inside the brackets: [🔗](https://kotlinlang.org/docs/annotations.html#annotation-use-site-targets)"
 
     ```kotlin
     @set:[Inject VisibleForTesting Named("foo")]
