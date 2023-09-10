@@ -2,6 +2,21 @@
 title: 🖥️ Bash
 ---
 
+### Check if command exists
+
+```bash
+command -v foo >/dev/null || error 'foo is required'
+```
+
+```bash
+if command -v foo >/dev/null; then
+    echo "foo is available"
+else
+    echo "foo is required"
+    exit 1
+fi
+```
+
 ### Command options and positional arguments
 
 !!! quote
