@@ -212,6 +212,13 @@ jobs:
 
 </div>
 
+### List changed files
+
+```yaml
+- name: Get changed files
+  run: gh pr view ${{ github.event.number }} --json files -q '.files[].path'
+```
+
 ### Matching multiple steps outcome
 
 !!! warning
