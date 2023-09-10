@@ -561,6 +561,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#list-changed-files" class="md-nav__link">
+    List changed files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#matching-multiple-steps-outcome" class="md-nav__link">
     Matching multiple steps outcome
   </a>
@@ -1155,6 +1162,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#list-changed-files" class="md-nav__link">
+    List changed files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#matching-multiple-steps-outcome" class="md-nav__link">
     Matching multiple steps outcome
   </a>
@@ -1438,6 +1452,10 @@ registries:
 <span class="k">-</span><span class="w"> </span>c
 </code></pre></div>
 </div>
+<h3 id="list-changed-files">List changed files<a class="headerlink" href="#list-changed-files" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get changed files</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh pr view ${{ github.event.number }} --json files -q &#39;.files[].path&#39;</span>
+</code></pre></div>
 <h3 id="matching-multiple-steps-outcome">Matching multiple steps outcome<a class="headerlink" href="#matching-multiple-steps-outcome" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1663,7 +1681,7 @@ registries:
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 27, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 10, 2023</span>
       
     
   </small>

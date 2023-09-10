@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#command-options-and-positional-arguments" class="md-skip">
+        <a href="#check-if-command-exists" class="md-skip">
           Skip to content
         </a>
       
@@ -337,6 +337,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#check-if-command-exists" class="md-nav__link">
+    Check if command exists
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#command-options-and-positional-arguments" class="md-nav__link">
     Command options and positional arguments
   </a>
@@ -416,6 +423,13 @@
         <li class="md-nav__item">
   <a href="#remove-ansi-escape-sequences" class="md-nav__link">
     Remove ANSI escape sequences
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-command-and-ignore-result" class="md-nav__link">
+    Run command and ignore result
   </a>
   
 </li>
@@ -980,6 +994,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#check-if-command-exists" class="md-nav__link">
+    Check if command exists
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#command-options-and-positional-arguments" class="md-nav__link">
     Command options and positional arguments
   </a>
@@ -1064,6 +1085,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#run-command-and-ignore-result" class="md-nav__link">
+    Run command and ignore result
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#safer-scripts" class="md-nav__link">
     Safer scripts
   </a>
@@ -1110,6 +1138,16 @@
 
   <h1>🖥️ Bash</h1>
 
+<h3 id="check-if-command-exists">Check if command exists<a class="headerlink" href="#check-if-command-exists" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>foo<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span>error<span class="w"> </span><span class="s1">&#39;foo is required&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>foo<span class="w"> </span>&gt;/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;foo is available&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;foo is required&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+</code></pre></div>
 <h3 id="command-options-and-positional-arguments">Command options and positional arguments<a class="headerlink" href="#command-options-and-positional-arguments" title="Permanent link">&para;</a></h3>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
@@ -1239,6 +1277,9 @@ $PWD
 <div class="highlight"><pre><span></span><code>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/\x1b\[[0-9;]*m//g&#39;</span>
 </code></pre></div>
 <p><a href="https://superuser.com/a/380778/733209">🔗</a></p>
+<h3 id="run-command-and-ignore-result">Run command and ignore result<a class="headerlink" href="#run-command-and-ignore-result" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>foo<span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span>:
+</code></pre></div>
 <h3 id="safer-scripts">Safer scripts<a class="headerlink" href="#safer-scripts" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
 <span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
@@ -1261,7 +1302,7 @@ $PWD
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 12, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 10, 2023</span>
       
     
   </small>
