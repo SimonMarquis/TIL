@@ -195,6 +195,12 @@ sed -e 's/\x1b\[[0-9;]*m//g'
 
 [🔗](https://superuser.com/a/380778/733209)
 
+### Run command and ignore result
+
+```bash
+foo &>/dev/null || :
+```
+
 ### Safer scripts
 
 ```bash
