@@ -2,6 +2,27 @@
 title: ☕ Java
 ---
 
+## `JAVA_HOME`
+
+=== ":simple-apple: macOS"
+
+    ```bash
+    export JAVA_HOME="/Library/Java/Home"
+    
+    # Override current JDK version
+    function jdk() {
+      sudo ln -nsf "$(/usr/libexec/java_home -v $1)" $JAVA_HOME
+      java -version
+    }
+    
+    # Configure default JDK
+    if [ ! -L "$JAVA_HOME" ]
+    then
+         echo "JAVA_HOME symlink is missing, let's configure it" >&2
+         jdk 17
+    fi
+    ```
+
 ## UncaughtExceptionHandler
 
 !!! quote
