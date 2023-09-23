@@ -382,6 +382,25 @@ Ctrl+C
 fun TextView.isEllipsized(): Boolean = layout?.let { !TextUtils.equals(text, it.text) } ?: false
 ```
 
+### Environment variables
+
+=== ":simple-apple: macOS"
+
+    ```bash
+    export ANDROID_HOME="/Users/$USER/Library/Android/sdk"
+    export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+    ```
+
+=== ":simple-windows: Windows"
+
+    ```bash
+    export ANDROID_HOME=$HOME/android
+    export ANDROID_SDK_ROOT=${ANDROID_HOME}
+    export PATH=${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${PATH}
+    ```
+
+[🔗](https://developer.android.com/tools/variables)
+
 ### Espresso AppNotIdleException
 
 On API <= 21, indeterminate `ProgressBar`s would animate forever and trigger the following exception when running Espresso tests: 
