@@ -423,6 +423,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#espresso-appnotidleexception" class="md-nav__link">
     Espresso AppNotIdleException
   </a>
@@ -1358,6 +1365,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    Environment variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#espresso-appnotidleexception" class="md-nav__link">
     Espresso AppNotIdleException
   </a>
@@ -1977,6 +1991,23 @@ Ctrl+C
 <h3 id="ellipsized-textview">Ellipsized TextView<a class="headerlink" href="#ellipsized-textview" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="n">TextView</span><span class="p">.</span><span class="nf">isEllipsized</span><span class="p">():</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">layout</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">!</span><span class="n">TextUtils</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">text</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="kc">false</span>
 </code></pre></div>
+<h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></span> macOS</label><label for="__tabbed_2_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h11.377v11.372H0Zm12.623 0H24v11.372H12.623ZM0 12.623h11.377V24H0Zm12.623 0H24V24H12.623"/></svg></span> Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">ANDROID_HOME</span><span class="o">=</span><span class="s2">&quot;/Users/</span><span class="nv">$USER</span><span class="s2">/Library/Android/sdk&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">:</span><span class="nv">$ANDROID_HOME</span><span class="s2">/tools:</span><span class="nv">$ANDROID_HOME</span><span class="s2">/platform-tools&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">ANDROID_HOME</span><span class="o">=</span><span class="nv">$HOME</span>/android
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANDROID_SDK_ROOT</span><span class="o">=</span><span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span>/cmdline-tools/latest/bin:<span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span>/platform-tools:<span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span>/tools:<span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span>/tools/bin:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p><a href="https://developer.android.com/tools/variables">🔗</a></p>
 <h3 id="espresso-appnotidleexception">Espresso AppNotIdleException<a class="headerlink" href="#espresso-appnotidleexception" title="Permanent link">&para;</a></h3>
 <p>On API &lt;= 21, indeterminate <code>ProgressBar</code>s would animate forever and trigger the following exception when running Espresso tests: </p>
 <div class="highlight"><pre><span></span><code>android.support.test.espresso.AppNotIdleException: Looped for [...] iterations over 60 SECONDS. The following Idle Conditions failed .
@@ -2347,7 +2378,7 @@ Wrapping it in a Kotlin Multiplatform project allows us to use it in JVM project
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition quote">
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Common</label><label for="__tabbed_2_2">Android</label><label for="__tabbed_2_3">JVM</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Common</label><label for="__tabbed_3_2">Android</label><label for="__tabbed_3_3">JVM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">commonMain/kotlin/Parcel.kt</span><pre><span></span><code><span class="kd">expect</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Parcel</span><span class="w"> </span><span class="p">{</span>
@@ -2538,7 +2569,7 @@ Version: 1
 <span class="nt">&lt;/resources&gt;</span>
 </code></pre></div>
 <h3 id="resources-abstraction">Resources abstraction<a class="headerlink" href="#resources-abstraction" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>BooleanResource.kt</code></label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>ColorResource.kt</code></label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>DrawableResource.kt</code></label><label for="__tabbed_3_4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>TextResource.kt</code></label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>BooleanResource.kt</code></label><label for="__tabbed_4_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>ColorResource.kt</code></label><label for="__tabbed_4_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>DrawableResource.kt</code></label><label for="__tabbed_4_4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>TextResource.kt</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">android.content.res.Resources</span>
@@ -2852,7 +2883,7 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 20, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 23, 2023</span>
       
     
   </small>

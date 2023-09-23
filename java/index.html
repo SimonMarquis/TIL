@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#uncaughtexceptionhandler" class="md-skip">
+        <a href="#java_home" class="md-skip">
           Skip to content
         </a>
       
@@ -546,6 +546,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#java_home" class="md-nav__link">
+    JAVA_HOME
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#uncaughtexceptionhandler" class="md-nav__link">
     UncaughtExceptionHandler
   </a>
@@ -889,6 +896,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#java_home" class="md-nav__link">
+    JAVA_HOME
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#uncaughtexceptionhandler" class="md-nav__link">
     UncaughtExceptionHandler
   </a>
@@ -928,6 +942,28 @@
 
   <h1>☕ Java</h1>
 
+<h2 id="java_home"><code>JAVA_HOME</code><a class="headerlink" href="#java_home" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></span> macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="s2">&quot;/Library/Java/Home&quot;</span>
+
+<span class="c1"># Override current JDK version</span>
+<span class="k">function</span><span class="w"> </span>jdk<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>sudo<span class="w"> </span>ln<span class="w"> </span>-nsf<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>/usr/libexec/java_home<span class="w"> </span>-v<span class="w"> </span><span class="nv">$1</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">$JAVA_HOME</span>
+<span class="w">  </span>java<span class="w"> </span>-version
+<span class="o">}</span>
+
+<span class="c1"># Configure default JDK</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$JAVA_HOME</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span>
+<span class="k">then</span>
+<span class="w">     </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;JAVA_HOME symlink is missing, let&#39;s configure it&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">     </span>jdk<span class="w"> </span><span class="m">17</span>
+<span class="k">fi</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h2 id="uncaughtexceptionhandler">UncaughtExceptionHandler<a class="headerlink" href="#uncaughtexceptionhandler" title="Permanent link">&para;</a></h2>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
@@ -952,7 +988,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 21, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 23, 2023</span>
       
     
   </small>
