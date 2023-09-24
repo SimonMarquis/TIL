@@ -888,7 +888,7 @@ suspend fun <T> Deferred<T>.await(
 ### Warnings as errors
 
 ```kotlin
-tasks.withType<KotlinCompile> {
+tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions {
         allWarningsAsErrors = true
     }

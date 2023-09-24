@@ -56,6 +56,66 @@ title: 🐘 Gradle
         find . -type d -name 'build' -prune -exec du -hs '{}' \; -exec rm -rf '{}' \;
         ```
 
+### Configuration avoidance
+
+> Avoid the cost of creating and configuring tasks during Gradle’s configuration phase when those tasks will never be executed
+
+- How do I defer task creation?
+
+    !!! danger ""
+        ```kotlin
+        TaskContainer.create(String)
+        ```
+    !!! success ""
+        ```kotlin
+        TaskContainer.register(String)
+        ```
+
+- How do I defer task configuration?
+
+    !!! danger "Eager APIs will immediately create and configure any registered tasks."
+        ```kotlin
+        DomainObjectCollection.all(Action)
+        DomainObjectCollection.withType(Class, Action)
+        // Equivalent to
+        DomainObjectCollection.withType(type).all(Action)
+        ```
+    !!! success ""
+        ```kotlin
+        DomainObjectCollection.withType(Class).configureEach(Action)
+        ```
+
+- How do I reference a task without creating/configuring it?
+
+    !!! danger ""
+        ```kotlin
+        TaskContainer.create(String, …)
+        TaskContainer.getByName(String, …)
+        TaskContainer.getByPath(String)
+        TaskContainer.findByName(String)
+        TaskContainer.findByPath(String)
+        ```
+    !!! success ""
+        ```kotlin
+        TaskContainer.register(String, …)
+        TaskContainer.named(String, …)
+        ```
+
+- How do I order tasks with configuration avoidance in mind?
+
+    !!! warning "**Strong relationships**, which will force the execution of referenced tasks, even if they wouldn’t have been created otherwise."
+        ```kotlin
+        Task.dependsOn(…)
+        Task.finalizedBy(…)
+        ```
+    !!! success "**Soft relationships**, which can only change the order of existing tasks, but can’t trigger their creation."
+        ```kotlin
+        Task.mustRunAfter(…)
+        Task.shouldRunAfter(…)
+        ```
+
+[🔗](https://docs.gradle.org/current/userguide/task_configuration_avoidance.html)
+
 ### Declaring a repository filter
 
 !!! quote
@@ -277,7 +337,7 @@ Gradle can also set project properties when it sees specially-named system prope
 ### Reproducible builds
 
 ```kotlin title="build.gradle.kts"
-tasks.withType<AbstractArchiveTask> {
+tasks.withType<AbstractArchiveTask>().configureEach {
     isPreserveFileTimestamps = false
     isReproducibleFileOrder = true
 }
