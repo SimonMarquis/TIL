@@ -496,6 +496,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-avoidance" class="md-nav__link">
+    Configuration avoidance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#declaring-a-repository-filter" class="md-nav__link">
     Declaring a repository filter
   </a>
@@ -1028,6 +1035,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuration-avoidance" class="md-nav__link">
+    Configuration avoidance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#declaring-a-repository-filter" class="md-nav__link">
     Declaring a repository filter
   </a>
@@ -1251,6 +1265,70 @@
 </div>
 </div>
 </div>
+<h3 id="configuration-avoidance">Configuration avoidance<a class="headerlink" href="#configuration-avoidance" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Avoid the cost of creating and configuring tasks during Gradle’s configuration phase when those tasks will never be executed</p>
+</blockquote>
+<ul>
+<li>
+<p>How do I defer task creation?</p>
+<div class="admonition danger">
+<div class="highlight"><pre><span></span><code><span class="n">TaskContainer</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="admonition success">
+<div class="highlight"><pre><span></span><code><span class="n">TaskContainer</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>How do I defer task configuration?</p>
+<div class="admonition danger">
+<p class="admonition-title">Eager APIs will immediately create and configure any registered tasks.</p>
+<div class="highlight"><pre><span></span><code><span class="n">DomainObjectCollection</span><span class="p">.</span><span class="na">all</span><span class="p">(</span><span class="n">Action</span><span class="p">)</span>
+<span class="n">DomainObjectCollection</span><span class="p">.</span><span class="na">withType</span><span class="p">(</span><span class="n">Class</span><span class="p">,</span><span class="w"> </span><span class="n">Action</span><span class="p">)</span>
+<span class="c1">// Equivalent to</span>
+<span class="n">DomainObjectCollection</span><span class="p">.</span><span class="na">withType</span><span class="p">(</span><span class="n">type</span><span class="p">).</span><span class="na">all</span><span class="p">(</span><span class="n">Action</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="admonition success">
+<div class="highlight"><pre><span></span><code><span class="n">DomainObjectCollection</span><span class="p">.</span><span class="na">withType</span><span class="p">(</span><span class="n">Class</span><span class="p">).</span><span class="na">configureEach</span><span class="p">(</span><span class="n">Action</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>How do I reference a task without creating/configuring it?</p>
+<div class="admonition danger">
+<div class="highlight"><pre><span></span><code><span class="n">TaskContainer</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="p">)</span>
+<span class="n">TaskContainer</span><span class="p">.</span><span class="na">getByName</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="p">)</span>
+<span class="n">TaskContainer</span><span class="p">.</span><span class="na">getByPath</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span>
+<span class="n">TaskContainer</span><span class="p">.</span><span class="na">findByName</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span>
+<span class="n">TaskContainer</span><span class="p">.</span><span class="na">findByPath</span><span class="p">(</span><span class="kt">String</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="admonition success">
+<div class="highlight"><pre><span></span><code><span class="n">TaskContainer</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="p">)</span>
+<span class="n">TaskContainer</span><span class="p">.</span><span class="na">named</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>How do I order tasks with configuration avoidance in mind?</p>
+<div class="admonition warning">
+<p class="admonition-title"><strong>Strong relationships</strong>, which will force the execution of referenced tasks, even if they wouldn’t have been created otherwise.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Task</span><span class="p">.</span><span class="na">dependsOn</span><span class="p">(</span><span class="err">…</span><span class="p">)</span>
+<span class="n">Task</span><span class="p">.</span><span class="na">finalizedBy</span><span class="p">(</span><span class="err">…</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="admonition success">
+<p class="admonition-title"><strong>Soft relationships</strong>, which can only change the order of existing tasks, but can’t trigger their creation.</p>
+<div class="highlight"><pre><span></span><code><span class="n">Task</span><span class="p">.</span><span class="na">mustRunAfter</span><span class="p">(</span><span class="err">…</span><span class="p">)</span>
+<span class="n">Task</span><span class="p">.</span><span class="na">shouldRunAfter</span><span class="p">(</span><span class="err">…</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</li>
+</ul>
+<p><a href="https://docs.gradle.org/current/userguide/task_configuration_avoidance.html">🔗</a></p>
 <h3 id="declaring-a-repository-filter">Declaring a repository filter<a class="headerlink" href="#declaring-a-repository-filter" title="Permanent link">&para;</a></h3>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
@@ -1432,7 +1510,7 @@ Gradle can also set project properties when it sees specially-named system prope
 </ul>
 <p><a href="https://docs.gradle.org/current/userguide/build_environment.html#sec:project_properties">🔗</a></p>
 <h3 id="reproducible-builds">Reproducible builds<a class="headerlink" href="#reproducible-builds" title="Permanent link">&para;</a></h3>
-<div class="highlight"><span class="filename">build.gradle.kts</span><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">withType</span><span class="o">&lt;</span><span class="n">AbstractArchiveTask</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">build.gradle.kts</span><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">withType</span><span class="o">&lt;</span><span class="n">AbstractArchiveTask</span><span class="o">&gt;</span><span class="p">().</span><span class="na">configureEach</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">isPreserveFileTimestamps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">    </span><span class="n">isReproducibleFileOrder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
@@ -1603,7 +1681,7 @@ You can also set system properties in <code>gradle.properties</code> files with 
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 24, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 24, 2023</span>
       
     
   </small>

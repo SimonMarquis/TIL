@@ -2270,7 +2270,7 @@ What must be done instead is to check for <strong>structural</strong> equality (
 <span class="p">):</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">withTimeout</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">await</span><span class="p">()</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">defaultValue</span>
 </code></pre></div>
 <h3 id="warnings-as-errors">Warnings as errors<a class="headerlink" href="#warnings-as-errors" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">withType</span><span class="o">&lt;</span><span class="n">KotlinCompile</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">withType</span><span class="o">&lt;</span><span class="n">KotlinCompile</span><span class="o">&gt;</span><span class="p">().</span><span class="na">configureEach</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">kotlinOptions</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">allWarningsAsErrors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="p">}</span>
@@ -2282,7 +2282,7 @@ What must be done instead is to check for <strong>structural</strong> equality (
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 21, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 24, 2023</span>
       
     
   </small>
