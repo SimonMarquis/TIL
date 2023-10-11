@@ -386,6 +386,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#multiline-comment" class="md-nav__link">
+    Multiline comment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#merge-files-together" class="md-nav__link">
     Merge files together
   </a>
@@ -1036,6 +1043,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#multiline-comment" class="md-nav__link">
+    Multiline comment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#merge-files-together" class="md-nav__link">
     Merge files together
   </a>
@@ -1207,8 +1221,23 @@ $PWD
 <span class="s">EOF</span>
 </code></pre></div>
 <h3 id="inline-comment-on-multiline-commands">Inline comment on multiline commands<a class="headerlink" href="#inline-comment-on-multiline-commands" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>cmd1<span class="w"> </span><span class="sb">`</span><span class="c1"># This is a comment` \</span>
-<span class="w">  </span>cmd2<span class="w"> </span><span class="c1"># This is another comment</span>
+<div class="highlight"><pre><span></span><code>foo<span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># This is a comment` |</span>
+<span class="w">  </span>bar<span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># This is another comment` |</span>
+<span class="w">  </span>baz<span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># This is the last comment`</span>
+</code></pre></div>
+<p>This method uses both the buit-in no-op command <code>:</code> together with the comment character <code>#</code> to support shell with <code>interactive_comments</code> disabled.</p>
+<h3 id="multiline-comment">Multiline comment<a class="headerlink" href="#multiline-comment" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="s">&lt;&lt; &#39;COMMENT&#39;</span>
+<span class="s">  Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+<span class="s">  Fusce in justo faucibus, venenatis libero vitae, rutrum sem.</span>
+<span class="s">  Donec ut aliquam urna. Nulla facilisi.</span>
+<span class="s">COMMENT</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>:<span class="w"> </span><span class="s1">&#39;</span>
+<span class="s1">  Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+<span class="s1">  Fusce in justo faucibus, venenatis libero vitae, rutrum sem.</span>
+<span class="s1">  Donec ut aliquam urna. Nulla facilisi.</span>
+<span class="s1">&#39;</span>
 </code></pre></div>
 <h3 id="merge-files-together">Merge files together<a class="headerlink" href="#merge-files-together" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nb">time</span><span class="w"> </span><span class="o">{</span>
@@ -1267,7 +1296,7 @@ $PWD
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 8, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 11, 2023</span>
       
     
   </small>

@@ -993,21 +993,21 @@
 <h3 id="jvm-utilities">JVM utilities<a class="headerlink" href="#jvm-utilities" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Heap info
-  <div class="highlight"><pre><span></span><code>jps<span class="w"> </span>-l<span class="w"> </span><span class="sb">`</span><span class="c1"># list VMs` |</span>
-<span class="w">  </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span><span class="sb">`</span><span class="c1"># optional filter` |</span>
-<span class="w">  </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>-f1<span class="w"> </span><span class="sb">`</span><span class="c1"># extract pid` |</span>
+  <div class="highlight"><pre><span></span><code>jps<span class="w"> </span>-l<span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># list VMs` |</span>
+<span class="w">  </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># optional filter` |</span>
+<span class="w">  </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>-f1<span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># extract pid` |</span>
 <span class="w">  </span>xargs<span class="w"> </span>-t<span class="w"> </span>-n1<span class="w"> </span>-I<span class="w"> </span>%<span class="w"> </span>jcmd<span class="w"> </span>%<span class="w"> </span>GC.heap_info
 </code></pre></div></li>
 <li>GC
-  <div class="highlight"><pre><span></span><code>jps<span class="w"> </span>-l<span class="w"> </span><span class="sb">`</span><span class="c1"># list VMs` |</span>
-<span class="w">  </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span><span class="sb">`</span><span class="c1"># optional filter` |</span>
-<span class="w">  </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>-f1<span class="w"> </span><span class="sb">`</span><span class="c1"># extract pid` |</span>
+  <div class="highlight"><pre><span></span><code>jps<span class="w"> </span>-l<span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># list VMs` |</span>
+<span class="w">  </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># optional filter` |</span>
+<span class="w">  </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>-f1<span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># extract pid` |</span>
 <span class="w">  </span>xargs<span class="w"> </span>-t<span class="w"> </span>-n1<span class="w"> </span>-I<span class="w"> </span>%<span class="w"> </span>jcmd<span class="w"> </span>%<span class="w"> </span>GC.run
 </code></pre></div></li>
 <li>Kill
-  <div class="highlight"><pre><span></span><code>jps<span class="w"> </span>-l<span class="w"> </span><span class="sb">`</span><span class="c1"># list VMs` |</span>
-<span class="w">  </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span><span class="sb">`</span><span class="c1"># optional filter` |</span>
-<span class="w">  </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>-f1<span class="w"> </span><span class="sb">`</span><span class="c1"># extract pid` |</span>
+  <div class="highlight"><pre><span></span><code>jps<span class="w"> </span>-l<span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># list VMs` |</span>
+<span class="w">  </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># optional filter` |</span>
+<span class="w">  </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>-f1<span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># extract pid` |</span>
 <span class="w">  </span>xargs<span class="w"> </span>-t<span class="w"> </span>-n1<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-9
 </code></pre></div></li>
 </ul>
@@ -1035,7 +1035,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 8, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 11, 2023</span>
       
     
   </small>
