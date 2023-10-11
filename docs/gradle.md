@@ -20,7 +20,7 @@ title: 🐘 Gradle
         done
         ```
 
-    === ":material-apple: Apple"
+    === ":simple-apple: macOS"
 
         ```bash
         for d in ~/.gradle/{.tmp,build-scan-data,caches,daemon,jdks,native,wrapper}; do
@@ -36,7 +36,7 @@ title: 🐘 Gradle
         test -d .gradle && du --human-readable --summarize .gradle && rm --recursive .gradle
         ```
 
-    === ":material-apple: Apple"
+    === ":simple-apple: macOS"
 
         ```bash
         test -d .gradle && du -hs .gradle && rm -rf .gradle
@@ -50,7 +50,7 @@ title: 🐘 Gradle
         find . -type d -name 'build' -prune -exec du --human-readable --summarize '{}' \; -exec rm --recursive '{}' \;
         ```
 
-    === ":material-apple: Apple"
+    === ":simple-apple: macOS"
 
         ```bash
         find . -type d -name 'build' -prune -exec du -hs '{}' \; -exec rm -rf '{}' \;
