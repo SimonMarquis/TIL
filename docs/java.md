@@ -27,23 +27,23 @@ title: ☕ Java
 
 - Heap info
   ```bash
-  jps -l `# list VMs` |
-    grep -E "*" `# optional filter` |
-    cut -d " " -f1 `# extract pid` |
+  jps -l `: # list VMs` |
+    grep -E "*" `: # optional filter` |
+    cut -d " " -f1 `: # extract pid` |
     xargs -t -n1 -I % jcmd % GC.heap_info
   ```
 - GC
   ```bash
-  jps -l `# list VMs` |
-    grep -E "*" `# optional filter` |
-    cut -d " " -f1 `# extract pid` |
+  jps -l `: # list VMs` |
+    grep -E "*" `: # optional filter` |
+    cut -d " " -f1 `: # extract pid` |
     xargs -t -n1 -I % jcmd % GC.run
   ```
 - Kill
   ```bash
-  jps -l `# list VMs` |
-    grep -E "*" `# optional filter` |
-    cut -d " " -f1 `# extract pid` |
+  jps -l `: # list VMs` |
+    grep -E "*" `: # optional filter` |
+    cut -d " " -f1 `: # extract pid` |
     xargs -t -n1 kill -9
   ```
 

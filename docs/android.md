@@ -372,8 +372,8 @@ internal fun LibraryAndroidComponentsExtension.disableUnnecessaryAndroidTests(
 ### Download APK files
 
 ```bash
-adb shell pm list packages 2> /dev/null `# List packages` |
-  cut -d ':' -f2 `# Extract package name` |
+adb shell pm list packages 2> /dev/null `: # List packages` |
+  cut -d ':' -f2 `: # Extract package name` |
   fzf --header '📱 Select one or more packages to download' --border --reverse --multi |
   xargs --no-run-if-empty -I % sh -c '
     mkdir -p "%";
@@ -1353,17 +1353,17 @@ FragmentStrictMode.defaultPolicy = FragmentStrictMode.Policy.Builder()
 ### Uninstall apps by package name
 
 ```bash
-adb shell pm list packages `# List packages` |
-  cut -d ':' -f2 `# Extract package name` |
-  grep ^com. `# Optional pattern` |
+adb shell pm list packages `: # List packages` |
+  cut -d ':' -f2 `: # Extract package name` |
+  grep ^com. `: # Optional pattern` |
   xargs --verbose -n1 adb uninstall
 ```
 
 Or with fzf
 
 ```bash
-adb shell pm list packages `# List packages` |
-  cut -d ':' -f2 `# Extract package name` |
+adb shell pm list packages `: # List packages` |
+  cut -d ':' -f2 `: # Extract package name` |
   fzf --header '📦 Select one or more packages to uninstall' --border --reverse --multi |
   xargs --no-run-if-empty --verbose -n1 adb uninstall
 ```
