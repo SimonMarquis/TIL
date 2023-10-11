@@ -25,16 +25,32 @@ android {
 
 ### ADB with fzf
 
-```bash
-adb devices -l 2> /dev/null `# list devices and ignore daemon messages` |
-  tail -n +2 `# ignore first line` |
-  head -n -1 `# ignore last line` |
-  cut -d " " -f1 `# extract device id` |
-  fzf --header '📱 Select one or more devices' --border --reverse --multi \
-      --preview-window="right:66%" \
-      --preview="adb -s {} shell getprop | grep -E 'ro.build.(description|fingerprint|version.(release|sdk))|ro.product.(cpu.abi|device|locale|manufacturer|model|name)'" |
-  xargs --no-run-if-empty --verbose -I % adb -s % `# run your command of choice`
-```
+=== ":simple-linux: Linux"
+
+    ```bash
+    adb devices -l 2> /dev/null `: # list devices and ignore daemon messages` |
+      tail -n +2 `: # ignore first line` |
+      head -n -1 `: # ignore last line` |
+      cut -d " " -f1 `: # extract device id` |
+      fzf --header '📱 Select one or more devices' --border --reverse --multi \
+          --preview-window="right:66%" \
+          --preview="adb -s {} shell getprop | grep -E 'ro.build.(description|fingerprint|version.(release|sdk))|ro.product.(cpu.abi|device|locale|manufacturer|model|name)'" |
+      xargs --no-run-if-empty --verbose -I % adb -s % `: # run your command of choice`
+    ```
+
+=== ":simple-apple: macOS"
+
+    ```bash
+    adb devices -l 2> /dev/null `: # list devices and ignore daemon messages` |
+      tail -n +2 `: # ignore first line` |
+      ghead -n -1 `: # ignore last line` |
+      cut -d " " -f1 `: # extract device id` |
+      fzf --header '📱 Select one or more devices' --border --reverse --multi \
+          --preview-window="right:66%" \
+          --preview="adb -s {} shell getprop | grep -E 'ro.build.(description|fingerprint|version.(release|sdk))|ro.product.(cpu.abi|device|locale|manufacturer|model|name)'" |
+      xargs -t -I % adb -s % `: # run your command of choice`
+    ```
+
 <div class="result" markdown>
 ```raw
 > <search>                     ┌────────────────────────────────────────────────────────┐
@@ -59,18 +75,35 @@ adb devices -l 2> /dev/null `# list devices and ignore daemon messages` |
 
 !!! tip "This can also be used as an alias, for example `adbz`"
 
-    ```bash title="~/.bashrc"
-    function adbz() {
-      adb devices -l 2> /dev/null `# list devices and ignore daemon messages` |
-        tail -n +2 `# ignore first line` |
-        head -n -1 `# ignore last line` |
-        cut -d " " -f1 `# extract device id` |
-        fzf --header '📱 Select one or more devices' --border --reverse --multi \
-            --preview-window="right:66%" \
-            --preview="adb -s {} shell getprop | grep -E 'ro.build.(description|fingerprint|version.(release|sdk))|ro.product.(cpu.abi|device|locale|manufacturer|model|name)'" |
-        xargs --no-run-if-empty --verbose -I % adb -s % "$@" `# run the command with provided arguments`
-    }
-    ```
+    === ":simple-linux: Linux"
+
+        ```bash title="~/.bashrc"
+        function adbz() {
+          adb devices -l 2> /dev/null `: # list devices and ignore daemon messages` |
+            tail -n +2 `: # ignore first line` |
+            head -n -1 `: # ignore last line` |
+            cut -d " " -f1 `: # extract device id` |
+            fzf --header '📱 Select one or more devices' --border --reverse --multi \
+                --preview-window="right:66%" \
+                --preview="adb -s {} shell getprop | grep -E 'ro.build.(description|fingerprint|version.(release|sdk))|ro.product.(cpu.abi|device|locale|manufacturer|model|name)'" |
+            xargs --no-run-if-empty --verbose -I % adb -s % "$@" `: # run the command with provided arguments`
+        }
+        ```
+
+    === ":simple-apple: macOS"
+
+        ```bash title="~/.zprofile"
+        function adbz() {
+          adb devices -l 2> /dev/null `: # list devices and ignore daemon messages` |
+            tail -n +2 `: # ignore first line` |
+            ghead -n -1 `: # ignore last line` |
+            cut -d " " -f1 `: # extract device id` |
+            fzf --header '📱 Select one or more devices' --border --reverse --multi \
+                --preview-window="right:66%" \
+                --preview="adb -s {} shell getprop | grep -E   'ro.build.(description|fingerprint|version.(release|sdk))|ro.product.(cpu.abi|device|locale|manufacturer|model|name)'" |
+            xargs -t -I % adb -s % adb -s % "$@" `: # run your command of choice`
+        }
+        ```
 
     Then simply execute your regular `adb` command with `#!bash adbz install app.apk`
 
