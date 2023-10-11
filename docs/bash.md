@@ -115,9 +115,12 @@ EOF
 ### Inline comment on multiline commands
 
 ```bash
-cmd1 `# This is a comment` \
-  cmd2 # This is another comment
+foo `: # This is a comment` |
+  bar `: # This is another comment` |
+  baz `: # This is the last comment`
 ```
+
+This method uses both the buit-in no-op command `:` together with the comment character `#` to support shell with `interactive_comments` disabled.
 
 ### Merge files together
 
