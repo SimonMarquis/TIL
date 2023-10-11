@@ -122,6 +122,24 @@ foo `: # This is a comment` |
 
 This method uses both the buit-in no-op command `:` together with the comment character `#` to support shell with `interactive_comments` disabled.
 
+### Multiline comment
+
+```bash
+<< 'COMMENT'
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  Fusce in justo faucibus, venenatis libero vitae, rutrum sem.
+  Donec ut aliquam urna. Nulla facilisi.
+COMMENT
+```
+
+```bash
+: '
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  Fusce in justo faucibus, venenatis libero vitae, rutrum sem.
+  Donec ut aliquam urna. Nulla facilisi.
+'
+```
+
 ### Merge files together
 
 ```bash
