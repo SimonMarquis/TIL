@@ -616,6 +616,23 @@ gradlew pixelsGroupDebugAndroidTest
 
 [🔗](https://android-developers.googleblog.com/2021/10/whats-new-in-scalable-automated-testing.html) [🔗](https://developer.android.com/studio/preview/features?hl=fr#gmd)
 
+### Hilt navigation args
+
+```kotlin
+@Module
+@InstallIn(ViewModelComponent::class)
+object UserScreenNavigationArgsModule {
+    @Provides
+    @ViewModelScoped
+    fun providesUserInfo(ssh: SavedStateHandle) = UserInfo(id = ssh["userId"])
+}
+
+@HiltViewModel
+class UserViewModel(
+    private val userInfo: UserInfo
+) : ViewModel()
+```
+
 ### Kotlin Coroutines debug probes
 
 !!! quote
