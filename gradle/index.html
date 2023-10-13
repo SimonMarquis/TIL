@@ -581,6 +581,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#run-up-to-date-tests" class="md-nav__link">
+    Run UP-TO-DATE tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#system-properties" class="md-nav__link">
     System properties
   </a>
@@ -1120,6 +1127,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#run-up-to-date-tests" class="md-nav__link">
+    Run UP-TO-DATE tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#system-properties" class="md-nav__link">
     System properties
   </a>
@@ -1516,6 +1530,18 @@ Gradle can also set project properties when it sees specially-named system prope
 <span class="p">}</span>
 </code></pre></div>
 <p><a href="https://docs.gradle.org/current/userguide/working_with_files.html#sec:reproducible_archives">🔗</a></p>
+<h3 id="run-up-to-date-tests">Run <code>UP-TO-DATE</code> tests<a class="headerlink" href="#run-up-to-date-tests" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title"><code>--rerun-tasks</code> will not work!</p>
+</div>
+<ul>
+<li><div class="highlight"><pre><span></span><code>./gradlew cleanTest test
+</code></pre></div></li>
+<li><div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">withType</span><span class="o">&lt;</span><span class="n">Test</span><span class="o">&gt;</span><span class="p">().</span><span class="na">configureEach</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">outputs</span><span class="p">.</span><span class="na">upToDateWhen</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
 <h3 id="system-properties">System properties<a class="headerlink" href="#system-properties" title="Permanent link">&para;</a></h3>
 <p>Using the <code>-D</code> command-line option, you can pass a system property to the JVM which runs Gradle.<br />
 You can also set system properties in <code>gradle.properties</code> files with the prefix <code>systemProp.</code>.</p>
@@ -1681,7 +1707,7 @@ You can also set system properties in <code>gradle.properties</code> files with 
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 11, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 13, 2023</span>
       
     
   </small>
