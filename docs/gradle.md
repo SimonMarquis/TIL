@@ -345,6 +345,21 @@ tasks.withType<AbstractArchiveTask>().configureEach {
 
 [🔗](https://docs.gradle.org/current/userguide/working_with_files.html#sec:reproducible_archives)
 
+### Run `UP-TO-DATE` tests
+
+!!! warning "`--rerun-tasks` will not work!"
+
+- 
+  ```
+  ./gradlew cleanTest test
+  ```
+- 
+  ```kotlin
+  tasks.withType<Test>().configureEach {
+      outputs.upToDateWhen { false }
+  }
+  ```
+
 ### System properties
 
 Using the `-D` command-line option, you can pass a system property to the JVM which runs Gradle.  
