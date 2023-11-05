@@ -465,6 +465,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#hilt-navigation-args" class="md-nav__link">
+    Hilt navigation args
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kotlin-coroutines-debug-probes" class="md-nav__link">
     Kotlin Coroutines debug probes
   </a>
@@ -1407,6 +1414,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#hilt-navigation-args" class="md-nav__link">
+    Hilt navigation args
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kotlin-coroutines-debug-probes" class="md-nav__link">
     Kotlin Coroutines debug probes
   </a>
@@ -2207,6 +2221,20 @@ gradlew<span class="w"> </span>pixel2DebugAndroidTest
 gradlew<span class="w"> </span>pixelsGroupDebugAndroidTest
 </code></pre></div>
 <p><a href="https://android-developers.googleblog.com/2021/10/whats-new-in-scalable-automated-testing.html">🔗</a> <a href="https://developer.android.com/studio/preview/features?hl=fr#gmd">🔗</a></p>
+<h3 id="hilt-navigation-args">Hilt navigation args<a class="headerlink" href="#hilt-navigation-args" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nd">@Module</span>
+<span class="nd">@InstallIn</span><span class="p">(</span><span class="n">ViewModelComponent</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="kd">object</span><span class="w"> </span><span class="nc">UserScreenNavigationArgsModule</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Provides</span>
+<span class="w">    </span><span class="nd">@ViewModelScoped</span>
+<span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">providesUserInfo</span><span class="p">(</span><span class="n">ssh</span><span class="p">:</span><span class="w"> </span><span class="n">SavedStateHandle</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UserInfo</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ssh</span><span class="o">[</span><span class="s">&quot;userId&quot;</span><span class="o">]</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nd">@HiltViewModel</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">UserViewModel</span><span class="p">(</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="nv">userInfo</span><span class="p">:</span><span class="w"> </span><span class="n">UserInfo</span>
+<span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="kotlin-coroutines-debug-probes">Kotlin Coroutines debug probes<a class="headerlink" href="#kotlin-coroutines-debug-probes" title="Permanent link">&para;</a></h3>
 <div class="admonition quote">
 <p class="admonition-title">Quote</p>
@@ -2919,7 +2947,7 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 11, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 13, 2023</span>
       
     
   </small>
