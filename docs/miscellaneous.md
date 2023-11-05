@@ -531,6 +531,16 @@ indent_style = space
 
 Or simply type `@email draft`.
 
+### Links
+
+- [No hello](https://nohello.net/)
+  > Imagine calling someone on the phone, going hello! then putting them on hold... 🤦‍♀️
+- [The XY Problem](https://xyproblem.info/)
+  > The XY problem is asking about your attempted solution rather than your actual problem. This leads to enormous amounts of wasted time and energy, both on the part of people asking for help, and on the part of those providing help.
+- [Don't ask to ask, just ask](https://dontasktoask.com/)
+- [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask)
+- [How to create a Minimal, Reproducible Example](https://stackoverflow.com/help/mcve)
+
 ### Tiniest data URLs images
 
 [`data:[<mediatype>][;base64],<data>`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs)
