@@ -49,6 +49,17 @@ plugins:
 
 [🔗](https://www.mkdocs.org/user-guide/configuration/#environment-variables)
 
+### Open link in new tab
+
+```md
+[Open :material-launch:](https://example.org){: target=_blank rel=noopener }
+```
+<div class="result" markdown>
+
+[Open :material-launch:](https://example.org){: target=_blank rel=noopener }
+
+</div>
+
 ### Result box
 
 ```bash title="Say hello!"
