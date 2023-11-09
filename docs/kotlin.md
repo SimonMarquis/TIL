@@ -557,6 +557,40 @@ fun SealedClass.check() = when(this) {
 
 This is also the case when creating mock objects (with MockK or Mockito).
 
+### Phantom types to represent IDs
+
+```kotlin hl_lines="11"
+@JvmInline value class Id<@Suppress("unused") out T>(val value: String)
+
+data class User(val id: Id<User>)
+data class Address(val id: Id<Address>)
+
+val alice = User(id = Id("alice"))
+val bob = User(id = Id("bob"))
+val home = Address(id = Id("home"))
+
+assert(alice.id == bob.id)
+assert(alice.id == home.id) // Operator '==' cannot be applied to 'Id<User>' and 'Id<Address>'
+```
+
+Or even better with generic value types:
+
+```kotlin hl_lines="1 11"
+@JvmInline value class Id<@Suppress("unused") out T, out Value>(val value: Value)
+
+data class User(val id: Id<User, Long>)
+data class Address(val id: Id<Address, String>)
+
+val alice = User(id = Id(0))
+val bob = User(id = Id(1))
+val home = Address(id = Id(0))
+
+assert(alice.id == bob.id)
+assert(alice.id == home.id) // Operator '==' cannot be applied to 'Id<User, Long>' and 'Id<Address, Long>'
+```
+
+[🔗](https://emartynov.medium.com/kotlin-ddd-phantom-type-ae5ab1da0a35)
+
 ### Property delegate to cancel previous Job
 
 ```kotlin
