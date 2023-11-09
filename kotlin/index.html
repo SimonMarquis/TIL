@@ -811,6 +811,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#phantom-types-to-represent-ids" class="md-nav__link">
+    Phantom types to represent IDs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#property-delegate-to-cancel-previous-job" class="md-nav__link">
     Property delegate to cancel previous Job
   </a>
@@ -1398,6 +1405,13 @@
         <li class="md-nav__item">
   <a href="#nowhenbranchmatchedexception" class="md-nav__link">
     NoWhenBranchMatchedException
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phantom-types-to-represent-ids" class="md-nav__link">
+    Phantom types to represent IDs
   </a>
   
 </li>
@@ -1995,6 +2009,33 @@ What must be done instead is to check for <strong>structural</strong> equality (
 <span class="p">}</span>
 </code></pre></div>
 <p>This is also the case when creating mock objects (with MockK or Mockito).</p>
+<h3 id="phantom-types-to-represent-ids">Phantom types to represent IDs<a class="headerlink" href="#phantom-types-to-represent-ids" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nd">@JvmInline</span><span class="w"> </span><span class="kd">value</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Id</span><span class="o">&lt;</span><span class="nd">@Suppress</span><span class="p">(</span><span class="s">&quot;unused&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span>
+
+<span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">User</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="p">:</span><span class="w"> </span><span class="n">Id</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Address</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="p">:</span><span class="w"> </span><span class="n">Id</span><span class="o">&lt;</span><span class="n">Address</span><span class="o">&gt;</span><span class="p">)</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">alice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">User</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Id</span><span class="p">(</span><span class="s">&quot;alice&quot;</span><span class="p">))</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">bob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">User</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Id</span><span class="p">(</span><span class="s">&quot;bob&quot;</span><span class="p">))</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">home</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Address</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Id</span><span class="p">(</span><span class="s">&quot;home&quot;</span><span class="p">))</span>
+
+<span class="n">assert</span><span class="p">(</span><span class="n">alice</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">bob</span><span class="p">.</span><span class="na">id</span><span class="p">)</span>
+<span class="hll"><span class="n">assert</span><span class="p">(</span><span class="n">alice</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">home</span><span class="p">.</span><span class="na">id</span><span class="p">)</span><span class="w"> </span><span class="c1">// Operator &#39;==&#39; cannot be applied to &#39;Id&lt;User&gt;&#39; and &#39;Id&lt;Address&gt;&#39;</span>
+</span></code></pre></div>
+<p>Or even better with generic value types:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nd">@JvmInline</span><span class="w"> </span><span class="kd">value</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Id</span><span class="o">&lt;</span><span class="nd">@Suppress</span><span class="p">(</span><span class="s">&quot;unused&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="n">Value</span><span class="o">&gt;</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="n">Value</span><span class="p">)</span>
+</span>
+<span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">User</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="p">:</span><span class="w"> </span><span class="n">Id</span><span class="o">&lt;</span><span class="n">User</span><span class="p">,</span><span class="w"> </span><span class="kt">Long</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="kd">data</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Address</span><span class="p">(</span><span class="kd">val</span><span class="w"> </span><span class="nv">id</span><span class="p">:</span><span class="w"> </span><span class="n">Id</span><span class="o">&lt;</span><span class="n">Address</span><span class="p">,</span><span class="w"> </span><span class="kt">String</span><span class="o">&gt;</span><span class="p">)</span>
+
+<span class="kd">val</span><span class="w"> </span><span class="nv">alice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">User</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Id</span><span class="p">(</span><span class="m">0</span><span class="p">))</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">bob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">User</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Id</span><span class="p">(</span><span class="m">1</span><span class="p">))</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">home</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Address</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Id</span><span class="p">(</span><span class="m">0</span><span class="p">))</span>
+
+<span class="n">assert</span><span class="p">(</span><span class="n">alice</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">bob</span><span class="p">.</span><span class="na">id</span><span class="p">)</span>
+<span class="hll"><span class="n">assert</span><span class="p">(</span><span class="n">alice</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">home</span><span class="p">.</span><span class="na">id</span><span class="p">)</span><span class="w"> </span><span class="c1">// Operator &#39;==&#39; cannot be applied to &#39;Id&lt;User, Long&gt;&#39; and &#39;Id&lt;Address, Long&gt;&#39;</span>
+</span></code></pre></div>
+<p><a href="https://emartynov.medium.com/kotlin-ddd-phantom-type-ae5ab1da0a35">🔗</a></p>
 <h3 id="property-delegate-to-cancel-previous-job">Property delegate to cancel previous Job<a class="headerlink" href="#property-delegate-to-cancel-previous-job" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.coroutines.Job</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">kotlin.properties.ReadWriteProperty</span>
@@ -2282,7 +2323,7 @@ What must be done instead is to check for <strong>structural</strong> equality (
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 24, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2023</span>
       
     
   </small>
