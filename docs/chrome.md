@@ -20,6 +20,7 @@ title: 🌍 Chrome
 - `chrome://safe-browsing/match?type=malware`
 - `chrome://safe-browsing/match?type=phishing`
 - `chrome://safe-browsing/match?type=unwanted`
+- `chrome://site-engagement`
 - `chrome://flags`
 - `chrome://history`
 - `chrome://extensions`
