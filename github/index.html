@@ -526,6 +526,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#expand-all-diffs" class="md-nav__link">
+    Expand all diffs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fork-detection-on-pr" class="md-nav__link">
     Fork detection on PR
   </a>
@@ -1127,6 +1134,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#expand-all-diffs" class="md-nav__link">
+    Expand all diffs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fork-detection-on-pr" class="md-nav__link">
     Fork detection on PR
   </a>
@@ -1385,6 +1399,13 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">👍</span>
 <span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ success() || failure() }}</span>
 <span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<h3 id="expand-all-diffs">Expand all diffs<a class="headerlink" href="#expand-all-diffs" title="Permanent link">&para;</a></h3>
+<p>By default, GitHub will limit the number of expanded diffs in a PR.<br />
+Run this script to force open all diffs (<a href='javascript:{[].forEach.call(document.querySelectorAll("button.load-diff-button"),function(n){n.click()});}'>bookmarklet <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 3H7a2 2 0 0 0-2 2v16l7-3 7 3V5a2 2 0 0 0-2-2Z"/></svg></span></a>):</p>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;button.load-diff-button&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">node</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">node</span><span class="p">.</span><span class="nx">click</span><span class="p">());</span>
 </code></pre></div>
 <h3 id="fork-detection-on-pr">Fork detection on PR<a class="headerlink" href="#fork-detection-on-pr" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pull_request</span>
@@ -1681,7 +1702,7 @@ registries:
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 10, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 11, 2023</span>
       
     
   </small>
