@@ -127,6 +127,17 @@ steps:
     run: ...
 ```
 
+### Expand all diffs
+
+By default, GitHub will limit the number of expanded diffs in a PR.  
+Run this script to force open all diffs (<a href='javascript:{[].forEach.call(document.querySelectorAll("button.load-diff-button"),function(n){n.click()});}'>bookmarklet :material-bookmark:</a>):
+
+```javascript
+document
+  .querySelectorAll("button.load-diff-button")
+  .forEach((node) => node.click());
+```
+
 ### Fork detection on PR
 
 ```yaml
