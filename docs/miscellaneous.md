@@ -540,6 +540,7 @@ Or simply type `@email draft`.
 - [Don't ask to ask, just ask](https://dontasktoask.com/)
 - [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask)
 - [How to create a Minimal, Reproducible Example](https://stackoverflow.com/help/mcve)
+- [noyaml.com](https://noyaml.com/)
 
 ### Tiniest data URLs images
 
