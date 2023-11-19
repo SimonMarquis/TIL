@@ -40,6 +40,8 @@ title: 🔓 Open Source projects
   > Life is too short to google for dependencies and versions
 - [jraska/modules-graph-assert](https://github.com/jraska/modules-graph-assert)
   > Gradle plugin to keep your modules graph healthy and lean.
+- [Malinskiy/adam](https://github.com/Malinskiy/adam)
+  > Adam (or adm) is a coroutine-friendly Android Debug Bridge client written in Kotlin.
 - [martinbonnin/Xoxo](https://github.com/martinbonnin/Xoxo)
   > A wrapper around org.w3c.dom with nicer Kotlin APIs
 - [microsoft/winget-cli](https://github.com/microsoft/winget-cli)
