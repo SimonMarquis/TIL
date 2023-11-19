@@ -89,6 +89,69 @@ title: 🖥️ Bash
 dir=${0%/*}
 ```
 
+### Parameter expansions
+
+{{{% raw %}}}
+
+- Substitutions:
+  ```bash
+  # Remove suffix
+  ${foo%suffix}
+  # Remove prefix
+  ${foo#prefix}
+  # Remove long suffix
+  ${foo%%suffix}
+  # Remove long suffix
+  ${foo/%suffix}
+  # Remove long prefix
+  ${foo##prefix}
+  # Remove long prefix
+  ${foo/#prefix}
+  # Replace first match
+  ${foo/old/new}
+  # Replace all instances
+  ${foo//old/new}
+  # Replace suffix
+  ${foo/%old/new}
+  # Replace prefix
+  ${foo/#old/new}
+  ```
+
+- Substrings:
+  ```bash
+  ${foo:offset:length}
+  # offset from right
+  ${foo:(-offset):length}
+  ```
+
+- Default values:
+  ```bash
+  # $foo, or val if unset (or null)
+  ${foo:-val}
+  # set $foo to val if unset (or null)
+  ${foo:=val}
+  # val if $foo is set (and not null)
+  ${foo:+val}
+  # print error and exit if $foo is unset (or null)
+  ${foo:?error} 
+  ```
+
+- Misc:
+  ```bash
+  # length of string or array
+  ${#foo}
+  # lowercase 1st char
+  ${foo,}
+  # lowercase all chars
+  ${foo,,}
+  # uppercase 1st char
+  ${foo^}
+  # uppercase 1st char
+  ${foo^^}
+  ```
+
+{{{% endraw %}}}
+
 ### Check if command exists
 
 ```bash
