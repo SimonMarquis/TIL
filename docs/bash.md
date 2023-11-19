@@ -226,3 +226,15 @@ cat << EOF > out.txt
 $var
 EOF
 ```
+
+### Special parameters
+
+- `#!bash $0` Name of the script
+- `#!bash $#` Number of arguments
+- `#!bash $*` Arguments joined as a String
+- `#!bash $@` Arguments as an array
+- `#!bash $?` Exit status of last command
+- `#!bash $!` PID of last background command
+- `#!bash $$` PID of current shell
+- `#!bash $-` Set of option flags in current shell
+- `#!bash $_` Last argument of the last command
