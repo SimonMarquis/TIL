@@ -2,6 +2,87 @@
 title: 🖥️ Bash
 ---
 
+### Arrays
+
+{{{% raw %}}}
+
+- Definitions:
+  ```bash
+  Persons=('Alice' 'Bob' 'Charlie')
+  Persons[0]="Alice"
+  Persons[1]="Bob"
+  Persons[2]="Charlie"
+  ```
+
+- Getters:
+  ```bash
+  echo "${Persons[0]}"     # Element #0
+  echo "${Persons[-1]}"    # Last element
+  echo "${Persons[@]}"     # All elements, space-separated
+  echo "${#Persons[@]}"    # Number of elements
+  echo "${#Persons}"       # String length of the 1st element
+  echo "${#Persons[3]}"    # String length of the Nth element
+  echo "${Persons[@]:3:2}" # Range (from position 3, length 2)
+  echo "${!Persons[@]}"    # Keys of all elements, space-separated
+  ```
+
+- Setters:
+  ```bash
+  Persons=("${Persons[@]}" "Dave")         # Push
+  Persons+=('Dave')                        # Also Push
+  Persons=( "${Persons[@]/Al*/}" )         # Remove by regex match
+  unset Persons[2]                         # Remove one item
+  Persons=("${Persons[@]}")                # Duplicate
+  Persons=("${Persons[@]}" "${Others[@]}") # Concatenate
+  Persons=(`cat "persons.txt"`)            # Read from file
+  ```
+
+- Iterations:
+  ```bash
+  for p in "${Persons[@]}"; do
+    echo "$p"
+  done
+  ```
+
+{{{% endraw %}}}
+
+### Dictionaries
+
+{{{% raw %}}}
+
+- Definitions:
+  ```bash
+  declare -A sounds
+  sounds[dog]="bark"
+  sounds[cow]="moo"
+  sounds[bird]="tweet"
+  sounds[wolf]="howl"
+  ```
+
+- Getters/Setters:
+  ```bash
+  echo "${sounds[dog]}" # Dog's sound
+  echo "${sounds[@]}"   # All values
+  echo "${!sounds[@]}"  # All keys
+  echo "${#sounds[@]}"  # Number of elements
+  unset sounds[dog]     # Delete dog
+  ```
+
+- Iterations:
+  ```bash title="keys"
+  for key in "${!dictionary[@]}"; do
+    echo "$key"
+  done
+  ```
+
+  ```bash title="values"
+  for value in "${dictionary[@]}"; do
+    echo "$value"
+  done
+  ```
+
+{{{% endraw %}}}
+
 ### Check if command exists
 
 ```bash
