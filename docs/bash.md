@@ -83,6 +83,12 @@ title: 🖥️ Bash
 
 {{{% endraw %}}}
 
+### Directory of script
+
+```bash
+dir=${0%/*}
+```
+
 ### Check if command exists
 
 ```bash
