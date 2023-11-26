@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.10">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.12">
     
     
       
@@ -574,6 +574,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#conditional-arrayobject-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional array/object content
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#map-object-entries" class="md-nav__link">
     <span class="md-ellipsis">
       Map object entries
@@ -927,6 +936,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#conditional-arrayobject-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional array/object content
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#map-object-entries" class="md-nav__link">
     <span class="md-ellipsis">
       Map object entries
@@ -996,6 +1014,27 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><a href="https://www.json.org/json-en.html">🔗</a></p>
+<h3 id="conditional-arrayobject-content">Conditional array/object content<a class="headerlink" href="#conditional-arrayobject-content" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">...(</span><span class="nx">truty</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;baz&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">[]),</span>
+<span class="w">    </span><span class="p">...(</span><span class="nx">falsy</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;qux&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">[]),</span>
+<span class="p">];</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">]</span>
+</code></pre></div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">bar</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">...(</span><span class="nx">truthy</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">baz</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;baz&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">    </span><span class="p">...(</span><span class="nx">falsy</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">qux</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;qux&#39;</span><span class="w"> </span><span class="p">}),</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;baz&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">}</span>
+</code></pre></div>
+</div>
 <h3 id="map-object-entries">Map object entries<a class="headerlink" href="#map-object-entries" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">mapObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span><span class="w"> </span><span class="nx">fn</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">map</span><span class="p">(([</span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="p">])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="nx">fn</span><span class="p">(</span><span class="nx">v</span><span class="p">)]));</span>
 </code></pre></div>
@@ -1031,7 +1070,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 30, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 26, 2023</span>
       
     
   </small>
