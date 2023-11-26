@@ -15,6 +15,38 @@ title: 🪢 JavaScript
 
 [🔗](https://www.json.org/json-en.html)
 
+### Conditional array/object content
+
+```javascript
+const foo = [
+    "bar",
+    ...(truty ? ["baz"] : []),
+    ...(falsy ? ["qux"] : []),
+];
+```
+<div class="result" markdown>
+
+  ```json
+  ["bar", "baz"]
+  ```
+
+</div>
+
+```javascript
+const foo = {
+    bar: "bar",
+    ...(truthy && { baz: 'baz' }),
+    ...(falsy && { qux: 'qux' }),
+};
+```
+<div class="result" markdown>
+
+  ```json
+  {"bar": "bar", "baz": "baz"}
+  ```
+
+</div>
+
 ### Map object entries
 
 ```javascript
