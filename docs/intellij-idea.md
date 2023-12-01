@@ -39,6 +39,19 @@ title: 📦 IntelliJ IDEA
 
 [🔗](https://kotlinlang.org/docs/ksp-quickstart.html#make-ide-aware-of-generated-code)
 
+### Linkify file path
+
+```kotlin
+import java.nio.file.Path
+
+println(path.toUri())
+```
+<div class="result" markdown>
+```
+file:///C:/Foo/bar.txt
+```
+</div>
+
 ### Plugins
 
 - [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
