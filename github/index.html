@@ -489,6 +489,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#checkout-current-pr-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checkout current PR branch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#clone-github-gists" class="md-nav__link">
     <span class="md-ellipsis">
       Clone GitHub gists
@@ -1191,6 +1200,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#checkout-current-pr-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checkout current PR branch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#clone-github-gists" class="md-nav__link">
     <span class="md-ellipsis">
       Clone GitHub gists
@@ -1488,6 +1506,12 @@
 <div class="highlight"><pre><span></span><code><span class="nt">concurrency</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.head_ref }}</span>
 <span class="w">  </span><span class="nt">cancel-in-progress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<h3 id="checkout-current-pr-branch">Checkout current PR branch<a class="headerlink" href="#checkout-current-pr-branch" title="Permanent link">&para;</a></h3>
+<p>By default, <code>actions/checkout</code> will checkout PRs in 'detached HEAD' state using <code class="highlight">git<span class="w"> </span>checkout<span class="w"> </span>--progress<span class="w"> </span>--force<span class="w"> </span>refs/remotes/pull/#/merge</code>.</p>
+<div class="highlight"><pre><span></span><code>- uses: actions/checkout@v4
+  with:
+    ref: ${{ github.head_ref }}
 </code></pre></div>
 <h3 id="clone-github-gists">Clone GitHub gists<a class="headerlink" href="#clone-github-gists" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://gist.github.com/YOUR_REPOSITORY.git
