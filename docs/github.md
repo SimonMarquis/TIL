@@ -10,6 +10,16 @@ concurrency:
   cancel-in-progress: true
 ```
 
+### Checkout current PR branch
+
+By default, `actions/checkout` will checkout PRs in 'detached HEAD' state using `#!bash git checkout --progress --force refs/remotes/pull/#/merge`.
+
+```
+- uses: actions/checkout@v4
+  with:
+    ref: ${{ github.head_ref }}
+```
+
 ### Clone GitHub gists
 
 ```bash
