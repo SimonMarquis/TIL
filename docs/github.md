@@ -103,6 +103,12 @@ jobs:
 
 [🔗](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#enable-auto-merge-on-a-pull-request)
 
+### Dependabot skip
+
+To allow dependabot to rebase or force push over extra commits, add `[dependabot skip]` , `[skip dependabot]`, `[dependabot-skip]`, or `[skip-dependabot]` to the commit message.
+
+[🔗](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/managing-pull-requests-for-dependency-updates#allowing-dependabot-to-rebase-and-force-push-over-extra-commits)
+
 ### Embedded Gists
 
 ```html
