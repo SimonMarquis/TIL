@@ -400,6 +400,13 @@ runBlocking {
 }
 ```
 
+### Kotlin script compilation cache
+
+The compilation cache of Kotlin scripts `.main.kts` are stored using either:
+
+- `KOTLIN_MAIN_KTS_COMPILED_SCRIPTS_CACHE_DIR` environment variable
+- `kotlin.main.kts.compiled.scripts.cache.dir` system property
+
 ### Language injection
 
 ```kotlin
