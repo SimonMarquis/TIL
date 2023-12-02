@@ -633,6 +633,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kotlin-scripts-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kotlin scripts caching
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#list-changed-files" class="md-nav__link">
     <span class="md-ellipsis">
       List changed files
@@ -1344,6 +1353,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kotlin-scripts-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kotlin scripts caching
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#list-changed-files" class="md-nav__link">
     <span class="md-ellipsis">
       List changed files
@@ -1704,6 +1722,28 @@ registries:
 <span class="k">-</span><span class="w"> </span>c
 </code></pre></div>
 </div>
+<h3 id="kotlin-scripts-caching">Kotlin scripts caching<a class="headerlink" href="#kotlin-scripts-caching" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">KOTLIN_MAIN_KTS_COMPILED_SCRIPTS_CACHE_DIR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.workspace }}/.main.kts</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kotlin script</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cache Kotlin scripts</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/cache@v3</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.KOTLIN_MAIN_KTS_COMPILED_SCRIPTS_CACHE_DIR }}</span>
+<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kts-${{ runner.os }}-${{ hashFiles(&#39;**/*.main.kts&#39;) }}</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ensure the Kotlin scripts cache directory exists</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdir -p &quot;$KOTLIN_MAIN_KTS_COMPILED_SCRIPTS_CACHE_DIR&quot;</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./foo.main.kts</span>
+</code></pre></div>
 <h3 id="list-changed-files">List changed files<a class="headerlink" href="#list-changed-files" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get changed files</span>
 <span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh pr view ${{ github.event.number }} --json files -q &#39;.files[].path&#39;</span>
@@ -1933,7 +1973,7 @@ registries:
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 1, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 2, 2023</span>
       
     
   </small>
