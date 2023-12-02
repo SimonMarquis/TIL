@@ -268,6 +268,31 @@ jobs:
 
 </div>
 
+### Kotlin scripts caching
+
+```yaml
+env:
+  KOTLIN_MAIN_KTS_COMPILED_SCRIPTS_CACHE_DIR: ${{ github.workspace }}/.main.kts
+
+jobs:
+  run:
+    name: Kotlin script
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Cache Kotlin scripts
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.KOTLIN_MAIN_KTS_COMPILED_SCRIPTS_CACHE_DIR }}
+          key: kts-${{ runner.os }}-${{ hashFiles('**/*.main.kts') }}
+
+      - name: Ensure the Kotlin scripts cache directory exists
+        run: mkdir -p "$KOTLIN_MAIN_KTS_COMPILED_SCRIPTS_CACHE_DIR"
+
+      - run: ./foo.main.kts
+```
+
 ### List changed files
 
 ```yaml
