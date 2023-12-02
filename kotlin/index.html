@@ -821,6 +821,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kotlin-script-compilation-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kotlin script compilation cache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#language-injection" class="md-nav__link">
     <span class="md-ellipsis">
       Language injection
@@ -1521,6 +1530,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#kotlin-script-compilation-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kotlin script compilation cache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#language-injection" class="md-nav__link">
     <span class="md-ellipsis">
       Language injection
@@ -2087,6 +2105,12 @@
 <span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
+<h3 id="kotlin-script-compilation-cache">Kotlin script compilation cache<a class="headerlink" href="#kotlin-script-compilation-cache" title="Permanent link">&para;</a></h3>
+<p>The compilation cache of Kotlin scripts <code>.main.kts</code> are stored using either:</p>
+<ul>
+<li><code>KOTLIN_MAIN_KTS_COMPILED_SCRIPTS_CACHE_DIR</code> environment variable</li>
+<li><code>kotlin.main.kts.compiled.scripts.cache.dir</code> system property</li>
+</ul>
 <h3 id="language-injection">Language injection<a class="headerlink" href="#language-injection" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nd">@org.intellij.lang.annotations.Language</span><span class="p">(</span><span class="s">&quot;JSON&quot;</span><span class="p">)</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;{&quot;key&quot;: &quot;value&quot;}&quot;&quot;&quot;</span>
@@ -2529,7 +2553,7 @@ What must be done instead is to check for <strong>structural</strong> equality (
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 9, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 2, 2023</span>
       
     
   </small>
