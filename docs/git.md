@@ -495,6 +495,49 @@ git config --global url."https://github".insteadOf "git://github"
 
 [🔗](https://git-scm.com/docs/git-config#Documentation/git-config.txt-urlltbasegtinsteadOf)
 
+### Pathspec magic signatures
+
+- `:(top)` (magic signature: `/`) makes the pattern match from the root of the working tree, even when you are running the command from inside a subdirectory.
+    ```bash
+    git ls-files ':(top)*.kt'
+    git ls-files ':/*.kt' # magic
+    ```
+
+- `:(literal)` Wildcards in the pattern such as `*` or `?` are treated as literal characters.
+    ```bash
+    git log ':(literal)*.kt' # log for the file '*.kt'
+    ```
+
+- `:(icase)` Case insensitive match.
+    ```bash
+    git ls-files ':(icase)*.kt'
+    ```
+
+- `:(glob)` Git treats the pattern as a shell glob suitable for consumption by `fnmatch(3)`.
+    ```bash
+    git ls-files ':(glob)src/main/*/*.kt' # 'top level' .kt files
+    git ls-files ':(glob)src/**/*.kt'     # 'all' .kt files
+    ```
+
+- `:(attr)` After `attr` comes a space separated list of "attribute requirements" (defined in `.gitattributes`), all of which must be met in order for the path to be considered a match:
+    - `ATTR` requires that the attribute `ATTR` be set.
+    - `-ATTR` requires that the attribute `ATTR` be unset.
+    - `ATTR=VALUE` requires that the attribute `ATTR` be set to the string `VALUE`.
+    - `!ATTR` requires that the attribute `ATTR` be unspecified.
+
+    ```bash
+    git ls-files ':(attr:!draft)*.kt' # searches for non-draft .kt files
+    git ls-files ':(attr:draft)*.kt'  # searches for draft .kt files
+    ```
+
+- `:(exclude)` After a path matches any non-exclude pathspec, it will be run through all exclude pathspecs (magic signature: `!` or its synonym `^`). If it matches, the path is ignored. When there is no non-exclude pathspec, the exclusion is applied to the result set as if invoked without any pathspec.
+    ```bash
+    git ls-files '*.kts' ':(exclude)*.main.kts' # search .kts files excluding .main.kts
+    git ls-files '*.kts' ':!*.main.kts' .       # magic
+    ```
+
+[🔗](https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec)
+
 ### Print changes between two refs
 
 ```bash
