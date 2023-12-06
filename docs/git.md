@@ -401,6 +401,12 @@ git config --global commit.template ~/.gitmessage
     algorithm = patience
 ```
 
+### Enable diffing of untracked files
+
+```bash
+git add --intent-to-add [--] [<pathspec>…]
+```
+
 ### Executable file permission on Windows
 
 ```bash
