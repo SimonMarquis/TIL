@@ -223,7 +223,7 @@ projects - Displays the sub-projects of root project.
 properties - Displays the properties of root project.
 ```
 
-## Kotlin extensions
+### Kotlin extensions
 
 ```kotlin
 fun Project.isRootProject() = rootProject === this
