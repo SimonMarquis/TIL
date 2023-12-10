@@ -360,6 +360,30 @@ tasks.withType<AbstractArchiveTask>().configureEach {
   }
   ```
 
+### Run specific tasks in serial
+
+!!! warning "`--no-parallel` and `--max-workers` are applied globally!"
+
+```kotlin title="SerialBuildService.kt"
+abstract class SerialBuildService : BuildService<None> {
+    companion object {
+        fun register(project: Project) = with(project.gradle.sharedServices) {
+            registerIfAbsent("serial", SerialBuildService::class) {
+                maxParallelUsages.set(1)
+            }
+        }
+    }
+}
+```
+
+```kotlin title="build.gradle.kts"
+val service = SerialBuildService.register(this)
+
+tasks.withType<Test>().configureEach {
+    usesService(service)
+}
+```
+
 ### System properties
 
 Using the `-D` command-line option, you can pass a system property to the JVM which runs Gradle.  
