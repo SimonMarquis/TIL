@@ -179,9 +179,10 @@ title: 💽 Git
     === ":simple-git: `~/.gitattributes`"
 
         ```bash
-        * text=auto
+        * text=auto eol=lf
 
-        *.bat text eol=crlf
+        *.{bat,[bB][aA][tT]} text eol=crlf
+        *.{cmd,[cC][mM][dD]} text eol=crlf
 
         *.jar binary
         *.png binary
