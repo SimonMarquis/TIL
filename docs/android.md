@@ -690,6 +690,10 @@ class Hidden {
 
 [🔗](https://googlesamples.github.io/android-custom-lint-rules/checks/EasterEgg.md.html)
 
+### Lint Issue Index
+
+[🔗 googlesamples.github.io/android-custom-lint-rules](https://googlesamples.github.io/android-custom-lint-rules/checks/index.md.html)
+
 ### List AOSP ATD devices
 
 ```bash
