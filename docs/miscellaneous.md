@@ -136,6 +136,10 @@ $ScrollLock::Suspend
 ::``gte::≥
 
 ::èuro::€
+
+::`control::⌃
+::`option::⌥
+::`command::⌘
 ```
 
 ### Bell code
