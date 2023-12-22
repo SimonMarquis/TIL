@@ -132,14 +132,24 @@ $ScrollLock::Suspend
 ::``ul::↖
 ::``dr::↘
 ::``dl::↙
+::``lr::↔
+::``up::↕
 ::``lte::≤
 ::``gte::≥
 
 ::èuro::€
+::`tm::™
+::`copy::©
 
 ::`control::⌃
 ::`option::⌥
 ::`command::⌘
+::`shift::⇧
+
+::`bullet::•
+::`...::…
+::`+-::±
+::`deg::°
 ```
 
 ### Bell code
