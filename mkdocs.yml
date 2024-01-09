@@ -69,6 +69,7 @@ plugins:
   - search
   - git-revision-date-localized:
       enabled: !ENV [CI, GITHUB_ACTIONS, False]
+      enable_creation_date: true
       exclude:
         - index.md
   - macros:
