@@ -84,6 +84,42 @@ jobs:
           git push
 ```
 
+### Complex conditionals
+
+=== "Multiline strings"
+
+    ```yaml
+    # Supported block scalars: `>`, `>-`, `|`, `|-`
+    if: >
+      (
+        github.event_name == 'pull_request'
+      )
+        ||
+      (
+        github.event_name == 'issue_comment' &&
+        github.event.issue.pull_request &&
+        contains(github.event.comment.body, 'specific string')
+      )
+    ```
+
+=== "Expression syntax"
+
+    ```yaml
+    # Supported block scalars: `>-`, `|-`
+    if: >-
+      ${{
+        (
+          github.event_name == 'pull_request'
+        )
+          ||
+        (
+          github.event_name == 'issue_comment' &&
+          github.event.issue.pull_request &&
+          contains(github.event.comment.body, 'specific string')
+        )
+      }}
+    ```
+
 ### Dependabot auto-merge
 
 ```yaml title=".github/workflows/dependabot-auto-merge" hl_lines="15"
