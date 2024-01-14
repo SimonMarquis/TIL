@@ -328,6 +328,12 @@ RESULT=$(( \
 
 [🔗](https://stackoverflow.com/a/10383546/3615879)
 
+### Process substitution
+
+```bash
+diff <(ls foo/) <(ls bar/) 
+```
+
 ### Prune find results
 
 ```bash
