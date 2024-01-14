@@ -567,6 +567,13 @@ git add --renormalize .
 
 [🔗](https://git-scm.com/docs/git-add#Documentation/git-add.txt---renormalize)
 
+### Show file at specific version
+
+```bash
+git show HEAD:path/to/file.txt
+git show main~10:path/to/file.txt
+```
+
 ### Signing commits with GPG
 
 [🔗](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits) [🔗](https://withblue.ink/2020/05/17/how-and-why-to-sign-git-commits.html)
