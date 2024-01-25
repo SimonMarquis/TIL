@@ -1241,6 +1241,27 @@ fun View.recursiveChildren(): Sequence<View> = sequence {
     private fun <E> List<E>.mapTextResourceToString(resources: Resources) = map { if (it is TextResource) it.toString(resources) else it }.toTypedArray()
     ```
 
+### Robolectric fake Browser Activity
+
+```kotlin
+import org.robolectric.RuntimeEnvironment.getApplication
+import org.robolectric.Shadows.shadowOf
+
+fun addFakeWebBrowserActivity() = shadowOf(getApplication().packageManager).apply {
+    with(ComponentName(getApplication().packageName, "FakeBrowserActivity")) {
+        addActivityIfNotPresent(this)
+        addIntentFilterForActivity(
+            this,
+            IntentFilter(Intent.ACTION_VIEW).apply {
+                addDataScheme("https")
+                addCategory(Intent.CATEGORY_DEFAULT)
+                addCategory(Intent.CATEGORY_BROWSABLE)
+            },
+        )
+    }
+}
+```
+
 ### Run command as a specific application user-id
 
 ```bash
