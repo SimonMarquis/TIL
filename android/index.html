@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
     
     
       
@@ -701,6 +701,15 @@
   <a href="#resources-abstraction" class="md-nav__link">
     <span class="md-ellipsis">
       Resources abstraction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robolectric-fake-browser-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Robolectric fake Browser Activity
     </span>
   </a>
   
@@ -1797,6 +1806,15 @@
   <a href="#resources-abstraction" class="md-nav__link">
     <span class="md-ellipsis">
       Resources abstraction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robolectric-fake-browser-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Robolectric fake Browser Activity
     </span>
   </a>
   
@@ -3035,6 +3053,24 @@ Version: 1
 </div>
 </div>
 </div>
+<h3 id="robolectric-fake-browser-activity">Robolectric fake Browser Activity<a class="headerlink" href="#robolectric-fake-browser-activity" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">org.robolectric.RuntimeEnvironment.getApplication</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">org.robolectric.Shadows.shadowOf</span>
+
+<span class="kd">fun</span><span class="w"> </span><span class="nf">addFakeWebBrowserActivity</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">shadowOf</span><span class="p">(</span><span class="n">getApplication</span><span class="p">().</span><span class="na">packageManager</span><span class="p">).</span><span class="na">apply</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">with</span><span class="p">(</span><span class="n">ComponentName</span><span class="p">(</span><span class="n">getApplication</span><span class="p">().</span><span class="na">packageName</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FakeBrowserActivity&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">addActivityIfNotPresent</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+<span class="w">        </span><span class="n">addIntentFilterForActivity</span><span class="p">(</span>
+<span class="w">            </span><span class="k">this</span><span class="p">,</span>
+<span class="w">            </span><span class="n">IntentFilter</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">ACTION_VIEW</span><span class="p">).</span><span class="na">apply</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">addDataScheme</span><span class="p">(</span><span class="s">&quot;https&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">addCategory</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">CATEGORY_DEFAULT</span><span class="p">)</span>
+<span class="w">                </span><span class="n">addCategory</span><span class="p">(</span><span class="n">Intent</span><span class="p">.</span><span class="na">CATEGORY_BROWSABLE</span><span class="p">)</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="run-command-as-a-specific-application-user-id">Run command as a specific application user-id<a class="headerlink" href="#run-command-as-a-specific-application-user-id" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>adb<span class="w"> </span>shell<span class="w"> </span>run-as<span class="w"> </span>&lt;package-name&gt;<span class="w"> </span>&lt;command&gt;<span class="w"> </span><span class="o">[</span>&lt;args&gt;<span class="o">]</span>
 </code></pre></div>
@@ -3233,7 +3269,7 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 16, 2023</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 25, 2024</span>
   </span>
 
     
@@ -3333,10 +3369,10 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.tabs.link", "content.code.copy", "content.code.annotate", "navigation.instant", "navigation.indexes", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.tabs.link", "content.code.copy", "content.code.annotate", "navigation.instant", "navigation.indexes", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.7389ff0e.min.js"></script>
+      <script src="../assets/javascripts/bundle.c18c5fb9.min.js"></script>
       
     
   </body>
