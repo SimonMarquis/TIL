@@ -149,6 +149,36 @@ jobs:
 
 [🔗](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#enable-auto-merge-on-a-pull-request)
 
+### Dependabot post update
+
+```
+name: 🤖 Dependabot post update
+on:
+  pull_request:
+    # paths:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]' && startsWith(github.head_ref, 'dependabot/')
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.DEPENDABOT_PAT }}
+      # Setup (java/gradle/etc)
+      # Run (script/task/etc)
+      - run: |
+          git config --global user.name "dependabot[bot]"
+          git config --global user.email "49699333+dependabot[bot]@users.noreply.github.com"
+          git commit -am "🤖 Dependabot post update" -m "[dependabot skip]"
+          git push
+```
+
 ### Dependabot skip
 
 To allow dependabot to rebase or force push over extra commits, add `[dependabot skip]` , `[skip dependabot]`, `[dependabot-skip]`, or `[skip-dependabot]` to the commit message.
