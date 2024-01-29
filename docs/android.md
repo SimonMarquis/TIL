@@ -458,6 +458,53 @@ fun View.disableProgressBarAnimations(
 
 This can also happen for `AnimatedVectorDrawable`s.
 
+### Espresso extensions 
+
+```kotlin
+/**
+ * Simplify [View] assertions by executing the [matches] predicate on the reified instance of [T].
+ *
+ * ```kotlin
+ * onView(withId(id)).check(matches(
+ *     that<TextView>("has non-blank text") {
+ *         !it.text.isNullOrBlank()
+ *     }
+ * ))
+ * ```
+ */
+inline fun <reified T : View> that(
+    description: String? = null,
+    noinline matches: (T) -> Boolean,
+) = object : BoundedMatcher<View, T>(T::class.java) {
+    override fun matchesSafely(view: T) = matches(view)
+    override fun describeTo(desc: Description) {
+        desc.appendText(description ?: matches.toString())
+    }
+}
+```
+
+```kotlin
+/**
+ * Simplify [ViewAction] actions by executing the [perform] block on the reified instance of [T].
+ *
+ * ```kotlin
+ * onView(withId(id)).perform(
+ *     action<ImageView>("reset image drawable") {
+ *         it.setImageDrawable(null)
+ *     }
+ * )
+ * ```
+ */
+inline fun <reified T : View> action(
+    description: String? = null,
+    noinline perform: (T) -> Unit,
+) = object : ViewAction {
+    override fun getDescription() = description ?: perform.toString()
+    override fun getConstraints() = isAssignableFrom(T::class.java)
+    override fun perform(uiController: UiController?, view: View) = perform(view as T)
+}
+```
+
 ### Firebase Analytics debug
 
 [🔗](https://firebase.google.com/docs/analytics/debugview#enabling_debug_mode) Enabling debug mode forces the app to send events immediately instead of waiting for batches.
