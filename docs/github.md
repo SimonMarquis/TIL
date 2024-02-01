@@ -592,6 +592,27 @@ FOO: ${{ <condition> && <true> || <false> }}
 !!! warning
     If the value of `<true>` is _falsy_, the result of the expression will be `<false>`.
 
+### Worflow input as command line arguments
+
+```yaml
+on:
+  workflow_dispatch:
+    inputs:
+      arguments:
+        required: true
+        type: string
+
+jobs:
+  gradle:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          IFS=" " read -ra args <<< "$ARGS"
+          ./my-command "${args[@]}"
+        env:
+          ARGS: ${{ inputs.arguments }}
+```
+
 ### Workflow input types
 
 ```yaml
