@@ -363,6 +363,21 @@ set -euo pipefail
 
 [🔗](https://explainshell.com/explain?cmd=set+-euo+pipefail)
 
+### Split string into array
+
+```bash
+INPUT="a (b)   \"c\""
+IFS=" " read -ra array <<< "$INPUT"
+printf '%s\n' "${array[@]}"
+```
+<div class="result" markdown>
+```bash
+a
+(b)
+"c"
+```
+</div>
+
 ### Write variable to file
 
 ```bash title="echo"
