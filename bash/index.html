@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.7">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.f2e4d321.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -433,6 +433,15 @@
   <a href="#inline-comment-on-multiline-commands" class="md-nav__link">
     <span class="md-ellipsis">
       Inline comment on multiline commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jq" class="md-nav__link">
+    <span class="md-ellipsis">
+      jq
     </span>
   </a>
   
@@ -1218,6 +1227,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#jq" class="md-nav__link">
+    <span class="md-ellipsis">
+      jq
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#multiline-comment" class="md-nav__link">
     <span class="md-ellipsis">
       Multiline comment
@@ -1582,6 +1600,160 @@ $PWD
 <span class="w">  </span>baz<span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># This is the last comment`</span>
 </code></pre></div>
 <p>This method uses both the buit-in no-op command <code>:</code> together with the comment character <code>#</code> to support shell with <code>interactive_comments</code> disabled.</p>
+<h3 id="jq">jq<a class="headerlink" href="#jq" title="Permanent link">&para;</a></h3>
+<div class="admonition abstract">
+<ul>
+<li><a href="https://jqlang.github.io/jq/manual/" title="jq Manual">jqlang.github.io/jq/manual</a></li>
+<li><a href="https://jqplay.org/" title="A playground for jq">jqplay.org</a></li>
+</ul>
+</div>
+<div class="highlight"><span class="filename">Basic filters</span><pre><span></span><code><span class="c1"># Identity:</span>
+.
+
+<span class="c1"># Object Identifier-Index:</span>
+.foo,<span class="w"> </span>.foo.bar
+
+<span class="c1"># Optional Object Identifier-Index:</span>
+.foo?
+
+<span class="c1"># Object Index:</span>
+.<span class="o">[</span>&lt;string&gt;<span class="o">]</span><span class="w"> </span>
+
+<span class="c1"># Array Index:</span>
+.<span class="o">[</span>&lt;number&gt;<span class="o">]</span><span class="w"> </span>
+
+<span class="c1"># Array/String Slice:</span>
+.<span class="o">[</span>&lt;number&gt;:&lt;number&gt;<span class="o">]</span>
+
+<span class="c1"># Array/Object Value Iterator:</span>
+.<span class="o">[]</span>
+
+<span class="c1"># Comma:</span>
+,
+
+<span class="c1"># Pipe:</span>
+<span class="p">|</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Builtin operators and functions</span><pre><span></span><code><span class="c1"># Addition:</span>
++
+
+<span class="c1"># Subtraction:</span>
+-<span class="w"> </span>
+
+<span class="c1"># Multiplication, division, modulo:</span>
+*,<span class="w"> </span>/,<span class="w"> </span>%<span class="w"> </span>
+
+<span class="c1"># Length (array, object, string, number, etc.):</span>
+length
+
+<span class="c1"># Keys of an object as an array:</span>
+keys,<span class="w"> </span>keys_unsorted
+
+<span class="c1"># Presence of the given key:</span>
+has<span class="o">(</span>key<span class="o">)</span><span class="w"> </span>
+
+<span class="c1"># Presence of input key in the given object:</span>
+<span class="k">in</span><span class="o">(</span>object<span class="o">)</span>
+
+<span class="c1"># Apply f to each of the values in the input array or object:</span>
+map<span class="o">(</span>f<span class="o">)</span>,<span class="w"> </span>map_values<span class="o">(</span>f<span class="o">)</span>
+
+<span class="c1"># Convert between an object and an array of key-value pairs:</span>
+to_entries,<span class="w"> </span>from_entries,<span class="w"> </span>with_entries<span class="o">(</span>f<span class="o">)</span>
+
+<span class="c1"># Filter input with predicate:</span>
+<span class="k">select</span><span class="o">(</span>f<span class="o">)</span>
+
+<span class="c1"># Remove a key and its corresponding value from an object:</span>
+del<span class="o">(</span>path_expression<span class="o">)</span>
+
+<span class="c1"># Add elements of the input array (summed, concatenated, or merged):</span>
+add
+
+<span class="c1"># Sort the input array</span>
+sort,<span class="w"> </span>sort_by<span class="o">(</span>path_expression<span class="o">)</span>
+
+<span class="c1"># Group elements by expression </span>
+group_by<span class="o">(</span>path_expression<span class="o">)</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Map entries</span><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;https://api.github.com/repos/github/.github/commits&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.[] | {message: .commit.message, name: .commit.author.name}&#39;</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Merge pull request #340 from trishanu-init/patch-1\n\nchanged the content structure in CODE_OF_CONDUCT.md&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zack Koppert&quot;</span>
+<span class="p">}</span>
+<span class="p">{</span><span class="cm">/*...*/</span><span class="p">}</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create README.md&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ben Balter&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="highlight"><span class="filename">Collect into JSON array</span><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;https://api.github.com/repos/github/.github/commits&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;[.[] | {message: .commit.message, name: .commit.author.name}]&#39;</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Merge pull request #340 from trishanu-init/patch-1\n\nchanged the content structure in CODE_OF_CONDUCT.md&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zack Koppert&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="cm">/*...*/</span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create README.md&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ben Balter&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+</div>
+<div class="highlight"><span class="filename">Nested collect and map</span><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;https://api.github.com/repos/github/.github/commits&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;[.[] | {message: .commit.message, name: .commit.author.name, parents: [.parents[].html_url]}]&#39;</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Merge pull request #340 from trishanu-init/patch-1\n\nchanged the content structure in CODE_OF_CONDUCT.md&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zack Koppert&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;parents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;https://github.com/github/.github/commit/d9c05dfc6b02cafe78a6342a73e9e9096273c4fd&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;https://github.com/github/.github/commit/b41159a31d90042b9e612b3eadeb607ac880ce02&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="cm">/*...*/</span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create README.md&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ben Balter&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;parents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;https://github.com/github/.github/commit/d707be9dc0c8e9ebf6e198aa925f89f88486c273&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+</div>
+<div class="highlight"><span class="filename">Group and count</span><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;https://api.github.com/repos/github/.github/commits&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;group_by(.commit.author.name) | map({(.[0].commit.author.name): length}) | add&#39;</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Alex Webb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Ashley Wolf&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Ben Balter&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Daniel Adams&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Diana Moore&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Dinakar&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Fayas Noushad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Justin Hutchings&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Matthias Wenz&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Nihaal Sangha&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Paranoïd User&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Phil Turnbull&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Trishanu Nayak&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Zack Koppert&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
 <h3 id="multiline-comment">Multiline comment<a class="headerlink" href="#multiline-comment" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="s">&lt;&lt; &#39;COMMENT&#39;</span>
 <span class="s">  Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
@@ -1694,7 +1866,7 @@ $PWD
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 1, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 4, 2024</span>
   </span>
 
     
@@ -1797,7 +1969,7 @@ $PWD
     <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.tabs.link", "content.code.copy", "content.code.annotate", "navigation.instant", "navigation.indexes", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      <script src="../assets/javascripts/bundle.caa56a14.min.js"></script>
       
     
   </body>
