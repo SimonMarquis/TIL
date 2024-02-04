@@ -538,6 +538,101 @@ indent_style = space
 - [Hack](https://sourcefoundry.org/hack/)
 - [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 
+### Gmail search operators
+
+```bash
+# Specify the sender
+from:foo@example.org
+
+# Specify a recipient
+to:bar@example.org
+
+# Specify a recipient who received a copy   
+cc:bar@example.org
+bcc:bar@example.org
+
+# Words in the subject line
+subject:foo
+
+# Results that match a word exactly
++foo
+
+# Remove messages from your results
+-baz
+
+# Search for an exact word or phrase
+"foo bar baz"
+
+# Messages that match any of the terms
+from:foo OR from:bar
+{from:foo from:bar}
+
+# Messages that match all of the terms
+from:foo AND from:bar
+(from:foo from:bar)
+
+# Messages that have a certain label
+label:urgent
+
+# Messages that have an attachment
+has:attachment
+
+# Messages that have a Google Drive, Docs, Sheets, or Slides attachment or link
+has:document
+has:drive
+has:presentation
+has:spreadsheet
+has:youtube
+
+# Messages from a mailing list
+list:test@example.org
+
+# Attachments with a certain name or file type
+filename:pdf
+filename:homework.txt
+
+# Messages in any folder, including Spam and Trash
+in:anywhere
+in:all
+in:spam
+in:trash
+
+# Search for messages that are marked as important
+is:important
+label:important
+
+# Starred, snoozed, unread, or read messages
+is:starred
+is:unstarred
+is:snoozed
+is:read
+is:unread
+
+# Messages that include an icon of a certain color
+has:yellow-star
+has:blue-info
+
+# Search for messages sent during a certain time period
+after:2000/01/31
+before:2000/01/31
+
+# Search for messages older or newer than a time period using d (day), m (month), and y (year)
+older_than:2d
+newer_than:3y
+
+# Messages larger than a certain size in bytes
+size:10000000
+size:10M
+
+# Messages larger or smaller than a certain size in bytes
+larger:10M
+smaller:10M
+
+# Messages that have or don't have a label
+has:userlabels
+has:nouserlabels
+```
+
 ### Gmail templates
 
 - Create a new Google Docs https://docs.new
