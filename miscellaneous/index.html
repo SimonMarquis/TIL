@@ -779,6 +779,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gmail-search-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gmail search operators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gmail-templates" class="md-nav__link">
     <span class="md-ellipsis">
       Gmail templates
@@ -1140,6 +1149,15 @@
   <a href="#fonts-with-ligatures" class="md-nav__link">
     <span class="md-ellipsis">
       Fonts with ligatures
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gmail-search-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gmail search operators
     </span>
   </a>
   
@@ -1709,6 +1727,98 @@ IndexOptions Charset=UTF-8 IgnoreCase FancyIndexing FoldersFirst NameWidth=*
 <li><a href="https://sourcefoundry.org/hack/">Hack</a></li>
 <li><a href="https://www.jetbrains.com/lp/mono/">JetBrains Mono</a></li>
 </ul>
+<h3 id="gmail-search-operators">Gmail search operators<a class="headerlink" href="#gmail-search-operators" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Specify the sender</span>
+from:foo@example.org
+
+<span class="c1"># Specify a recipient</span>
+to:bar@example.org
+
+<span class="c1"># Specify a recipient who received a copy   </span>
+cc:bar@example.org
+bcc:bar@example.org
+
+<span class="c1"># Words in the subject line</span>
+subject:foo
+
+<span class="c1"># Results that match a word exactly</span>
++foo
+
+<span class="c1"># Remove messages from your results</span>
+-baz
+
+<span class="c1"># Search for an exact word or phrase</span>
+<span class="s2">&quot;foo bar baz&quot;</span>
+
+<span class="c1"># Messages that match any of the terms</span>
+from:foo<span class="w"> </span>OR<span class="w"> </span>from:bar
+<span class="o">{</span>from:foo<span class="w"> </span>from:bar<span class="o">}</span>
+
+<span class="c1"># Messages that match all of the terms</span>
+from:foo<span class="w"> </span>AND<span class="w"> </span>from:bar
+<span class="o">(</span>from:foo<span class="w"> </span>from:bar<span class="o">)</span>
+
+<span class="c1"># Messages that have a certain label</span>
+label:urgent
+
+<span class="c1"># Messages that have an attachment</span>
+has:attachment
+
+<span class="c1"># Messages that have a Google Drive, Docs, Sheets, or Slides attachment or link</span>
+has:document
+has:drive
+has:presentation
+has:spreadsheet
+has:youtube
+
+<span class="c1"># Messages from a mailing list</span>
+list:test@example.org
+
+<span class="c1"># Attachments with a certain name or file type</span>
+filename:pdf
+filename:homework.txt
+
+<span class="c1"># Messages in any folder, including Spam and Trash</span>
+<span class="k">in</span>:anywhere
+<span class="k">in</span>:all
+<span class="k">in</span>:spam
+<span class="k">in</span>:trash
+
+<span class="c1"># Search for messages that are marked as important</span>
+is:important
+label:important
+
+<span class="c1"># Starred, snoozed, unread, or read messages</span>
+is:starred
+is:unstarred
+is:snoozed
+is:read
+is:unread
+
+<span class="c1"># Messages that include an icon of a certain color</span>
+has:yellow-star
+has:blue-info
+
+<span class="c1"># Search for messages sent during a certain time period</span>
+after:2000/01/31
+before:2000/01/31
+
+<span class="c1"># Search for messages older or newer than a time period using d (day), m (month), and y (year)</span>
+older_than:2d
+newer_than:3y
+
+<span class="c1"># Messages larger than a certain size in bytes</span>
+size:10000000
+size:10M
+
+<span class="c1"># Messages larger or smaller than a certain size in bytes</span>
+larger:10M
+smaller:10M
+
+<span class="c1"># Messages that have or don&#39;t have a label</span>
+has:userlabels
+has:nouserlabels
+</code></pre></div>
 <h3 id="gmail-templates">Gmail templates<a class="headerlink" href="#gmail-templates" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Create a new Google Docs <a href="https://docs.new">https://docs.new</a></li>
@@ -1817,7 +1927,7 @@ scheme                    path
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 22, 2023</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 4, 2024</span>
   </span>
 
     
