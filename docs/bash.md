@@ -272,6 +272,179 @@ foo `: # This is a comment` |
 
 This method uses both the buit-in no-op command `:` together with the comment character `#` to support shell with `interactive_comments` disabled.
 
+### jq
+
+!!! abstract ""
+    - [jqlang.github.io/jq/manual](https://jqlang.github.io/jq/manual/){: title="jq Manual"}
+    - [jqplay.org](https://jqplay.org/){: title="A playground for jq"}
+
+```bash title="Basic filters"
+# Identity:
+.
+
+# Object Identifier-Index:
+.foo, .foo.bar
+
+# Optional Object Identifier-Index:
+.foo?
+
+# Object Index:
+.[<string>] 
+
+# Array Index:
+.[<number>] 
+
+# Array/String Slice:
+.[<number>:<number>]
+
+# Array/Object Value Iterator:
+.[]
+
+# Comma:
+,
+
+# Pipe:
+|
+```
+
+```bash title="Builtin operators and functions"
+# Addition:
++
+
+# Subtraction:
+- 
+
+# Multiplication, division, modulo:
+*, /, % 
+
+# Length (array, object, string, number, etc.):
+length
+
+# Keys of an object as an array:
+keys, keys_unsorted
+
+# Presence of the given key:
+has(key) 
+
+# Presence of input key in the given object:
+in(object)
+
+# Apply f to each of the values in the input array or object:
+map(f), map_values(f)
+
+# Convert between an object and an array of key-value pairs:
+to_entries, from_entries, with_entries(f)
+
+# Filter input with predicate:
+select(f)
+
+# Remove a key and its corresponding value from an object:
+del(path_expression)
+
+# Add elements of the input array (summed, concatenated, or merged):
+add
+
+# Sort the input array
+sort, sort_by(path_expression)
+
+# Group elements by expression 
+group_by(path_expression)
+```
+
+```bash title="Map entries"
+curl -s 'https://api.github.com/repos/github/.github/commits' \
+  | jq '.[] | {message: .commit.message, name: .commit.author.name}'
+```
+<div class="result" markdown>
+
+```json
+{
+  "message": "Merge pull request #340 from trishanu-init/patch-1\n\nchanged the content structure in CODE_OF_CONDUCT.md",
+  "name": "Zack Koppert"
+}
+{/*...*/}
+{
+  "message": "Create README.md",
+  "name": "Ben Balter"
+}
+```
+</div>
+
+```bash title="Collect into JSON array"
+curl -s 'https://api.github.com/repos/github/.github/commits' \
+  | jq '[.[] | {message: .commit.message, name: .commit.author.name}]'
+```
+<div class="result" markdown>
+
+```json
+[
+  {
+    "message": "Merge pull request #340 from trishanu-init/patch-1\n\nchanged the content structure in CODE_OF_CONDUCT.md",
+    "name": "Zack Koppert"
+  },
+  {/*...*/},
+  {
+    "message": "Create README.md",
+    "name": "Ben Balter"
+  }
+]
+```
+</div>
+
+```bash title="Nested collect and map"
+curl -s 'https://api.github.com/repos/github/.github/commits' \
+  | jq '[.[] | {message: .commit.message, name: .commit.author.name, parents: [.parents[].html_url]}]'
+```
+<div class="result" markdown>
+
+```json
+[
+  {
+    "message": "Merge pull request #340 from trishanu-init/patch-1\n\nchanged the content structure in CODE_OF_CONDUCT.md",
+    "name": "Zack Koppert",
+    "parents": [
+      "https://github.com/github/.github/commit/d9c05dfc6b02cafe78a6342a73e9e9096273c4fd",
+      "https://github.com/github/.github/commit/b41159a31d90042b9e612b3eadeb607ac880ce02"
+    ]
+  },
+  {/*...*/},
+  {
+    "message": "Create README.md",
+    "name": "Ben Balter",
+    "parents": [
+      "https://github.com/github/.github/commit/d707be9dc0c8e9ebf6e198aa925f89f88486c273"
+    ]
+  }
+]
+```
+</div>
+
+```bash title="Group and count"
+curl -s 'https://api.github.com/repos/github/.github/commits' \
+  | jq 'group_by(.commit.author.name) | map({(.[0].commit.author.name): length}) | add'
+```
+<div class="result" markdown>
+
+```json
+{
+  "Alex Webb": 1,
+  "Ashley Wolf": 6,
+  "Ben Balter": 3,
+  "Daniel Adams": 1,
+  "Diana Moore": 1,
+  "Dinakar": 1,
+  "Fayas Noushad": 1,
+  "Justin Hutchings": 1,
+  "Matthias Wenz": 1,
+  "Nihaal Sangha": 1,
+  "Paranoïd User": 1,
+  "Phil Turnbull": 3,
+  "Trishanu Nayak": 2,
+  "Zack Koppert": 7
+}
+```
+</div>
+
 ### Multiline comment
 
 ```bash
