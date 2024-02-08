@@ -8,6 +8,24 @@ title: 🐘 Gradle
     - [Distributions](https://services.gradle.org/distributions/)
     - [Checksums](https://gradle.org/release-checksums/)
 
+### Cache Node Health
+
+!!! example "This is not publicly advertised and is subject to change."
+
+```bash
+curl -s 'https://my-gradle-cache-node.tld/cache-node-info/health'
+```
+<div class="result" markdown>
+```raw
+AuthenticationCircuitBreaker : HEALTHY [Circuit breaker has not tripped recently]
+ConfigBinding : HEALTHY
+ConfigLoad : HEALTHY
+JvmGcHeapPressure : HEALTHY [GC overhead at 0%]
+JvmLowPoolMemory : HEALTHY [Old gen pool memory after last GC at 35%]
+StartedUsingDeprecatedCliOptions : HEALTHY
+```
+</div>
+
 ### Cleanup caches and build directories
 
 !!! warning "Global cache"
