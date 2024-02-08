@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.8">
     
     
       
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cleanup-caches-and-build-directories" class="md-skip">
+        <a href="#cache-node-health" class="md-skip">
           Skip to content
         </a>
       
@@ -498,6 +498,15 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cache-node-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cache Node Health
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#cleanup-caches-and-build-directories" class="md-nav__link">
@@ -1110,6 +1119,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#cache-node-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cache Node Health
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cleanup-caches-and-build-directories" class="md-nav__link">
     <span class="md-ellipsis">
       Cleanup caches and build directories
@@ -1348,6 +1366,21 @@
 <li><a href="https://services.gradle.org/distributions/">Distributions</a></li>
 <li><a href="https://gradle.org/release-checksums/">Checksums</a></li>
 </ul>
+</div>
+<h3 id="cache-node-health">Cache Node Health<a class="headerlink" href="#cache-node-health" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">This is not publicly advertised and is subject to change.</p>
+</div>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;https://my-gradle-cache-node.tld/cache-node-info/health&#39;</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code>AuthenticationCircuitBreaker : HEALTHY [Circuit breaker has not tripped recently]
+ConfigBinding : HEALTHY
+ConfigLoad : HEALTHY
+JvmGcHeapPressure : HEALTHY [GC overhead at 0%]
+JvmLowPoolMemory : HEALTHY [Old gen pool memory after last GC at 35%]
+StartedUsingDeprecatedCliOptions : HEALTHY
+</code></pre></div>
 </div>
 <h3 id="cleanup-caches-and-build-directories">Cleanup caches and build directories<a class="headerlink" href="#cleanup-caches-and-build-directories" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -1863,7 +1896,7 @@ You can also set system properties in <code>gradle.properties</code> files with 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2023</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 8, 2024</span>
   </span>
 
     
@@ -1966,7 +1999,7 @@ You can also set system properties in <code>gradle.properties</code> files with 
     <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.tabs.link", "content.code.copy", "content.code.annotate", "navigation.instant", "navigation.indexes", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.caa56a14.min.js"></script>
+      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>
