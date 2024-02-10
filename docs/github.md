@@ -2,14 +2,6 @@
 title: 🐙 GitHub
 ---
 
-### Cancel workflows with the same reference
-
-```yaml
-concurrency:
-  group: ${{ github.head_ref }}
-  cancel-in-progress: true
-```
-
 ### Checkout current PR branch
 
 By default, `actions/checkout` will checkout PRs in 'detached HEAD' state using `#!bash git checkout --progress --force refs/remotes/pull/#/merge`.
@@ -119,6 +111,20 @@ jobs:
         )
       }}
     ```
+
+### Concurrency
+
+```yaml title="Cancel any in-progress run of the job or workflow"
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+```
+
+```yaml title="Cancel jobs or workflows with the same reference"
+concurrency:
+  group: '${{ github.workflow }}-${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+```
 
 ### Dependabot auto-merge
 
