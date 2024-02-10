@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cancel-workflows-with-the-same-reference" class="md-skip">
+        <a href="#checkout-current-pr-branch" class="md-skip">
           Skip to content
         </a>
       
@@ -480,15 +480,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cancel-workflows-with-the-same-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cancel workflows with the same reference
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#checkout-current-pr-branch" class="md-nav__link">
     <span class="md-ellipsis">
       Checkout current PR branch
@@ -537,6 +528,15 @@
   <a href="#complex-conditionals" class="md-nav__link">
     <span class="md-ellipsis">
       Complex conditionals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concurrency
     </span>
   </a>
   
@@ -1227,15 +1227,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cancel-workflows-with-the-same-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cancel workflows with the same reference
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#checkout-current-pr-branch" class="md-nav__link">
     <span class="md-ellipsis">
       Checkout current PR branch
@@ -1284,6 +1275,15 @@
   <a href="#complex-conditionals" class="md-nav__link">
     <span class="md-ellipsis">
       Complex conditionals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concurrency
     </span>
   </a>
   
@@ -1574,16 +1574,11 @@
 
   <h1>🐙 GitHub</h1>
 
-<h3 id="cancel-workflows-with-the-same-reference">Cancel workflows with the same reference<a class="headerlink" href="#cancel-workflows-with-the-same-reference" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">concurrency</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.head_ref }}</span>
-<span class="w">  </span><span class="nt">cancel-in-progress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
 <h3 id="checkout-current-pr-branch">Checkout current PR branch<a class="headerlink" href="#checkout-current-pr-branch" title="Permanent link">&para;</a></h3>
 <p>By default, <code>actions/checkout</code> will checkout PRs in 'detached HEAD' state using <code class="highlight">git<span class="w"> </span>checkout<span class="w"> </span>--progress<span class="w"> </span>--force<span class="w"> </span>refs/remotes/pull/#/merge</code>.</p>
-<div class="highlight"><pre><span></span><code>- uses: actions/checkout@v4
-  with:
-    ref: ${{ github.head_ref }}
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.head_ref }}</span>
 </code></pre></div>
 <h3 id="clone-github-gists">Clone GitHub gists<a class="headerlink" href="#clone-github-gists" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://gist.github.com/YOUR_REPOSITORY.git
@@ -1669,6 +1664,15 @@
 </div>
 </div>
 </div>
+<h3 id="concurrency">Concurrency<a class="headerlink" href="#concurrency" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">Cancel any in-progress run of the job or workflow</span><pre><span></span><code><span class="nt">concurrency</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.head_ref }}</span>
+<span class="w">  </span><span class="nt">cancel-in-progress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Cancel jobs or workflows with the same reference</span><pre><span></span><code><span class="nt">concurrency</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;${{</span><span class="nv"> </span><span class="s">github.workflow</span><span class="nv"> </span><span class="s">}}-${{</span><span class="nv"> </span><span class="s">github.event.pull_request.head.label</span><span class="nv"> </span><span class="s">||</span><span class="nv"> </span><span class="s">github.head_ref</span><span class="nv"> </span><span class="s">||</span><span class="nv"> </span><span class="s">github.ref</span><span class="nv"> </span><span class="s">}}&#39;</span>
+<span class="w">  </span><span class="nt">cancel-in-progress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 <h3 id="dependabot-auto-merge">Dependabot auto-merge<a class="headerlink" href="#dependabot-auto-merge" title="Permanent link">&para;</a></h3>
 <div class="highlight"><span class="filename">.github/workflows/dependabot-auto-merge</span><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">🤖 Dependabot auto-merge</span>
 <span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pull_request</span>
@@ -2123,7 +2127,7 @@ registries:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 1, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 10, 2024</span>
   </span>
 
     
