@@ -446,6 +446,15 @@ git update-index --chmod=+x <file>
 
 [🔗](https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file#ignore-commits-in-the-blame-view)
 
+### List LFS files by size
+
+```bash
+git lfs ls-files --long --size \
+  | tr -d '()' \
+  | awk '{print $4 $5 " " $3 " " $1}' \
+  | sort --key 1 --human-numeric-sort --reverse
+```
+
 ### List objects by size
 
 ```bash
