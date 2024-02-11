@@ -446,6 +446,31 @@ git update-index --chmod=+x <file>
 
 [🔗](https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file#ignore-commits-in-the-blame-view)
 
+### LFS total size
+
+=== ":simple-linux: Linux"
+
+    ```bash
+    git lfs ls-files --debug \
+      | awk -F: '$1~/size/ {t+=$2} END {print t}' \
+      | numfmt --to=iec-i --suffix B
+    ```
+
+=== ":simple-apple: macOS"
+
+    ```bash
+    git lfs ls-files --debug \
+      | awk -F: '$1~/size/ {t+=$2} END {print t}' \
+      | gnumfmt --to=iec-i --suffix B
+    ```
+
+!!! warning "" 
+    ```
+    -d --debug:
+      Show as much information as possible about a LFS file. This is intended
+      for manual inspection; the exact format may change at any time.
+    ```
+
 ### List LFS files by size
 
 ```bash
