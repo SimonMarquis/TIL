@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.8">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.f2e4d321.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -499,6 +499,15 @@
   <a href="#check-if-something-has-changed" class="md-nav__link">
     <span class="md-ellipsis">
       Check if something has changed
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commit-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commit ranges
     </span>
   </a>
   
@@ -1191,6 +1200,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#commit-ranges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commit ranges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#commit-with-message-from-standard-input" class="md-nav__link">
     <span class="md-ellipsis">
       Commit with message from standard input
@@ -1731,6 +1749,26 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 <p>or</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>diff-index<span class="w"> </span><span class="o">[</span>--cached<span class="o">]</span><span class="w"> </span><span class="o">[</span>--stat<span class="o">]</span><span class="w"> </span><span class="o">[</span>--quiet<span class="o">]</span><span class="w"> </span>--exit-code<span class="w"> </span>HEAD<span class="w"> </span><span class="c1"># 1:yes, 0:no</span>
 </code></pre></div>
+<h3 id="commit-ranges">Commit ranges<a class="headerlink" href="#commit-ranges" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>A─┬─B──C (main)
+  ╰─D──E (dev)
+</code></pre></div>
+<ul>
+<li><code>git log</code><ul>
+<li><code>main dev</code>: <code>A</code> <code>B</code> <code>C</code> <code>D</code> <code>E</code><br />
+  Reachable from main or dev.</li>
+<li><code>main..dev</code> or <code>^main dev</code> or <code>dev --not main</code>: <code>D</code> <code>E</code><br />
+  Reachable from <code>dev</code> but not from <code>main</code>.</li>
+<li><code>main...dev</code>: <code>B</code> <code>C</code> <code>D</code> <code>E</code><br />
+  Reachable from either <code>main</code> or <code>dev</code>, but not both.</li>
+</ul>
+</li>
+<li><code>git diff</code><ul>
+<li><code>main..dev</code> or <code>main dev</code>: <code class="highlight"><span class="gd">-B</span></code> <code class="highlight"><span class="gd">-C</span></code> <code class="highlight"><span class="gi">+D</span></code> <code class="highlight"><span class="gi">+E</span></code></li>
+<li><code>main...dev</code>: <code class="highlight"><span class="gi">+D</span></code> <code class="highlight"><span class="gi">+E</span></code></li>
+</ul>
+</li>
+</ul>
 <h3 id="commit-with-message-from-standard-input">Commit with message from standard input<a class="headerlink" href="#commit-with-message-from-standard-input" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="o">(</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;Hello, World!&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
@@ -1978,7 +2016,7 @@ git<span class="w"> </span>show<span class="w"> </span>main~10:path/to/file.txt
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 11, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 25, 2024</span>
   </span>
 
     
