@@ -342,6 +342,24 @@ or
 git diff-index [--cached] [--stat] [--quiet] --exit-code HEAD # 1:yes, 0:no
 ```
 
+### Commit ranges
+
+```raw
+A─┬─B──C (main)
+  ╰─D──E (dev)
+```
+
+- `git log`
+    - `main dev`: `A` `B` `C` `D` `E`  
+      Reachable from main or dev.
+    - `main..dev` or `^main dev` or `dev --not main`: `D` `E`  
+      Reachable from `dev` but not from `main`.
+    - `main...dev`: `B` `C` `D` `E`  
+      Reachable from either `main` or `dev`, but not both.
+- `git diff`
+    - `main..dev` or `main dev`: `#!diff -B` `#!diff -C` `#!diff +D` `#!diff +E`
+    - `main...dev`: `#!diff +D` `#!diff +E`
+
 ### Commit with message from standard input
 
 ```bash
