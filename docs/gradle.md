@@ -591,6 +591,7 @@ GradleVersion.current() >= GradleVersion.version("8.0")
 
 ```kotlin title="Java"
 JavaVersion.current() >= JavaVersion.VERSION_17
+JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)
 ```
 
 ### Welcome message
