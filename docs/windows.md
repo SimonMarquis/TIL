@@ -38,6 +38,12 @@ icacls C:\files /reset /T /C /L /Q
 
 [🔗](https://superuser.com/a/813881/733209)
 
+### Stop WmmemWSL process
+
+```bash
+wsl --shutdown
+```
+
 ### UEFI BIOS
 
 ```bat
