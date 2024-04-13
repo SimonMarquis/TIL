@@ -734,15 +734,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-by-step-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step by step installation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#screencap" class="md-nav__link">
     <span class="md-ellipsis">
       screencap
@@ -761,9 +752,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#step-by-step-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step by step installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#strict-modes" class="md-nav__link">
     <span class="md-ellipsis">
       Strict Modes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suppress-unsupported-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suppress unsupported options
     </span>
   </a>
   
@@ -1848,15 +1857,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-by-step-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step by step installation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#screencap" class="md-nav__link">
     <span class="md-ellipsis">
       screencap
@@ -1875,9 +1875,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#step-by-step-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step by step installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#strict-modes" class="md-nav__link">
     <span class="md-ellipsis">
       Strict Modes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suppress-unsupported-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suppress unsupported options
     </span>
   </a>
   
@@ -3134,6 +3152,27 @@ Version: 1
 <h3 id="run-command-as-a-specific-application-user-id">Run command as a specific application user-id<a class="headerlink" href="#run-command-as-a-specific-application-user-id" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>adb<span class="w"> </span>shell<span class="w"> </span>run-as<span class="w"> </span>&lt;package-name&gt;<span class="w"> </span>&lt;command&gt;<span class="w"> </span><span class="o">[</span>&lt;args&gt;<span class="o">]</span>
 </code></pre></div>
+<h3 id="screencap">screencap<a class="headerlink" href="#screencap" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>adb<span class="w"> </span>shell<span class="w"> </span>screencap<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;/sdcard/screencap.png&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>adb<span class="w"> </span>pull<span class="w"> </span><span class="s2">&quot;/sdcard/screencap.png&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">/Desktop/%time::=-%%random%.png&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>adb<span class="w"> </span>shell<span class="w"> </span>rm<span class="w"> </span><span class="s2">&quot;/sdcard/screencap.png&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">%</span><span class="n">comspec</span><span class="p">%</span> <span class="p">/</span><span class="n">c</span> <span class="n">adb</span> <span class="n">shell</span> <span class="n">screencap</span> <span class="n">-p</span> <span class="s2">&quot;/sdcard/screencap.png&quot;</span> <span class="p">&amp;&amp;</span> <span class="n">adb</span> <span class="n">pull</span> <span class="s2">&quot;/sdcard/screencap.png&quot;</span> <span class="s2">&quot;%UserProfile%\Desktop\%time::=-%%random%.png&quot;</span> <span class="p">&amp;&amp;</span> <span class="n">adb</span> <span class="n">shell</span> <span class="nb">rm </span><span class="s2">&quot;/sdcard/screencap.png&quot;</span>
+</code></pre></div>
+<h3 id="scrcpy">scrcpy<a class="headerlink" href="#scrcpy" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/Genymobile/scrcpy">GitHub</a></p>
+<ul>
+<li>
+<p>record
+    <div class="highlight"><pre><span></span><code>scrcpy<span class="w"> </span>-m<span class="w"> </span><span class="m">1080</span><span class="w"> </span>--show-touches<span class="w"> </span>--no-display<span class="w"> </span>--record<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">/Desktop/%time::=-%%random%.mp4&quot;</span>
+</code></pre></div></p>
+<p><div class="highlight"><pre><span></span><code><span class="k">%</span><span class="n">comspec</span><span class="p">%</span> <span class="p">/</span><span class="n">c</span> <span class="n">scrcpy</span> <span class="n">-m</span> <span class="n">1080</span> <span class="p">-</span><span class="n">-show-touches</span> <span class="p">-</span><span class="n">-no-display</span> <span class="p">-</span><span class="n">-record</span> <span class="s2">&quot;%UserProfile%\Desktop\%time::=-%%random%.mp4&quot;</span>
+</code></pre></div>
+- mirror
+<div class="highlight"><pre><span></span><code>scrcpy<span class="w"> </span>-m<span class="w"> </span><span class="m">1080</span><span class="w"> </span>--show-touches
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="k">%</span><span class="n">comspec</span><span class="p">%</span> <span class="p">/</span><span class="n">c</span> <span class="n">scrcpy</span> <span class="n">-m</span> <span class="n">1080</span> <span class="p">-</span><span class="n">-show-touches</span>
+</code></pre></div>
+</li>
+</ul>
 <h3 id="step-by-step-installation">Step by step installation<a class="headerlink" href="#step-by-step-installation" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Installing OpenJDK</span>
 <span class="c1"># https://openjdk.org/install/</span>
@@ -3163,27 +3202,6 @@ sdkmanager<span class="w"> </span>--list
 sdkmanager<span class="w"> </span>--list_installed
 sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="s2">&quot;platforms;android-33&quot;</span>
 </code></pre></div>
-<h3 id="screencap">screencap<a class="headerlink" href="#screencap" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>adb<span class="w"> </span>shell<span class="w"> </span>screencap<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;/sdcard/screencap.png&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>adb<span class="w"> </span>pull<span class="w"> </span><span class="s2">&quot;/sdcard/screencap.png&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">/Desktop/%time::=-%%random%.png&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>adb<span class="w"> </span>shell<span class="w"> </span>rm<span class="w"> </span><span class="s2">&quot;/sdcard/screencap.png&quot;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">%</span><span class="n">comspec</span><span class="p">%</span> <span class="p">/</span><span class="n">c</span> <span class="n">adb</span> <span class="n">shell</span> <span class="n">screencap</span> <span class="n">-p</span> <span class="s2">&quot;/sdcard/screencap.png&quot;</span> <span class="p">&amp;&amp;</span> <span class="n">adb</span> <span class="n">pull</span> <span class="s2">&quot;/sdcard/screencap.png&quot;</span> <span class="s2">&quot;%UserProfile%\Desktop\%time::=-%%random%.png&quot;</span> <span class="p">&amp;&amp;</span> <span class="n">adb</span> <span class="n">shell</span> <span class="nb">rm </span><span class="s2">&quot;/sdcard/screencap.png&quot;</span>
-</code></pre></div>
-<h3 id="scrcpy">scrcpy<a class="headerlink" href="#scrcpy" title="Permanent link">&para;</a></h3>
-<p><a href="https://github.com/Genymobile/scrcpy">GitHub</a></p>
-<ul>
-<li>
-<p>record
-    <div class="highlight"><pre><span></span><code>scrcpy<span class="w"> </span>-m<span class="w"> </span><span class="m">1080</span><span class="w"> </span>--show-touches<span class="w"> </span>--no-display<span class="w"> </span>--record<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">/Desktop/%time::=-%%random%.mp4&quot;</span>
-</code></pre></div></p>
-<p><div class="highlight"><pre><span></span><code><span class="k">%</span><span class="n">comspec</span><span class="p">%</span> <span class="p">/</span><span class="n">c</span> <span class="n">scrcpy</span> <span class="n">-m</span> <span class="n">1080</span> <span class="p">-</span><span class="n">-show-touches</span> <span class="p">-</span><span class="n">-no-display</span> <span class="p">-</span><span class="n">-record</span> <span class="s2">&quot;%UserProfile%\Desktop\%time::=-%%random%.mp4&quot;</span>
-</code></pre></div>
-- mirror
-<div class="highlight"><pre><span></span><code>scrcpy<span class="w"> </span>-m<span class="w"> </span><span class="m">1080</span><span class="w"> </span>--show-touches
-</code></pre></div></p>
-<div class="highlight"><pre><span></span><code><span class="k">%</span><span class="n">comspec</span><span class="p">%</span> <span class="p">/</span><span class="n">c</span> <span class="n">scrcpy</span> <span class="n">-m</span> <span class="n">1080</span> <span class="p">-</span><span class="n">-show-touches</span>
-</code></pre></div>
-</li>
-</ul>
 <h3 id="strict-modes">Strict Modes<a class="headerlink" href="#strict-modes" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">StrictMode</span><span class="p">.</span><span class="na">ThreadPolicy</span><span class="p">.</span><span class="na">Builder</span><span class="p">()</span>
 <span class="w">    </span><span class="p">.</span><span class="na">detectAll</span><span class="p">()</span>
@@ -3206,6 +3224,12 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
 <span class="w">    </span><span class="p">.</span><span class="na">detectWrongFragmentContainer</span><span class="p">()</span>
 <span class="w">    </span><span class="p">.</span><span class="na">detectSetUserVisibleHint</span><span class="p">()</span>
 <span class="w">    </span><span class="p">.</span><span class="na">penaltyLog</span><span class="p">().</span><span class="na">build</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="suppress-unsupported-options">Suppress unsupported options<a class="headerlink" href="#suppress-unsupported-options" title="Permanent link">&para;</a></h3>
+<div class="highlight"><span class="filename">gradle.properties</span><pre><span></span><code><span class="na">android.suppressUnsupportedOptionWarnings</span><span class="o">=</span><span class="s">android.suppressUnsupportedOptionWarnings,</span><span class="se">\</span>
+<span class="w">  </span><span class="s">android.enableR8.fullMode,</span><span class="se">\</span>
+<span class="w">  </span><span class="s">android.enableUnitTestBinaryResources,</span><span class="se">\</span>
+<span class="w">  </span><span class="s">...</span>
 </code></pre></div>
 <h3 id="tools-sample-resources-as-json-files">Tools sample resources as JSON files<a class="headerlink" href="#tools-sample-resources-as-json-files" title="Permanent link">&para;</a></h3>
 <div class="highlight"><span class="filename">./sampledata/users.json</span><pre><span></span><code><span class="p">{</span>
@@ -3329,7 +3353,7 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 13, 2024</span>
   </span>
 
     
