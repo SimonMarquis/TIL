@@ -1404,6 +1404,15 @@ FragmentStrictMode.defaultPolicy = FragmentStrictMode.Policy.Builder()
     .penaltyLog().build()
 ```
 
+### Suppress unsupported options
+
+```properties title="gradle.properties"
+android.suppressUnsupportedOptionWarnings=android.suppressUnsupportedOptionWarnings,\
+  android.enableR8.fullMode,\
+  android.enableUnitTestBinaryResources,\
+  ...
+```
+
 ### Tools sample resources as JSON files
 
 ```json title="./sampledata/users.json"
