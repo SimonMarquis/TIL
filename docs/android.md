@@ -1315,6 +1315,37 @@ fun addFakeWebBrowserActivity() = shadowOf(getApplication().packageManager).appl
 adb shell run-as <package-name> <command> [<args>]
 ```
 
+### screencap
+
+```bash
+adb shell screencap -p "/sdcard/screencap.png" && adb pull "/sdcard/screencap.png" "$USER/Desktop/%time::=-%%random%.png" && adb shell rm "/sdcard/screencap.png"
+```
+
+```pwsh
+%comspec% /c adb shell screencap -p "/sdcard/screencap.png" && adb pull "/sdcard/screencap.png" "%UserProfile%\Desktop\%time::=-%%random%.png" && adb shell rm "/sdcard/screencap.png"
+```
+
+### scrcpy
+
+[GitHub](https://github.com/Genymobile/scrcpy)
+
+- record
+    ```bash
+    scrcpy -m 1080 --show-touches --no-display --record "$USER/Desktop/%time::=-%%random%.mp4"
+    ```
+
+    ```pwsh
+    %comspec% /c scrcpy -m 1080 --show-touches --no-display --record "%UserProfile%\Desktop\%time::=-%%random%.mp4"
+    ```
+- mirror
+    ```bash
+    scrcpy -m 1080 --show-touches
+    ```
+
+    ```pwsh
+    %comspec% /c scrcpy -m 1080 --show-touches
+    ```
+
 ### Step by step installation
 
 ```bash
@@ -1346,37 +1377,6 @@ sdkmanager --list
 sdkmanager --list_installed
 sdkmanager --install "platforms;android-33"
 ```
-
-### screencap
-
-```bash
-adb shell screencap -p "/sdcard/screencap.png" && adb pull "/sdcard/screencap.png" "$USER/Desktop/%time::=-%%random%.png" && adb shell rm "/sdcard/screencap.png"
-```
-
-```pwsh
-%comspec% /c adb shell screencap -p "/sdcard/screencap.png" && adb pull "/sdcard/screencap.png" "%UserProfile%\Desktop\%time::=-%%random%.png" && adb shell rm "/sdcard/screencap.png"
-```
-
-### scrcpy
-
-[GitHub](https://github.com/Genymobile/scrcpy)
-
-- record
-    ```bash
-    scrcpy -m 1080 --show-touches --no-display --record "$USER/Desktop/%time::=-%%random%.mp4"
-    ```
-
-    ```pwsh
-    %comspec% /c scrcpy -m 1080 --show-touches --no-display --record "%UserProfile%\Desktop\%time::=-%%random%.mp4"
-    ```
-- mirror
-    ```bash
-    scrcpy -m 1080 --show-touches
-    ```
-
-    ```pwsh
-    %comspec% /c scrcpy -m 1080 --show-touches
-    ```
 
 ### Strict Modes
 
