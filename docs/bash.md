@@ -2,6 +2,26 @@
 title: 🖥️ Bash
 ---
 
+### Aliases
+
+```bash
+alias cat='bat'
+
+# LS
+alias ls='lsd'
+alias la='ls -al'
+alias ll='ls -alF'
+alias lt='ls --tree'
+
+# Quick edit dotfiles
+alias bash_aliases="open ~/.bash_aliases"
+alias bashrc="open ~/.bashrc"
+alias zshrc="open ~/.zshrc"
+alias zprofile="open ~/.zprofile"
+alias gitconfig="open ~/.gitconfig"
+alias gitattributes="open ~/.gitattributes"
+```
+
 ### Arrays
 
 {{{% raw %}}}
