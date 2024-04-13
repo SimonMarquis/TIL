@@ -532,6 +532,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#delete-branches-with-fzf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete branches with fzf
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#diffing-gzip-ed-json-files" class="md-nav__link">
     <span class="md-ellipsis">
       Diffing Gzip-ed JSON files
@@ -706,6 +715,15 @@
   <a href="#sort-tags-by-semver" class="md-nav__link">
     <span class="md-ellipsis">
       Sort tags by SemVer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch-branch-with-fzf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Switch branch with fzf
     </span>
   </a>
   
@@ -1236,6 +1254,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#delete-branches-with-fzf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete branches with fzf
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#diffing-gzip-ed-json-files" class="md-nav__link">
     <span class="md-ellipsis">
       Diffing Gzip-ed JSON files
@@ -1410,6 +1437,15 @@
   <a href="#sort-tags-by-semver" class="md-nav__link">
     <span class="md-ellipsis">
       Sort tags by SemVer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch-branch-with-fzf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Switch branch with fzf
     </span>
   </a>
   
@@ -1814,6 +1850,15 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 <h3 id="default-commit-message">Default commit message<a class="headerlink" href="#default-commit-message" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>commit.template<span class="w"> </span>~/.gitmessage
 </code></pre></div>
+<h3 id="delete-branches-with-fzf">Delete branches with fzf<a class="headerlink" href="#delete-branches-with-fzf" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>branch<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;^[*+]&#39;</span><span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># ignore current branch` |</span>
+<span class="w">  </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># trim` |</span>
+<span class="w">  </span>fzf<span class="w"> </span>-0<span class="w"> </span>--border<span class="w"> </span>--reverse<span class="w"> </span>--multi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--header<span class="w"> </span><span class="s1">&#39;🗑️ Select one or more branches to delete:&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--preview<span class="w"> </span><span class="s1">&#39;git show --color=always {-1}&#39;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span>xargs<span class="w"> </span>--no-run-if-empty<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--delete<span class="w"> </span>--force
+</code></pre></div>
 <h3 id="diffing-gzip-ed-json-files">Diffing Gzip-ed JSON files<a class="headerlink" href="#diffing-gzip-ed-json-files" title="Permanent link">&para;</a></h3>
 <div class="highlight"><span class="filename">~/.gitattributes</span><pre><span></span><code>*.json.gz<span class="w"> </span><span class="nv">diff</span><span class="o">=</span>json.gz
 </code></pre></div>
@@ -2039,6 +2084,15 @@ git<span class="w"> </span>show<span class="w"> </span>main~10:path/to/file.txt
 </code></pre></div>
 </div>
 <p><a href="https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---sortltkeygt">🔗</a></p>
+<h3 id="switch-branch-with-fzf">Switch branch with fzf<a class="headerlink" href="#switch-branch-with-fzf" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>branch<span class="w"> </span>--all<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;^[*+]&#39;</span><span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># ignore current branch` |</span>
+<span class="w">  </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># trim` |</span>
+<span class="w">  </span>fzf<span class="w"> </span>-0<span class="w"> </span>--border<span class="w"> </span>--reverse<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--preview<span class="w"> </span><span class="s1">&#39;git show --color=always {-1}&#39;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span>sed<span class="w"> </span><span class="s1">&#39;s/remotes/origin///g&#39;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span>xargs<span class="w"> </span>--no-run-if-empty<span class="w"> </span>git<span class="w"> </span>checkout
+</code></pre></div>
 
 
 
