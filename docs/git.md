@@ -393,6 +393,18 @@ A─┬─B──C (main)
 git config --global commit.template ~/.gitmessage
 ```
 
+### Delete branches with fzf
+
+```bash
+git branch |
+  grep -v '^[*+]' `: # ignore current branch` |
+  awk '{print $1}' `: # trim` |
+  fzf -0 --border --reverse --multi \
+    --header '🗑️ Select one or more branches to delete:' \
+    --preview 'git show --color=always {-1}' |
+  xargs --no-run-if-empty git branch --delete --force
+```
+
 ### Diffing Gzip-ed JSON files
 
 ```bash title="~/.gitattributes"
