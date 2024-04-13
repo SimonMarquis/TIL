@@ -692,3 +692,15 @@ git -c versionsort.suffix=- tag --list --sort=version:refname
 </div>
 
 [🔗](https://git-scm.com/docs/git-tag#Documentation/git-tag.txt---sortltkeygt)
+
+### Switch branch with fzf
+
+```bash
+git branch --all |
+  grep -v '^[*+]' `: # ignore current branch` |
+  awk '{print $1}' `: # trim` |
+  fzf -0 --border --reverse \
+    --preview 'git show --color=always {-1}' |
+  sed 's/remotes/origin///g' |
+  xargs --no-run-if-empty git checkout
+```
