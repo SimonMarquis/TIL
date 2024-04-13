@@ -180,6 +180,32 @@ grep -- -v file
 
 [🔗](https://unix.stackexchange.com/a/11382)
 
+### Debugging
+
+This `DEBUG` trap pauses the script execution on each line, prints the command that will be executed, and prompts the user to continue.
+
+```bash hl_lines="2"
+#!/usr/bin/env bash
+trap 'read -p "[$BASH_SOURCE:$LINENO] $BASH_COMMAND"' DEBUG
+
+echo "Foo"
+echo "Bar"
+echo "Baz"
+```
+<div class="result" markdown>
+
+```bash
+./script.sh
+[./script.sh:4] echo "Foo"
+Foo
+[./script.sh:5] echo "Bar"
+Bar
+[./script.sh:6] echo "Baz"
+Baz
+```
+
+</div>
+
 ### Delete empty directories
 
 ```bash
