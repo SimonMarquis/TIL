@@ -394,6 +394,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#delete-empty-directories" class="md-nav__link">
     <span class="md-ellipsis">
       Delete empty directories
@@ -1182,6 +1191,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#delete-empty-directories" class="md-nav__link">
     <span class="md-ellipsis">
       Delete empty directories
@@ -1532,6 +1550,25 @@ Normally <code>-v</code> will be considered the option to reverse the matching m
 <div class="highlight"><pre><span></span><code>grep<span class="w"> </span>--<span class="w"> </span>-v<span class="w"> </span>file
 </code></pre></div>
 <p><a href="https://unix.stackexchange.com/a/11382">🔗</a></p>
+<h3 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">&para;</a></h3>
+<p>This <code>DEBUG</code> trap pauses the script execution on each line, prints the command that will be executed, and prompts the user to continue.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env bash</span>
+<span class="hll"><span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;read -p &quot;[$BASH_SOURCE:$LINENO] $BASH_COMMAND&quot;&#39;</span><span class="w"> </span>DEBUG
+</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Foo&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Bar&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Baz&quot;</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code>./script.sh
+<span class="o">[</span>./script.sh:4<span class="o">]</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Foo&quot;</span>
+Foo
+<span class="o">[</span>./script.sh:5<span class="o">]</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Bar&quot;</span>
+Bar
+<span class="o">[</span>./script.sh:6<span class="o">]</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Baz&quot;</span>
+Baz
+</code></pre></div>
+</div>
 <h3 id="delete-empty-directories">Delete empty directories<a class="headerlink" href="#delete-empty-directories" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-empty<span class="w"> </span>-print<span class="w"> </span>-delete
 </code></pre></div>
@@ -1866,7 +1903,7 @@ group_by<span class="o">(</span>path_expression<span class="o">)</span>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 4, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 13, 2024</span>
   </span>
 
     
