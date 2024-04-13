@@ -257,14 +257,27 @@ document
 
 ### Fork detection on PR
 
+!!! warning "Can be misleading if the PR comes from the same repository but that repository is a fork itself!"
+
+    ```yaml
+    on: pull_request
+    jobs:
+      non-fork:
+        if: ${{ !github.event.pull_request.head.repo.fork }}
+        name: Will NOT run on forks
+      fork-only:
+        if: ${{ github.event.pull_request.head.repo.fork }}
+        name: Will ONLY run on forks
+    ```
+
 ```yaml
 on: pull_request
 jobs:
   non-fork:
-    if: ${{ !github.event.pull_request.head.repo.fork }}
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     name: Will NOT run on forks
   fork-only:
-    if: ${{ github.event.pull_request.head.repo.fork }}
+    if: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
     name: Will ONLY run on forks
 ```
 
