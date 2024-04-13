@@ -482,6 +482,19 @@ git update-index --chmod=+x <file>
 
 [🔗](https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file#ignore-commits-in-the-blame-view)
 
+### Install git hooks
+
+```bash
+install --verbose --mode=755 --target-directory='.git/hooks' .githooks/*
+```
+<div class="result" markdown>
+```bash
+'.githooks/pre-commit' -> '.git/hooks/pre-commit'
+'.githooks/pre-push' -> '.git/hooks/pre-push'
+'.githooks/pre-rebase' -> '.git/hooks/pre-rebase'
+```
+</div>
+
 ### LFS total size
 
 === ":simple-linux: Linux"
