@@ -597,6 +597,16 @@ a
 ```
 </div>
 
+### Strip XML comments
+
+```bash
+cat foo.xml |
+  sed 's/<!--/\x0<!--/g;s/-->/-->\x0/g' `: # Add null chars before and after delimiters` |
+  grep -zv '^<!--' `: # Set null chars as grep delimiter and invert match` |
+  tr -d '\0' `: # Remove null chars` |
+  xmllint --format - `: # Optional reformat to remove empty lines`
+```
+
 ### Write variable to file
 
 ```bash title="echo"
