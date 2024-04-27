@@ -741,6 +741,33 @@ class Hidden {
 
 [🔗 googlesamples.github.io/android-custom-lint-rules](https://googlesamples.github.io/android-custom-lint-rules/checks/index.md.html)
 
+### Lint UAST dump
+
+```kotlin hl_lines="4"
+public class FooDetector : Detector(), SourceCodeScanner {
+    override fun getApplicableMethodNames() = listOf("foo")
+    override fun visitMethodCall(context: JavaContext, node: UCallExpression, method: PsiMethod) =
+        println(node.asRecursiveLogString())
+}
+```
+
+```kotlin title="Snippet"
+fun foo(bar: String, baz: Int) = Unit
+foo(bar = "BAR", baz = 42)
+```
+
+<div class="result" markdown>
+
+```kotlin
+UCallExpression (kind = UastCallKind(name='method_call'), argCount = 2))
+    UIdentifier (Identifier (foo))
+    USimpleNameReferenceExpression (identifier = foo, resolvesTo = null)
+    ULiteralExpression (value = "BAR")
+    ULiteralExpression (value = 42)
+```
+
+</div>
+
 ### List AOSP ATD devices
 
 ```bash
