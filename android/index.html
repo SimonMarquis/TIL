@@ -572,6 +572,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#lint-uast-dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lint UAST dump
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#list-aosp-atd-devices" class="md-nav__link">
     <span class="md-ellipsis">
       List AOSP ATD devices
@@ -1695,6 +1704,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#lint-uast-dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lint UAST dump
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#list-aosp-atd-devices" class="md-nav__link">
     <span class="md-ellipsis">
       List AOSP ATD devices
@@ -2641,6 +2659,24 @@ gradlew<span class="w"> </span>pixelsGroupDebugAndroidTest
 <p><a href="https://googlesamples.github.io/android-custom-lint-rules/checks/EasterEgg.md.html">🔗</a></p>
 <h3 id="lint-issue-index">Lint Issue Index<a class="headerlink" href="#lint-issue-index" title="Permanent link">&para;</a></h3>
 <p><a href="https://googlesamples.github.io/android-custom-lint-rules/checks/index.md.html">🔗 googlesamples.github.io/android-custom-lint-rules</a></p>
+<h3 id="lint-uast-dump">Lint UAST dump<a class="headerlink" href="#lint-uast-dump" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">FooDetector</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Detector</span><span class="p">(),</span><span class="w"> </span><span class="n">SourceCodeScanner</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">getApplicableMethodNames</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">visitMethodCall</span><span class="p">(</span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">JavaContext</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="p">:</span><span class="w"> </span><span class="n">UCallExpression</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="p">:</span><span class="w"> </span><span class="n">PsiMethod</span><span class="p">)</span><span class="w"> </span><span class="o">=</span>
+<span class="hll"><span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">asRecursiveLogString</span><span class="p">())</span>
+</span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Snippet</span><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="nf">foo</span><span class="p">(</span><span class="n">bar</span><span class="p">:</span><span class="w"> </span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">baz</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Unit</span>
+<span class="n">foo</span><span class="p">(</span><span class="n">bar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">baz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">42</span><span class="p">)</span>
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code><span class="n">UCallExpression</span><span class="w"> </span><span class="p">(</span><span class="n">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UastCallKind</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="err">&#39;</span><span class="n">method_call</span><span class="err">&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">argCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">))</span>
+<span class="w">    </span><span class="n">UIdentifier</span><span class="w"> </span><span class="p">(</span><span class="n">Identifier</span><span class="w"> </span><span class="p">(</span><span class="n">foo</span><span class="p">))</span>
+<span class="w">    </span><span class="n">USimpleNameReferenceExpression</span><span class="w"> </span><span class="p">(</span><span class="n">identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">resolvesTo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+<span class="w">    </span><span class="n">ULiteralExpression</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">ULiteralExpression</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">42</span><span class="p">)</span>
+</code></pre></div>
+</div>
 <h3 id="list-aosp-atd-devices">List AOSP ATD devices<a class="headerlink" href="#list-aosp-atd-devices" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;</span><span class="nv">$ANDROID_HOME</span><span class="s2">&quot;</span>/cmdline-tools/latest/bin/sdkmanager<span class="w"> </span>--list<span class="w"> </span>--channel<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>atd<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span>-f<span class="w"> </span><span class="m">3</span>
 </code></pre></div>
@@ -3353,7 +3389,7 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 13, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 27, 2024</span>
   </span>
 
     
