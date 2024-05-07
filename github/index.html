@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.19">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
     
     
       
@@ -681,6 +681,15 @@
   <a href="#matrix-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       Matrix strategy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multline-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multline variables
     </span>
   </a>
   
@@ -1434,6 +1443,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#multline-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multline variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#print-messages-in-workflow-steps" class="md-nav__link">
     <span class="md-ellipsis">
       Print messages in workflow steps
@@ -1912,6 +1930,34 @@ registries:
 <span class="w">          </span><span class="nt">java-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.java-version }}</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">java --version</span>
 </code></pre></div>
+<h3 id="multline-variables">Multline variables<a class="headerlink" href="#multline-variables" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure the delimiter you're using won't occur on a line of its own within the value. If the value is completely arbitrary then you shouldn't use this format. Write the value to a file instead.</p>
+</div>
+<ul>
+<li>
+<p>Environment variable
+  <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">{</span>
+<span class="w">      </span><span class="no">echo &#39;RESULT&lt;&lt;EOF&#39;</span>
+<span class="w">      </span><span class="no">curl https://example.com</span>
+<span class="w">      </span><span class="no">echo EOF</span>
+<span class="w">    </span><span class="no">} &gt;&gt; &quot;$GITHUB_ENV&quot;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Output parameter
+  <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">{</span>
+<span class="w">      </span><span class="no">echo &#39;result&lt;&lt;EOF&#39;</span>
+<span class="w">      </span><span class="no">curl https://example.com</span>
+<span class="w">      </span><span class="no">echo EOF</span>
+<span class="w">    </span><span class="no">} &gt;&gt; &quot;$GITHUB_OUTPUT&quot;</span>
+</code></pre></div></p>
+</li>
+</ul>
+<p><a href="https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings">🔗</a></p>
 <h3 id="print-messages-in-workflow-steps">Print messages in workflow steps<a class="headerlink" href="#print-messages-in-workflow-steps" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
 <span class="nt">steps</span><span class="p">:</span>
@@ -2139,7 +2185,7 @@ registries:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 13, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 7, 2024</span>
   </span>
 
     
@@ -2242,7 +2288,7 @@ registries:
     <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.action.view", "content.tabs.link", "content.code.copy", "content.code.annotate", "navigation.instant", "navigation.indexes", "navigation.top", "navigation.tracking", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      <script src="../assets/javascripts/bundle.a7c05c9e.min.js"></script>
       
     
   </body>
