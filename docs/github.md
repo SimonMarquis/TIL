@@ -425,6 +425,34 @@ jobs:
       - run: java --version
 ```
 
+### Multline variables
+
+!!! warning
+
+    Make sure the delimiter you're using won't occur on a line of its own within the value. If the value is completely arbitrary then you shouldn't use this format. Write the value to a file instead.
+
+- Environment variable
+  ```yaml
+  - run: |
+      {
+        echo 'RESULT<<EOF'
+        curl https://example.com
+        echo EOF
+      } >> "$GITHUB_ENV"
+  ```
+
+- Output parameter
+  ```yaml
+  - run: |
+      {
+        echo 'result<<EOF'
+        curl https://example.com
+        echo EOF
+      } >> "$GITHUB_OUTPUT"
+  ```
+
+[🔗](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings)
+
 ### Print messages in workflow steps
 
 ```yaml
