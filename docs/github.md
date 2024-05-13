@@ -309,6 +309,51 @@ registries:
     replaces-base: true
 ```
 
+### Java in Codespace
+
+```bash
+sdk current java
+```
+<div class="result" markdown>
+
+  ```bash
+  Using java version 17.0.10-ms
+  ```
+
+</div>
+
+```bash
+sdk list java
+```
+<div class="result" markdown>
+
+  ```bash
+  ================================================================================
+  Available Java Versions for Linux 64bit
+  ================================================================================
+   Vendor        | Use | Version      | Dist    | Status     | Identifier
+  --------------------------------------------------------------------------------
+   Microsoft     |     | 21.0.3       | ms      |            | 21.0.3-ms           
+                 |     | 21.0.2       | ms      | installed  | 21.0.2-ms           
+                 |     | 21.0.1       | ms      |            | 21.0.1-ms           
+                 |     | 17.0.11      | ms      |            | 17.0.11-ms          
+                 | >>> | 17.0.10      | ms      | installed  | 17.0.10-ms          
+  ```
+
+</div>
+
+```bash
+# Use ↹ to autocomplete version name
+sdk default java 21.0.2-ms
+```
+<div class="result" markdown>
+
+  ```bash
+  setting java 21.0.2-ms as the default version for all shells.
+  ```
+
+</div>
+
 ### Job outputs
 
 ```yaml
