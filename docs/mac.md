@@ -183,6 +183,163 @@ PC-Style configuration:
 
 [🔗](https://stackoverflow.com/questions/35874608/intellij-default-windows-keymap-on-mac-os-x) [🔗](https://ke-complex-modifications.pqrs.org/#pc_shortcuts)
 
+### [Oh My Posh](https://ohmyposh.dev/)
+
+```json title="theme.omp.json"
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "final_space": false,
+  "version": 2,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "template": "{{ if .WSL }}WSL at{{ end }} {{.Icon}} ",
+          "style": "powerline",
+          "background": "#E5E9F0",
+          "foreground": "#4C566A",
+          "properties": {
+            "windows": " "
+          }
+        },
+        {
+          "type": "path",
+          "template": "  {{ .Path }} ",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "background": "#81A1C1",
+          "foreground": "#2E3440",
+          "properties": {
+            "folder_separator_icon": "/",
+            "style": "full"
+          }
+        },
+        {
+          "background": "#A3BE8C",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#D08770{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#EBCB8B{{ end }}",
+            "{{ if gt .Ahead 0 }}#B48EAD{{ end }}",
+            "{{ if gt .Behind 0 }}#B48EAD{{ end }}"
+          ],
+          "type": "git",
+          "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} ",
+          "foreground": "#2E3440",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "properties": {
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          }
+        },
+        {
+          "type": "status",
+          "style": "diamond",
+          "trailing_diamond": "",
+          "template": " {{ if gt .Code 0 }} {{ reason .Code }}{{ else }}{{ end }}",
+          "background": "#A3BE8C",
+          "background_templates": [
+            "{{ if gt .Code 0 }}#f1184c{{ end }}"
+          ],
+          "foreground": "#2E3440",
+          "properties": {
+            "always_enabled": true
+          }
+        },
+        {
+          "type": "executiontime",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "template": " {{ .FormattedMs }}⠀",
+          "background": "transparent",
+          "foreground": "#777",
+          "properties": {
+            "always_enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "shell",
+          "style": "plain",
+          "template": "<#D08770,transparent></>  {{ .Name }} <transparent,#D08770></>",
+          "background": "#D08770",
+          "foreground": "#2E3440"
+        },
+        {
+          "type": "battery",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "invert_powerline": true,
+          "template": " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }} ",
+          "background": "#A3BE8C",
+          "background_templates": [
+            "{{if eq \"Charging\" .State.String}}#A3BE8C{{end}}",
+            "{{if eq \"Discharging\" .State.String}}#A3BE8C{{end}}",
+            "{{if eq \"Full\" .State.String}}#A3BE8C{{end}}"
+          ],
+          "foreground": "#242424",
+          "properties": {
+            "discharging_icon": "󱟤 ",
+            "charging_icon": "󰂄 ",
+            "charged_icon": "󰁹 ",
+            "not_charging_icon": " "
+          }
+        },
+        {
+          "type": "time",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "invert_powerline": true,
+          "template": "  {{ .CurrentDate | date .Format }} ",
+          "background": "#81A1C1",
+          "foreground": "#2E3440",
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "root",
+          "style": "plain",
+          "template": " ⚡ ",
+          "foreground": "#fff"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "template": "❯ ",
+          "foreground": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "transient_prompt": {
+    "template": "❯ ",
+    "background": "transparent",
+    "foreground": "#ffffff"
+  },
+  "secondary_prompt": {
+    "template": "❯❯ ",
+    "background": "transparent",
+    "foreground": "#ffffff"
+  }
+}
+```
+
 ### [Stats](https://github.com/exelban/stats)
 
 > macOS system monitor in your menu bar
