@@ -648,6 +648,35 @@ git log --topo-order --pretty=format:"%h ~ %s" "$1..${2:-HEAD}" --no-merges
 git rebase --onto featureA featureA@{1} featureB
 ```
 
+### Rebase stacked branches
+
+!!! abstract
+    Automatically force-update any branches that point to commits that are being rebased. Any branches that are checked out in a worktree are not updated in this way.
+    
+    ```ini title="~/.gitconfig"
+    [rebase]
+        updateRefs = true
+    ```
+
+```raw
+A─┬┄          (main)
+  ╰─B─┬─X     (feature-1)
+      ╰─C─╮   (feature-2)
+          ╰─D (feature-3)
+```
+
+```bash
+git checkout feature-3
+git rebase feature-1 --update-refs
+```
+
+```raw
+A─┬┄              (main)
+  ╰─B───X─╮       (feature-1)
+          ╰─Y─╮   (feature-2)
+              ╰─Z (feature-3)
+```
+
 ### Recursive gc
 
 ```bash
