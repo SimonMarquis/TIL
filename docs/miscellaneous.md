@@ -538,6 +538,28 @@ indent_style = space
 - [Hack](https://sourcefoundry.org/hack/)
 - [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 
+### Gmail filters
+
+📅 Calendar
+:   
+    ```
+    from:(-me) has:attachment filename:ics "Google Calendar"
+    ```
+
+📅 Calendar (updates)
+
+:   
+    ```
+    from:(-me) has:attachment filename:ics "Google Calendar" {"updated" "mise à jour"}
+    ```
+
+🐙 GitHub
+
+:   
+    ```
+    from:(notifications@github.com)
+    ```
+
 ### Gmail search operators
 
 ```bash
