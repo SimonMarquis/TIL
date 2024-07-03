@@ -638,3 +638,11 @@ EOF
 - `#!bash $$` PID of current shell
 - `#!bash $-` Set of option flags in current shell
 - `#!bash $_` Last argument of the last command
+
+### Total size of files
+
+```bash
+find . -type f -name "*.log" -print0 `: # find all .log files` |
+  xargs -0 du --total --human-readable `: # compute total space usage` |
+  awk 'END{print $1}' `: # extract total value`
+```
