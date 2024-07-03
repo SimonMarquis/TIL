@@ -8,6 +8,33 @@ title: 🐘 Gradle
     - [Distributions](https://services.gradle.org/distributions/)
     - [Checksums](https://gradle.org/release-checksums/)
 
+### Build cache debugging
+
+```bash
+./gradlew clean build --build-cache -Dorg.gradle.caching.debug=true
+```
+<div class="result" markdown>
+```raw
+Build cache key for task ':compileKotlin' is 6b60211f33e6467e5a0b02e250948c86
+```
+</div>
+
+```bash
+tar --gzip --list --verbose --file ~/.gradle/caches/build-cache-1/6b60211f33e6467e5a0b02e250948c86
+```
+<div class="result" markdown>
+```raw
+-rw-r--r-- 0/0             322 0000-00-00 00:00 METADATA
+drwxr-xr-x 0/0               0 0000-00-00 00:00 tree-classpathSnapshotProperties.classpathSnapshotDir/
+-rw-r--r-- 0/0           37404 0000-00-00 00:00 tree-classpathSnapshotProperties.classpathSnapshotDir/shrunk-classpath-snapshot.bin
+drwxr-xr-x 0/0               0 0000-00-00 00:00 tree-destinationDirectory/
+...
+drwxr-xr-x 0/0               0 0000-00-00 00:00 tree-destinationDirectory/META-INF/
+-rw-r--r-- 0/0              66 0000-00-00 00:00 tree-destinationDirectory/META-INF/processor.kotlin_module
+...
+```
+</div>
+
 ### Cache Node Health
 
 !!! example "This is not publicly advertised and is subject to change."
