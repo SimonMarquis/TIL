@@ -713,6 +713,15 @@ idea {
 
 [🔗](https://docs.gradle.org/current/dsl/org.gradle.plugins.ide.idea.model.IdeaModule.html#org.gradle.plugins.ide.idea.model.IdeaModule:excludeDirs)
 
+### In-memory DataStore
+
+```kotlin
+class InMemoryDataStore<T>(initialValue: T) : DataStore<T> {
+    override val data: MutableStateFlow<T> = MutableStateFlow(initialValue)
+    override suspend fun updateData(transform: suspend (it: T) -> T) = data.updateAndGet { transform(it) }
+}
+```
+
 ### Lifecycle CheatSheets
 
 [🔗 JoseAlcerreca/android-lifecycles](https://github.com/JoseAlcerreca/android-lifecycles)
