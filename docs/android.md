@@ -505,6 +505,25 @@ inline fun <reified T : View> action(
 }
 ```
 
+### Exclude Proguard (R8) rules from dependency
+
+```kotlin title="build.gradle.kts"
+android {
+    buildTypes {
+        release {
+            optimization {
+                keepRules {
+                    ignoreFrom(
+                        "groupId:artifactId:version",
+                        "groupId:artifactId",
+                    )
+                }
+            }
+        }
+    }
+}
+```
+
 ### Firebase Analytics debug
 
 [🔗](https://firebase.google.com/docs/analytics/debugview#enabling_debug_mode) Enabling debug mode forces the app to send events immediately instead of waiting for batches.
