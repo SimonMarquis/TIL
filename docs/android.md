@@ -699,19 +699,6 @@ class UserViewModel(
 ) : ViewModel()
 ```
 
-### Kotlin Coroutines debug probes
-
-!!! quote
-    The `kotlinx-coroutines-core` artifact contains a resource file that is not required for the coroutines to operate normally and is only used by the debugger.
-
-```kotlin
-android {
-    packagingOptions {
-        resources.excludes += "DebugProbesKt.bin"
-    }
-}
-```
-
 [🔗](https://github.com/Kotlin/kotlinx.coroutines#avoiding-including-the-debug-infrastructure-in-the-resulting-apk)
 
 ### Ignore generated baseline profile
@@ -748,6 +735,19 @@ jps `: # list VMs` |
   grep -E -i "gradle|kotlin" `: # Kotlin & Gradle daemons` |
   cut -d " " -f1 `: # extract pid` |
   xargs -t -n1 kill -9
+```
+
+### Kotlin Coroutines debug probes
+
+!!! quote
+    The `kotlinx-coroutines-core` artifact contains a resource file that is not required for the coroutines to operate normally and is only used by the debugger.
+
+```kotlin
+android {
+    packagingOptions {
+        resources.excludes += "DebugProbesKt.bin"
+    }
+}
 ```
 
 ### Lifecycle CheatSheets
