@@ -741,6 +741,15 @@ class InMemoryDataStore<T>(initialValue: T) : DataStore<T> {
 }
 ```
 
+### Kill rogue daemons
+
+```bash
+jps `: # list VMs` |
+  grep -E -i "gradle|kotlin" `: # Kotlin & Gradle daemons` |
+  cut -d " " -f1 `: # extract pid` |
+  xargs -t -n1 kill -9
+```
+
 ### Lifecycle CheatSheets
 
 [🔗 JoseAlcerreca/android-lifecycles](https://github.com/JoseAlcerreca/android-lifecycles)
