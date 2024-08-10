@@ -298,7 +298,7 @@ fun String.normalizeLineEndings(
 ) = replace("""\r\n?""".toRegex(), replacement)
 ```
 
-#### Permutations & Combinations
+### Permutations & Combinations
 
 ```kotlin
 fun <T> List<T>.permutations(): List<List<T>> {
