@@ -219,6 +219,12 @@ graph LR
     C --> D
 ```
 
+### Mermaid info
+
+```mermaid
+info
+```
+
 ### Prefers color scheme
 
 <picture>
