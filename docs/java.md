@@ -23,6 +23,12 @@ title: ☕ Java
     fi
     ```
 
+### JVM flags
+
+```bash
+java -XX:+UnlockDiagnosticVMOptions -XX:+UnlockExperimentalVMOptions -XX:+PrintFlagsFinal -version
+```
+
 ### JVM utilities
 
 - Heap info
