@@ -754,7 +754,7 @@ scheme  user information     host     port            query   fragment
     visualvm -J-Dorg.graalvm.visualvm.modules.startup.DisableStartupCheck=true
     ```
 
-=== ":simple-windows: Windows"
+=== ":material-microsoft-windows: Windows"
 
     ```ini title="VisualVM\etc\visualvm.conf"
     visualvm_jdkhome="/path/to/jdk"

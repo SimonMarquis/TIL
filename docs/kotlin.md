@@ -144,7 +144,7 @@ val displayName = Foo.annotation<DisplayName>()?.value // "a"
 
 ### Execute commands in subprocess
 
-!!! warning "On Windows (:simple-windows:), you'll probably need to prefix the command with `cmd /c`."
+!!! warning "On Windows (:material-microsoft-windows:), you'll probably need to prefix the command with `cmd /c`."
 
 ```kotlin
 /**

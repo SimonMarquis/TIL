@@ -424,7 +424,7 @@ fun TextView.isEllipsized(): Boolean = layout?.let { !TextUtils.equals(text, it.
     export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
     ```
 
-=== ":simple-windows: Windows"
+=== ":material-microsoft-windows: Windows"
 
     ```bash
     export ANDROID_HOME=$HOME/android
