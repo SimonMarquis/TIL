@@ -739,3 +739,27 @@ scheme  user information     host     port            query   fragment
     ```
 
 [🔗](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier)
+
+# VisualVM
+
+=== ":simple-apple: macOS"
+
+    ```ini title="~/Library/Application Support/VisualVM/<version>/etc/visualvm.conf"
+    # /Applications/VisualVM.app/Contents/Resources/visualvm/etc/visualvm.conf
+    # ↑ This file will be reset during app updates
+    visualvm_jdkhome="/path/to/jdk"
+    ```
+
+    ```bash
+    visualvm -J-Dorg.graalvm.visualvm.modules.startup.DisableStartupCheck=true
+    ```
+
+=== ":simple-windows: Windows"
+
+    ```ini title="VisualVM\etc\visualvm.conf"
+    visualvm_jdkhome="/path/to/jdk"
+    ```
+
+    ```bash
+    visualvm.exe -J-Dorg.graalvm.visualvm.modules.startup.DisableStartupCheck=true
+    ```
