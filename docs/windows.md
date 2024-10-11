@@ -19,6 +19,30 @@ SETX ANDROID_USER_HOME E:\.android
 
 [🔗](https://learn.microsoft.com/en-us/windows/dev-drive/)
 
+### Environment variables paths
+
+| Variable | Path |
+|----------|------|
+| `#!batch %AllUsersProfile%` | `C:\ProgramData` |
+| `#!batch %AppData%` | `C:\Users\{username}\AppData\Roaming` |
+| `#!batch %CommonProgramFiles%` | `C:\Program Files\Common Files` |
+| `#!batch %CommonProgramFiles(x86)%` | `C:\Program Files (x86)\Common Files` |
+| `#!batch %comSpec%` | `C:\Windows\System32\cmd.exe` |
+| `#!batch %HomeDrive%` | `C:` |
+| `#!batch %HomeDrive%` | `C:` |
+| `#!batch %HomePath%` | `C:\Users\{username}` |
+| `#!batch %LocalAppData%` | `C:\Users\{username}\AppData\Local` |
+| `#!batch %ProgramData%` | `C:\ProgramData` |
+| `#!batch %ProgramFiles%` | `C:\Program Files` |
+| `#!batch %ProgramFiles(x86)%` | `C:\Program Files (x86)` |
+| `#!batch %Public%` | `C:\Users\Public` |
+| `#!batch %SystemDrive%` | `C:` |
+| `#!batch %SystemRoot%` | `C:\Windows` |
+| `#!batch %Temp%` | `C:\Users\{username}\AppData\Local\Temp` |
+| `#!batch %Tmp%` | `C:\Users\{username}\AppData\Local\Temp` |
+| `#!batch %UserProfile%` | `C:\Users\{username}` |
+| `#!batch %WinDir%` | `C:\Windows` |
+
 ### Reboot GPU driver
 
 === "MkDocs"
