@@ -340,6 +340,22 @@ PC-Style configuration:
 }
 ```
 
+### [Shortcuts](https://support.apple.com/guide/shortcuts/welcome/ios)
+
+- 🪄 Select Android Device • [:material-download:](assets/Select Android Device.shortcut){: download="Select Android Device.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Select%20Android%20Device) • [`#!bash adb devices -l`](https://developer.android.com/tools/adb#devicestatus)
+
+- 📸 Screenshot • [:material-download:](assets/Screenshot.shortcut){: download="Screenshot.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Screenshot) • [`#!bash adb shell screencap`](https://developer.android.com/tools/adb#screencap)
+
+- 🪞 Mirror • [:material-download:](assets/Mirror.shortcut){: download="Mirror.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Mirror) • [`#!bash scrcpy`](https://github.com/Genymobile/scrcpy?tab=readme-ov-file)
+
+- 📹 Record • [:material-download:](assets/Record.shortcut){: download="Record.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Record) • [`#!bash scrcpy --record`](https://github.com/Genymobile/scrcpy/blob/master/doc/recording.md)
+
+- ♻️ Kill Gradle & Kotlin daemons • [:material-download:](assets/Kill daemons.shortcut){: download="Kill daemons.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Kill daemons) • [`#!bash pkill`](https://linux.die.net/man/1/pkill)
+
+- 🖼️ Diff images • [:material-download:](assets/Diff.shortcut){: download="Diff.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Diff) • [`#!bash magick compare <l> <r> -compose src <output>`](https://imagemagick.org/script/compare.php)
+
+- 🛜 Network details • [:material-download:](assets/Network.shortcut){: download="Network.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Network)
+
 ### [Stats](https://github.com/exelban/stats)
 
 > macOS system monitor in your menu bar
