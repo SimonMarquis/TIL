@@ -1200,6 +1200,13 @@ Version: 1
 
 `Help` → `Edit Custom Properties` → `studio.projectview=true`
 
+### R8 flags
+
+- `com.android.tools.r8.printtimes`
+- `com.android.tools.r8.printmemory`
+
+[🔗](https://r8.googlesource.com/r8/+/master/src/main/java/com/android/tools/r8/utils/InternalOptions.java)
+
 ### Recursive View children sequence
 
 ```kotlin
