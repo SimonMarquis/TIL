@@ -62,6 +62,10 @@ icacls C:\files /reset /T /C /L /Q
 
 [🔗](https://superuser.com/a/813881/733209)
 
+### Startup programs
+
+`#!batch %AppData%\Microsoft\Windows\Start Menu\Programs\Startup`
+
 ### Stop WmmemWSL process
 
 ```bash
