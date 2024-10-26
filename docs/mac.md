@@ -352,6 +352,8 @@ PC-Style configuration:
 
 - ♻️ Kill Gradle & Kotlin daemons • [:material-download:](assets/Kill daemons.shortcut){: download="Kill daemons.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Kill daemons) • [`#!bash pkill`](https://linux.die.net/man/1/pkill)
 
+- 🥑 avocado • [:material-download:](assets/🥑 avocado.shortcut){: download="🥑 avocado.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=🥑 avocado) • [`#!bash avocado`](https://github.com/alexjlockwood/avocado)
+
 - 🖼️ Diff images • [:material-download:](assets/Diff.shortcut){: download="Diff.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Diff) • [`#!bash magick compare <l> <r> -compose src <output>`](https://imagemagick.org/script/compare.php)
 
 - 🛜 Network details • [:material-download:](assets/Network.shortcut){: download="Network.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Network)
