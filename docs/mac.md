@@ -342,6 +342,16 @@ PC-Style configuration:
 
 ### [Shortcuts](https://support.apple.com/guide/shortcuts/welcome/ios)
 
+!!! quote "[Run shortcut with deeplink](https://support.apple.com/guide/shortcuts-mac/run-a-shortcut-from-a-url-apd624386f42/mac)"
+
+    ```
+    shortcuts://run-shortcut?name=[name]&input=[input]&text=[text]
+    ```
+
+    - `name`: The name of the shortcut to run.
+    - `input` (optional): The initial input into the shortcut. There are two input options: a text string or the word `clipboard`. When the `input` value is a text string, that text is used. When the `input` value is `clipboard`, the contents of the Clipboard are used.
+    - `text`: If `input` is set to text, then value of the `text` parameter is passed as `input` to the shortcut. If `input` is set to `clipboard`, then this parameter is ignored.
+
 - 🪄 Select Android Device • [:material-download:](assets/Select Android Device.shortcut){: download="Select Android Device.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Select%20Android%20Device) • [`#!bash adb devices -l`](https://developer.android.com/tools/adb#devicestatus)
 
 - 📸 Screenshot • [:material-download:](assets/Screenshot.shortcut){: download="Screenshot.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Screenshot) • [`#!bash adb shell screencap`](https://developer.android.com/tools/adb#screencap)
