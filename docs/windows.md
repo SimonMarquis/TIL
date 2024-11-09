@@ -89,3 +89,16 @@ URL=mailto:test@example.org
 [InternetShortcut]
 URL=https://example.org
 ```
+
+### winget
+
+```bat
+:: Update all packages
+winget upgrade --all
+
+:: Export packages
+winget export --output backup.json
+
+:: Import packages
+winget import --input backup.json
+```
