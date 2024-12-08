@@ -737,7 +737,7 @@ git branch --all |
   xargs --no-run-if-empty git checkout
 ```
 
-## Trailers
+### Trailers
 
 ```bash
 git commit --amend --no-edit --trailer "Reviewed-by: John Doe <john.doe@example.com>"
