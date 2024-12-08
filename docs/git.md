@@ -472,6 +472,17 @@ or
 git update-index --chmod=+x <file>
 ```
 
+## FSMonitor
+
+> Improve Git monorepo performance with a file system monitor
+
+```bash
+git config --global core.fsmonitor true
+git config --global core.untrackedCache true
+```
+
+[🔗](https://github.blog/engineering/improve-git-monorepo-performance-with-a-file-system-monitor/)
+
 ### Ignoring commits in the blame view
 
 ```bash title=".git-blame-ignore-revs"
