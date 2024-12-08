@@ -733,3 +733,13 @@ git branch --all |
   sed 's/remotes/origin///g' |
   xargs --no-run-if-empty git checkout
 ```
+
+## Trailers
+
+```bash
+git commit --amend --no-edit --trailer "Reviewed-by: John Doe <john.doe@example.com>"
+```
+
+```bash
+git show --no-patch --format='%(trailers:key=Reviewed-by)'
+```
