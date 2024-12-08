@@ -1529,8 +1529,8 @@
 <span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Simon<span class="w"> </span>Marquis
 <span class="w">    </span><span class="nv">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>contact@simon-marquis.fr
 
-<span class="o">[</span>branch<span class="o">]</span>
-<span class="w">    </span><span class="nv">autosetuprebase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>always
+<span class="o">[</span>advice<span class="o">]</span>
+<span class="w">    </span><span class="nv">detachedHead</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span>
 
 <span class="o">[</span>alias<span class="o">]</span>
 <span class="w">    </span><span class="c1"># List aliases</span>
@@ -1567,6 +1567,9 @@
 <span class="w">    </span><span class="nv">unstage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>reset<span class="w"> </span>HEAD<span class="w"> </span>--
 <span class="w">    </span><span class="c1"># Prints current user</span>
 <span class="w">    </span><span class="nv">whoami</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>!git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email
+
+<span class="o">[</span>branch<span class="o">]</span>
+<span class="w">    </span><span class="nv">autosetuprebase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>always
 
 <span class="o">[</span>commit<span class="o">]</span>
 <span class="w">    </span><span class="nv">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>~/.gitmessage
