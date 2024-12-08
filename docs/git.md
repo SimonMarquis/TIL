@@ -11,8 +11,8 @@ title: 💽 Git
             name = Simon Marquis
             email = contact@simon-marquis.fr
 
-        [branch]
-            autosetuprebase = always
+        [advice]
+            detachedHead = false
 
         [alias]
             # List aliases
@@ -49,6 +49,9 @@ title: 💽 Git
             unstage = reset HEAD --
             # Prints current user
             whoami = !git config --global user.name && git config --global user.email
+
+        [branch]
+            autosetuprebase = always
 
         [commit]
             template = ~/.gitmessage
