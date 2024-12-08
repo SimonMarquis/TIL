@@ -301,20 +301,21 @@ fun String.normalizeLineEndings(
 ### Permutations & Combinations
 
 ```kotlin
-fun <T> List<T>.permutations(): List<List<T>> {
-    if (isEmpty()) return emptyList()
-    if (size == 1) return listOf(this)
-    val elementToInsert = first()
-    return drop(1).permutations().flatMap { p -> List(size) { p.toMutableList().apply { add(it, elementToInsert) } } }
-}
+fun <T> List<T>.permutations(): Set<List<T>> =
+    if (size <= 1) setOf(this)
+    else drop(1)
+        .permutations()
+        .flatMapTo(mutableSetOf()) {
+            List(size) { i -> it.toMutableList().apply { add(i, this@permutations.first()) } }
+        }
 
-fun <T> List<T>.permutationsSequence(): Sequence<List<T>> {
-    if (isEmpty()) return emptySequence()
-    if (size == 1) return sequenceOf(this)
-    val elementToInsert = first()
-    return drop(1).permutationsSequence()
-        .flatMap { p -> List(size) { p.toMutableList().apply { add(it, elementToInsert) } } }
-}
+fun <T> List<T>.permutationsSequence(): Sequence<List<T>> =
+    if (size <= 1) sequenceOf(this)
+    else drop(1)
+        .permutationsSequence()
+        .flatMap {
+            List(size) { i -> it.toMutableList().apply { add(i, this@permutationsSequence.first()) } }
+        }
 
 fun <T> List<T>.pairs(): Sequence<Pair<T, T>> = sequence {
     for (i in 0 until size - 1)
