@@ -684,6 +684,47 @@ FOO: ${{ <condition> && <true> || <false> }}
 !!! warning
     If the value of `<true>` is _falsy_, the result of the expression will be `<false>`.
 
+### Use git as an app's bot user
+
+```yaml
+on: [pull_request]
+
+jobs:
+  auto-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api "/users/${APP_SLUG}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+      - run: |
+          git config --global user.name "${APP_SLUG}[bot]"
+          git config --global user.email "${APP_USER_ID}+${APP_SLUG}[bot]@users.noreply.github.com>"
+        env:
+          APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
+          APP_USER_ID: ${{ steps.get-user-id.outputs.user-id }}
+      - run: |
+          git commit -m "Auto-generated changes" -- foo
+          git push
+```
+
+!!! tip
+
+    The `<BOT USER ID>` is the numeric user ID of the app's bot user, which can be found under `https://api.github.com/users/<app-slug>[bot]`.
+
+    For example, we can check at [`https://api.github.com/users/dependabot[bot]`](https://api.github.com/users/dependabot[bot]) to see the user ID of Dependabot is 49699333.
+
+    Alternatively, you can use the [octokit/request-action](https://github.com/octokit/request-action) to get the ID.
+
+[🔗](https://github.com/actions/create-github-app-token/blob/main/README.md#configure-git-cli-for-an-apps-bot-user)
+
 ### Worflow input as command line arguments
 
 ```yaml
