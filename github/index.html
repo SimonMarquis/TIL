@@ -795,6 +795,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#use-git-as-an-apps-bot-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use git as an app's bot user
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#worflow-input-as-command-line-arguments" class="md-nav__link">
     <span class="md-ellipsis">
       Worflow input as command line arguments
@@ -1560,6 +1569,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#use-git-as-an-apps-bot-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use git as an app's bot user
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#worflow-input-as-command-line-arguments" class="md-nav__link">
     <span class="md-ellipsis">
       Worflow input as command line arguments
@@ -2157,6 +2175,41 @@ sdk<span class="w"> </span>default<span class="w"> </span>java<span class="w"> <
 <p class="admonition-title">Warning</p>
 <p>If the value of <code>&lt;true&gt;</code> is <em>falsy</em>, the result of the expression will be <code>&lt;false&gt;</code>.</p>
 </div>
+<h3 id="use-git-as-an-apps-bot-user">Use git as an app's bot user<a class="headerlink" href="#use-git-as-an-apps-bot-user" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">auto-format</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/create-github-app-token@v1</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-token</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">app-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ vars.APP_ID }}</span>
+<span class="w">          </span><span class="nt">private-key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.PRIVATE_KEY }}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get GitHub App User ID</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get-user-id</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;user-id=$(gh api &quot;/users/${APP_SLUG}[bot]&quot; --jq .id)&quot; &gt;&gt; &quot;$GITHUB_OUTPUT&quot;</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">APP_SLUG</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.app-token.outputs.app-slug }}</span>
+<span class="w">          </span><span class="nt">GH_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.app-token.outputs.token }}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">git config --global user.name &quot;${APP_SLUG}[bot]&quot;</span>
+<span class="w">          </span><span class="no">git config --global user.email &quot;${APP_USER_ID}+${APP_SLUG}[bot]@users.noreply.github.com&gt;&quot;</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">APP_SLUG</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.app-token.outputs.app-slug }}</span>
+<span class="w">          </span><span class="nt">APP_USER_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.get-user-id.outputs.user-id }}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">git commit -m &quot;Auto-generated changes&quot; -- foo</span>
+<span class="w">          </span><span class="no">git push</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code>&lt;BOT USER ID&gt;</code> is the numeric user ID of the app's bot user, which can be found under <code>https://api.github.com/users/&lt;app-slug&gt;[bot]</code>.</p>
+<p>For example, we can check at <a href="https://api.github.com/users/dependabot[bot]"><code>https://api.github.com/users/dependabot[bot]</code></a> to see the user ID of Dependabot is 49699333.</p>
+<p>Alternatively, you can use the <a href="https://github.com/octokit/request-action">octokit/request-action</a> to get the ID.</p>
+</div>
+<p><a href="https://github.com/actions/create-github-app-token/blob/main/README.md#configure-git-cli-for-an-apps-bot-user">🔗</a></p>
 <h3 id="worflow-input-as-command-line-arguments">Worflow input as command line arguments<a class="headerlink" href="#worflow-input-as-command-line-arguments" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">on</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
@@ -2232,7 +2285,7 @@ sdk<span class="w"> </span>default<span class="w"> </span>java<span class="w"> <
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 13, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 14, 2024</span>
   </span>
 
     
