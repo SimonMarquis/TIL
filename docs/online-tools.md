@@ -20,6 +20,8 @@ title: 🕸️ Online tools
   > The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis
 - [Data URL maker](https://dataurl-app.web.app/)
   > Convert file to `data:` urls
+- [diffdiff](https://diffdiff.net/)
+  > See the difference between two pieces of text.
 - [FCM toolbox](https://simonmarquis.github.io/FCM-toolbox)
   > 📲 Firebase Cloud Messaging toolbox
 - [Free Favicon Maker](https://formito.com/tools/favicon)
@@ -62,9 +64,13 @@ title: 🕸️ Online tools
   > View SQLite file online
 - [Squoosh!](https://squoosh.app/)
   > Make images smaller using best-in-class codecs, right in the browser.
+- [Squish](https://squish.addy.ie/)
+  > Compress and convert your images to AVIF, JPEG, JPEG XL, PNG, or WebP.
 - [SVGOMG](https://jakearchibald.github.io/svgomg/)
   > Web GUI for SVGO
 - [UTF-8 Size](https://nightlynexus.github.io/utf8size/)
   > A webpage for measuring UTF-8 text
+- [WebADB](https://app.webadb.com/)
+  > The best way to control and manage your android device using just the browser!
 - [Whimsical](https://whimsical.com/)
   > Visual workspace for thinking and collaboration, combining flowcharts, wireframes, sticky notes, mind maps and docs.
