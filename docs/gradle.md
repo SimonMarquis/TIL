@@ -325,6 +325,42 @@ gradlew -q properties --console=plain | grep "^<my-property>:" | awk '{printf $2
 gradlew -q properties --property=<my-property>
 ```
 
+### Outgoing variants report
+
+```bash
+./gradlew :lib:outgoingVariants
+```
+<div class="result" markdown>
+
+```bash
+> Task :lib:outgoingVariants
+--------------------------------------------------
+Variant archives
+--------------------------------------------------
+Configuration for archive artifacts.
+
+Capabilities
+    - Android-Playground:lib:unspecified (default capability)
+
+--------------------------------------------------
+Variant debugApiElements
+--------------------------------------------------
+API elements for debug
+
+Capabilities
+    - Android-Playground:lib:unspecified (default capability)
+Attributes
+    - com.android.build.api.attributes.AgpVersionAttr          = 8.7.3
+    - com.android.build.api.attributes.BuildTypeAttr           = debug
+    - com.android.build.gradle.internal.attributes.VariantAttr = debug
+    - org.gradle.category                                      = library
+    - org.gradle.jvm.environment                               = android
+    - org.gradle.usage                                         = java-api
+    - org.jetbrains.kotlin.platform.type                       = androidJvm
+```
+
+</div>
+
 ### Override build type attribute
 
 ```kotlin
