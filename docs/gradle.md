@@ -361,6 +361,8 @@ Attributes
 
 </div>
 
+[🔗](https://docs.gradle.org/current/userguide/variant_model.html#outgoing_variants_report)
+
 ### Override build type attribute
 
 ```kotlin
