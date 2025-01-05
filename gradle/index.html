@@ -599,6 +599,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#outgoing-variants-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outgoing variants report
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#override-build-type-attribute" class="md-nav__link">
     <span class="md-ellipsis">
       Override build type attribute
@@ -1227,6 +1236,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#outgoing-variants-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outgoing variants report
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#override-build-type-attribute" class="md-nav__link">
     <span class="md-ellipsis">
       Override build type attribute
@@ -1670,6 +1688,36 @@ gradlew<span class="w"> </span>-q<span class="w"> </span>properties<span class="
 <span class="c1"># Or on newer versions</span>
 gradlew<span class="w"> </span>-q<span class="w"> </span>properties<span class="w"> </span>--property<span class="o">=</span>&lt;my-property&gt;
 </code></pre></div>
+<h3 id="outgoing-variants-report">Outgoing variants report<a class="headerlink" href="#outgoing-variants-report" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>./gradlew<span class="w"> </span>:lib:outgoingVariants
+</code></pre></div>
+<div class="result">
+<div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>Task<span class="w"> </span>:lib:outgoingVariants
+--------------------------------------------------
+Variant<span class="w"> </span>archives
+--------------------------------------------------
+Configuration<span class="w"> </span><span class="k">for</span><span class="w"> </span>archive<span class="w"> </span>artifacts.
+
+Capabilities
+<span class="w">    </span>-<span class="w"> </span>Android-Playground:lib:unspecified<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>capability<span class="o">)</span>
+
+--------------------------------------------------
+Variant<span class="w"> </span>debugApiElements
+--------------------------------------------------
+API<span class="w"> </span>elements<span class="w"> </span><span class="k">for</span><span class="w"> </span>debug
+
+Capabilities
+<span class="w">    </span>-<span class="w"> </span>Android-Playground:lib:unspecified<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>capability<span class="o">)</span>
+Attributes
+<span class="w">    </span>-<span class="w"> </span>com.android.build.api.attributes.AgpVersionAttr<span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="m">8</span>.7.3
+<span class="w">    </span>-<span class="w"> </span>com.android.build.api.attributes.BuildTypeAttr<span class="w">           </span><span class="o">=</span><span class="w"> </span>debug
+<span class="w">    </span>-<span class="w"> </span>com.android.build.gradle.internal.attributes.VariantAttr<span class="w"> </span><span class="o">=</span><span class="w"> </span>debug
+<span class="w">    </span>-<span class="w"> </span>org.gradle.category<span class="w">                                      </span><span class="o">=</span><span class="w"> </span>library
+<span class="w">    </span>-<span class="w"> </span>org.gradle.jvm.environment<span class="w">                               </span><span class="o">=</span><span class="w"> </span>android
+<span class="w">    </span>-<span class="w"> </span>org.gradle.usage<span class="w">                                         </span><span class="o">=</span><span class="w"> </span>java-api
+<span class="w">    </span>-<span class="w"> </span>org.jetbrains.kotlin.platform.type<span class="w">                       </span><span class="o">=</span><span class="w"> </span>androidJvm
+</code></pre></div>
+</div>
 <h3 id="override-build-type-attribute">Override build type attribute<a class="headerlink" href="#override-build-type-attribute" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">implementation</span><span class="p">(</span><span class="n">project</span><span class="p">(</span><span class="s">&quot;:lib&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">attributes</span><span class="w"> </span><span class="p">{</span>
@@ -1935,7 +1983,7 @@ You can also set system properties in <code>gradle.properties</code> files with 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 3, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 5, 2025</span>
   </span>
 
     
