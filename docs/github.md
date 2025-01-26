@@ -755,7 +755,7 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
       - run: |
           git config --global user.name "${APP_SLUG}[bot]"
-          git config --global user.email "${APP_USER_ID}+${APP_SLUG}[bot]@users.noreply.github.com>"
+          git config --global user.email "${APP_USER_ID}+${APP_SLUG}[bot]@users.noreply.github.com"
         env:
           APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
           APP_USER_ID: ${{ steps.get-user-id.outputs.user-id }}
