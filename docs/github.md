@@ -470,6 +470,55 @@ jobs:
       - run: java --version
 ```
 
+### Matrix strategy from JSON
+
+```yaml  
+jobs:
+  setup-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - id: matrix
+        run: echo "matrix=$(jq --raw-output --compact-output . <<< "$CONFIG")" >> $GITHUB_OUTPUT
+        env:
+          CONFIG: >-
+            [
+              {
+                "id": "foo",
+                "value": "Hello, Foo!",
+                "array": [1, 2, 3]
+              },
+              {
+                "id": "bar",
+                "value": "Hello, Bar!",
+                "array": [3, 2, 1]
+              }
+            ]
+
+      - run: jq . <<< "$MATRIX"
+        env:
+          MATRIX: ${{ steps.matrix.outputs.matrix }}
+
+
+  use-matrix:
+    name: Use matrix @${{ matrix.id }}
+    needs: setup-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include: ${{ fromJSON(needs.setup-matrix.outputs.matrix) }}
+    steps:
+      - run: |
+          echo "ID=$ID"
+          echo "VALUE=$VALUE"
+          echo "ARRAYS=$ARRAYS"
+        env:
+          ID: ${{ matrix.id }}
+          VALUE: ${{ matrix.value }}
+          ARRAYS: ${{ join(matrix.array.*, ', ') }}
+```
+
 ### Multline variables
 
 !!! warning
