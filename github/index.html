@@ -2259,7 +2259,7 @@ sdk<span class="w"> </span>default<span class="w"> </span>java<span class="w"> <
 <span class="w">          </span><span class="nt">GH_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.app-token.outputs.token }}</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">git config --global user.name &quot;${APP_SLUG}[bot]&quot;</span>
-<span class="w">          </span><span class="no">git config --global user.email &quot;${APP_USER_ID}+${APP_SLUG}[bot]@users.noreply.github.com&gt;&quot;</span>
+<span class="w">          </span><span class="no">git config --global user.email &quot;${APP_USER_ID}+${APP_SLUG}[bot]@users.noreply.github.com&quot;</span>
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">APP_SLUG</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.app-token.outputs.app-slug }}</span>
 <span class="w">          </span><span class="nt">APP_USER_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.get-user-id.outputs.user-id }}</span>
