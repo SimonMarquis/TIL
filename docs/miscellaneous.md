@@ -664,6 +664,7 @@ Or simply type `@email draft`.
 
 ### Links
 
+- [NO_COLOR](https://no-color.org/)
 - [No hello](https://nohello.net/)
   > Imagine calling someone on the phone, going hello! then putting them on hold... 🤦‍♀️
 - [The XY Problem](https://xyproblem.info/)
