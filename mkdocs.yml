@@ -80,6 +80,8 @@ plugins:
       j2_block_end_string: '%}}}'
       j2_variable_start_string: '{{{'
       j2_variable_end_string: '}}}'
+      include_yaml:
+        - sample: data/sample.yaml
 
 extra:
   generator: false

@@ -76,6 +76,12 @@ plugins:
 
 [🔗](https://www.mkdocs.org/user-guide/configuration/#environment-variables)
 
+### Macros plugin
+
+[🔗 Declaring external YAML files](https://mkdocs-macros-plugin.readthedocs.io/en/latest/advanced/#declaring-external-yaml-files)
+
+{{{ context(sample) | pretty }}}
+
 ### Open link in new tab
 
 ```md

@@ -1,0 +1,12 @@
+name: John Doe
+age: 30
+city: New York
+is_student: false
+grades:
+  math: 95
+  science: 88
+  english: 92
+hobbies:
+  - reading
+  - hiking
+  - coding
