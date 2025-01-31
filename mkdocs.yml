@@ -66,6 +66,7 @@ markdown_extensions:
       permalink: true
 
 plugins:
+  - meta
   - search
   - git-revision-date-localized:
       enabled: !ENV [CI, GITHUB_ACTIONS, False]

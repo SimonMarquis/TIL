@@ -82,6 +82,12 @@ plugins:
 
 {{{ context(sample) | pretty }}}
 
+### Meta plugin
+
+[🔗 Metadata for groups of pages](https://squidfunk.github.io/mkdocs-material/plugins/meta/)
+
+{{{ context(page.meta.sample) | pretty }}}
+
 ### Open link in new tab
 
 ```md
