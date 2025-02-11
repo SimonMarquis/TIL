@@ -101,6 +101,12 @@ StartedUsingDeprecatedCliOptions : HEALTHY
         find . -type d -name 'build' -prune -exec du -hs '{}' \; -exec rm -rf '{}' \;
         ```
 
+    Or with [GNU parallel](https://www.gnu.org/software/parallel/) to maximize deletion speed:
+
+    ```bash
+    find . -type d -name 'build' -print0 | parallel -0 'du -hs {} ; rm -rf {}'
+    ```
+
 ### Configuration avoidance
 
 > Avoid the cost of creating and configuring tasks during Gradle’s configuration phase when those tasks will never be executed
