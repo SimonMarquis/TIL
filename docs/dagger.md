@@ -83,9 +83,9 @@ fun CoroutineDispatcher.asDispatcherProvider() = object : DispatcherProvider {
 ```kotlin
 package dagger
 
-typealias List<T> = @JvmSuppressWildcards kotlin.collections.List<T>
-typealias Set<T> = @JvmSuppressWildcards kotlin.collections.Set<T>
-typealias Map<K, V> = @JvmSuppressWildcards kotlin.collections.Map<K, V>
+typealias List<T> = kotlin.collections.List<@JvmSuppressWildcards T>
+typealias Set<T> = kotlin.collections.Set<@JvmSuppressWildcards T>
+typealias Map<K, V> = kotlin.collections.Map<K, @JvmSuppressWildcards V>
 ```
 
 ### Extensions for Lazy & Provider
