@@ -74,3 +74,5 @@ title: 🕸️ Online tools
   > The best way to control and manage your android device using just the browser!
 - [Whimsical](https://whimsical.com/)
   > Visual workspace for thinking and collaboration, combining flowcharts, wireframes, sticky notes, mind maps and docs.
+- [🧑‍🍳 Emoji Kitchen](https://emojikitchen.dev/)
+  > Unique illustrations of combined emoji, cooked up in Google's Emoji Kitchen, and comprehensively available on the web.
