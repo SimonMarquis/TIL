@@ -491,6 +491,22 @@ curl -s 'https://api.github.com/repos/github/.github/commits' \
 ```
 </div>
 
+### Merge SARIF reports
+
+```bash
+find . -type f -name "*.sarif" -print0 | xargs -0 jq -n '
+  {
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    version: "2.1.0",
+    runs: (
+      reduce inputs.runs[] as $r ([]; . + [$r])
+    )
+  }
+'
+```
+
+[🔗 microsoft's SARIF Multitool](https://github.com/microsoft/sarif-sdk/blob/main/docs/multitool-usage.md)
+
 ### Multiline comment
 
 ```bash
