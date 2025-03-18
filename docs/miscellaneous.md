@@ -532,6 +532,13 @@ indent_style = space
         <figcaption>Connect to the internet<br/><small>You're offline. Check your connection.</small></figcaption>
     </figure>
 
+!!! quote "GitHub loading"
+
+    <figure>
+        ![](https://github.githubassets.com/assets/mona-loading-dark-7701a7b97370.gif)
+        <figcaption>One moment please...</figcaption>
+    </figure>
+
 ### Fonts with ligatures
 
 - [FiraCode](https://github.com/tonsky/FiraCode)
