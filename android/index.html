@@ -350,6 +350,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#android-studio-properties-vm-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Android Studio Properties &amp; VM options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#apk-mime-type" class="md-nav__link">
     <span class="md-ellipsis">
       APK MIME type
@@ -1546,6 +1555,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#android-studio-properties-vm-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Android Studio Properties &amp; VM options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#apk-mime-type" class="md-nav__link">
     <span class="md-ellipsis">
       APK MIME type
@@ -2222,6 +2240,42 @@ If you store a (compressed) <code>/assets/data.json.gz</code> file, AAPT will on
 </div>
 <p>Then simply execute your regular <code>adb</code> command with <code class="highlight">adbz<span class="w"> </span>install<span class="w"> </span>app.apk</code></p>
 </div>
+<h3 id="android-studio-properties-vm-options">Android Studio Properties &amp; VM options<a class="headerlink" href="#android-studio-properties-vm-options" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m.12 13.5 3.74 3.74 1.42-1.41-2.33-2.33 2.33-2.33-1.42-1.41zm11.16 0-3.74-3.74-1.42 1.41 2.33 2.33-2.33 2.33 1.42 1.41z"/></svg></span> <code>~/.config/studio.properties</code></label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m.12 13.5 3.74 3.74 1.42-1.41-2.33-2.33 2.33-2.33-1.42-1.41zm11.16 0-3.74-3.74-1.42 1.41 2.33 2.33-2.33 2.33 1.42 1.41z"/></svg></span> <code>~/.config/studio.vmoptions</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># STUDIO_PROPERTIES (1)</span>
+<span class="c1"># Note that this is my personal setup!</span>
+
+<span class="na">ide.no.platform.update</span><span class="o">=</span><span class="s">true</span>
+<span class="na">ide.autoscroll.from.source.on.focus.gained</span><span class="o">=</span><span class="s">true</span>
+<span class="na">ide.usages.page.size</span><span class="o">=</span><span class="s">500</span>
+<span class="na">studio.projectview</span><span class="o">=</span><span class="s">true</span>
+</code></pre></div>
+<ol>
+<li><a href="https://developer.android.com/tools/variables#envar">🔗 Environment Variables reference</a></li>
+</ol>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># STUDIO_VM_OPTIONS (1)</span>
+<span class="c1"># Note that this is my personal setup!</span>
+
+<span class="na">-Xms4g</span>
+<span class="na">-Xmx16g</span>
+<span class="na">-XX</span><span class="o">:</span><span class="s">ReservedCodeCacheSize=512m</span>
+<span class="na">-XX</span><span class="o">:</span><span class="s">SoftRefLRUPolicyMSPerMB=1</span>
+<span class="na">-XX</span><span class="o">:</span><span class="s">+UseG1GC</span>
+<span class="na">-ea</span>
+<span class="na">-Dfile.encoding</span><span class="o">=</span><span class="s">UTF-8</span>
+<span class="na">-Didea.kotlin.plugin.use.k2</span><span class="o">=</span><span class="s">true</span>
+</code></pre></div>
+<ol>
+<li><a href="https://developer.android.com/tools/variables#envar">🔗 Environment Variables reference</a></li>
+</ol>
+</div>
+</div>
+</div>
+<p><a href="https://developer.android.com/studio/intro/studio-config">🔗 Configure Android Studio</a></p>
 <h3 id="apk-mime-type">APK MIME type<a class="headerlink" href="#apk-mime-type" title="Permanent link">&para;</a></h3>
 <p><code>application/vnd.android.package-archive</code></p>
 <p><a href="https://en.wikipedia.org/wiki/Apk_(file_format)">🔗</a></p>
@@ -2237,7 +2291,7 @@ The results will be sent to logcat, with these tags: <code>IntentFilterIntentSvc
 </code></pre></div></p>
 <details open="open">
 <summary>Logcat</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Android 12+</label><label for="__tabbed_3_2">Android 11</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Android 12+</label><label for="__tabbed_4_2">Android 11</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="admonition success">
@@ -2486,7 +2540,7 @@ Ctrl+C
 <div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="n">TextView</span><span class="p">.</span><span class="nf">isEllipsized</span><span class="p">():</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">layout</span><span class="o">?.</span><span class="na">let</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">!</span><span class="n">TextUtils</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="nb">it</span><span class="p">.</span><span class="na">text</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="kc">false</span>
 </code></pre></div>
 <h3 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></span> macOS</label><label for="__tabbed_4_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 12V6.75l6-1.32v6.48zm17-9v8.75l-10 .15V5.21zM3 13l6 .09v6.81l-6-1.15zm17 .25V22l-10-1.91V13.1z"/></svg></span> Windows</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></span> macOS</label><label for="__tabbed_5_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 12V6.75l6-1.32v6.48zm17-9v8.75l-10 .15V5.21zM3 13l6 .09v6.81l-6-1.15zm17 .25V22l-10-1.91V13.1z"/></svg></span> Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">ANDROID_HOME</span><span class="o">=</span><span class="s2">&quot;/Users/</span><span class="nv">$USER</span><span class="s2">/Library/Android/sdk&quot;</span>
@@ -2976,7 +3030,7 @@ Wrapping it in a Kotlin Multiplatform project allows us to use it in JVM project
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition quote">
-<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Common</label><label for="__tabbed_5_2">Android</label><label for="__tabbed_5_3">JVM</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Common</label><label for="__tabbed_6_2">Android</label><label for="__tabbed_6_3">JVM</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">commonMain/kotlin/Parcel.kt</span><pre><span></span><code><span class="kd">expect</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Parcel</span><span class="w"> </span><span class="p">{</span>
@@ -3173,7 +3227,7 @@ Version: 1
 <span class="nt">&lt;/resources&gt;</span>
 </code></pre></div>
 <h3 id="resources-abstraction">Resources abstraction<a class="headerlink" href="#resources-abstraction" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:4"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>BooleanResource.kt</code></label><label for="__tabbed_6_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>ColorResource.kt</code></label><label for="__tabbed_6_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>DrawableResource.kt</code></label><label for="__tabbed_6_4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>TextResource.kt</code></label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:4"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>BooleanResource.kt</code></label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>ColorResource.kt</code></label><label for="__tabbed_7_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>DrawableResource.kt</code></label><label for="__tabbed_7_4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24H0V0h24L12 12Z"/></svg></span> <code>TextResource.kt</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">android.content.res.Resources</span>
@@ -3527,7 +3581,7 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 18, 2024 19:49:52">October 18, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 18, 2025 18:49:55">March 18, 2025</span>
   </span>
 
     
