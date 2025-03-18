@@ -107,6 +107,42 @@ android {
 
     Then simply execute your regular `adb` command with `#!bash adbz install app.apk`
 
+### Android Studio Properties & VM options
+
+=== ":material-file-code: `~/.config/studio.properties`"
+
+    ```properties
+    # STUDIO_PROPERTIES (1)
+    # Note that this is my personal setup!
+
+    ide.no.platform.update=true
+    ide.autoscroll.from.source.on.focus.gained=true
+    ide.usages.page.size=500
+    studio.projectview=true
+    ```
+
+    1. [🔗 Environment Variables reference](https://developer.android.com/tools/variables#envar)
+
+=== ":material-file-code: `~/.config/studio.vmoptions`"
+
+    ```properties
+    # STUDIO_VM_OPTIONS (1)
+    # Note that this is my personal setup!
+
+    -Xms4g
+    -Xmx16g
+    -XX:ReservedCodeCacheSize=512m
+    -XX:SoftRefLRUPolicyMSPerMB=1
+    -XX:+UseG1GC
+    -ea
+    -Dfile.encoding=UTF-8
+    -Didea.kotlin.plugin.use.k2=true
+    ```
+
+    1. [🔗 Environment Variables reference](https://developer.android.com/tools/variables#envar)
+
+[🔗 Configure Android Studio](https://developer.android.com/studio/intro/studio-config)
+
 ### APK MIME type
 
 `application/vnd.android.package-archive`
