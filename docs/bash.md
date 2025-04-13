@@ -293,7 +293,7 @@ $PWD
 </div>
 
 ```bash title="Multiline content to file (overwrite)"
-tee file << EOF >/dev/null || true
+tee file.txt << EOF >/dev/null || true
 ↓↓↓
 $PWD
 ↑↑↑
@@ -301,7 +301,7 @@ EOF
 ```
 
 ```bash title="Multiline content to file (append)"
-tee file.txt << EOF >/dev/null || true
+tee --append file.txt << EOF >/dev/null || true
 ↓↓↓
 $PWD
 ↑↑↑
