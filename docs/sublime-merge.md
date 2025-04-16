@@ -35,6 +35,17 @@ title: 🔀 Sublime Merge
             "caption": "🔗 Open Pull Request on $branch",
             "command": "git",
             "args": { "argv": ["open", "pr", "$branch"] }
+        },
+        // git config --global alias.sync '!f() { \
+        //   local branch="${1:?Error: Missing <branch> argument!}"; \
+        //   local upstream=$(git config "branch.${branch}.remote") || (echo "Error: No upstream remote found for branch [$branch]." >&2; return 1); \
+        //   local upstream_branch=$(git config "branch.${branch}.merge" | sed "s#refs/heads/##") || (echo "Error: No upstream branch configured for branch [$branch]." >&2; return 1); \
+        //   git fetch "$upstream" "$upstream_branch":"$branch"; \
+        // }; f'
+        {
+            "caption": "⏫ Sync branch with upstream…\tgit sync $branch",
+            "command": "git",
+            "args": {"argv": ["sync", "$branch"]}
         }
     ]
     ```
