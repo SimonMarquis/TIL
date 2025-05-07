@@ -368,6 +368,8 @@ PC-Style configuration:
 
 - 🛜 Network details • [:material-download:](assets/Network.shortcut){: download="Network.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Network)
 
+- ☕ Caffeinate • [:material-download:](assets/Caffeinate.shortcut){: download="Caffeinate.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Caffeinate)
+
 ### [Stats](https://github.com/exelban/stats)
 
 > macOS system monitor in your menu bar
