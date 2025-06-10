@@ -3150,10 +3150,10 @@ Wrapping it in a Kotlin Multiplatform project allows us to use it in JVM project
 <span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">marshall</span><span class="p">()</span>
 <span class="p">}</span>
 
-<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="k">reified</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Parcelable</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ByteArray</span><span class="p">.</span><span class="nf">unmarshall</span><span class="p">():</span><span class="w"> </span><span class="n">R? </span><span class="o">=</span><span class="w"> </span><span class="n">Parcel</span><span class="p">.</span><span class="na">obtain</span><span class="p">().</span><span class="na">use</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">inline</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="k">reified</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Parcelable</span><span class="err">?</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ByteArray</span><span class="p">.</span><span class="nf">unmarshall</span><span class="p">():</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Parcel</span><span class="p">.</span><span class="na">obtain</span><span class="p">().</span><span class="na">use</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">unmarshall</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">)</span>
 <span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">setDataPosition</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
-<span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">readValue</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">classLoader</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">T</span>
+<span class="w">    </span><span class="nb">it</span><span class="p">.</span><span class="na">readValue</span><span class="p">(</span><span class="n">R</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">classLoader</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">R</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">Reading boxed primitive values</span><pre><span></span><code><span class="c1">//region Read boxed primitive values</span>
@@ -3615,7 +3615,7 @@ sdkmanager<span class="w"> </span>--install<span class="w"> </span><span class="
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 18, 2025 18:49:55 UTC">March 18, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="June 10, 2025 12:49:44 UTC">June 10, 2025</span>
   </span>
 
     
