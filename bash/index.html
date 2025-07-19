@@ -611,6 +611,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#xmlstarlet" class="md-nav__link">
+    <span class="md-ellipsis">
+      xmlstarlet
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1498,6 +1507,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#xmlstarlet" class="md-nav__link">
+    <span class="md-ellipsis">
+      xmlstarlet
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1947,7 +1965,20 @@ group_by<span class="o">(</span>path_expression<span class="o">)</span>
 </code></pre></div>
 </div>
 <h3 id="merge-sarif-reports">Merge SARIF reports<a class="headerlink" href="#merge-sarif-reports" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.sarif&quot;</span><span class="w"> </span>-print0<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-0<span class="w"> </span>jq<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><code>--slurp</code></label><label for="__tabbed_1_2"><code>--null-input</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.sarif&quot;</span><span class="w"> </span>-print0<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-0<span class="w"> </span>jq<span class="w"> </span>--slurp<span class="w"> </span><span class="s1">&#39;</span>
+<span class="s1">  {</span>
+<span class="s1">    &quot;$schema&quot;: &quot;https://json.schemastore.org/sarif-2.1.0.json&quot;,</span>
+<span class="s1">    version: &quot;2.1.0&quot;,</span>
+<span class="s1">    runs: map(.runs) | add</span>
+<span class="s1">  }</span>
+<span class="s1">&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.sarif&quot;</span><span class="w"> </span>-print0<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-0<span class="w"> </span>jq<span class="w"> </span>--null-input<span class="w"> </span><span class="s1">&#39;</span>
 <span class="s1">  {</span>
 <span class="s1">    &quot;$schema&quot;: &quot;https://json.schemastore.org/sarif-2.1.0.json&quot;,</span>
 <span class="s1">    version: &quot;2.1.0&quot;,</span>
@@ -1957,6 +1988,9 @@ group_by<span class="o">(</span>path_expression<span class="o">)</span>
 <span class="s1">  }</span>
 <span class="s1">&#39;</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 <p><a href="https://github.com/microsoft/sarif-sdk/blob/main/docs/multitool-usage.md">🔗 microsoft's SARIF Multitool</a></p>
 <h3 id="multiline-comment">Multiline comment<a class="headerlink" href="#multiline-comment" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="s">&lt;&lt; &#39;COMMENT&#39;</span>
@@ -2060,6 +2094,14 @@ group_by<span class="o">(</span>path_expression<span class="o">)</span>
 <span class="w">  </span>xargs<span class="w"> </span>-0<span class="w"> </span>du<span class="w"> </span>--total<span class="w"> </span>--human-readable<span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># compute total space usage` |</span>
 <span class="w">  </span>awk<span class="w"> </span><span class="s1">&#39;END{print $1}&#39;</span><span class="w"> </span><span class="sb">`</span>:<span class="w"> </span><span class="c1"># extract total value`</span>
 </code></pre></div>
+<h3 id="xmlstarlet"><a href="https://xmlstar.sourceforge.net/"><code>xmlstarlet</code></a><a class="headerlink" href="#xmlstarlet" title="Permanent link">&para;</a></h3>
+<p>In-place deletion of <code>ignored-keys</code> and <code>components</code> for Gradle's <code>verification-metadata.xml</code>.</p>
+<div class="highlight"><pre><span></span><code>xmlstarlet edit --inplace \
+  -N g=&quot;https://schema.gradle.org/dependency-verification&quot; \
+  --delete &#39;g:verification-metadata/g:configuration/g:ignored-keys&#39; \
+  --delete &#39;g:verification-metadata/g:components/*&#39; \
+  gradle/verification-metadata.xml
+</code></pre></div>
 
 
 
@@ -2082,7 +2124,7 @@ group_by<span class="o">(</span>path_expression<span class="o">)</span>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 13, 2025 10:46:52 UTC">April 13, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 19, 2025 16:47:23 UTC">July 19, 2025</span>
   </span>
 
     
