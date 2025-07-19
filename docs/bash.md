@@ -493,17 +493,31 @@ curl -s 'https://api.github.com/repos/github/.github/commits' \
 
 ### Merge SARIF reports
 
-```bash
-find . -type f -name "*.sarif" -print0 | xargs -0 jq -n '
-  {
-    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
-    version: "2.1.0",
-    runs: (
-      reduce inputs.runs[] as $r ([]; . + [$r])
-    )
-  }
-'
-```
+=== "`--slurp`"
+
+    ```bash
+    find . -type f -name "*.sarif" -print0 | xargs -0 jq --slurp '
+      {
+        "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+        version: "2.1.0",
+        runs: map(.runs) | add
+      }
+    '
+    ```
+
+=== "`--null-input`"
+
+    ```bash
+    find . -type f -name "*.sarif" -print0 | xargs -0 jq --null-input '
+      {
+        "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+        version: "2.1.0",
+        runs: (
+          reduce inputs.runs[] as $r ([]; . + [$r])
+        )
+      }
+    '
+    ```
 
 [🔗 microsoft's SARIF Multitool](https://github.com/microsoft/sarif-sdk/blob/main/docs/multitool-usage.md)
 
