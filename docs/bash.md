@@ -662,3 +662,15 @@ find . -type f -name "*.log" -print0 `: # find all .log files` |
   xargs -0 du --total --human-readable `: # compute total space usage` |
   awk 'END{print $1}' `: # extract total value`
 ```
+
+### [`xmlstarlet`](https://xmlstar.sourceforge.net/)
+
+In-place deletion of `ignored-keys` and `components` for Gradle's `verification-metadata.xml`.
+
+```
+xmlstarlet edit --inplace \
+  -N g="https://schema.gradle.org/dependency-verification" \
+  --delete 'g:verification-metadata/g:configuration/g:ignored-keys' \
+  --delete 'g:verification-metadata/g:components/*' \
+  gradle/verification-metadata.xml
+```
