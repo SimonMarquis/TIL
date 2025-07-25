@@ -608,6 +608,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gradle-workers-stealing-focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradle workers stealing focus
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kotlin-extensions" class="md-nav__link">
     <span class="md-ellipsis">
       Kotlin extensions
@@ -1283,6 +1292,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gradle-workers-stealing-focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradle workers stealing focus
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#kotlin-extensions" class="md-nav__link">
     <span class="md-ellipsis">
       Kotlin extensions
@@ -1707,6 +1725,12 @@ javaToolchains - Displays the detected java toolchains.
 projects - Displays the sub-projects of root project.
 properties - Displays the properties of root project.
 </code></pre></div>
+<h3 id="gradle-workers-stealing-focus">Gradle workers stealing focus<a class="headerlink" href="#gradle-workers-stealing-focus" title="Permanent link">&para;</a></h3>
+<p>Prevent Gradle workers (<code>GradleWorkerMain</code>) from stealing focus when running unit tests!</p>
+<div class="highlight"><pre><span></span><code><span class="n">tasks</span><span class="p">.</span><span class="na">withType</span><span class="o">&lt;</span><span class="n">Test</span><span class="o">&gt;</span><span class="p">().</span><span class="na">configureEach</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">jvmArgs</span><span class="p">(</span><span class="s">&quot;-Djava.awt.headless=true&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="kotlin-extensions">Kotlin extensions<a class="headerlink" href="#kotlin-extensions" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="n">Project</span><span class="p">.</span><span class="nf">isRootProject</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rootProject</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="k">this</span>
 
@@ -2053,7 +2077,7 @@ You can also set system properties in <code>gradle.properties</code> files with 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 11, 2025 18:56:04 UTC">February 11, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 25, 2025 15:56:45 UTC">July 25, 2025</span>
   </span>
 
     
