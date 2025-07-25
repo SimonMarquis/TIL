@@ -274,6 +274,16 @@ projects - Displays the sub-projects of root project.
 properties - Displays the properties of root project.
 ```
 
+### Gradle workers stealing focus
+
+Prevent Gradle workers (`GradleWorkerMain`) from stealing focus when running unit tests!
+
+```kotlin
+tasks.withType<Test>().configureEach {
+  jvmArgs("-Djava.awt.headless=true")
+}
+```
+
 ### Kotlin extensions
 
 ```kotlin
