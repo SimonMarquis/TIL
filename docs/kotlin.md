@@ -746,6 +746,17 @@ suspend fun <T> retry(
 }
 ```
 
+### Reversing a `Map`
+
+```kotlin
+fun <K, V> Map<V, K>.reversed(): Map<K, List<V>> = entries.groupBy({ it.value }, { it.key })
+```
+
+```kotlin
+val map = mapOf("a" to 1, "b" to 2, "c" to 1)   // {a=1, b=2, c=1}
+val reversedMap = map.reversed()                // {1=[a, c], 2=[b]}
+```
+
 ### Sealed object instances
 
 [:simple-github: SimonMarquis/SealedObjectInstances](https://github.com/SimonMarquis/SealedObjectInstances)
