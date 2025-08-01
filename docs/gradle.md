@@ -435,6 +435,8 @@ Gradle can also set project properties when it sees specially-named system prope
 
 ### Reproducible builds
 
+!!! tip "[Starting with Gradle 9, archives are reproducible by default.](https://docs.gradle.org/current/userguide/working_with_files.html#sec:reproducible_archives)"
+
 ```kotlin title="build.gradle.kts"
 tasks.withType<AbstractArchiveTask>().configureEach {
     isPreserveFileTimestamps = false
