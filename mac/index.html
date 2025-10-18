@@ -699,6 +699,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#case-sensitive-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case Sensitive Volume
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#defaults" class="md-nav__link">
     <span class="md-ellipsis">
       Defaults
@@ -1067,6 +1076,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#case-sensitive-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case Sensitive Volume
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#defaults" class="md-nav__link">
     <span class="md-ellipsis">
       Defaults
@@ -1222,6 +1240,15 @@ cask<span class="w"> </span><span class="s2">&quot;zulu-jdk11&quot;</span>
 cask<span class="w"> </span><span class="s2">&quot;zulu-jdk17&quot;</span>
 </code></pre></div>
 </details>
+<h3 id="case-sensitive-volume">Case Sensitive Volume<a class="headerlink" href="#case-sensitive-volume" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>diskutil<span class="w"> </span>list<span class="w"> </span><span class="c1"># to list all disks</span>
+
+<span class="c1"># sudo diskutil apfs addVolume &lt;disk&gt; APFSX &lt;name&gt; -mountpoint /Users/&lt;username&gt;/&lt;name&gt;</span>
+sudo<span class="w"> </span>diskutil<span class="w"> </span>apfs<span class="w"> </span>addVolume<span class="w"> </span>disk3<span class="w"> </span>APFSX<span class="w"> </span>dev<span class="w"> </span>-mountpoint<span class="w"> </span>/Users/simon.marquis/dev
+
+<span class="c1"># if mountpoint does not persist</span>
+ln<span class="w"> </span>-s<span class="w"> </span>/Volumes/dev<span class="w"> </span>~/dev
+</code></pre></div>
 <h3 id="defaults"><a href="https://macos-defaults.com/">Defaults</a><a class="headerlink" href="#defaults" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Set the icon size of Dock items in pixels.</span>
 defaults<span class="w"> </span>write<span class="w"> </span>com.apple.dock<span class="w"> </span><span class="s2">&quot;tilesize&quot;</span><span class="w"> </span>-int<span class="w"> </span><span class="m">36</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>killall<span class="w"> </span>Dock
@@ -1548,7 +1575,7 @@ Location: <code>~/.config/karabiner</code></p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2025 11:27:55 UTC">May 7, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 18, 2025 13:01:36 UTC">October 18, 2025</span>
   </span>
 
     
