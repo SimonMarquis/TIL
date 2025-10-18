@@ -74,6 +74,18 @@ brew bundle install --file <path>
     cask "zulu-jdk17"
     ```
 
+### Case Sensitive Volume
+
+```bash
+diskutil list # to list all disks
+
+# sudo diskutil apfs addVolume <disk> APFSX <name> -mountpoint /Users/<username>/<name>
+sudo diskutil apfs addVolume disk3 APFSX dev -mountpoint /Users/simon.marquis/dev
+
+# if mountpoint does not persist
+ln -s /Volumes/dev ~/dev
+```
+
 ### [Defaults](https://macos-defaults.com/)
 
 ```bash
