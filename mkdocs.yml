@@ -35,6 +35,8 @@ theme:
     - content.code.copy
     - content.code.annotate
     - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
     - navigation.indexes
     - navigation.top
     - navigation.tracking
