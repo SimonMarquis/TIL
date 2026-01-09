@@ -707,6 +707,12 @@ git add --renormalize .
 
 [🔗](https://git-scm.com/docs/git-add#Documentation/git-add.txt---renormalize)
 
+### Root commits
+
+```bash
+git log --max-parents=0
+```
+
 ### Show file at specific version
 
 ```bash
