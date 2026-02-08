@@ -733,6 +733,18 @@ FOO: ${{ <condition> && <true> || <false> }}
 !!! warning
     If the value of `<true>` is _falsy_, the result of the expression will be `<false>`.
 
+!!! tip "[`case` syntax is now supported](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions#case)"
+
+    ```yaml
+    MY_ENV_VAR: |-
+      ${{ case(
+        github.ref == 'refs/heads/main', 'production',
+        github.ref == 'refs/heads/staging', 'staging',
+        startsWith(github.ref, 'refs/heads/feature/'), 'development',
+        'unknown'
+      ) }}
+    ```
+
 ### Use git as an app's bot user
 
 ```yaml
