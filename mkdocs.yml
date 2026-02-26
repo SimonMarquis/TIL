@@ -9,39 +9,9 @@ remote_branch: gh-pages
 copyright: 'Copyright &copy; 2023 Simon Marquis'
 
 theme:
-  name: material
+  name: zensical
   logo: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>"
   favicon: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>"
-  icon:
-    repo: fontawesome/brands/github
-  palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: black
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: black
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-  custom_dir: theme
-  features:
-    - content.action.edit
-    - content.action.view
-    - content.tabs.link
-    - content.code.copy
-    - content.code.annotate
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
-    - navigation.indexes
-    - navigation.top
-    - navigation.tracking
-    - search.highlight
-    - toc.follow
 
 markdown_extensions:
   - admonition
@@ -49,9 +19,7 @@ markdown_extensions:
   - def_list
   - md_in_html
   - pymdownx.details
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.emoji
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink
@@ -88,53 +56,4 @@ plugins:
 
 extra:
   generator: false
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/SimonMarquis
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/simonmarquis
-    - icon: fontawesome/solid/user
-      link: https://www.simon-marquis.fr
-  key: value
-
-nav:
-  - index.md
-  - android.md
-  - bash.md
-  - chrome.md
-  - css.md
-  - dagger.md
-  - firebase.md
-  - gerrit.md
-  - git.md
-  - github.md
-  - gradle.md
-  - html.md
-  - intellij-idea.md
-  - java.md
-  - javascript.md
-  - junit.md
-  - kotlin.md
-  - mac.md
-  - markdown.md
-  - miscellaneous.md
-  - mkdocs.md
-  - online-tools.md
-  - open-source-projects.md
-  - puzzlers.md
-  - regex.md
-  - sublime-merge.md
-  - sublime-text.md
-  - utils.md
-  - windows.md
-  - yaml.md
-
-extra_css:
-    - stylesheets/extra.css
-
-strict: !ENV [MKDOCS_STRICT, True]
-validation:
-  omitted_files: warn
-  absolute_links: warn
-  unrecognized_links: warn
-  anchors: warn
+  social: 
