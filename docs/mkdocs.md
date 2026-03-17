@@ -56,13 +56,13 @@ pip install --requirement docs/requirements.txt
 ### Downloadable file
 
 ```md
-[:material-launch:](assets/example.json){: .md-button }
-[:material-download:](assets/example.json){: .md-button download="example.json" }
+▶️(assets/example.json){: .md-button }
+📥(assets/example.json){: .md-button download="example.json" }
 ```
 <div class="result" markdown>
 
-[:material-launch:](assets/example.json){: .md-button }
-[:material-download:](assets/example.json){: .md-button download="example.json" }
+▶️(assets/example.json){: .md-button }
+📥(assets/example.json){: .md-button download="example.json" }
 
 </div>
 
@@ -91,11 +91,11 @@ plugins:
 ### Open link in new tab
 
 ```md
-[Open :material-launch:](https://example.org){: target=_blank rel=noopener }
+[Open ▶️](https://example.org){: target=_blank rel=noopener }
 ```
 <div class="result" markdown>
 
-[Open :material-launch:](https://example.org){: target=_blank rel=noopener }
+[Open ▶️](https://example.org){: target=_blank rel=noopener }
 
 </div>
 
