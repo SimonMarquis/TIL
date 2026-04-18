@@ -240,6 +240,16 @@ args=()
 foo "${args[@]}"
 ```
 
+### Empty/Closed stdin
+
+```bash
+# empty: any read will succeed and return EOF
+cmd </dev/null
+
+# closed: any read will fail and return non-zero status
+cmd <&-
+```
+
 ### Find and run commands in parallel
 
 ```bash
