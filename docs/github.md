@@ -619,7 +619,7 @@ jobs:
 
 ### Secret file in GitHub Actions
 
-Create a new secret with https://github.com/[user]/[project]/settings/secrets/actions/new
+Create a new secret with `https://github.com/[user]/[project]/settings/secrets/actions/new`
 
 - **Name:** `MY_SECRET`
 - **Value:** base64 representation of the file content `#!bash base64 --wrap=0 secret.json`
