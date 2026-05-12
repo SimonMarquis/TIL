@@ -70,6 +70,7 @@ markdown_extensions:
 plugins:
   - meta
   - search
+  # https://github.com/zensical/backlog/issues/18
   - git-revision-date-localized:
       enabled: !ENV [CI, GITHUB_ACTIONS, False]
       enable_creation_date: true
