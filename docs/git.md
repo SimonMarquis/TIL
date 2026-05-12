@@ -217,7 +217,7 @@ title: 💽 Git
         *.json.gz diff=json.gz
         ```
 
-    === ":material-console: `~/setup-code-review.sh`"
+    === ":lucide-terminal: `~/setup-code-review.sh`"
 
         ```bash
         #!/usr/bin/env bash

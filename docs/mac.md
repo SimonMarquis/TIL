@@ -364,23 +364,23 @@ PC-Style configuration:
     - `input` (optional): The initial input into the shortcut. There are two input options: a text string or the word `clipboard`. When the `input` value is a text string, that text is used. When the `input` value is `clipboard`, the contents of the Clipboard are used.
     - `text`: If `input` is set to text, then value of the `text` parameter is passed as `input` to the shortcut. If `input` is set to `clipboard`, then this parameter is ignored.
 
-- 🪄 Select Android Device • [:material-download:](assets/Select Android Device.shortcut){: download="Select Android Device.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Select%20Android%20Device) • [`#!bash adb devices -l`](https://developer.android.com/tools/adb#devicestatus)
+- 🪄 Select Android Device • [:lucide-download:](assets/Select Android Device.shortcut){: download="Select Android Device.shortcut" } • [:lucide-external-link:](shortcuts://run-shortcut?name=Select%20Android%20Device) • [`#!bash adb devices -l`](https://developer.android.com/tools/adb#devicestatus)
 
-- 📸 Screenshot • [:material-download:](assets/Screenshot.shortcut){: download="Screenshot.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Screenshot) • [`#!bash adb shell screencap`](https://developer.android.com/tools/adb#screencap)
+- 📸 Screenshot • [:lucide-download:](assets/Screenshot.shortcut){: download="Screenshot.shortcut" } • [:lucide-external-link:](shortcuts://run-shortcut?name=Screenshot) • [`#!bash adb shell screencap`](https://developer.android.com/tools/adb#screencap)
 
-- 🪞 Mirror • [:material-download:](assets/Mirror.shortcut){: download="Mirror.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Mirror) • [`#!bash scrcpy`](https://github.com/Genymobile/scrcpy?tab=readme-ov-file)
+- 🪞 Mirror • [:lucide-download:](assets/Mirror.shortcut){: download="Mirror.shortcut" } • [:lucide-external-link:](shortcuts://run-shortcut?name=Mirror) • [`#!bash scrcpy`](https://github.com/Genymobile/scrcpy?tab=readme-ov-file)
 
-- 📹 Record • [:material-download:](assets/Record.shortcut){: download="Record.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Record) • [`#!bash scrcpy --record`](https://github.com/Genymobile/scrcpy/blob/master/doc/recording.md)
+- 📹 Record • [:lucide-download:](assets/Record.shortcut){: download="Record.shortcut" } • [:lucide-external-link:](shortcuts://run-shortcut?name=Record) • [`#!bash scrcpy --record`](https://github.com/Genymobile/scrcpy/blob/master/doc/recording.md)
 
-- ♻️ Kill Gradle & Kotlin daemons • [:material-download:](assets/Kill daemons.shortcut){: download="Kill daemons.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Kill daemons) • [`#!bash pkill`](https://linux.die.net/man/1/pkill)
+- ♻️ Kill Gradle & Kotlin daemons • [:lucide-download:](assets/Kill daemons.shortcut){: download="Kill daemons.shortcut" } • [:lucide-external-link:](shortcuts://run-shortcut?name=Kill daemons) • [`#!bash pkill`](https://linux.die.net/man/1/pkill)
 
-- 🥑 avocado • [:material-download:](assets/🥑 avocado.shortcut){: download="🥑 avocado.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=🥑 avocado) • [`#!bash avocado`](https://github.com/alexjlockwood/avocado)
+- 🥑 avocado • [:lucide-download:](assets/🥑 avocado.shortcut){: download="🥑 avocado.shortcut" } • [:lucide-external-link:](shortcuts://run-shortcut?name=🥑 avocado) • [`#!bash avocado`](https://github.com/alexjlockwood/avocado)
 
-- 🖼️ Diff images • [:material-download:](assets/Diff.shortcut){: download="Diff.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Diff) • [`#!bash magick compare <l> <r> -compose src <output>`](https://imagemagick.org/script/compare.php)
+- 🖼️ Diff images • [:lucide-download:](assets/Diff.shortcut){: download="Diff.shortcut" } • [:lucide-external-link:](shortcuts://run-shortcut?name=Diff) • [`#!bash magick compare <l> <r> -compose src <output>`](https://imagemagick.org/script/compare.php)
 
-- 🛜 Network details • [:material-download:](assets/Network.shortcut){: download="Network.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Network)
+- 🛜 Network details • [:lucide-download:](assets/Network.shortcut){: download="Network.shortcut" } • [:lucide-external-link:](shortcuts://run-shortcut?name=Network)
 
-- ☕ Caffeinate • [:material-download:](assets/Caffeinate.shortcut){: download="Caffeinate.shortcut" } • [:material-launch:](shortcuts://run-shortcut?name=Caffeinate)
+- ☕ Caffeinate • [:lucide-download:](assets/Caffeinate.shortcut){: download="Caffeinate.shortcut" } • [:lucide-external-link:](shortcuts://run-shortcut?name=Caffeinate)
 
 ### [Stats](https://github.com/exelban/stats)
 

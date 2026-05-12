@@ -5,11 +5,11 @@ title: 📄 Markdown
 !!! danger
 
     Most of these entries are only compatible with <abbr title="GitHub Flavored Markdown">[GFM](https://github.github.com/gfm/)</abbr>.  
-    [:material-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md)
+    [:simple-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md)
 
 ### Blockquote highlight
 
-!!! danger "[:material-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#blockquote-highlight)"
+!!! danger "[:simple-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#blockquote-highlight)"
 
 > [!NOTE]  
 > Highlights information that users should take into account, even when skimming.
@@ -82,7 +82,7 @@ Toggle with the `open` attribute in the `<details>` tag.
 
 ### Footnotes
 
-!!! danger "[:material-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#footnotes)"
+!!! danger "[:simple-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#footnotes)"
 
 Here is a simple footnote[^1].
 
@@ -92,7 +92,7 @@ Here is a simple footnote[^1].
 
 ### GeoJSON
 
-!!! danger "[:material-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#geojson)"
+!!! danger "[:simple-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#geojson)"
 
 [Specs](https://geojson.org/) & [Viewer](https://geojson.io/)
 
@@ -156,7 +156,7 @@ Here is a simple footnote[^1].
 
 ### GitHub Custom Emojis
 
-!!! danger "[:material-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#github-custom-emojis)"
+!!! danger "[:simple-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#github-custom-emojis)"
 
 - :atom: `:atom:`
 - :basecamp: `:basecamp:`
@@ -195,7 +195,7 @@ Here is a simple footnote[^1].
 
 ### Maths
 
-!!! danger "[:material-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#maths)"
+!!! danger "[:simple-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#maths)"
 
 This sentence uses `$` delimiters to show math inline:  $\sqrt{3x-1}+(1+x)^2$
 
@@ -243,7 +243,7 @@ info
 
 ### Reference labels
 
-!!! danger "[:material-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#reference-labels)"
+!!! danger "[:simple-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#reference-labels)"
 
 https://github.com/SimonMarquis/TIL/labels/bug • https://github.com/SimonMarquis/TIL/labels/enhancement • https://github.com/SimonMarquis/TIL/labels/good%20first%20issue • https://github.com/SimonMarquis/TIL/labels/help%20wanted • https://github.com/SimonMarquis/TIL/labels/invalid • https://github.com/SimonMarquis/TIL/labels/question • https://github.com/SimonMarquis/TIL/labels/wontfix
 
@@ -263,7 +263,7 @@ https://github.com/SimonMarquis/TIL/labels/bug • https://github.com/SimonMarqu
 
 ### Theme context for images
 
-!!! danger "[:material-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#theme-context-for-images)"
+!!! danger "[:simple-github: View on GitHub](https://github.com/SimonMarquis/TIL/blob/main/docs/markdown.md#theme-context-for-images)"
 
 ![GitHub-Mark-Light](https://user-images.githubusercontent.com/3369400/139447912-e0f43f33-6d9f-45f8-be46-2df5bbc91289.png#gh-dark-mode-only)![GitHub-Mark-Dark](https://user-images.githubusercontent.com/3369400/139448065-39a229ba-4b06-434b-bc67-616e2ed80c8f.png#gh-light-mode-only)
 

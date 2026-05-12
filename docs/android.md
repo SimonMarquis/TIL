@@ -109,7 +109,7 @@ android {
 
 ### Android Studio Properties & VM options
 
-=== ":material-file-code: `~/.config/studio.properties`"
+=== ":lucide-file-code: `~/.config/studio.properties`"
 
     ```properties
     # STUDIO_PROPERTIES (1)
@@ -123,7 +123,7 @@ android {
 
     1. [🔗 Environment Variables reference](https://developer.android.com/tools/variables#envar)
 
-=== ":material-file-code: `~/.config/studio.vmoptions`"
+=== ":lucide-file-code: `~/.config/studio.vmoptions`"
 
     ```properties
     # STUDIO_VM_OPTIONS (1)
@@ -1444,6 +1444,7 @@ adb shell screencap -p "/sdcard/screencap.png" && adb pull "/sdcard/screencap.pn
     ```pwsh
     %comspec% /c scrcpy -m 1080 --show-touches --no-display --record "%UserProfile%\Desktop\%time::=-%%random%.mp4"
     ```
+
 - mirror
     ```bash
     scrcpy -m 1080 --show-touches
