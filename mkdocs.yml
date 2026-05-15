@@ -10,34 +10,40 @@ copyright: 'Copyright &copy; 2023 Simon Marquis'
 
 theme:
   name: material
-  logo: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>"
-  favicon: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🗓️</text></svg>"
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
   icon:
     repo: fontawesome/brands/github
   palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: lucide/sun-moon
+        name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: black
       toggle:
-        icon: material/brightness-7
+        icon: lucide/sun
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
       toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+        icon: lucide/moon-star
+        name: Switch to system preference
   custom_dir: theme
   features:
     - content.action.edit
     - content.action.view
-    - content.tabs.link
-    - content.code.copy
     - content.code.annotate
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
+    - content.code.copy
+    - content.code.select
+    - content.tabs.link
+    - content.tooltips
+    - navigation.footer
     - navigation.indexes
+    - navigation.path
+    - navigation.sections
     - navigation.top
     - navigation.tracking
     - search.highlight
@@ -50,8 +56,9 @@ markdown_extensions:
   - md_in_html
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_generator: !!python/name:zensical.extensions.emoji.to_svg
+      emoji_index: !!python/name:zensical.extensions.emoji.twemoji
+  - pymdownx.blocks.admonition
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink
@@ -63,6 +70,15 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.snippets
+  - zensical.extensions.macros:
+      verbose: true
+      on_error_fail: true
+      on_undefined: strict
+      render_by_default: false
+      j2_block_start_string: '{{{%'
+      j2_block_end_string: '%}}}'
+      j2_variable_start_string: '{{{'
+      j2_variable_end_string: '}}}'
   - tables
   - toc:
       permalink: true
@@ -70,21 +86,12 @@ markdown_extensions:
 plugins:
   - meta
   - search
+  # https://github.com/zensical/backlog/issues/18
   - git-revision-date-localized:
       enabled: !ENV [CI, GITHUB_ACTIONS, False]
       enable_creation_date: true
       exclude:
         - index.md
-  - macros:
-      verbose: true
-      on_error_fail: true
-      on_undefined: strict
-      j2_block_start_string: '{{{%'
-      j2_block_end_string: '%}}}'
-      j2_variable_start_string: '{{{'
-      j2_variable_end_string: '}}}'
-      include_yaml:
-        - sample: data/sample.yaml
 
 extra:
   generator: false
@@ -118,7 +125,6 @@ nav:
   - mac.md
   - markdown.md
   - miscellaneous.md
-  - mkdocs.md
   - online-tools.md
   - open-source-projects.md
   - puzzlers.md
@@ -128,11 +134,12 @@ nav:
   - utils.md
   - windows.md
   - yaml.md
+  - zensical.md
 
 extra_css:
     - stylesheets/extra.css
 
-strict: !ENV [MKDOCS_STRICT, True]
+strict: !ENV [ZENSICAL_STRICT, True]
 validation:
   omitted_files: warn
   absolute_links: warn

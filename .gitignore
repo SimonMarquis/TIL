@@ -1,2 +1,5 @@
-# MkDocs build output
+# Zensical build output
 /site
+
+# Python
+__pycache__/

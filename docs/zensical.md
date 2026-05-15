@@ -1,6 +1,11 @@
 ---
-title: 📖 MkDocs
+title: 📖 Zensical
+render_macros: true
+include_yaml:
+  sample: data/sample.yaml
 ---
+
+# 📖 Zensical (mkdocs)
 
 ### Anchors
 
@@ -42,27 +47,16 @@ title: 📖 MkDocs
 
 [🔗](https://python-markdown.github.io/extensions/attr_list)
 
-### Dependency management
-
-```python title="docs/requirements.txt"
-mkdocs==1.4.3
-mkdocs-material==9.1.16
-```
-
-```bash
-pip install --requirement docs/requirements.txt
-```
-
 ### Downloadable file
 
 ```md
-[:material-launch:](assets/example.json){: .md-button }
-[:material-download:](assets/example.json){: .md-button download="example.json" }
+[:lucide-external-link:](assets/example.json){: .md-button }
+[:lucide-download:](assets/example.json){: .md-button download="example.json" }
 ```
 <div class="result" markdown>
 
-[:material-launch:](assets/example.json){: .md-button }
-[:material-download:](assets/example.json){: .md-button download="example.json" }
+[:lucide-external-link:](assets/example.json){: .md-button }
+[:lucide-download:](assets/example.json){: .md-button download="example.json" }
 
 </div>
 
@@ -74,28 +68,26 @@ plugins:
       enabled: !ENV [CI, GITHUB_ACTIONS, False]
 ```
 
-[🔗](https://www.mkdocs.org/user-guide/configuration/#environment-variables)
+### Macros extension
 
-### Macros plugin
-
-[🔗 Declaring external YAML files](https://mkdocs-macros-plugin.readthedocs.io/en/latest/advanced/#declaring-external-yaml-files)
+[🔗 Declaring external YAML files](https://zensical.org/docs/setup/extensions/macros/)
 
 {{{ context(sample) | pretty }}}
 
-### Meta plugin
+### [Meta plugin](https://github.com/zensical/backlog/issues/31)
 
 [🔗 Metadata for groups of pages](https://squidfunk.github.io/mkdocs-material/plugins/meta/)
 
-{{{ context(page.meta.sample) | pretty }}}
+{{{ context(page.meta) | pretty }}}
 
 ### Open link in new tab
 
 ```md
-[Open :material-launch:](https://example.org){: target=_blank rel=noopener }
+[Open :lucide-external-link:](https://example.org){: target=_blank rel=noopener }
 ```
 <div class="result" markdown>
 
-[Open :material-launch:](https://example.org){: target=_blank rel=noopener }
+[Open :lucide-external-link:](https://example.org){: target=_blank rel=noopener }
 
 </div>
 

@@ -25,12 +25,12 @@ title: 🔥 Firebase
 
 ### Backup & Restore
 
-- :material-cloud-download-outline: Backup
+- :lucide-cloud-download: Backup
     ```bash
     gsutil -m cp -R gs://xyz.appspot.com .
     firebase database:get / --pretty > xyz.json
     ```
-- :material-cloud-upload-outline: Restore
+- :lucide-cloud-upload: Restore
     ```bash
     gsutil -m cp -R . gs://xyz.appspot.com
     firebase database:set / xyz.json

@@ -45,7 +45,7 @@ SETX ANDROID_USER_HOME E:\.android
 
 ### Reboot GPU driver
 
-=== "MkDocs"
+=== "Zensical"
     ++win+ctrl+shift+b++
 
 === "GitHub"

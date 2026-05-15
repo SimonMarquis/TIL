@@ -247,7 +247,7 @@ steps:
 ### Expand all diffs
 
 By default, GitHub will limit the number of expanded diffs in a PR.  
-Run this script to force open all diffs (<a href='javascript:{[].forEach.call(document.querySelectorAll("button.load-diff-button"),function(n){n.click()});}'>bookmarklet :material-bookmark:</a>):
+Run this script to force open all diffs (<a href='javascript:{[].forEach.call(document.querySelectorAll("button.load-diff-button"),function(n){n.click()});}'>bookmarklet :lucide-bookmark:</a>):
 
 ```javascript
 document
@@ -619,7 +619,7 @@ jobs:
 
 ### Secret file in GitHub Actions
 
-Create a new secret with https://github.com/[user]/[project]/settings/secrets/actions/new
+Create a new secret with `https://github.com/[user]/[project]/settings/secrets/actions/new`
 
 - **Name:** `MY_SECRET`
 - **Value:** base64 representation of the file content `#!bash base64 --wrap=0 secret.json`
