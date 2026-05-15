@@ -125,7 +125,6 @@ nav:
   - mac.md
   - markdown.md
   - miscellaneous.md
-  - mkdocs.md
   - online-tools.md
   - open-source-projects.md
   - puzzlers.md
@@ -135,11 +134,12 @@ nav:
   - utils.md
   - windows.md
   - yaml.md
+  - zensical.md
 
 extra_css:
     - stylesheets/extra.css
 
-strict: !ENV [MKDOCS_STRICT, True]
+strict: !ENV [ZENSICAL_STRICT, True]
 validation:
   omitted_files: warn
   absolute_links: warn
