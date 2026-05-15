@@ -24,8 +24,6 @@ alias gitattributes="open ~/.gitattributes"
 
 ### Arrays
 
-{{{% raw %}}}
-
 - Definitions:
   ```bash
   Persons=('Alice' 'Bob' 'Charlie')
@@ -64,11 +62,7 @@ alias gitattributes="open ~/.gitattributes"
   done
   ```
 
-{{{% endraw %}}}
-
 ### Dictionaries
-
-{{{% raw %}}}
 
 - Definitions:
   ```bash
@@ -101,8 +95,6 @@ alias gitattributes="open ~/.gitattributes"
   done
   ```
 
-{{{% endraw %}}}
-
 ### Directory of script
 
 ```bash
@@ -110,8 +102,6 @@ dir=${0%/*}
 ```
 
 ### Parameter expansions
-
-{{{% raw %}}}
 
 - Substitutions:
   ```bash
@@ -169,8 +159,6 @@ dir=${0%/*}
   # uppercase 1st char
   ${foo^^}
   ```
-
-{{{% endraw %}}}
 
 ### Check if command exists
 
