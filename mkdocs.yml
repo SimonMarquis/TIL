@@ -74,12 +74,11 @@ markdown_extensions:
       verbose: true
       on_error_fail: true
       on_undefined: strict
+      render_by_default: false
       j2_block_start_string: '{{{%'
       j2_block_end_string: '%}}}'
       j2_variable_start_string: '{{{'
       j2_variable_end_string: '}}}'
-      include_yaml:
-        sample: data/sample.yaml
   - tables
   - toc:
       permalink: true

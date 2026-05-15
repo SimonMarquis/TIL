@@ -1,5 +1,8 @@
 ---
 title: 📖 MkDocs
+render_macros: true
+include_yaml:
+  sample: data/sample.yaml
 ---
 
 ### Anchors
