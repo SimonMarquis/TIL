@@ -757,7 +757,7 @@ jobs:
       - uses: actions/create-github-app-token@v1
         id: app-token
         with:
-          app-id: ${{ vars.APP_ID }}
+          client-id: ${{ vars.APP_CLIENT_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
       - name: Get GitHub App User ID
         id: get-user-id
