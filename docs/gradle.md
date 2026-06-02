@@ -284,6 +284,21 @@ tasks.withType<Test>().configureEach {
 }
 ```
 
+### Keep track of Build Scans
+
+```kotlin title="settings.gradle.kts"
+val buildScansDir = rootDir.resolve("build/scans")
+develocity {
+    buildScan {
+        buildScanPublished {
+            buildScansDir.resolve("$buildScanId.txt")
+                .also { it.parentFile.mkdirs() }
+                .writeText(buildScanUri.toString())
+        }
+    }
+}
+```
+
 ### Kotlin extensions
 
 ```kotlin
