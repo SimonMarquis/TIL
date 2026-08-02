@@ -410,6 +410,39 @@ git branch |
   xargs --no-run-if-empty git branch --delete --force
 ```
 
+### Diff filtering
+
+=== "Filtered"
+
+    ```bash
+    git diff --unified=0 | grep -E '^(diff|[+-][^+-])'
+    ```
+    <div class="result" markdown>
+    ```diff
+    diff --git a/test.txt b/test.txt
+    -foo
+    +bar
+    ```
+    </div>
+
+
+=== "Default"
+
+    ```bash
+    git diff --unified=0'
+    ```
+    <div class="result" markdown>
+    ```diff
+    diff --git a/test.txt b/test.txt
+    index 75d7bfb..9972d7e 100644
+    --- a/test.txt
+    +++ b/test.txt
+    @@ -1,2 +1,2 @@
+    -foo
+    +bar
+    ```
+    </div>
+
 ### Diffing Gzip-ed JSON files
 
 ```bash title="~/.gitattributes"
