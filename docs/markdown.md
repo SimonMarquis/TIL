@@ -211,19 +211,54 @@ $$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \
 
 ### Mermaid
 
-```mermaid
-graph LR
-    A[Square Rect] -- Link text --> B((Circle))
-    A --> C(Round Rect)
-    B --> D{Rhombus}
-    C --> D
-```
+<!-- ELK renderer -->
+<!-- https://www.npmjs.com/package/@mermaid-js/layout-elk -->
+<!-- https://zensical.org/docs/authoring/diagrams/#customization -->
+<script type="module">
+import mermaid from 'https://unpkg.com/mermaid@11/dist/mermaid.esm.min.mjs';
+import elkLayouts from 'https://unpkg.com/@mermaid-js/layout-elk@0.2/dist/mermaid-layout-elk.esm.min.mjs';
+mermaid.registerLayoutLoaders(elkLayouts);
+mermaid.initialize({
+  startOnLoad: false,
+  securityLevel: "loose",
+  layout: "elk",
+});
+window.mermaid = mermaid;
+</script>
 
-### Mermaid info
+=== "Info"
 
-```mermaid
-info
-```
+    ```mermaid
+    info
+    ```
+
+=== "Default renderer"
+
+    ```mermaid
+    graph LR
+        A[Square Rect] -- Link text --> B((Circle))
+        A --> C(Round Rect)
+        B --> D{Rhombus}
+        C --> D
+    ```
+
+=== "ELK renderer [🔗](https://mermaid.js.org/config/schema-docs/config-properties-elk.html)"
+
+    ```mermaid
+    ---
+    config:
+      layout: elk
+      elk:
+        mergeEdges: true
+        nodePlacementStrategy: SIMPLE
+    ---
+
+    graph LR
+        A[Square Rect] -- Link text --> B((Circle))
+        A --> C(Round Rect)
+        B --> D{Rhombus}
+        C --> D
+    ```
 
 ### Prefers color scheme
 
