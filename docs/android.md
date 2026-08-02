@@ -100,8 +100,8 @@ android {
             cut -d " " -f1 `: # extract device id` |
             fzf --header '📱 Select one or more devices' --border --reverse --multi \
                 --preview-window="right:66%" \
-                --preview="adb -s {} shell getprop | grep -E   'ro.build.(description|fingerprint|version.(release|sdk))|ro.product.(cpu.abi|device|locale|manufacturer|model|name)'" |
-            xargs -t -I % adb -s % adb -s % "$@" `: # run your command of choice`
+                --preview="adb -s {} shell getprop | grep -E 'ro.build.(description|fingerprint|version.(release|sdk))|ro.product.(cpu.abi|device|locale|manufacturer|model|name)'" |
+            xargs -t -I % adb -s % "$@" `: # run your command of choice`
         }
         ```
 
@@ -1009,7 +1009,7 @@ adb shell pm path <package-name>
 apksigner sign --ks debug.keystore --key-pass pass:android --ks-key-alias androiddebugkey --ks-pass pass:android app-release.apk
 ```
 
-### Mutliplatform Parcelize plugin
+### Multiplatform Parcelize plugin
 
 Kotlin's [Parcelize](https://developer.android.com/kotlin/parcelize) plugin works only on Android project.
 Wrapping it in a Kotlin Multiplatform project allows us to use it in JVM projects, without leaking Android implementation details.

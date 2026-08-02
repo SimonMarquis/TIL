@@ -13,7 +13,7 @@ title: 🧮 Regex
 :   Matches a newline character.
 
 `\r`
-:   Matches a carriage return, unicode character `U+2185`.
+:   Matches a carriage return, unicode character `U+000D`.
 
 `\t`
 :   Matches a tab character.
