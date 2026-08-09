@@ -43,6 +43,34 @@ SETX ANDROID_USER_HOME E:\.android
 | `#!batch %UserProfile%` | `C:\Users\{username}` |
 | `#!batch %WinDir%` | `C:\Windows` |
 
+### `powercfg` & device wake controls
+
+List devices currently configured to wake the system:
+
+```bat
+powercfg -devicequery wake_armed
+```
+
+List all user-configurable (programmable) wake devices:
+
+```bat
+powercfg -devicequery wake_programmable
+```
+
+Disable a device from waking the system (use `wake_armed` or `wake_programmable` output to find `<DEVICENAME>`):
+
+```bat
+powercfg -devicedisablewake <DEVICENAME>
+```
+
+Re-enable a device to allow it to wake the system:
+
+```bat
+powercfg -deviceenablewake <DEVICENAME>
+```
+
+[🔗](https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options)
+
 ### Reboot GPU driver
 
 === "Zensical"
