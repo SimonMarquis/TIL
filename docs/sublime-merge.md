@@ -55,6 +55,11 @@ title: 🔀 Sublime Merge
     [
         { "caption": "-", "id": "end" },
         {
+            "caption": "🔗 Open Change",
+            "command": "git",
+            "args": { "argv": ["open", "change", "$commit"] }
+        },
+        {
             "caption": "🔗 Open Commit $short_commit",
             "command": "git",
             "args": { "argv": ["open", "commit", "$commit"] }
@@ -126,6 +131,11 @@ title: 🔀 Sublime Merge
             "caption": "🔗 Open Tag…",
             "command": "git",
             "args": { "argv": ["open", "tag", "$select_tag"] }
+        },
+        {
+            "caption": "🔗 Open Change…",
+            "command": "git",
+            "args": { "argv": ["open", "change", "$select_commit"] }
         },
         {
             "caption": "🔗 Open Commit…",
