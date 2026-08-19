@@ -20,6 +20,17 @@ title: 🔀 Sublime Merge
     1. ++ctrl+down++ to move the selected commit down.
     2. ++ctrl+up++ to move the selected commit up.
 
+=== "`Default (OSX).sublime-keymap`"
+    ```json
+    [
+      {"keys":["command+down"],"command":"move_commit","args":{"commit":"$commit","down":true},"context":[{"key":"control","operator":"not_equal","operand":"text_control"},{"key":"control","operand":"commit_table"}]},
+      {"keys":["command+up"],"command":"move_commit","args":{"commit":"$commit","down":false},"context":[{"key":"control","operator":"not_equal","operand":"text_control"},{"key":"control","operand":"commit_table"}]}
+    ]
+    ```
+
+    1. ++command+down++ to move the selected commit down.
+    2. ++command+up++ to move the selected commit up.
+
 === "`Action.sublime-menu`"
     ```json
     [
