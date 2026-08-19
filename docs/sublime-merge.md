@@ -9,6 +9,17 @@ title: 🔀 Sublime Merge
     - [Menus](https://www.sublimemerge.com/docs/menus)
     - [Custom Commands](https://www.sublimemerge.com/docs/custom_commands)
 
+=== "`Default (Windows).sublime-keymap`"
+    ```json
+    [
+      {"keys":["ctrl+down"],"command":"move_commit","args":{"commit":"$commit","down":true},"context":[{"key":"control","operator":"not_equal","operand":"text_control"},{"key":"control","operand":"commit_table"}]},
+      {"keys":["ctrl+up"],"command":"move_commit","args":{"commit":"$commit","down":false},"context":[{"key":"control","operator":"not_equal","operand":"text_control"},{"key":"control","operand":"commit_table"}]}
+    ]
+    ```
+
+    1. ++ctrl+down++ to move the selected commit down.
+    2. ++ctrl+up++ to move the selected commit up.
+
 === "`Action.sublime-menu`"
     ```json
     [
