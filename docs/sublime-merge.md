@@ -4,6 +4,23 @@ title: 🔀 Sublime Merge
 
 ### Custom commands
 
+!!! tip "Create complex commands with inline `git alias`"
+
+    ```json
+    {
+        "caption": "My custom command…",
+        "command": "git",
+        "args": {
+            "argv": [
+                "-c",
+                "alias.sm-custom-command=!f() { \"~/bin/my-custom-tool\" \"$1\"; }; f",
+                "sm-custom-command",
+                "$select_branch"
+            ]
+        }
+    }
+    ```
+
 !!! example "`Preferences` → `Browse Packages`"
 
     - [Menus](https://www.sublimemerge.com/docs/menus)
