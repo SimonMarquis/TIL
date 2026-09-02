@@ -335,6 +335,21 @@ fun BottomSheetBehavior<*>.addBottomSheetSlideCallback(onBottomSheetSlide: (bott
 }.also(this::addBottomSheetCallback)
 ```
 
+### Check focused Activity
+
+```bash
+adb shell dumpsys window | grep -E 'mCurrentFocus|mFocusedApp'
+
+# or when grep is not available (e.g. Windows) use grep from the device shell
+# adb shell "dumpsys window | grep -E 'mCurrentFocus|mFocusedApp'"
+```
+<div class="result" markdown>
+```
+mCurrentFocus=Window{f7b1c23 u0 com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity}
+mFocusedApp=ActivityRecord{253621755 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t6}
+```
+</div>
+
 ### ConcatAdapter find global position
 
 ```kotlin
