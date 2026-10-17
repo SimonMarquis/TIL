@@ -6,15 +6,16 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -28,7 +29,6 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: 3.x
-          cache: pip
       - run: pip install --requirement requirements.txt
       - run: zensical build --clean --strict
       - uses: actions/upload-pages-artifact@v5
