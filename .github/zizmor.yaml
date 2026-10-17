@@ -3,5 +3,7 @@ rules:
     config:
       policies:
         actions/*: ref-pin
+        dependabot/*: ref-pin
+        SimonMarquis/*: ref-pin
   dependabot-cooldown:
     disable: true
