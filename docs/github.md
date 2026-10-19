@@ -157,7 +157,7 @@ jobs:
 
 ### Dependabot post update
 
-```
+```yaml
 name: 🤖 Dependabot post update
 on:
   pull_request:
