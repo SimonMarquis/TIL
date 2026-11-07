@@ -1,5 +1,6 @@
 ---
 title: 💎 Miscellaneous
+render_macros: true
 ---
 
 ### Anonymous Google profile images
